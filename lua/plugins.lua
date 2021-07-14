@@ -56,7 +56,7 @@ return packer.startup(
                 require("trouble").setup {}
             end
         }
-        -- TODO add lsp_signature?
+        use {"ray-x/lsp_signature.nvim"}
 
 
         -- Telescope & File Management
