@@ -1,5 +1,7 @@
 local opt = vim.opt
 
+opt.termguicolors = true  -- totally borks the entire config without it
+
 -- Ignore compiled files
 opt.wildignore = "__pycache__"
 opt.wildignore = opt.wildignore + { "*.o", "*~", "*.pyc", "*pycache*" }
@@ -16,7 +18,7 @@ opt.wildoptions = "pum"
 
 opt.showmode = false
 opt.showcmd = true
-opt.cmdheight = 1 -- Height of the command bar
+opt.cmdheight = 2 -- Height of the command bar
 opt.incsearch = true -- Makes search act like search in modern browsers
 opt.showmatch = true -- show matching brackets when text indicator is over them
 opt.relativenumber = true -- Show line numbers
@@ -29,13 +31,14 @@ opt.equalalways = false -- I don't like my windows changing all the time
 opt.splitright = true -- Prefer windows splitting to the right
 opt.splitbelow = true -- Prefer windows splitting to the bottom
 opt.updatetime = 1000 -- Make updates happen faster
-opt.hlsearch = false -- 
+opt.hlsearch = false -- Get rid of highlights once done with search
 opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
 
 -- Tabs
 opt.autoindent = true
 opt.cindent = true
 opt.wrap = true
+opt.colorcolumn = "80"
 
 opt.tabstop = 4
 opt.shiftwidth = 4
@@ -59,6 +62,7 @@ opt.swapfile = false -- Living on the edge
 opt.shada = { "!", "'1000", "<50", "s10", "h" }
 
 opt.mouse = "n"
+opt.shell = "/bin/zsh"
 
 -- Helpful related items:
 --   1. :center, :left, :right
@@ -71,7 +75,7 @@ opt.formatoptions = opt.formatoptions
   + "c" -- In general, I like it when comments respect textwidth
   + "q" -- Allow formatting comments w/ gq
   - "o" -- O and o, don't continue comments
-  + "r" -- But do continue when pressing enter.
+  - "r" -- No continuation of comments on return/enter either
   + "n" -- Indent past the formatlistpat, not underneath it.
   + "j" -- Auto-remove comments if possible.
   - "2" -- I'm not in gradeschool anymore
