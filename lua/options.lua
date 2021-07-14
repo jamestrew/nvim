@@ -18,7 +18,7 @@ opt.wildoptions = "pum"
 
 opt.showmode = false
 opt.showcmd = true
-opt.cmdheight = 2 -- Height of the command bar
+opt.cmdheight = 1 -- Height of the command bar
 opt.incsearch = true -- Makes search act like search in modern browsers
 opt.showmatch = true -- show matching brackets when text indicator is over them
 opt.relativenumber = true -- Show line numbers
@@ -55,7 +55,7 @@ opt.modelines = 1
 
 opt.belloff = "all" -- Just turn the dang bell off
 
-opt.clipboard = "unnamedplus"
+-- opt.clipboard = "unnamedplus"
 
 opt.inccommand = "split"
 opt.swapfile = false -- Living on the edge

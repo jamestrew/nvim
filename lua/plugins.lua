@@ -9,28 +9,10 @@ vim.cmd 'autocmd BufWritePost plugins.lua source <afile> | PackerCompile'
 
 return packer.startup(
     function()
+        -- packer itself
         use "wbthomason/packer.nvim"
 
-        use {
-            "glepnir/galaxyline.nvim",
-            config = function()
-                require("core.statusline").config()
-            end
-        }
-
-        -- color related stuff
-        use "siduck76/nvim-base16.lua"
-
-        use {
-            "norcalli/nvim-colorizer.lua",
-            event = "BufRead",
-            config = function()
-                require("colorizer").setup()
-                vim.cmd("ColorizerReloadAllBuffers")
-            end
-        }
-
-        -- language related plugins
+        -- LSP
         use {
             "nvim-treesitter/nvim-treesitter",
             event = "BufRead",
@@ -38,12 +20,7 @@ return packer.startup(
                 require("core.treesitter").config()
             end
         }
-
-        use {
-            "kabouzeid/nvim-lspinstall",
-            event = "BufRead"
-        }
-
+        use {"kabouzeid/nvim-lspinstall", event = "BufRead"}
         use {
             "neovim/nvim-lspconfig",
             after = "nvim-lspinstall",
@@ -51,16 +28,6 @@ return packer.startup(
                 require("core.lspconfig").config()
             end
         }
-
-        use {
-            "onsails/lspkind-nvim",
-            event = "BufRead",
-            config = function()
-                require("lspkind").init()
-            end
-        }
-
-        -- load compe in insert mode only
         use {
             "hrsh7th/nvim-compe",
             event = "InsertEnter",
@@ -83,10 +50,15 @@ return packer.startup(
                 }
             }
         }
+        use {
+            "folke/trouble.nvim",
+            config = function()
+                require("trouble").setup {}
+            end
+        }
+        
 
-        use {"sbdchd/neoformat", cmd = "Neoformat"}
-
-        -- file managing , picker etc
+        -- Telescope & File Management
         use {
           "kyazdani42/nvim-tree.lua",
           cmd = "NvimTreeToggle",
@@ -94,14 +66,6 @@ return packer.startup(
             require("core.nvimtree").config()
           end
         }
-
-        use {
-            "kyazdani42/nvim-web-devicons",
-            config = function()
-                require("core.icons").config()
-            end
-        }
-
         use {
             "nvim-telescope/telescope.nvim",
             requires = {
@@ -112,20 +76,15 @@ return packer.startup(
                 require("core.telescope").config()
             end
         }
-
         use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
         use {"nvim-telescope/telescope-media-files.nvim"}
-
-        -- git stuff
         use {
-            "lewis6991/gitsigns.nvim",
-            event = "BufRead",
-            config = function()
-                require("core.gitsigns").config()
-            end
+            "ThePrimeagen/harpoon",
+            config = function() require("core.harpoon") end
         }
 
-        -- misc plugins
+
+        -- Editing Support
         use {
             "windwp/nvim-autopairs",
             after = "nvim-compe",
@@ -139,21 +98,55 @@ return packer.startup(
                 )
             end
         }
-
         use {"andymass/vim-matchup", event = "CursorMoved"}
-
         use {
             "terrortylor/nvim-comment",
             config = function()
                 require("nvim_comment").setup()
             end
         }
-
         use {
             "lukas-reineke/indent-blankline.nvim",
             event = "BufRead",
             setup = function()
                 require("utils").blankline()
+            end
+        }
+        use {"sbdchd/neoformat", cmd = "Neoformat"}
+        use {
+            "norcalli/nvim-colorizer.lua",
+            event = "BufRead",
+            config = function()
+                require("colorizer").setup()
+                vim.cmd("ColorizerReloadAllBuffers")
+            end
+        }
+
+
+        -- Git
+        use {
+            "lewis6991/gitsigns.nvim",
+            event = "BufRead",
+            config = function()
+                require("core.gitsigns").config()
+            end
+        }
+
+
+        -- Looks
+        use {
+            "glepnir/galaxyline.nvim",
+            config = function()
+                require("core.statusline").config()
+            end
+        }
+
+        use "siduck76/nvim-base16.lua"
+
+        use {
+            "kyazdani42/nvim-web-devicons",
+            config = function()
+                require("core.icons").config()
             end
         }
     end

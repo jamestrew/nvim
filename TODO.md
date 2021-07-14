@@ -1,0 +1,7 @@
+- reorganize plugins.lua
+- move over all old mappings --
+- move over all old plugins
+- configure harpoon (bindings)
+- maybe move plugin specific mappings to it's respective lua file
+- config lsps (get node, ts)
+- check out some plugins/mappings used by LV/TJ
