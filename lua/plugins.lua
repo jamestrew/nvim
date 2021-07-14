@@ -57,7 +57,7 @@ return packer.startup(
             end
         }
         -- TODO add lsp_signature?
-        
+
 
         -- Telescope & File Management
         use {
@@ -139,7 +139,6 @@ return packer.startup(
         }
 
 
-
         -- Looks
         use {
             "glepnir/galaxyline.nvim",
@@ -147,9 +146,7 @@ return packer.startup(
                 require("core.statusline").config()
             end
         }
-
         use "siduck76/nvim-base16.lua"
-
         use {
             "kyazdani42/nvim-web-devicons",
             config = function()
