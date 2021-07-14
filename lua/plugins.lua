@@ -56,6 +56,7 @@ return packer.startup(
                 require("trouble").setup {}
             end
         }
+        -- TODO add lsp_signature?
         
 
         -- Telescope & File Management
@@ -131,6 +132,12 @@ return packer.startup(
                 require("core.gitsigns").config()
             end
         }
+        use {
+            "tpope/vim-fugitive",
+            event = "BufRead",
+            config = function() require("core.git") end
+        }
+
 
 
         -- Looks
