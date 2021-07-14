@@ -1,20 +1,11 @@
 local packer = require("packer")
 local use = packer.use
 
-packer.init {
-    display = {
-        open_fn = function()
-            return require("packer.util").float {border = "single"}
-        end
-    },
-    git = {
-        clone_timeout = 600 -- Timeout, in seconds, for git clones
-    }
-}
 
 
 -- Auto sync
-vim.cmd 'autocmd BufWritePost pluginList.lua PackerSync'
+vim.cmd 'autocmd BufWritePost init.lua PackerSync'
+vim.cmd 'autocmd BufWritePost plugins.lua source <afile> | PackerCompile'
 
 return packer.startup(
     function()
@@ -23,7 +14,7 @@ return packer.startup(
         use {
             "glepnir/galaxyline.nvim",
             config = function()
-                require("plugins.statusline").config()
+                require("core.statusline").config()
             end
         }
 
@@ -44,7 +35,7 @@ return packer.startup(
             "nvim-treesitter/nvim-treesitter",
             event = "BufRead",
             config = function()
-                require("plugins.treesitter").config()
+                require("core.treesitter").config()
             end
         }
 
@@ -57,7 +48,7 @@ return packer.startup(
             "neovim/nvim-lspconfig",
             after = "nvim-lspinstall",
             config = function()
-                require("plugins.lspconfig").config()
+                require("core.lspconfig").config()
             end
         }
 
@@ -74,7 +65,7 @@ return packer.startup(
             "hrsh7th/nvim-compe",
             event = "InsertEnter",
             config = function()
-                require("plugins.compe").config()
+                require("core.compe").config()
             end,
             wants = {"LuaSnip"},
             requires = {
@@ -83,7 +74,7 @@ return packer.startup(
                     wants = "friendly-snippets",
                     event = "InsertCharPre",
                     config = function()
-                        require("plugins.compe").snippets()
+                        require("core.compe").snippets()
                     end
                 },
                 {
@@ -100,14 +91,14 @@ return packer.startup(
           "kyazdani42/nvim-tree.lua",
           cmd = "NvimTreeToggle",
           config = function()
-            require("plugins.nvimtree").config()
+            require("core.nvimtree").config()
           end
         }
 
         use {
             "kyazdani42/nvim-web-devicons",
             config = function()
-                require("plugins.icons").config()
+                require("core.icons").config()
             end
         }
 
@@ -118,7 +109,7 @@ return packer.startup(
                 {"nvim-lua/plenary.nvim"}
             },
             config = function()
-                require("plugins.telescope").config()
+                require("core.telescope").config()
             end
         }
 
@@ -130,7 +121,7 @@ return packer.startup(
             "lewis6991/gitsigns.nvim",
             event = "BufRead",
             config = function()
-                require("plugins.gitsigns").config()
+                require("core.gitsigns").config()
             end
         }
 
