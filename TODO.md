@@ -5,3 +5,4 @@
 - maybe move plugin specific mappings to it's respective lua file
 - config lsps (get node, ts) --
 - check out some plugins/mappings used by LV/TJ
+- find_files vs git_files based on git repo or not

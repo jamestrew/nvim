@@ -9,3 +9,9 @@ const a = (b: number): void | number => {
     }
     return 2;
 };
+
+
+const c = (): string => {
+    const baz: int = b.bar 
+    return false
+}

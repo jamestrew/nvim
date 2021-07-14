@@ -23,8 +23,8 @@ map('v', '<leader>y', '"+y')
 map('n', '<leader>Y', 'gg"+yG')
 
 -- better indenting
-map("v", "<", "<gv")
-map("v", ">", ">gv")
+map("v", "<", "<gv", opt)
+map("v", ">", ">gv", opt)
 
 --------------                  ---------------
 -------------- Plugin Specifics ---------------
