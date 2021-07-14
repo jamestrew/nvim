@@ -1,4 +1,4 @@
-def test():
+def test(foo: str, bar: int) -> str:
     """
     This is a string to demonstrate
     {wow} inside
@@ -6,7 +6,7 @@ def test():
     >>> print('code')
     'code'
     """
-    pass
+    return foo + str(bar)
 
 
 x = 1 + 1  # hello
@@ -51,3 +51,6 @@ if True:  # {{{
     print("inside of fold")
     # {{{ Some folded text
     # }}}# }}}
+
+
+test("foo", 2)

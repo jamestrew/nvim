@@ -6,15 +6,15 @@ local function map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-local opt = {}
+local opt = {noremap = true, silent = true}
 
 -- move line(s) up/down
-map("n", "<A-j>", ":m .+1<CR>==", opts)
-map("n", "<A-k>", ":m .-2<CR>==", opts)
+map("n", "<A-j>", ":m .+1<CR>==", opt)
+map("n", "<A-k>", ":m .-2<CR>==", opt)
 map("i", "<A-j>", "<Esc>:m .+1<CR>==i")
 map("i", "<A-k>", "<Esc>:m .-2<CR>==i")
-map("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
-map("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
+map("v", "<A-j>", ":m '>+1<CR>gv=gv", opt)
+map("v", "<A-k>", ":m '<-2<CR>gv=gv", opt)
 
 -- fancy register yanking and pasting (must have xclip)
 map('v', '<leader>p', '"_dP') -- paste and keep pasted stuff

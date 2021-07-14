@@ -4,8 +4,8 @@ M.config = function()
     local lspconf = require("lspconfig")
 
     local function on_attach(client, bufnr)
-        -- lsp signature
-        require('lsp_signature').on_attach()
+        require('lsp_signature').on_attach()  -- lsp signature
+
         vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
         local opts = {noremap = true, silent = true}
