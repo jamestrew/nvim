@@ -18,6 +18,8 @@ map("v", "x", [=[ "_x ]=], opt)
  this line too ]]
 --
 
+map("n", "<leader>pv", ":Ex<CR>", opts)
+
 -- OPEN TERMINALS --
 map("n", "<C-l>", [[<Cmd>vnew term://zsh <CR>]], opt) -- term over right
 map("n", "<C-x>", [[<Cmd> split term://zsh | resize 10 <CR>]], opt) --  term bottom

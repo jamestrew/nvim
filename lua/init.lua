@@ -12,6 +12,10 @@ packer.init {
     }
 }
 
+
+-- Auto sync
+vim.cmd 'autocmd BufWritePost pluginList.lua PackerSync'
+
 return packer.startup(
     function()
         use "wbthomason/packer.nvim"
@@ -93,11 +97,11 @@ return packer.startup(
 
         -- file managing , picker etc
         use {
-            "kyazdani42/nvim-tree.lua",
-            cmd = "NvimTreeToggle",
-            config = function()
-                require("plugins.nvimtree").config()
-            end
+          "kyazdani42/nvim-tree.lua",
+          cmd = "NvimTreeToggle",
+          config = function()
+            require("plugins.nvimtree").config()
+          end
         }
 
         use {
@@ -113,18 +117,13 @@ return packer.startup(
                 {"nvim-lua/popup.nvim"},
                 {"nvim-lua/plenary.nvim"}
             },
-            cmd = "Telescope",
             config = function()
                 require("plugins.telescope").config()
             end
         }
 
-        use {"nvim-telescope/telescope-fzf-native.nvim", run = "make", cmd = "Telescope"}
-
-        use {
-            "nvim-telescope/telescope-media-files.nvim",
-            cmd = "Telescope"
-        }
+        use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
+        use {"nvim-telescope/telescope-media-files.nvim"}
 
         -- git stuff
         use {
@@ -154,7 +153,6 @@ return packer.startup(
 
         use {
             "terrortylor/nvim-comment",
-            cmd = "CommentToggle",
             config = function()
                 require("nvim_comment").setup()
             end
