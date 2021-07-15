@@ -8,14 +8,13 @@ M.config = function()
 
         vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-        local opts = {noremap = true, silent = true}
 
         local function buf_set_keymap(...)
             vim.api.nvim_buf_set_keymap(bufnr, ...)
         end
 
         -- Mappings.
-
+        local opts = {noremap = true, silent = true}
         buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
         buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
         buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
@@ -38,23 +37,61 @@ M.config = function()
         elseif client.resolved_capabilities.document_range_formatting then
             buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
         end
+
     end
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-    -- lspInstall + lspconfig stuff
+    capabilities.textDocument.completion.completionItem.resolveSupport = {
+        properties = { "documentation", "detail", "additionalTextEdits"}
+    }
 
     local function setup_servers()
         require "lspinstall".setup()
         local servers = require "lspinstall".installed_servers()
 
         for _, lang in pairs(servers) do
-            lspconf[lang].setup {
-                on_attach = on_attach,
-                capabilities = capabilities,
-                root_dir = vim.loop.cwd
-            }
+            if lang == 'lua' then
+                local luadev = require('lua-dev').setup({
+                    lspconfig = {
+                        on_attach = on_attach,
+                        capabilities = capabilities,
+                        settings = {
+                            Lua = {
+                                runtime = {
+                                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                                    version = 'LuaJIT',
+                                    -- Setup your lua path
+                                    path = vim.split(package.path, ';'),
+                                },
+                                diagnostics = {
+                                    -- Get the language server to recognize the `vim` global
+                                    globals = {'vim'},
+                                },
+                                workspace = {
+                                    -- Make the server aware of Neovim runtime files
+                                    library = {
+                                        [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                                        [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+                                    },
+                                    maxPreload = 100000,
+                                    preloadFileSize = 100000
+                                },
+                                telemetry = {
+                                    enable = false
+                                },
+                            }
+                        }
+                    }
+                })
+                lspconf[lang].setup(luadev)
+            else
+                lspconf[lang].setup {
+                    on_attach = on_attach,
+                    capabilities = capabilities,
+                    root_dir = vim.loop.cwd
+                }
+            end
         end
     end
 
