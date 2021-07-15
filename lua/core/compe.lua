@@ -38,4 +38,12 @@ M.snippets = function()
     require("luasnip/loaders/from_vscode").load()
 end
 
+M.confirm = function()
+    if vim.fn.pumvisible() == 1 then
+        return vim.fn["compe#confirm"]({ keys = "<CR>", select = true })
+    else
+        return require("nvim-autopairs").autopairs_cr()
+    end
+end
+
 return M

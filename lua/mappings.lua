@@ -30,14 +30,14 @@ utils.vnoremap("<leader>/", ":CommentToggle<CR>", silent)
 
 --  compe mappings
 utils.inoremap("<C-Space>", "compe#complete()", { silent = true, expr = true})
-utils.inoremap("<CR>", "compe#confirm()", { silent = true, expr = true})
+utils.inoremap("<CR>", ":lua require'core.compe'.confirm()", { silent = true, expr = true})
 utils.inoremap("<C-e>", "compe#close()", { silent = true, expr = true})
 
 -- nvim tree
 utils.nnoremap("<C-n>", ":NvimTreeToggle<CR>", { silent = true })
 
 -- format code
-utils.nnoremap("<Leader>fm", [[<Cmd> Neoformat<CR>]], silent)
+utils.nnoremap("<Leader>fm", [[<Cmd> Neoformat<CR>]], silent) -- TODO: check this works
 
 -- Telescope
 if utils.os.is_git_dir == 'O' then
@@ -55,15 +55,31 @@ utils.nnoremap("<leader>fo", [[<Cmd>Telescope oldfiles<CR>]], silent)
 utils.nnoremap("<leader>vrc", ":lua require'core.telescope'.search_dotfiles()<CR>", silent)
 utils.nnoremap("<leader>ps", ":lua require'telescope.builtin'.grep_string({ search = vim.fn.input('Grep For > ') })<CR>", silent)
 
---[[
-nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ") })
-nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
-nnoremap <C-e> :lua require('telescope.builtin').file_browser()<CR>
-nnoremap <leader>fe :lua require('telescope.builtin').file_browser({cwd = vim.fn.expand("%:p:h"), prompt_title = vim.fn.expand("%:p:h")})<CR>
-nnoremap <Leader>ff :lua require('telescope.builtin').find_files()<CR>
 
-nnoremap <leader>fw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
-nnoremap <leader>fb :lua require('telescope.builtin').buffers()<CR>
-nnoremap <leader>vh :lua require('telescope.builtin').help_tags()<CR>
-nnoremap <leader>vrc :lua require('theprimeagen.telescope').search_dotfiles()<CR>
-]]
+-- Trouble
+utils.nnoremap("<leader>tw", "<cmd>Trouble lsp_workspace_diagnostics<CR>", silent)
+utils.nnoremap("<leader>td", "<cmd>Trouble lsp_document_diagnostics<CR>", silent)
+
+-- Harpoon
+utils.nnoremap("<leader>a", ":lua require('harpoon.mark').add_file()<CR>")
+utils.nnoremap("<leader>e", ":lua require('harpoon.ui').toggle_quick_menu()<CR>")
+
+utils.nnoremap("<leader>hy", ":lua require('harpoon.ui').nav_file(1)<CR>")
+utils.nnoremap("<leader>hn", ":lua require('harpoon.ui').nav_file(2)<CR>")
+utils.nnoremap("<leader>he", ":lua require('harpoon.ui').nav_file(3)<CR>")
+utils.nnoremap("<leader>ho", ":lua require('harpoon.ui').nav_file(4)<CR>")
+
+utils.nnoremap("<leader>ty", ":lua require('harpoon.term').gotoTerminal(1)<CR>")
+utils.nnoremap("<leader>tn", ":lua require('harpoon.term').gotoTerminal(1)<CR>")
+
+-- fugitive
+utils.nnoremap("<leader>gs", ":G<CR>")
+utils.nnoremap("<leader>ga", ":Git fetch -all<CR>")
+utils.nnoremap("<leader>gp", ":Git push<CR>")
+utils.nnoremap("<leader>gc", ":Git commit<CR>")
+
+-- Todo Comment
+utils.nnoremap("<leader>ft", ":TodoTelescope<CR>", silent)
+
+-- Hop
+utils.nnoremap("<leader><leader>f", ":HopWord<CR>")

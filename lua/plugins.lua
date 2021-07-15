@@ -107,6 +107,17 @@ return packer.startup(
                 vim.cmd("ColorizerReloadAllBuffers")
             end
         }
+        use {
+            "folke/todo-comments.nvim",
+            requires = "nvim-lua/plenary.nvim",
+            config = function() require("todo-comments").setup() end
+        }
+        use {
+            'phaazon/hop.nvim',
+            as = 'hop',
+            config = function() require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' } end
+        }
+
 
 
         -- Git
@@ -118,7 +129,6 @@ return packer.startup(
         use {
             "tpope/vim-fugitive",
             event = "BufRead",
-            config = function() require("core.git") end
         }
 
 
