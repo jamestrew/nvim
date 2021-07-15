@@ -8,23 +8,27 @@ end
 
 local opt = {noremap = true, silent = true}
 
+local utils = require('utils')
+
+local silent = { silent = true }
+
 -- move line(s) up/down
-map("n", "<A-j>", ":m .+1<CR>==", opt)
-map("n", "<A-k>", ":m .-2<CR>==", opt)
-map("i", "<A-j>", "<Esc>:m .+1<CR>==i")
-map("i", "<A-k>", "<Esc>:m .-2<CR>==i")
-map("v", "<A-j>", ":m '>+1<CR>gv=gv", opt)
-map("v", "<A-k>", ":m '<-2<CR>gv=gv", opt)
+utils.nnoremap("<A-j>", ":m .+1<CR>==", silent)
+utils.nnoremap("<A-k>", ":m .-2<CR>==", silent)
+utils.imap("<A-j>", "<Esc>:m .+1<CR>==i")
+utils.imap("<A-k>", "<Esc>:m .-2<CR>==i")
+utils.vnoremap("<A-j>", ":m '>+1<CR>gv=gv", silent)
+utils.vnoremap("<A-k>", ":m '<-2<CR>gv=gv", silent)
 
 -- fancy register yanking and pasting (must have xclip)
-map('v', '<leader>p', '"_dP') -- paste and keep pasted stuff
-map('n', '<leader>y', '"+y')
-map('v', '<leader>y', '"+y')
-map('n', '<leader>Y', 'gg"+yG')
+utils.vnoremap('<leader>p', '"_dP') -- paste and keep pasted stuff
+utils.nnoremap('<leader>y', '"+y')
+utils.nnoremap('<leader>Y', 'gg"+yG')
+utils.vnoremap('<leader>y', '"+y')
 
 -- better indenting
-map("v", "<", "<gv", opt)
-map("v", ">", ">gv", opt)
+utils.vnoremap("<", "<gv", silent)
+utils.vnoremap(">", ">gv", silent)
 
 --------------                  ---------------
 -------------- Plugin Specifics ---------------
