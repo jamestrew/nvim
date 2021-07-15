@@ -96,7 +96,7 @@ return packer.startup(
         use {
             "lukas-reineke/indent-blankline.nvim",
             event = "BufRead",
-            setup = function() require("utils").blankline() end
+            setup = function() require("core.blankline") end
         }
         use {"sbdchd/neoformat", cmd = "Neoformat"}
         use {
