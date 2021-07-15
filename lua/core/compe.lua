@@ -21,6 +21,9 @@ M.config = function()
             nvim_lua = true
         }
     }
+
+    vim.opt.completeopt = { "menuone", "noselect" }
+    vim.opt.shortmess:append "c"
 end
 
 M.snippets = function()
