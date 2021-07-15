@@ -40,13 +40,30 @@ utils.nnoremap("<C-n>", ":NvimTreeToggle<CR>", { silent = true })
 utils.nnoremap("<Leader>fm", [[<Cmd> Neoformat<CR>]], silent)
 
 -- Telescope
-utils.nnoremap("<Leader>fw", [[<Cmd> Telescope live_grep<CR>]], silent)
-utils.nnoremap("<Leader>gt", [[<Cmd> Telescope git_status <CR>]], silent)
-utils.nnoremap("<C-p>", [[<Cmd> Telescope git_files <CR>]], silent)
-utils.nnoremap("<Leader>cm", [[<Cmd> Telescope git_commits <CR>]], silent)
-utils.nnoremap("<Leader>ff", [[<Cmd> Telescope find_files <CR>]], silent)
-utils.nnoremap("<Leader>fp", [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]], silent)
-utils.nnoremap("<Leader>fb", [[<Cmd>Telescope buffers<CR>]], silent)
-utils.nnoremap("<Leader>fh", [[<Cmd>Telescope help_tags<CR>]], silent)
-utils.nnoremap("<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]], silent)
+if utils.os.is_git_dir == 'O' then
+    utils.nnoremap("<C-p>", [[<Cmd> Telescope git_files <CR>]], silent)
+else
+    utils.nnoremap("<C-p>", [[<Cmd> Telescope find_files <CR>]], silent)
+end
+utils.nnoremap("<C-e>", [[<Cmd> Telescope file_browser<CR>]], silent)
+utils.nnoremap("<leader>fw", [[<Cmd> Telescope live_grep<CR>]], silent)
+utils.nnoremap("<leader>gt", [[<Cmd> Telescope git_status<CR>]], silent)
+utils.nnoremap("<leader>cm", [[<Cmd> Telescope git_commits<CR>]], silent)
+utils.nnoremap("<leader>fb", [[<Cmd>Telescope buffers<CR>]], silent)
+utils.nnoremap("<leader>fh", [[<Cmd>Telescope help_tags<CR>]], silent)
+utils.nnoremap("<leader>fo", [[<Cmd>Telescope oldfiles<CR>]], silent)
+utils.nnoremap("<leader>vrc", ":lua require'core.telescope'.search_dotfiles()<CR>", silent)
+utils.nnoremap("<leader>ps", ":lua require'telescope.builtin'.grep_string({ search = vim.fn.input('Grep For > ') })<CR>", silent)
 
+--[[
+nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ") })
+nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
+nnoremap <C-e> :lua require('telescope.builtin').file_browser()<CR>
+nnoremap <leader>fe :lua require('telescope.builtin').file_browser({cwd = vim.fn.expand("%:p:h"), prompt_title = vim.fn.expand("%:p:h")})<CR>
+nnoremap <Leader>ff :lua require('telescope.builtin').find_files()<CR>
+
+nnoremap <leader>fw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
+nnoremap <leader>fb :lua require('telescope.builtin').buffers()<CR>
+nnoremap <leader>vh :lua require('telescope.builtin').help_tags()<CR>
+nnoremap <leader>vrc :lua require('theprimeagen.telescope').search_dotfiles()<CR>
+]]

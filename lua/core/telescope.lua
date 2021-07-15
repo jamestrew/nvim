@@ -12,8 +12,8 @@ M.config = function()
                 "--column",
                 "--smart-case"
             },
-            prompt_prefix = "   ",
-            selection_caret = "  ",
+            prompt_prefix = "  ",
+            selection_caret = " ",
             entry_prefix = "  ",
             initial_mode = "insert",
             selection_strategy = "reset",
@@ -66,5 +66,13 @@ M.config = function()
     require("telescope").load_extension("fzf")
     require("telescope").load_extension("media_files")
 end
+
+M.search_dotfiles = function()
+    require("telescope.builtin").git_files({
+        prompt_title = "< VimRC >",
+        cwd = "~/.config/nvim/",
+    })
+end
+
 
 return M
