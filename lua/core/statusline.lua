@@ -81,7 +81,7 @@ M.config = function()
         DiffModified = {
             provider = "DiffModified",
             condition = checkwidth,
-            icon = "   ",
+            icon = "  ",
             highlight = {colors.grey_fg2, colors.statusline_bg}
         }
     }
@@ -110,6 +110,25 @@ M.config = function()
             highlight = {colors.yellow, colors.statusline_bg}
         }
     }
+
+    gls.left[11] = {
+        DiagnosticInfo = {
+            provider = "DiagnosticInfo",
+            icon = "  ",
+            highlight = {colors.green, colors.statusline_bg}
+        }
+    }
+
+    gls.left[12] = {
+        DiagnosticHint = {
+            provider = "DiagnosticHint",
+            icon = "  ",
+            highlight = {colors.purple, colors.statusline_bg}
+        }
+    }
+
+    -- RIGHT SIDE
+    -- TODO: add # unsaved/uncommitted files?
 
     gls.right[1] = {
         lsp_status = {
@@ -196,14 +215,16 @@ M.config = function()
             provider = function()
                 local current_line = vim.fn.line(".")
                 local total_line = vim.fn.line("$")
+                local current_col = vim.fn.virtcol('.')
+                local details = current_line .. ":" .. current_col .. " "
 
                 if current_line == 1 then
-                    return "  Top "
+                    return "  Top " .. details
                 elseif current_line == vim.fn.line("$") then
-                    return "  Bot "
+                    return "  Bot " .. details
                 end
                 local result, _ = math.modf((current_line / total_line) * 100)
-                return "  " .. result .. "% "
+                return "  " .. result .. "% " .. details
             end,
             highlight = {colors.green, colors.lightbg}
         }
