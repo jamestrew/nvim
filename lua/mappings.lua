@@ -61,8 +61,9 @@ utils.nnoremap("<leader>tw", "<cmd>Trouble lsp_workspace_diagnostics<CR>", silen
 utils.nnoremap("<leader>td", "<cmd>Trouble lsp_document_diagnostics<CR>", silent)
 
 -- Harpoon
-utils.nnoremap("<leader>a", ":lua require('harpoon.mark').add_file()<CR>")
-utils.nnoremap("<leader>e", ":lua require('harpoon.ui').toggle_quick_menu()<CR>")
+utils.nnoremap("<leader>a", ":lua require'harpoon.mark'.add_file()<CR>", silent)
+-- BUG: can map anything to <leader>e, even using vim.cmd()
+utils.nnoremap("<leader>z", ":lua require'harpoon.ui'.toggle_quick_menu()<CR>", silent)
 
 utils.nnoremap("<leader>hy", ":lua require('harpoon.ui').nav_file(1)<CR>")
 utils.nnoremap("<leader>hn", ":lua require('harpoon.ui').nav_file(2)<CR>")
