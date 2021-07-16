@@ -129,8 +129,22 @@ M.config = function()
 
     -- RIGHT SIDE
     -- TODO: add # unsaved/uncommitted files?
-
+    --
     gls.right[1] = {
+        unsaved = {
+            provider = function()
+                local unsaved_cnt = vim.api.nvim_eval(
+                    [[len(getbufinfo({'bufmodified':1}))]]
+                )
+                if unsaved_cnt > 0 then
+                    return "λ" .. unsaved_cnt
+                end
+            end,
+            highlight = {colors.grey_fg2, colors.statusline_bg}
+        }
+    }
+
+    gls.right[2] = {
         lsp_status = {
             provider = function()
                 local clients = vim.lsp.get_active_clients()
@@ -144,7 +158,7 @@ M.config = function()
         }
     }
 
-    gls.right[2] = {
+    gls.right[3] = {
         GitIcon = {
             provider = function()
                 return " "
@@ -156,7 +170,7 @@ M.config = function()
         }
     }
 
-    gls.right[3] = {
+    gls.right[4] = {
         GitBranch = {
             provider = "GitBranch",
             condition = require("galaxyline.condition").check_git_workspace,
@@ -164,7 +178,29 @@ M.config = function()
         }
     }
 
-    gls.right[4] = {
+    gls.right[5] = {
+        git_count = {
+            provider = function()
+                local stderr = {}
+                local stdout, _ = require('plenary.job'):new({
+                    command = "git",
+                    args = {"diff-files"},
+                    cwd = vim.fn.getcwd(),
+                    on_stderr = function(_, data) table.insert(stderr, data) end
+                }):sync()
+
+                local count = 0
+                for _ in pairs(stdout) do count = count + 1 end
+                if count > 0 then
+                    return "[" .. count .. "]"
+                end
+            end,
+            event = "BufWritePost",
+            highlight = {colors.grey_fg2, colors.statusline_bg}
+        }
+    }
+
+    gls.right[6] = {
         viMode_icon = {
             provider = function()
                 return " "
@@ -175,7 +211,7 @@ M.config = function()
         }
     }
 
-    gls.right[5] = {
+    gls.right[7] = {
         ViMode = {
             provider = function()
                 local alias = {
@@ -199,7 +235,7 @@ M.config = function()
         }
     }
 
-    gls.right[6] = {
+    gls.right[8] = {
         some_icon = {
             provider = function()
                 return " "
@@ -210,7 +246,7 @@ M.config = function()
         }
     }
 
-    gls.right[7] = {
+    gls.right[9] = {
         line_percentage = {
             provider = function()
                 local current_line = vim.fn.line(".")
