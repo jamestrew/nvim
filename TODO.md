@@ -1,8 +1,2 @@
-- reorganize plugins.lua --
-- move over all old mappings --
-- move over all old plugins --
-- configure harpoon (bindings) --
-- maybe move plugin specific mappings to it's respective lua file
-- config lsps (get node, ts) --
-- check out some plugins/mappings used by LV/TJ
-- find_files vs git_files based on git repo or not
+TODO: Neoformat run on save? Js/Ts tab sizes...
+TODO: change up status line a bit?

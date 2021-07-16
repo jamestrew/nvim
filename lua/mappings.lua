@@ -37,7 +37,7 @@ utils.inoremap("<C-e>", "compe#close()", { silent = true, expr = true})
 utils.nnoremap("<C-n>", ":NvimTreeToggle<CR>", { silent = true })
 
 -- format code
-utils.nnoremap("<Leader>fm", [[<Cmd> Neoformat<CR>]], silent) -- TODO: check this works
+utils.nnoremap("<Leader>fm", [[<Cmd> Neoformat<CR>]], silent)
 
 -- Telescope
 if utils.os.is_git_dir == 'O' then

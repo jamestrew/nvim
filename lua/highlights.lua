@@ -56,9 +56,10 @@ bg("PmenuThumb", nord_blue)
 -- inactive statuslines as thin splitlines
 cmd("hi! StatusLineNC gui=underline guifg=" .. line)
 
--- line n.o
+-- cursor line
 cmd "hi clear CursorLine"
-fg("cursorlinenr", white)
+bg("cursorline", line)
+bg("cursorlinenr", line)
 
 -- git signs ---
 fg_bg("DiffAdd", nord_blue, "none")
