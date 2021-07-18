@@ -39,7 +39,7 @@ opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
 -- Tabs
 opt.autoindent = true
 opt.cindent = true
-opt.wrap = true
+opt.wrap = false
 opt.colorcolumn = "80"
 
 opt.tabstop = 4

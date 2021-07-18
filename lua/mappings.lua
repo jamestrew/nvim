@@ -32,6 +32,8 @@ utils.vnoremap("<leader>/", ":CommentToggle<CR>", silent)
 utils.inoremap("<C-Space>", "compe#complete()", { silent = true, expr = true})
 utils.inoremap("<CR>", ":lua require'core.compe'.confirm()<CR>", { silent = true, expr = true})
 utils.inoremap("<C-e>", "compe#close()", { silent = true, expr = true})
+utils.inoremap("<C-u>", "compe#scroll({ 'delta': -4 })", { silent = true, expr = true})
+utils.inoremap("<C-d>", "compe#scroll({ 'delta': +4 })", { silent = true, expr = true})
 
 -- nvim tree
 utils.nnoremap("<C-n>", ":NvimTreeToggle<CR>", { silent = true })
