@@ -117,6 +117,7 @@ return packer.startup(
             as = 'hop',
             config = function() require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' } end
         }
+        use {"https://github.com/tpope/vim-surround"}
 
 
 
