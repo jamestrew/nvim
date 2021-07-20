@@ -19,6 +19,8 @@ utils.vnoremap('<leader>y', '"+y')
 utils.vnoremap("<", "<gv", silent)
 utils.vnoremap(">", ">gv", silent)
 
+utils.tnoremap("<Esc>", "<C-\\><C-n>")
+
 --------------                  ---------------
 -------------- Plugin Specifics ---------------
 --------------                  ---------------
