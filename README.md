@@ -1,5 +1,5 @@
 # HELLO
-Always WIP
+Always WIP.
 
 
 ## Plugins\*
@@ -52,7 +52,7 @@ Some plugins to try out
 - [astronauta](https://github.com/tjdevries/astronauta.nvim) to reorganize config
 - [firenvim](https://github.com/glacambre/firenvim) - nvim in the browser
 - [neogit](https://github.com/TimUntersberger/neogit)
-
+<br/><br/>
 - Probably should figure outs base16 and the whole colorscheme situation
 - Autoformat on save using neoformat
 - prettier settings (tab sizes)
