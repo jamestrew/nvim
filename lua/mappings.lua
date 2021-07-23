@@ -52,6 +52,7 @@ end
 utils.nnoremap("<C-e>", [[<Cmd> Telescope file_browser<CR>]], silent)
 utils.nnoremap("<leader>fw", [[<Cmd> Telescope live_grep<CR>]], silent)
 utils.nnoremap("<leader>gt", [[<Cmd> Telescope git_status<CR>]], silent)
+
 utils.nnoremap("<leader>cm", [[<Cmd> Telescope git_commits<CR>]], silent)
 utils.nnoremap("<leader>fb", [[<Cmd>Telescope buffers<CR>]], silent)
 utils.nnoremap("<leader>fh", [[<Cmd>Telescope help_tags<CR>]], silent)
