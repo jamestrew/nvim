@@ -73,7 +73,6 @@ return packer.startup(
             config = function() require("core.harpoon") end
         }
 
-
         -- Editing Support
         use {
             "windwp/nvim-autopairs",
@@ -117,7 +116,12 @@ return packer.startup(
             as = 'hop',
             config = function() require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' } end
         }
-        use {"https://github.com/tpope/vim-surround"}
+        use {"tpope/vim-surround"}
+        use {
+            "iamcco/markdown-preview.nvim",
+            run = "cd app && yarn install",
+            cmd = "MarkdownPreview"
+        }
 
 
 
@@ -143,5 +147,8 @@ return packer.startup(
             "kyazdani42/nvim-web-devicons",
             config = function() require("core.icons").config() end
         }
+
+        -- Others
+        use {"ThePrimeagen/vim-be-good"}
     end
 )
