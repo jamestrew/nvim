@@ -1,3 +1,0 @@
-TODO: Neoformat run on save? Js/Ts tab sizes...
-TODO: change up status line a bit?
-TODO: add formatoption settings for ft

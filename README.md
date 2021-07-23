@@ -22,7 +22,8 @@ Always WIP.
 #### Editing Support
 - [nvim-autopairs](https://github.com/windwp/nvim-autopais) - automatic "([{}])"
 - [vim-matchup](https://github.com/andymass/vim-matchup) - highlight sets of matching text (code block identifiers)
-- [nvim-comment](https://github.com/lukas-reineke/indent-blankline.nvim) - Indentation lines
+- [nvim-comment](https://github.com/terrortylor/nvim-comment) - comment out stuff
+- [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim) - Indentation lines
 - [neoformat](https://github.com/sbdchd/neoformat) - Formatting support (using prettier and black)
 - [nvim-colorizer](https://github.com/norcalli/nvim-colorizer.lua) - Color hex code
 - [todo-comments](https://github.com/folke/todo-comments.nvim) - fancy todo comments
