@@ -12,7 +12,7 @@ return packer.startup(
         -- packer itself
         use "wbthomason/packer.nvim"
 
-        -- LSP
+        -- LSP & Treeshitter
         use {
             "nvim-treesitter/nvim-treesitter",
             event = "BufRead",
@@ -54,9 +54,9 @@ return packer.startup(
 
         -- Telescope & File Management
         use {
-          "kyazdani42/nvim-tree.lua",
-          cmd = "NvimTreeToggle",
-          config = function() require("core.nvimtree").config() end
+            "kyazdani42/nvim-tree.lua",
+            cmd = "NvimTreeToggle",
+            config = function() require("core.nvimtree").config() end
         }
         use {
             "nvim-telescope/telescope.nvim",
