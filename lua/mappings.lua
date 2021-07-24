@@ -75,7 +75,7 @@ utils.nnoremap("<leader>he", ":lua require('harpoon.ui').nav_file(3)<CR>")
 utils.nnoremap("<leader>ho", ":lua require('harpoon.ui').nav_file(4)<CR>")
 
 utils.nnoremap("<leader>ty", ":lua require('harpoon.term').gotoTerminal(1)<CR>")
-utils.nnoremap("<leader>tn", ":lua require('harpoon.term').gotoTerminal(1)<CR>")
+utils.nnoremap("<leader>tn", ":lua require('harpoon.term').gotoTerminal(2)<CR>")
 
 -- fugitive
 utils.nnoremap("<leader>gs", ":G<CR>")
