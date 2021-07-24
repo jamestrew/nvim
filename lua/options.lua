@@ -16,7 +16,7 @@ opt.wildmode = opt.wildmode + { "longest", "full" }
 
 opt.wildoptions = "pum"
 
-opt.showmode = false
+opt.showmode = true
 opt.showcmd = true
 opt.nu = true
 opt.cmdheight = 1 -- Height of the command bar
@@ -66,22 +66,6 @@ opt.shada = { "!", "'1000", "<50", "s10", "h" }
 opt.mouse = "n"
 opt.shell = "/bin/zsh"
 
--- Helpful related items:
---   1. :center, :left, :right
---   2. gw{motion} - Put cursor back after formatting motion.
---
--- TODO: w, {v, b, l}
-opt.formatoptions = opt.formatoptions
-  - "a" -- Auto formatting is BAD.
-  - "t" -- Don't auto format my code. I got linters for that.
-  + "c" -- In general, I like it when comments respect textwidth
-  + "q" -- Allow formatting comments w/ gq
-  - "o" -- O and o, don't continue comments
-  - "r" -- No continuation of comments on return/enter either
-  + "n" -- Indent past the formatlistpat, not underneath it.
-  + "j" -- Auto-remove comments if possible.
-  - "2" -- I'm not in gradeschool anymore
-
 -- set joinspaces
 opt.joinspaces = false -- Two spaces and grade school, we're done
 
@@ -92,5 +76,6 @@ opt.fillchars = { eob = "~" }
 -- windows to close with "q"
 vim.cmd([[autocmd FileType help,startuptime,qf,lspinfo nnoremap <buffer><silent> q :close<CR>]])
 vim.cmd([[autocmd FileType man nnoremap <buffer><silent> q :quit<CR>]])
+vim.cmd([[autocmd FileType * setlocal formatoptions-=ator2 formatoptions+=cqnj]])
 
 vim.cmd("au TextYankPost * lua vim.highlight.on_yank {}")
