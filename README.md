@@ -53,11 +53,14 @@ Some plugins to try out
 - [astronauta](https://github.com/tjdevries/astronauta.nvim) to reorganize config
 - [firenvim](https://github.com/glacambre/firenvim) - nvim in the browser
 - [neogit](https://github.com/TimUntersberger/neogit)
+- emmet
 <br/><br/>
 - Probably should figure outs base16 and the whole colorscheme situation
 - Autoformat on save using neoformat
 - prettier settings (tab sizes)
 - Add formatoption-=rc for all filetypes
+- enable html snippets in js/jsx/ts/tsx/php files
+- (not exactly vim related but check out tmux and mabye tmux plugins)
 
 ## Credits
 [NvChad](https://github.com/siduck76/NvChad) was a major jumping off point for this config.
