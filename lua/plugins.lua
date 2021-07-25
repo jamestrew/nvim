@@ -4,8 +4,9 @@ local use = packer.use
 
 
 -- Auto sync
-vim.cmd 'autocmd BufWritePost init.lua PackerSync'
-vim.cmd 'autocmd BufWritePost plugins.lua source <afile> | PackerCompile'
+vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerSync]])
+vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
+
 
 return packer.startup(
     function()
@@ -118,6 +119,7 @@ return packer.startup(
             config = function() require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' } end
         }
         use {"tpope/vim-surround"}
+        use {"mattn/emmet-vim"}
         use {
             "iamcco/markdown-preview.nvim",
             run = "cd app && yarn install",

@@ -76,6 +76,10 @@ _G.packer_plugins = {
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/LuaSnip",
     wants = { "friendly-snippets" }
   },
+  ["emmet-vim"] = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/emmet-vim"
+  },
   ["friendly-snippets"] = {
     loaded = false,
     needs_bufread = false,
