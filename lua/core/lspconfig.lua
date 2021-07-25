@@ -17,7 +17,7 @@ M.config = function()
         local opts = {noremap = true, silent = true}
         buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
         buf_set_keymap("n", "gd", "<Cmd>lua require('telescope.builtin').lsp_definitions()<CR>", opts)
-        buf_set_keymap("n", "<C-o>", "<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", opts)
+        buf_set_keymap("n", "<leader>fs", "<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", opts)
         buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
         buf_set_keymap("n", "gi", "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>", opts)
         buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
