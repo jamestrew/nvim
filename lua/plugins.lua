@@ -136,6 +136,11 @@ return packer.startup(
             "tpope/vim-fugitive",
             event = "BufRead",
         }
+        use {
+            "TimUntersberger/neogit",
+            requires = "nvim-lua/plenary.nvim",
+            config = function () require("neogit").setup{} end
+        }
 
 
         -- Looks

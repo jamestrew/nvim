@@ -77,11 +77,12 @@ utils.nnoremap("<leader>ho", ":lua require('harpoon.ui').nav_file(4)<CR>")
 utils.nnoremap("<leader>ty", ":lua require('harpoon.term').gotoTerminal(1)<CR>")
 utils.nnoremap("<leader>tn", ":lua require('harpoon.term').gotoTerminal(2)<CR>")
 
--- fugitive
-utils.nnoremap("<leader>gs", ":G<CR>")
-utils.nnoremap("<leader>ga", ":Git fetch -all<CR>")
-utils.nnoremap("<leader>gp", ":Git push<CR>")
-utils.nnoremap("<leader>gc", ":Git commit<CR>")
+-- neogit
+utils.nnoremap("<leader>gs", ":lua require('neogit').open()<CR>")
+-- utils.nnoremap("<leader>gs", ":G<CR>")
+-- utils.nnoremap("<leader>ga", ":Git fetch -all<CR>")
+-- utils.nnoremap("<leader>gp", ":Git push<CR>")
+-- utils.nnoremap("<leader>gc", ":Git commit<CR>")
 
 -- Todo Comment
 utils.nnoremap("<leader>ft", ":TodoTelescope<CR>", silent)
