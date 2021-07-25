@@ -58,7 +58,6 @@ Some plugins to try out
 - Probably should figure outs base16 and the whole colorscheme situation
 - Autoformat on save using neoformat
 - js/ts/jsx/tsx default tab sizes?
-- lua doesn't seem to want to comply with formatoptions-=ro?
 - enable html snippets in js/jsx/ts/tsx/php files
 - (not exactly vim related but check out tmux and mabye tmux plugins)
 
