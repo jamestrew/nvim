@@ -32,7 +32,7 @@ utils.vnoremap("<leader>/", ":CommentToggle<CR>", silent)
 
 --  compe mappings
 utils.inoremap("<C-Space>", "compe#complete()", { silent = true, expr = true})
-utils.inoremap("<CR>", ":lua require'core.compe'.confirm()<CR>", { silent = true, expr = true})
+utils.inoremap("<CR>", [[compe#confirm(luaeval("require'nvim-autopairs'.autopairs_cr()")]], { silent = true, expr = true })
 utils.inoremap("<C-e>", "compe#close()", { silent = true, expr = true})
 utils.inoremap("<C-u>", "compe#scroll({ 'delta': -4 })", { silent = true, expr = true})
 utils.inoremap("<C-d>", "compe#scroll({ 'delta': +4 })", { silent = true, expr = true})
