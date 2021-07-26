@@ -76,9 +76,14 @@ _G.packer_plugins = {
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/LuaSnip",
     wants = { "friendly-snippets" }
   },
-  ["emmet-vim"] = {
+  ["editorconfig-vim"] = {
     loaded = true,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/start/emmet-vim"
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/editorconfig-vim"
+  },
+  ["emmet-vim"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/opt/emmet-vim"
   },
   ["friendly-snippets"] = {
     loaded = false,
@@ -89,6 +94,10 @@ _G.packer_plugins = {
     config = { "\27LJ\1\2>\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\20core.statusline\frequire\0" },
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
+  },
+  ["git-worktree.nvim"] = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/git-worktree.nvim"
   },
   ["gitsigns.nvim"] = {
     config = { "\27LJ\1\2<\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\18core.gitsigns\frequire\0" },
@@ -241,11 +250,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/vim-be-good"
   },
-  ["vim-fugitive"] = {
-    loaded = false,
-    needs_bufread = true,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/opt/vim-fugitive"
-  },
   ["vim-matchup"] = {
     after_files = { "/home/jt/.local/share/nvim/site/pack/packer/opt/vim-matchup/after/plugin/matchit.vim" },
     loaded = false,
@@ -253,8 +257,9 @@ _G.packer_plugins = {
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/vim-matchup"
   },
   ["vim-surround"] = {
-    loaded = true,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/start/vim-surround"
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/opt/vim-surround"
   }
 }
 
@@ -315,10 +320,14 @@ time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim', 'gitsigns.nvim', 'vim-fugitive', 'nvim-colorizer.lua', 'nvim-lspinstall'}, { event = "BufRead *" }, _G.packer_plugins)]]
-vim.cmd [[au InsertCharPre * ++once lua require("packer.load")({'friendly-snippets', 'LuaSnip'}, { event = "InsertCharPre *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim', 'emmet-vim', 'gitsigns.nvim', 'vim-surround', 'nvim-colorizer.lua', 'nvim-lspinstall'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertCharPre * ++once lua require("packer.load")({'LuaSnip', 'friendly-snippets'}, { event = "InsertCharPre *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-compe'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au CursorMoved * ++once lua require("packer.load")({'vim-matchup'}, { event = "CursorMoved *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)

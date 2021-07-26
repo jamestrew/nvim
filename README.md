@@ -1,6 +1,6 @@
 # HELLO
 Always WIP.
-
+Also README a little out of date.
 
 ## Plugins\*
 ##### LSP & Treeshitter
@@ -48,7 +48,6 @@ Always WIP.
 
 ## TODO
 Some plugins to try out
-- [git-worktrees](https://github.com/ThePrimeagen/git-worktree.nvim)
 - [nvim-toggleterm](https://github.com/akinsho/nvim-toggleterm.lua) or some floating terminal and maybe use [lazygit](https://github.com/jesseduffield/lazygit)
 - [astronauta](https://github.com/tjdevries/astronauta.nvim) to reorganize config
 - [firenvim](https://github.com/glacambre/firenvim) - nvim in the browser
@@ -56,7 +55,6 @@ Some plugins to try out
 - Probably should figure outs base16 and the whole colorscheme situation
 - Autoformat on save using neoformat?
 - js/ts/jsx/tsx default tab sizes?
-- enable html snippets in js/jsx/ts/tsx/php files
 - (not exactly vim related but check out tmux and mabye tmux plugins)
 
 ## Credits

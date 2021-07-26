@@ -15,6 +15,7 @@ M.config = function()
         max_menu_width = 100,
         documentation = true,
         source = {
+            path = true,
             buffer = {kind = "﬘", true},
             luasnip = {kind = "﬌", true},
             nvim_lsp = true,

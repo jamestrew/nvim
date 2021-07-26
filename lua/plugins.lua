@@ -53,7 +53,6 @@ return packer.startup(
         use {"ray-x/lsp_signature.nvim"}
         use {"folke/lua-dev.nvim"}
 
-
         -- Telescope & File Management
         use {
             "kyazdani42/nvim-tree.lua",
@@ -118,15 +117,15 @@ return packer.startup(
             as = 'hop',
             config = function() require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' } end
         }
-        use {"tpope/vim-surround"}
-        use {"mattn/emmet-vim"}
+        use {"tpope/vim-surround", event = "BufRead"}
+        use {"mattn/emmet-vim", event = "BufRead"}
+        use {"editorconfig/editorconfig-vim"}
         use {
             "iamcco/markdown-preview.nvim",
+            ft = {"markdown"},
             run = "cd app && yarn install",
             cmd = "MarkdownPreview"
         }
-
-
 
         -- Git
         use {
@@ -135,15 +134,11 @@ return packer.startup(
             config = function() require("core.gitsigns").config() end
         }
         use {
-            "tpope/vim-fugitive",
-            event = "BufRead",
-        }
-        use {
             "TimUntersberger/neogit",
             requires = "nvim-lua/plenary.nvim",
             config = function () require("neogit").setup{} end
         }
-
+        use {"ThePrimeagen/git-worktree.nvim"}
 
         -- Looks
         use {
@@ -158,5 +153,11 @@ return packer.startup(
 
         -- Others
         use {"ThePrimeagen/vim-be-good"}
-    end
+    end, {
+        display = {
+            open_fn = function()
+                return require('packer.util').float({ border = 'single' })
+            end
+        }
+    }
 )
