@@ -65,6 +65,8 @@ M.config = function()
 
     require("telescope").load_extension("fzf")
     require("telescope").load_extension("media_files")
+    require("telescope").load_extension("git_worktree")
+
 end
 
 M.search_dotfiles = function()
