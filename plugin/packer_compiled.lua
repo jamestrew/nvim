@@ -246,6 +246,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/trouble.nvim"
   },
+  undotree = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/opt/undotree"
+  },
   ["vim-be-good"] = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/vim-be-good"
@@ -326,8 +331,8 @@ vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-prev
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim', 'emmet-vim', 'gitsigns.nvim', 'vim-surround', 'nvim-colorizer.lua', 'nvim-lspinstall'}, { event = "BufRead *" }, _G.packer_plugins)]]
-vim.cmd [[au InsertCharPre * ++once lua require("packer.load")({'LuaSnip', 'friendly-snippets'}, { event = "InsertCharPre *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim', 'emmet-vim', 'gitsigns.nvim', 'undotree', 'nvim-colorizer.lua', 'vim-surround', 'nvim-lspinstall'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertCharPre * ++once lua require("packer.load")({'friendly-snippets', 'LuaSnip'}, { event = "InsertCharPre *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-compe'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au CursorMoved * ++once lua require("packer.load")({'vim-matchup'}, { event = "CursorMoved *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)

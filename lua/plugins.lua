@@ -120,6 +120,7 @@ return packer.startup(
         use {"tpope/vim-surround", event = "BufRead"}
         use {"mattn/emmet-vim", event = "BufRead"}
         use {"editorconfig/editorconfig-vim"}
+        use {"mbbill/undotree", event = "BufRead"}
         use {
             "iamcco/markdown-preview.nvim",
             ft = {"markdown"},

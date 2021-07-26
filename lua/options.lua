@@ -65,6 +65,7 @@ opt.shada = { "!", "'1000", "<50", "s10", "h" }
 
 opt.mouse = "n"
 opt.shell = "/bin/zsh"
+opt.undofile = true
 
 -- set joinspaces
 opt.joinspaces = false -- Two spaces and grade school, we're done

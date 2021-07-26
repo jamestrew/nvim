@@ -38,7 +38,7 @@ utils.inoremap("<C-u>", "compe#scroll({ 'delta': -4 })", { silent = true, expr =
 utils.inoremap("<C-d>", "compe#scroll({ 'delta': +4 })", { silent = true, expr = true})
 
 -- nvim tree
-utils.nnoremap("<C-n>", ":NvimTreeToggle<CR>", { silent = true })
+utils.nnoremap("<C-n>", ":NvimTreeToggle<CR>", silent)
 
 -- format code
 utils.nnoremap("<Leader>fm", [[<Cmd> Neoformat<CR>]], silent)
@@ -90,3 +90,6 @@ utils.nnoremap("<leader>ft", ":TodoTelescope<CR>", silent)
 
 -- Hop
 utils.nnoremap("<leader><leader>f", ":HopWord<CR>")
+
+-- undotree
+utils.nnoremap("<leader>u", ":UndotreeShow<CR>", silent)
