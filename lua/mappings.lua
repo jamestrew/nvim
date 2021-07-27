@@ -49,7 +49,7 @@ if utils.os.is_git_dir == 'O' then
 else
     utils.nnoremap("<C-p>", [[<Cmd> Telescope find_files <CR>]], silent)
 end
-utils.nnoremap("<leader>wt", ":lua require'telescope'.extensions.git_worktree.git_worktrees()<CR>")
+utils.nnoremap("<leader>wt", ":lua require'telescope'.extensions.git_worktree.git_worktrees()<CR>", silent)
 utils.nnoremap("<C-e>", [[<Cmd> Telescope file_browser<CR>]], silent)
 utils.nnoremap("<leader>fw", [[<Cmd> Telescope live_grep<CR>]], silent)
 utils.nnoremap("<leader>gt", [[<Cmd> Telescope git_status<CR>]], silent)
