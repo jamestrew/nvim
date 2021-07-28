@@ -9,10 +9,10 @@ local M = {}
 M.hideStuff = function()
     vim.api.nvim_exec(
         [[
-   au BufEnter term://* setlocal nonumber
-   au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
-   au BufEnter term://* set laststatus=0 
-]],
+        au BufEnter term://* setlocal nonumber
+        au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
+        au BufEnter term://* set laststatus=0 
+        ]],
         false
     )
 end
@@ -66,6 +66,7 @@ function M.map(mode, key, cmd, opts, defaults)
     return map(mode, key, cmd, opts, defaults)
 end
 
+-- nmap keys action
 function M.nmap(key, cmd, opts) return map("n", key, cmd, opts) end
 function M.vmap(key, cmd, opts) return map("v", key, cmd, opts) end
 function M.xmap(key, cmd, opts) return map("x", key, cmd, opts) end

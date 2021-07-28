@@ -18,7 +18,6 @@ opt.wildoptions = "pum"
 
 opt.showmode = true
 opt.showcmd = true
-opt.nu = true
 opt.cmdheight = 1 -- Height of the command bar
 opt.signcolumn = "yes" -- Leave extra space in the gutter (for git signs, etc.)
 opt.incsearch = true -- Makes search act like search in modern browsers

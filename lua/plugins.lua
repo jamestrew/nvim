@@ -1,12 +1,8 @@
 local packer = require("packer")
 local use = packer.use
 
-
-
 -- Auto sync
 vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerSync]])
-vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
-
 
 return packer.startup(
     function()
