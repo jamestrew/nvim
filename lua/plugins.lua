@@ -40,12 +40,6 @@ return packer.startup(
                 }
             }
         }
-        use {
-            "folke/trouble.nvim",
-            config = function()
-                require("trouble").setup {}
-            end
-        }
         use {"ray-x/lsp_signature.nvim"}
         use {"folke/lua-dev.nvim"}
 

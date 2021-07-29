@@ -5,34 +5,7 @@ M.config = function()
 
     local function on_attach(client, bufnr)
         require('lsp_signature').on_attach()  -- lsp signature
-
         vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-
-        local function buf_set_keymap(...)
-            vim.api.nvim_buf_set_keymap(bufnr, ...)
-        end
-
-        -- Mappings.
-        local opts = {noremap = true, silent = true}
-        buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-        buf_set_keymap("n", "gd", "<Cmd>lua require('telescope.builtin').lsp_definitions()<CR>", opts)
-        buf_set_keymap("n", "<leader>fs", "<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", opts)
-        buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-        buf_set_keymap("n", "gi", "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>", opts)
-        buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-        buf_set_keymap("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-        buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-        buf_set_keymap("n", "gr", "<cmd>lua require('telescope.builtin').lsp_references()<CR>", opts)
-        buf_set_keymap("n", "<leader>d", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
-
-        -- Set some keybinds conditional on server capabilities
-        if client.resolved_capabilities.document_formatting then
-            buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-        elseif client.resolved_capabilities.document_range_formatting then
-            buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-        end
-
     end
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()

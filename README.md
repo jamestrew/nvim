@@ -8,7 +8,6 @@ Also README a little out of date.
 - [nvim-lspinstall](https://github.com/kabouzeid/nvim-lspinstall) - ez lsp installations
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig") - configure lsp settings
 - [nvim-compe](https://github.com/hrsh7th/nvim-compe) - lsp autocomplete
-- [trouble](https://github.com/folke/trouble.nvim) - lsp diagnostics
 - [lsp_signature](https://github.com/ray-x/lsp_signature.nvim) - lsp signature support
 - [lua-dev](https://github.com/folke/lua-dev.nvim) - nvim lua API (full signature, docs, completion of nvim lua)
 

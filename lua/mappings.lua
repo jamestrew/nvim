@@ -41,28 +41,38 @@ utils.inoremap("<C-d>", "compe#scroll({ 'delta': +4 })", { silent = true, expr =
 utils.nnoremap("<C-n>", ":NvimTreeToggle<CR>", silent)
 
 -- format code
-utils.nnoremap("<Leader>fm", [[<Cmd> Neoformat<CR>]], silent)
+utils.nnoremap("<Leader>fm", [[: Neoformat<CR>]], silent)
 
 -- Telescope
 if utils.os.is_git_dir == 'O' then
-    utils.nnoremap("<C-p>", [[<Cmd> Telescope git_files <CR>]], silent)
+    utils.nnoremap("<C-p>", ": Telescope git_files <CR>", silent)
 else
-    utils.nnoremap("<C-p>", [[<Cmd> Telescope find_files <CR>]], silent)
+    utils.nnoremap("<C-p>", ": Telescope find_files <CR>", silent)
 end
 utils.nnoremap("<leader>fg", ":lua require'telescope'.extensions.git_worktree.git_worktrees()<CR>", silent)
-utils.nnoremap("<C-e>", [[<Cmd> Telescope file_browser<CR>]], silent)
-utils.nnoremap("<leader>fw", [[<Cmd> Telescope live_grep<CR>]], silent)
-utils.nnoremap("<leader>fc", [[<Cmd> Telescope git_commits<CR>]], silent)
-utils.nnoremap("<leader>fb", [[<Cmd>Telescope buffers<CR>]], silent)
-utils.nnoremap("<leader>fh", [[<Cmd>Telescope help_tags<CR>]], silent)
-utils.nnoremap("<leader>fo", [[<Cmd>Telescope oldfiles<CR>]], silent)
+utils.nnoremap("<C-e>", ": Telescope file_browser<CR>", silent)
+utils.nnoremap("<leader>fw", ": Telescope live_grep<CR>", silent)
+utils.nnoremap("<leader>fc", ": Telescope git_commits<CR>", silent)
+utils.nnoremap("<leader>fb", ":Telescope buffers<CR>", silent)
+utils.nnoremap("<leader>fh", ":Telescope help_tags<CR>", silent)
+utils.nnoremap("<leader>fo", ":Telescope oldfiles<CR>", silent)
 utils.nnoremap("<leader>vrc", ":lua require'core.telescope'.search_dotfiles()<CR>", silent)
-utils.nnoremap("<leader>ps", ":lua require'telescope.builtin'.grep_string({ search = vim.fn.input('Grep For > ') })<CR>", silent)
+
+-- Lsp
+utils.nnoremap("gD", ":lua vim.lsp.buf.declaration()<CR>", silent)
+utils.nnoremap("gd", ":lua require('telescope.builtin').lsp_definitions()<CR>", silent)
+utils.nnoremap("<leader>fs", ":lua require('telescope.builtin').lsp_document_symbols()<CR>", silent)
+utils.nnoremap("K", ":lua vim.lsp.buf.hover()<CR>", silent)
+utils.nnoremap("gi", ":lua require('telescope.builtin').lsp_implementations()<CR>", silent)
+utils.nnoremap("<C-k>", ":lua vim.lsp.buf.signature_help()<CR>", silent)
+utils.nnoremap("<leader>D", ":lua vim.lsp.buf.type_definition()<CR>", silent)
+utils.nnoremap("<leader>rn", ":lua vim.lsp.buf.rename()<CR>", silent)
+utils.nnoremap("gr", ":lua require('telescope.builtin').lsp_references()<CR>", silent)
+utils.nnoremap("<leader>d", ":lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", silent)
+utils.nnoremap("<leader>tw", ":Telescope lsp_workspace_diagnostics<CR>", silent)
+utils.nnoremap("<leader>td", ":Telescope lsp_document_diagnostics<CR>", silent)
 
 
--- Trouble
-utils.nnoremap("<leader>tw", "<cmd>Trouble lsp_workspace_diagnostics<CR>", silent)
-utils.nnoremap("<leader>td", "<cmd>Trouble lsp_document_diagnostics<CR>", silent)
 
 -- Harpoon
 utils.nnoremap("<leader>a", ":lua require'harpoon.mark'.add_file()<CR>", silent)
