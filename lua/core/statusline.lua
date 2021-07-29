@@ -128,7 +128,7 @@ M.config = function()
     }
 
     -- RIGHT SIDE
-    -- TODO: add # unsaved/uncommitted files?
+    -- TODO: unsaved_cnt is kinda broken
     --
     gls.right[1] = {
         unsaved = {
