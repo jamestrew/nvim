@@ -146,13 +146,7 @@ return packer.startup(
         use {"ThePrimeagen/vim-be-good"}
         use {
             "folke/which-key.nvim",
-            config = function()
-                require("which-key").setup {
-                    -- your configuration comes here
-                    -- or leave it empty to use the default settings
-                    -- refer to the configuration section below
-                }
-            end
+            config = function() require("which-key").setup() end
         }
     end, {
         display = {

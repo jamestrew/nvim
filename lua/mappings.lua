@@ -19,7 +19,16 @@ utils.vnoremap('<leader>y', '"+y')
 utils.vnoremap("<", "<gv", silent)
 utils.vnoremap(">", ">gv", silent)
 
+-- easier exit insert mode in the terminal
 utils.tnoremap("<Esc>", "<C-\\><C-n>")
+
+-- endofline behavior for Y like D, C
+utils.nnoremap("Y", "y$")
+
+-- keeps jumps centered
+utils.nnoremap("n", "nzzzv")
+utils.nnoremap("N", "Nzzzv")
+utils.nnoremap("J", "mzJ`z")
 
 --------------                  ---------------
 -------------- Plugin Specifics ---------------
@@ -88,10 +97,6 @@ utils.nnoremap("<leader>tn", ":lua require('harpoon.term').gotoTerminal(2)<CR>")
 
 -- neogit
 utils.nnoremap("<leader>gs", ":lua require('neogit').open()<CR>")
--- utils.nnoremap("<leader>gs", ":G<CR>")
--- utils.nnoremap("<leader>ga", ":Git fetch -all<CR>")
--- utils.nnoremap("<leader>gp", ":Git push<CR>")
--- utils.nnoremap("<leader>gc", ":Git commit<CR>")
 
 -- Todo Comment
 utils.nnoremap("<leader>ft", ":TodoTelescope<CR>", silent)
@@ -100,4 +105,4 @@ utils.nnoremap("<leader>ft", ":TodoTelescope<CR>", silent)
 utils.nnoremap("<leader><leader>f", ":HopWord<CR>")
 
 -- undotree
-utils.nnoremap("<leader>u", ":UndotreeShow<CR>", silent)
+utils.nnoremap("<leader>u", ":UndotreeToggle<CR>", silent)
