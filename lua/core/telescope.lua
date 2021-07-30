@@ -76,5 +76,13 @@ M.search_dotfiles = function()
     })
 end
 
+M.files = function()
+    local utils = require("utils")
+    if utils.os.is_git_dir == 'O' then
+        return require("telescope.builtin").git_files()
+    else
+        return require("telescope.builtin").find_files()
+    end
+end
 
 return M

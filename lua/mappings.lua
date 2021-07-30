@@ -14,6 +14,8 @@ utils.vnoremap('<leader>p', '"_dP') -- paste and keep pasted stuff
 utils.nnoremap('<leader>y', '"+y')
 utils.nnoremap('<leader>Y', 'gg"+yG')
 utils.vnoremap('<leader>y', '"+y')
+utils.nnoremap('<leader>d', '"_d')
+utils.vnoremap('<leader>d', '"_d')
 
 -- better indenting
 utils.vnoremap("<", "<gv", silent)
@@ -53,11 +55,7 @@ utils.nnoremap("<C-n>", ":NvimTreeToggle<CR>", silent)
 utils.nnoremap("<Leader>fm", [[: Neoformat<CR>]], silent)
 
 -- Telescope
-if utils.os.is_git_dir == 'O' then
-    utils.nnoremap("<C-p>", ": Telescope git_files <CR>", silent)
-else
-    utils.nnoremap("<C-p>", ": Telescope find_files <CR>", silent)
-end
+utils.nnoremap("<C-p>", ":lua require('core.telescope').files()<CR>")
 utils.nnoremap("<leader>fg", ":lua require'telescope'.extensions.git_worktree.git_worktrees()<CR>", silent)
 utils.nnoremap("<C-e>", ": Telescope file_browser<CR>", silent)
 utils.nnoremap("<leader>fw", ": Telescope live_grep<CR>", silent)
@@ -105,4 +103,4 @@ utils.nnoremap("<leader>ft", ":TodoTelescope<CR>", silent)
 utils.nnoremap("<leader><leader>f", ":HopWord<CR>")
 
 -- undotree
-utils.nnoremap("<leader>u", ":UndotreeToggle<CR>", silent)
+utils.nnoremap("<leader>u", ":UndotreeShow<CR>", silent)

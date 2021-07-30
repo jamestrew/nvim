@@ -78,4 +78,4 @@ vim.cmd([[autocmd FileType help,startuptime,qf,lspinfo nnoremap <buffer><silent>
 vim.cmd([[autocmd FileType man nnoremap <buffer><silent> q :quit<CR>]])
 vim.cmd([[autocmd BufEnter * setlocal formatoptions-=r formatoptions-=o]])
 
-vim.cmd("au TextYankPost * lua vim.highlight.on_yank {}")
+vim.cmd("au TextYankPost * silent! lua vim.highlight.on_yank {}")
