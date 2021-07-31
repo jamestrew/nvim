@@ -84,8 +84,8 @@ function M.snoremap(key, cmd, opts) return map("s", key, cmd, opts, { noremap = 
 function M.tnoremap(key, cmd, opts) return map("t", key, cmd, opts, { noremap = true }) end
 
 
--- function M.error(msg, name)
---   M.log(msg, "LspDiagnosticsDefaultError", name)
--- end
+M.unwritten = function()
+    return vim.api.nvim_eval([[len(getbufinfo({'bufmodified':1}))]])
+end
 
 return M

@@ -57,7 +57,6 @@ Some plugins to try out
 <br/><br/>
 - Probably should figure outs base16 and the whole colorscheme situation
 - Autoformat on save using neoformat?
-- js/ts/jsx/tsx default tab sizes?
 - (not exactly vim related but check out tmux and mabye tmux plugins)
 
 ## Credits

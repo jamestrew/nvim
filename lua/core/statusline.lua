@@ -129,7 +129,6 @@ M.config = function()
 
     -- RIGHT SIDE
     -- TODO: unsaved_cnt is kinda broken
-    --
     gls.right[1] = {
         unsaved = {
             provider = function()
