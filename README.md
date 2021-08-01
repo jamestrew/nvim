@@ -1,6 +1,8 @@
-# HELLO
+# nvim
 Always WIP.
 Also README probably a little out of date.
+
+![preview](https://i.imgur.com/M95xSLt.png)
 
 ## Plugins\*
 ##### LSP & Treeshitter
