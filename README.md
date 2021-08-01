@@ -1,6 +1,6 @@
 # HELLO
 Always WIP.
-Also README a little out of date.
+Also README probably a little out of date.
 
 ## Plugins\*
 ##### LSP & Treeshitter
@@ -29,14 +29,14 @@ Also README a little out of date.
 - [hop](https://github.com/phaazon/hop.nvim) - Hop around
 - [vim-surround](https://github.com/tpope/vim-surround) - Change/add/delete ("[{<tags></tags>}]")
 - [markdown-preview](https://github.com/iamcco/markdown-preview.nvim) - realtime sychronized preview in the browser
-- [mattn/emmet-vim](https://github.com/mattn/emmet-vim) - html emmet (works for react as well)
-- [editorconfig/editorconfig-vim](https://github.com/editorconfig/editorconfig-vim) - config per project using .editorconfig
-- [mbbill/undotree](https://github.com/mbbill/undotree) - have presistent undo and an undotree
+- [emmet-vim](https://github.com/mattn/emmet-vim) - html emmet (works for react as well)
+- [editorconfig-vim](https://github.com/editorconfig/editorconfig-vim) - config per project using .editorconfig
+- [undotree](https://github.com/mbbill/undotree) - have presistent undo and an undotree
 
 #### Git support
 - [gitsigns](https://github.com/lewis6991/gitsigns.nvim) - Git gutter stuff
-- [TimUntersberger/neogit](https://github.com/TimUntersberger/neogit) - vim git wrapper
-- [ThePrimeagen/git-worktree.nvim](https://github.com/ThePrimeagen/git-worktree.nvim) - vim git for git worktrees
+- [neogit](https://github.com/TimUntersberger/neogit) - vim git wrapper
+- [git-worktree.nvim](https://github.com/ThePrimeagen/git-worktree.nvim) - vim git for git worktrees
 
 #### Looks
 - [galaxyline](https://github.com/glepnir/galaxyline.nvim) - statusline
@@ -45,6 +45,7 @@ Also README a little out of date.
 
 #### Others
 - [vim-be-good](https://github.com/ThePrimeagen/vim-be-good) - vim practice
+- [which-key](https://github.com/folke/which-key.nvim) - keybind help
 
 
 \**Plugin dependencies not included*
@@ -57,7 +58,7 @@ Some plugins to try out
 <br/><br/>
 - Probably should figure outs base16 and the whole colorscheme situation
 - Autoformat on save using neoformat?
-- (not exactly vim related but check out tmux and mabye tmux plugins)
+- (not exactly vim related but check out tmux and maybe tmux plugins)
 
 ## Credits
 [NvChad](https://github.com/siduck76/NvChad) was a major jumping off point for this config.
