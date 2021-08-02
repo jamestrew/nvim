@@ -1,11 +1,14 @@
 # nvim
+
 Always WIP.
 Also README probably a little out of date.
 
 ![preview](https://i.imgur.com/M95xSLt.png)
 
 ## Plugins\*
+
 ##### LSP & Treeshitter
+
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - better sytanx highlighting
 - [nvim-lspinstall](https://github.com/kabouzeid/nvim-lspinstall) - ez lsp installations
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - configure lsp settings
@@ -14,6 +17,7 @@ Also README probably a little out of date.
 - [lua-dev](https://github.com/folke/lua-dev.nvim) - nvim lua API (full signature, docs, completion of nvim lua)
 
 ##### File Management
+
 - [nvim-tree](https://github.com/kyazdani42/nvim-tree.lua) - file tree mostly for creating/deleting files/folder
 - [telescope](https://github.com/nvim-telescope/telescope.nvim) - fzy find ANYTHING
 - [telescope-fzf-native](https://github.com/nvim-telescope/telescope-fzf-native.nvim) - fzf for telescope written in C
@@ -21,6 +25,7 @@ Also README probably a little out of date.
 - [harpoon](https://github.com/ThePrimeagen/harpoon) - vim marks but better
 
 #### Editing Support
+
 - [nvim-autopairs](https://github.com/windwp/nvim-autopais) - automatic "([{}])"
 - [vim-matchup](https://github.com/andymass/vim-matchup) - highlight sets of matching text (code block identifiers)
 - [nvim-comment](https://github.com/terrortylor/nvim-comment) - comment out stuff
@@ -36,31 +41,35 @@ Also README probably a little out of date.
 - [undotree](https://github.com/mbbill/undotree) - have presistent undo and an undotree
 
 #### Git support
+
 - [gitsigns](https://github.com/lewis6991/gitsigns.nvim) - Git gutter stuff
 - [neogit](https://github.com/TimUntersberger/neogit) - vim git wrapper
 - [git-worktree.nvim](https://github.com/ThePrimeagen/git-worktree.nvim) - vim git for git worktrees
 
 #### Looks
+
 - [galaxyline](https://github.com/glepnir/galaxyline.nvim) - statusline
 - [nvim-base16](https://github.com/siduck76/nvim-base16.lua) - colorscheme stuff idno
 - [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons) - fancy icons
 
 #### Others
+
 - [vim-be-good](https://github.com/ThePrimeagen/vim-be-good) - vim practice
 - [which-key](https://github.com/folke/which-key.nvim) - keybind help
 
-
-\**Plugin dependencies not included*
+\*_Plugin dependencies not included_
 
 ## TODO
+
 Some plugins to try out
+
 - [nvim-toggleterm](https://github.com/akinsho/nvim-toggleterm.lua) or some floating terminal and maybe use [lazygit](https://github.com/jesseduffield/lazygit)
 - [astronauta](https://github.com/tjdevries/astronauta.nvim) to reorganize config
 - [firenvim](https://github.com/glacambre/firenvim) - nvim in the browser
-<br/><br/>
+  <br/><br/>
 - Probably should figure outs base16 and the whole colorscheme situation
-- Autoformat on save using neoformat?
 - (not exactly vim related but check out tmux and maybe tmux plugins)
 
 ## Credits
+
 [NvChad](https://github.com/siduck76/NvChad) was a major jumping off point for this config.

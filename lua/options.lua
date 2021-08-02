@@ -76,6 +76,16 @@ opt.fillchars = { eob = "~" }
 -- windows to close with "q"
 vim.cmd([[autocmd FileType help,startuptime,qf,lspinfo nnoremap <buffer><silent> q :close<CR>]])
 vim.cmd([[autocmd FileType man nnoremap <buffer><silent> q :quit<CR>]])
+
+-- get rid of weird formatoptions
 vim.cmd([[autocmd BufEnter * setlocal formatoptions-=r formatoptions-=o]])
 
 vim.cmd("au TextYankPost * silent! lua vim.highlight.on_yank {}")
+
+-- autoformat on save
+vim.cmd([[
+        augroup fmt
+            autocmd!
+            autocmd BufWritePre * Neoformat
+        augroup END
+        ]])
