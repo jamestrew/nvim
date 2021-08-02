@@ -26,19 +26,6 @@ return packer.startup({
             "hrsh7th/nvim-compe",
             event = "InsertEnter",
             config = function() require("core.compe").config() end,
-            wants = {"LuaSnip"},
-            requires = {
-                {
-                    "L3MON4D3/LuaSnip",
-                    wants = "friendly-snippets",
-                    event = "InsertCharPre",
-                    config = function() require("core.compe").snippets() end
-                },
-                {
-                    "rafamadriz/friendly-snippets",
-                    event = "InsertCharPre"
-                }
-            }
         }
         use {"ray-x/lsp_signature.nvim"}
         use {"folke/lua-dev.nvim"}
