@@ -4,7 +4,7 @@ local use = packer.use
 -- Auto sync
 vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerSync]])
 
-return packer.startup(
+return packer.startup({
     function()
         -- packer itself
         use "wbthomason/packer.nvim"
@@ -148,11 +148,12 @@ return packer.startup(
             "folke/which-key.nvim",
             config = function() require("which-key").setup() end
         }
-    end, {
+    end,
+    config = {
         display = {
             open_fn = function()
                 return require('packer.util').float({ border = 'single' })
             end
         }
     }
-)
+})
