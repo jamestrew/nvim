@@ -104,6 +104,12 @@ return packer.startup({
             run = "cd app && yarn install",
             cmd = "MarkdownPreview"
         }
+        use {
+            "abecodes/tabout.nvim",
+            event = "BufRead",
+            config = function() require("tabout").setup() end
+
+        }
 
         -- Git
         use {
