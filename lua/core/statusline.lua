@@ -1,4 +1,5 @@
 local M = {}
+local utils = require('utils')
 
 M.config = function()
     local gl = require("galaxyline")
@@ -128,17 +129,15 @@ M.config = function()
     }
 
     -- RIGHT SIDE
-    -- TODO: unsaved_cnt is kinda broken
     gls.right[1] = {
         unsaved = {
             provider = function()
-                local unsaved_cnt = vim.api.nvim_eval(
-                    [[len(getbufinfo({'bufmodified':1}))]]
-                )
+                local unsaved_cnt = utils.modified_buf_count()
                 if unsaved_cnt > 0 then
                     return "λ" .. unsaved_cnt
                 end
             end,
+            event = "BufEnter",
             highlight = {colors.grey_fg2, colors.statusline_bg}
         }
     }
@@ -188,8 +187,7 @@ M.config = function()
                     on_stderr = function(_, data) table.insert(stderr, data) end
                 }):sync()
 
-                local count = 0
-                for _ in pairs(stdout) do count = count + 1 end
+                local count = utils.tbl_length(stdout)
                 if count > 0 then
                     return "[" .. count .. "]"
                 end

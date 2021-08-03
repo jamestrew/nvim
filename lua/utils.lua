@@ -83,9 +83,24 @@ function M.onoremap(key, cmd, opts) return map("o", key, cmd, opts, { noremap = 
 function M.snoremap(key, cmd, opts) return map("s", key, cmd, opts, { noremap = true }) end
 function M.tnoremap(key, cmd, opts) return map("t", key, cmd, opts, { noremap = true }) end
 
+M.tbl_length = function(tbl)
+    local length = 0
+    for _ in pairs(tbl) do length = length + 1 end
+    return length
+end
 
-M.unwritten = function()
-    return vim.api.nvim_eval([[len(getbufinfo({'bufmodified':1}))]])
+M.modified_buf_count = function()
+    local bufnrs = vim.tbl_filter(function(b)
+        if 1 ~= vim.fn.buflisted(b) then
+            return false
+        end
+        if vim.fn.getbufinfo(b)[1].changed ~= 1 then
+            return false
+        end
+        return true
+    end, vim.api.nvim_list_bufs())
+
+    return M.tbl_length(bufnrs)
 end
 
 return M

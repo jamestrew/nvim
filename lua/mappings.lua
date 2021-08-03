@@ -30,7 +30,7 @@ utils.nnoremap("Y", "y$")
 -- keeps jumps centered
 utils.nnoremap("n", "nzzzv")
 utils.nnoremap("N", "Nzzzv")
-utils.nnoremap("J", "mzJ`z")
+utils.nnoremap("<leader>J", "mzJ`z")
 
 --------------                  ---------------
 -------------- Plugin Specifics ---------------
