@@ -52,14 +52,14 @@ utils.inoremap("<C-d>", "compe#scroll({ 'delta': +4 })", { silent = true, expr =
 utils.nnoremap("<C-n>", ":NvimTreeToggle<CR>", silent)
 
 -- format code
-utils.nnoremap("<Leader>fm", [[: Neoformat<CR>]], silent)
+utils.nnoremap("<Leader>fm", ":Neoformat<CR>", silent)
 
 -- Telescope
 utils.nnoremap("<C-p>", ":lua require('core.telescope').files()<CR>")
 utils.nnoremap("<leader>fg", ":lua require'telescope'.extensions.git_worktree.git_worktrees()<CR>", silent)
-utils.nnoremap("<C-e>", ": Telescope file_browser<CR>", silent)
-utils.nnoremap("<leader>fw", ": Telescope live_grep<CR>", silent)
-utils.nnoremap("<leader>fc", ": Telescope git_commits<CR>", silent)
+utils.nnoremap("<C-e>", ":Telescope file_browser<CR>", silent)
+utils.nnoremap("<leader>fw", ":Telescope live_grep<CR>", silent)
+utils.nnoremap("<leader>fc", ":Telescope git_commits<CR>", silent)
 utils.nnoremap("<leader>fb", ":Telescope buffers<CR>", silent)
 utils.nnoremap("<leader>fh", ":Telescope help_tags<CR>", silent)
 utils.nnoremap("<leader>fo", ":Telescope oldfiles<CR>", silent)
@@ -79,8 +79,6 @@ utils.nnoremap("gr", ":lua require('telescope.builtin').lsp_references()<CR>", s
 utils.nnoremap("<leader>d", ":lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", silent)
 utils.nnoremap("<leader>tw", ":Telescope lsp_workspace_diagnostics<CR>", silent)
 utils.nnoremap("<leader>td", ":Telescope lsp_document_diagnostics<CR>", silent)
-
-
 
 -- Harpoon
 utils.nnoremap("<leader>a", ":lua require'harpoon.mark'.add_file()<CR>", silent)

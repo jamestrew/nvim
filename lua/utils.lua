@@ -75,13 +75,14 @@ function M.omap(key, cmd, opts) return map("o", key, cmd, opts) end
 function M.smap(key, cmd, opts) return map("s", key, cmd, opts) end
 function M.tmap(key, cmd, opts) return map("t", key, cmd, opts) end
 
-function M.nnoremap(key, cmd, opts) return map("n", key, cmd, opts, { noremap = true }) end
-function M.vnoremap(key, cmd, opts) return map("v", key, cmd, opts, { noremap = true }) end
-function M.xnoremap(key, cmd, opts) return map("x", key, cmd, opts, { noremap = true }) end
-function M.inoremap(key, cmd, opts) return map("i", key, cmd, opts, { noremap = true }) end
-function M.onoremap(key, cmd, opts) return map("o", key, cmd, opts, { noremap = true }) end
-function M.snoremap(key, cmd, opts) return map("s", key, cmd, opts, { noremap = true }) end
-function M.tnoremap(key, cmd, opts) return map("t", key, cmd, opts, { noremap = true }) end
+local nore = { noremap = true }
+function M.nnoremap(key, cmd, opts) return map("n", key, cmd, opts, nore) end
+function M.vnoremap(key, cmd, opts) return map("v", key, cmd, opts, nore) end
+function M.xnoremap(key, cmd, opts) return map("x", key, cmd, opts, nore) end
+function M.inoremap(key, cmd, opts) return map("i", key, cmd, opts, nore) end
+function M.onoremap(key, cmd, opts) return map("o", key, cmd, opts, nore) end
+function M.snoremap(key, cmd, opts) return map("s", key, cmd, opts, nore) end
+function M.tnoremap(key, cmd, opts) return map("t", key, cmd, opts, nore) end
 
 M.tbl_length = function(tbl)
     local length = 0
