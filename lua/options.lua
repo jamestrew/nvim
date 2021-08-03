@@ -80,7 +80,7 @@ vim.cmd([[autocmd FileType man nnoremap <buffer><silent> q :quit<CR>]])
 -- get rid of weird formatoptions
 vim.cmd([[autocmd BufEnter * setlocal formatoptions-=r formatoptions-=o]])
 
-vim.cmd("au TextYankPost * silent! lua vim.highlight.on_yank {}")
+vim.cmd("autocmd TextYankPost * silent! lua vim.highlight.on_yank {}")
 
 -- autoformat on save
 vim.cmd([[
@@ -89,3 +89,6 @@ vim.cmd([[
             autocmd BufWritePre * Neoformat
         augroup END
         ]])
+
+-- remove white space save
+vim.cmd([[autocmd BufWritePre * :%s/\s\+$//e]])
