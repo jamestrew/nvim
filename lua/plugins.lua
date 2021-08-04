@@ -46,6 +46,7 @@ return packer.startup({
         }
         use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
         use {"nvim-telescope/telescope-media-files.nvim"}
+        use {"nvim-telescope/telescope-project.nvim"}
         use {
             "ThePrimeagen/harpoon",
             config = function() require("core.harpoon") end
@@ -141,6 +142,11 @@ return packer.startup({
             "folke/which-key.nvim",
             config = function() require("which-key").setup() end
         }
+        use {
+            "glacambre/firenvim",
+            run = function() vim.fn['firenvim#install'](42069) end
+        }
+
     end,
     config = {
         display = {

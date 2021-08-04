@@ -62,8 +62,9 @@ utils.nnoremap("<leader>fc", ":Telescope git_commits<CR>", silent)
 utils.nnoremap("<leader>fb", ":Telescope buffers<CR>", silent)
 utils.nnoremap("<leader>fh", ":Telescope help_tags<CR>", silent)
 utils.nnoremap("<leader>fo", ":Telescope oldfiles<CR>", silent)
-utils.nnoremap("<leader>vrc", ":lua require'core.telescope'.search_dotfiles()<CR>", silent)
+utils.nnoremap("<leader>rc", ":lua require'core.telescope'.search_dotfiles()<CR>", silent)
 utils.nnoremap("<leader>fg", ":lua require'telescope'.extensions.git_worktree.git_worktrees()<CR>", silent)
+utils.nnoremap("<leader>fp", ":lua require'telescope'.extensions.project.project{}<CR>", silent)
 
 -- Lsp
 utils.nnoremap("gD", ":lua vim.lsp.buf.declaration()<CR>", silent)
