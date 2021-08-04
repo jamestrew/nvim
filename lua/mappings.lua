@@ -32,9 +32,9 @@ utils.nnoremap("n", "nzzzv")
 utils.nnoremap("N", "Nzzzv")
 utils.nnoremap("<leader>J", "mzJ`z")
 
---------------                  ---------------
--------------- Plugin Specifics ---------------
---------------                  ---------------
+------------------------                  -------------------------
+------------------------ Plugin Specifics -------------------------
+------------------------                  -------------------------
 
 -- Commenter Keybinding
 utils.nnoremap("<leader>/", ":CommentToggle<CR>", silent)
@@ -56,7 +56,6 @@ utils.nnoremap("<Leader>fm", ":Neoformat<CR>", silent)
 
 -- Telescope
 utils.nnoremap("<C-p>", ":lua require('core.telescope').files()<CR>")
-utils.nnoremap("<leader>fg", ":lua require'telescope'.extensions.git_worktree.git_worktrees()<CR>", silent)
 utils.nnoremap("<C-e>", ":Telescope file_browser<CR>", silent)
 utils.nnoremap("<leader>fw", ":Telescope live_grep<CR>", silent)
 utils.nnoremap("<leader>fc", ":Telescope git_commits<CR>", silent)
@@ -64,19 +63,21 @@ utils.nnoremap("<leader>fb", ":Telescope buffers<CR>", silent)
 utils.nnoremap("<leader>fh", ":Telescope help_tags<CR>", silent)
 utils.nnoremap("<leader>fo", ":Telescope oldfiles<CR>", silent)
 utils.nnoremap("<leader>vrc", ":lua require'core.telescope'.search_dotfiles()<CR>", silent)
+utils.nnoremap("<leader>fg", ":lua require'telescope'.extensions.git_worktree.git_worktrees()<CR>", silent)
 
 -- Lsp
 utils.nnoremap("gD", ":lua vim.lsp.buf.declaration()<CR>", silent)
-utils.nnoremap("gd", ":lua require('telescope.builtin').lsp_definitions()<CR>", silent)
-utils.nnoremap("<leader>fs", ":lua require('telescope.builtin').lsp_document_symbols()<CR>", silent)
 utils.nnoremap("K", ":lua vim.lsp.buf.hover()<CR>", silent)
 utils.nnoremap("<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", silent)
-utils.nnoremap("gi", ":lua require('telescope.builtin').lsp_implementations()<CR>", silent)
 utils.nnoremap("<C-k>", ":lua vim.lsp.buf.signature_help()<CR>", silent)
 utils.nnoremap("<leader>D", ":lua vim.lsp.buf.type_definition()<CR>", silent)
 utils.nnoremap("<leader>rn", ":lua vim.lsp.buf.rename()<CR>", silent)
-utils.nnoremap("gr", ":lua require('telescope.builtin').lsp_references()<CR>", silent)
 utils.nnoremap("<leader>d", ":lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", silent)
+-- Lsp Tele
+utils.nnoremap("gd", ":Telescope lsp_definitions<CR>", silent)
+utils.nnoremap("gr", ":Telescope lsp_references<CR>", silent)
+utils.nnoremap("gi", ":Telescope lsp_implementations<CR>", silent)
+utils.nnoremap("<leader>fs", ":Telescope lsp_document_symbols<CR>", silent)
 utils.nnoremap("<leader>tw", ":Telescope lsp_workspace_diagnostics<CR>", silent)
 utils.nnoremap("<leader>td", ":Telescope lsp_document_diagnostics<CR>", silent)
 
