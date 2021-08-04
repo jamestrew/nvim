@@ -84,11 +84,11 @@ vim.cmd("autocmd TextYankPost * silent! lua vim.highlight.on_yank {}")
 
 -- autoformat on save
 vim.cmd([[
-        augroup fmt
-            autocmd!
-            autocmd BufWritePre * Neoformat
-        augroup END
-        ]])
+    augroup fmt
+    autocmd!
+    autocmd BufWritePre * Neoformat
+    augroup END
+]])
 
 -- remove white space save
 vim.cmd([[autocmd BufWritePre * :%s/\s\+$//e]])

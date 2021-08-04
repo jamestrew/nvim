@@ -64,6 +64,7 @@ utils.nnoremap("<leader>fh", ":Telescope help_tags<CR>", silent)
 utils.nnoremap("<leader>fo", ":Telescope oldfiles<CR>", silent)
 utils.nnoremap("<leader>rc", ":lua require'core.telescope'.search_dotfiles()<CR>", silent)
 utils.nnoremap("<leader>fg", ":lua require'telescope'.extensions.git_worktree.git_worktrees()<CR>", silent)
+utils.nnoremap("<leader>ct", ":lua require'telescope'.extensions.git_worktree.create_git_worktree()<CR>", silent)
 utils.nnoremap("<leader>fp", ":lua require'telescope'.extensions.project.project{}<CR>", silent)
 
 -- Lsp
@@ -77,7 +78,7 @@ utils.nnoremap("<leader>d", ":lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 -- Lsp Tele
 utils.nnoremap("gd", ":Telescope lsp_definitions<CR>", silent)
 utils.nnoremap("gr", ":Telescope lsp_references<CR>", silent)
-utils.nnoremap("gi", ":Telescope lsp_implementations<CR>", silent)
+utils.nnoremap("<leader>gi", ":Telescope lsp_implementations<CR>", silent)
 utils.nnoremap("<leader>fs", ":Telescope lsp_document_symbols<CR>", silent)
 utils.nnoremap("<leader>tw", ":Telescope lsp_workspace_diagnostics<CR>", silent)
 utils.nnoremap("<leader>td", ":Telescope lsp_document_diagnostics<CR>", silent)
