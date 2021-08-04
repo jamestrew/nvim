@@ -6,6 +6,26 @@ vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerSync]])
 
 return packer.startup({
     function()
+        local local_use = function(first, second, opts)
+            opts = opts or {}
+            local plug_path, home
+            if second == nil then
+                plug_path = first
+                home = 'jt'
+            else
+                plug_path = second
+                home = first
+            end
+
+            if vim.fn.isdirectory(vim.fn.expand("~/Documents/projects/" .. plug_path)) == 1 then
+                opts[1] = "~/Documents/projects/" .. plug_path
+            else
+                opts[1] = string.format("%s/%s", home, plug_path)
+            end
+
+            use(opts)
+        end
+
         -- packer itself
         use "wbthomason/packer.nvim"
 
@@ -47,10 +67,11 @@ return packer.startup({
         use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
         use {"nvim-telescope/telescope-media-files.nvim"}
         use {"nvim-telescope/telescope-project.nvim"}
-        use {
-            "ThePrimeagen/harpoon",
-            config = function() require("core.harpoon") end
-        }
+        -- use {
+        --     "ThePrimeagen/harpoon",
+        --     config = function() require("core.harpoon") end
+        -- }
+        local_use "harpoon/terminal"
 
         -- Editing Support
         use {

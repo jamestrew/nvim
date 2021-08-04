@@ -3,6 +3,16 @@ _G.dump = function(...)
     print(vim.inspect(...))
 end
 
+if pcall(require, 'plenary') then
+    RELOAD = require('plenary.reload').reload_module
+
+    R = function(name)
+        RELOAD(name)
+        return require(name)
+    end
+end
+
+
 local M = {}
 
 -- hide line numbers , statusline in specific buffers!
