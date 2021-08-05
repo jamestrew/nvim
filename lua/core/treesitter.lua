@@ -11,6 +11,7 @@ M.config = function()
 		},
 		indent = {
 			enable = true,
+			disable = { "python" },
 		},
 		autotag = {
 			enable = true,
