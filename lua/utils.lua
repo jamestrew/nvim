@@ -21,7 +21,7 @@ M.hideStuff = function()
         [[
         au BufEnter term://* setlocal nonumber
         au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
-        au BufEnter term://* set laststatus=0 
+        au BufEnter term://* set laststatus=0
         ]],
         false
     )
@@ -94,11 +94,6 @@ function M.onoremap(key, cmd, opts) return map("o", key, cmd, opts, nore) end
 function M.snoremap(key, cmd, opts) return map("s", key, cmd, opts, nore) end
 function M.tnoremap(key, cmd, opts) return map("t", key, cmd, opts, nore) end
 
-M.tbl_length = function(tbl)
-    local length = 0
-    for _ in pairs(tbl) do length = length + 1 end
-    return length
-end
 
 M.modified_buf_count = function()
     local bufnrs = vim.tbl_filter(function(b)
@@ -111,7 +106,7 @@ M.modified_buf_count = function()
         return true
     end, vim.api.nvim_list_bufs())
 
-    return M.tbl_length(bufnrs)
+    return #bufnrs
 end
 
 return M

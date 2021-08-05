@@ -187,7 +187,7 @@ M.config = function()
                     on_stderr = function(_, data) table.insert(stderr, data) end
                 }):sync()
 
-                local count = utils.tbl_length(stdout)
+                local count = #stdout
                 if count > 0 then
                     return "[" .. count .. "]"
                 end
