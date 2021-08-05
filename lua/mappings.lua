@@ -1,4 +1,4 @@
-local utils = require('utils')
+local utils = require("utils")
 local silent = { silent = true }
 
 -- move line(s) up/down
@@ -10,12 +10,12 @@ utils.vnoremap("<A-j>", ":m '>+1<CR>gv=gv", silent)
 utils.vnoremap("<A-k>", ":m '<-2<CR>gv=gv", silent)
 
 -- fancy register yanking and pasting (must have xclip)
-utils.vnoremap('<leader>p', '"_dP') -- paste and keep pasted stuff
-utils.nnoremap('<leader>y', '"+y')
-utils.nnoremap('<leader>Y', 'gg"+yG')
-utils.vnoremap('<leader>y', '"+y')
-utils.nnoremap('<leader>d', '"_d')
-utils.vnoremap('<leader>d', '"_d')
+utils.vnoremap("<leader>p", '"_dP') -- paste and keep pasted stuff
+utils.nnoremap("<leader>y", '"+y')
+utils.nnoremap("<leader>Y", 'gg"+yG')
+utils.vnoremap("<leader>y", '"+y')
+utils.nnoremap("<leader>d", '"_d')
+utils.vnoremap("<leader>d", '"_d')
 
 -- better indenting
 utils.vnoremap("<", "<gv", silent)
@@ -40,13 +40,16 @@ utils.nnoremap("<leader>J", "mzJ`z")
 utils.nnoremap("<leader>/", ":CommentToggle<CR>", silent)
 utils.vnoremap("<leader>/", ":CommentToggle<CR>", silent)
 
-
 --  compe mappings
-utils.inoremap("<C-Space>", "compe#complete()", { silent = true, expr = true})
-utils.inoremap("<CR>", [[compe#confirm(luaeval("require'nvim-autopairs'.autopairs_cr()")]], { silent = true, expr = true })
-utils.inoremap("<C-e>", "compe#close()", { silent = true, expr = true})
-utils.inoremap("<C-u>", "compe#scroll({ 'delta': -4 })", { silent = true, expr = true})
-utils.inoremap("<C-d>", "compe#scroll({ 'delta': +4 })", { silent = true, expr = true})
+utils.inoremap("<C-Space>", "compe#complete()", { silent = true, expr = true })
+utils.inoremap(
+	"<CR>",
+	[[compe#confirm(luaeval("require'nvim-autopairs'.autopairs_cr()")]],
+	{ silent = true, expr = true }
+)
+utils.inoremap("<C-e>", "compe#close()", { silent = true, expr = true })
+utils.inoremap("<C-u>", "compe#scroll({ 'delta': -4 })", { silent = true, expr = true })
+utils.inoremap("<C-d>", "compe#scroll({ 'delta': +4 })", { silent = true, expr = true })
 
 -- nvim tree
 utils.nnoremap("<C-n>", ":NvimTreeToggle<CR>", silent)

@@ -25,15 +25,15 @@ local purple = colors.purple
 -- for guifg , bg
 
 local function fg(group, color)
-    cmd("hi " .. group .. " guifg=" .. color)
+	cmd("hi " .. group .. " guifg=" .. color)
 end
 
 local function bg(group, color)
-    cmd("hi " .. group .. " guibg=" .. color)
+	cmd("hi " .. group .. " guibg=" .. color)
 end
 
 local function fg_bg(group, fgcol, bgcol)
-    cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
+	cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
 end
 
 -- blankline
@@ -57,7 +57,7 @@ bg("PmenuThumb", nord_blue)
 cmd("hi! StatusLineNC gui=underline guifg=" .. line)
 
 -- cursor line
-cmd "hi clear CursorLine"
+cmd("hi clear CursorLine")
 bg("cursorline", line)
 bg("cursorlinenr", line)
 
@@ -111,7 +111,7 @@ fg_bg("BufferLineBackground", light_grey, black2)
 fg_bg("BufferLineBufferVisible", light_grey, black2)
 fg_bg("BufferLineBufferSelected", white, black)
 
-cmd "hi BufferLineBufferSelected gui=bold"
+cmd("hi BufferLineBufferSelected gui=bold")
 
 -- tabs
 fg_bg("BufferLineTab", light_grey, one_bg3)

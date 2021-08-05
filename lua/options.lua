@@ -1,6 +1,6 @@
 local opt = vim.opt
 
-opt.termguicolors = true  -- totally borks the entire config without it
+opt.termguicolors = true -- totally borks the entire config without it
 
 -- Ignore compiled files
 opt.wildignore = "__pycache__"
@@ -71,7 +71,6 @@ opt.joinspaces = false -- Two spaces and grade school, we're done
 
 -- set fillchars=eob:~
 opt.fillchars = { eob = "~" }
-
 
 -- windows to close with "q"
 vim.cmd([[autocmd FileType help,startuptime,qf,lspinfo nnoremap <buffer><silent> q :close<CR>]])
