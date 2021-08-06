@@ -9,11 +9,8 @@ utils.imap("<A-k>", "<Esc>:m .-2<CR>==i")
 utils.vnoremap("<A-j>", ":m '>+1<CR>gv=gv", silent)
 utils.vnoremap("<A-k>", ":m '<-2<CR>gv=gv", silent)
 
--- fancy register yanking and pasting (must have xclip)
-utils.vnoremap("<leader>p", '"_dP') -- paste and keep pasted stuff
-utils.nnoremap("<leader>y", '"+y')
-utils.nnoremap("<leader>Y", 'gg"+yG')
-utils.vnoremap("<leader>y", '"+y')
+-- paste/delete and keep register clean
+utils.vnoremap("<leader>p", '"_dP')
 utils.nnoremap("<leader>d", '"_d')
 utils.vnoremap("<leader>d", '"_d')
 
@@ -90,13 +87,13 @@ utils.nnoremap("<leader>td", ":Telescope lsp_document_diagnostics<CR>", silent)
 utils.nnoremap("<leader>a", ":lua require'harpoon.mark'.add_file()<CR>", silent)
 utils.nnoremap("<leader>e", ":lua require'harpoon.ui'.toggle_quick_menu()<CR>", silent)
 
-utils.nnoremap("<leader>hy", ":lua require('harpoon.ui').nav_file(1)<CR>")
-utils.nnoremap("<leader>hn", ":lua require('harpoon.ui').nav_file(2)<CR>")
-utils.nnoremap("<leader>he", ":lua require('harpoon.ui').nav_file(3)<CR>")
-utils.nnoremap("<leader>ho", ":lua require('harpoon.ui').nav_file(4)<CR>")
+utils.nnoremap("<leader>hn", ":lua require('harpoon.ui').nav_file(1)<CR>")
+utils.nnoremap("<leader>he", ":lua require('harpoon.ui').nav_file(2)<CR>")
+utils.nnoremap("<leader>ho", ":lua require('harpoon.ui').nav_file(3)<CR>")
+utils.nnoremap("<leader>hi", ":lua require('harpoon.ui').nav_file(4)<CR>")
 
-utils.nnoremap("<leader>ty", ":lua require('harpoon.term').gotoTerminal(1)<CR>")
-utils.nnoremap("<leader>tn", ":lua require('harpoon.term').gotoTerminal(2)<CR>")
+utils.nnoremap("<leader>tn", ":lua require('harpoon.term').gotoTerminal(1)<CR>")
+utils.nnoremap("<leader>to", ":lua require('harpoon.term').gotoTerminal(2)<CR>")
 
 -- neogit
 utils.nnoremap("<leader>gs", ":lua require('neogit').open()<CR>")

@@ -36,19 +36,14 @@ opt.hlsearch = false -- Get rid of highlights once done with search
 opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
 
 -- Tabs
-opt.autoindent = true
-opt.cindent = true
-opt.wrap = false
-opt.colorcolumn = "80"
-
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.softtabstop = 4
 opt.expandtab = true
-
-opt.breakindent = true
-opt.showbreak = string.rep(" ", 3) -- Make it so that long lines wrap smartly
-opt.linebreak = true
+opt.autoindent = true
+opt.cindent = true
+opt.wrap = false
+opt.colorcolumn = "80"
 
 opt.foldmethod = "marker"
 opt.foldlevel = 0
@@ -56,7 +51,7 @@ opt.modelines = 1
 
 opt.belloff = "all" -- Just turn the dang bell off
 
--- opt.clipboard = "unnamedplus"
+opt.clipboard = "unnamedplus"
 
 opt.inccommand = "split"
 opt.swapfile = false -- Living on the edge
@@ -85,9 +80,7 @@ vim.cmd("autocmd TextYankPost * silent! lua vim.highlight.on_yank {}")
 vim.cmd([[
     augroup fmt
     autocmd!
+    autocmd BufWritePre * :%s/\s\+$//e
     autocmd BufWritePre * Neoformat
     augroup END
 ]])
-
--- remove white space save
-vim.cmd([[autocmd BufWritePre * :%s/\s\+$//e]])
