@@ -35,7 +35,7 @@ return packer.startup({
             branch = "0.5-compat",
             event = "BufRead",
             config = function()
-                require("core.treesitter").config()
+                require("setup.treesitter").config()
             end,
         })
         use({ "kabouzeid/nvim-lspinstall", event = "BufRead" })
@@ -43,14 +43,14 @@ return packer.startup({
             "neovim/nvim-lspconfig",
             after = "nvim-lspinstall",
             config = function()
-                require("core.lspconfig").config()
+                require("setup.lspconfig").config()
             end,
         })
         use({
             "hrsh7th/nvim-compe",
             event = "InsertEnter",
             config = function()
-                require("core.compe").config()
+                require("setup.compe").config()
             end,
         })
         use({ "ray-x/lsp_signature.nvim" })
@@ -61,7 +61,7 @@ return packer.startup({
             "kyazdani42/nvim-tree.lua",
             cmd = "NvimTreeToggle",
             config = function()
-                require("core.nvimtree").config()
+                require("setup.nvimtree").config()
             end,
         })
         use({
@@ -71,7 +71,7 @@ return packer.startup({
                 { "nvim-lua/plenary.nvim" },
             },
             config = function()
-                require("core.telescope").config()
+                require("setup.telescope").config()
             end,
         })
         use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
@@ -79,11 +79,11 @@ return packer.startup({
         use({ "nvim-telescope/telescope-project.nvim" })
         -- use {
         --     "ThePrimeagen/harpoon",
-        --     config = function() require("core.harpoon") end
+        --     config = function() require("setup.harpoon") end
         -- }
         local_use("jt", "harpoon/terminal", {
             config = function()
-                require("core.harpoon")
+                require("setup.harpoon")
             end,
         })
 
@@ -110,7 +110,7 @@ return packer.startup({
             "lukas-reineke/indent-blankline.nvim",
             event = "BufRead",
             setup = function()
-                require("core.blankline")
+                require("setup.blankline")
             end,
         })
         use({ "sbdchd/neoformat", cmd = "Neoformat" })
@@ -159,7 +159,7 @@ return packer.startup({
             "lewis6991/gitsigns.nvim",
             event = "BufRead",
             config = function()
-                require("core.gitsigns").config()
+                require("setup.gitsigns").config()
             end,
         })
         use({
@@ -175,14 +175,14 @@ return packer.startup({
         use({
             "glepnir/galaxyline.nvim",
             config = function()
-                require("core.statusline").config()
+                require("setup.statusline").config()
             end,
         })
         use("siduck76/nvim-base16.lua")
         use({
             "kyazdani42/nvim-web-devicons",
             config = function()
-                require("core.icons").config()
+                require("setup.icons").config()
             end,
         })
 
