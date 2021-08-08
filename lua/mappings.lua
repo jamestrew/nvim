@@ -40,9 +40,9 @@ utils.vnoremap("<leader>/", ":CommentToggle<CR>", silent)
 --  compe mappings
 utils.inoremap("<C-Space>", "compe#complete()", { silent = true, expr = true })
 utils.inoremap(
-    "<CR>",
-    [[compe#confirm(luaeval("require'nvim-autopairs'.autopairs_cr()")]],
-    { silent = true, expr = true }
+  "<CR>",
+  [[compe#confirm(luaeval("require'nvim-autopairs'.autopairs_cr()")]],
+  { silent = true, expr = true }
 )
 utils.inoremap("<C-e>", "compe#close()", { silent = true, expr = true })
 utils.inoremap("<C-u>", "compe#scroll({ 'delta': -4 })", { silent = true, expr = true })
@@ -55,8 +55,8 @@ utils.nnoremap("<C-n>", ":NvimTreeToggle<CR>", silent)
 utils.nnoremap("<Leader>fm", ":Neoformat<CR>", silent)
 
 -- Telescope
-utils.nnoremap("<C-p>", ":lua require('setup.telescope').files()<CR>")
-utils.nnoremap("<C-e>", ":Telescope file_browser<CR>", silent)
+utils.nnoremap("<C-p>", ":lua require('setup.telescope').find_files()<CR>")
+utils.nnoremap("<C-e>", ":lua require('setup.telescope').file_browser()<CR>", silent)
 utils.nnoremap("<leader>fw", ":Telescope live_grep<CR>", silent)
 utils.nnoremap("<leader>fc", ":Telescope git_commits<CR>", silent)
 utils.nnoremap("<leader>fb", ":Telescope buffers<CR>", silent)
@@ -70,7 +70,6 @@ utils.nnoremap("<leader>fp", ":lua require'telescope'.extensions.project.project
 -- Lsp
 utils.nnoremap("gD", ":lua vim.lsp.buf.declaration()<CR>", silent)
 utils.nnoremap("K", ":lua vim.lsp.buf.hover()<CR>", silent)
-utils.nnoremap("<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", silent)
 utils.nnoremap("<C-k>", ":lua vim.lsp.buf.signature_help()<CR>", silent)
 utils.nnoremap("<leader>D", ":lua vim.lsp.buf.type_definition()<CR>", silent)
 utils.nnoremap("<leader>rn", ":lua vim.lsp.buf.rename()<CR>", silent)
@@ -78,6 +77,7 @@ utils.nnoremap("<leader>d", ":lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 -- Lsp Tele
 utils.nnoremap("gd", ":Telescope lsp_definitions<CR>", silent)
 utils.nnoremap("gr", ":Telescope lsp_references<CR>", silent)
+utils.nnoremap("<leader>ca", ":Telescope lsp_code_actions themes=get_cursor<CR>", silent)
 utils.nnoremap("<leader>gi", ":Telescope lsp_implementations<CR>", silent)
 utils.nnoremap("<leader>fs", ":Telescope lsp_document_symbols<CR>", silent)
 utils.nnoremap("<leader>tw", ":Telescope lsp_workspace_diagnostics<CR>", silent)
@@ -93,7 +93,7 @@ utils.nnoremap("<leader>ho", ":lua require('harpoon.ui').nav_file(3)<CR>")
 utils.nnoremap("<leader>hi", ":lua require('harpoon.ui').nav_file(4)<CR>")
 
 utils.nnoremap("<leader>tn", ":lua require('harpoon.term').gotoTerminal(1)<CR>")
-utils.nnoremap("<leader>to", ":lua require('harpoon.term').gotoTerminal(2)<CR>")
+utils.nnoremap("<leader>te", ":lua require('harpoon.term').gotoTerminal(2)<CR>")
 
 -- neogit
 utils.nnoremap("<leader>gs", ":lua require('neogit').open()<CR>")
