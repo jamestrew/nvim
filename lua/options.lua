@@ -16,7 +16,7 @@ opt.wildmode = opt.wildmode + { "longest", "full" }
 
 opt.wildoptions = "pum"
 
-opt.showmode = true
+opt.showmode = false
 opt.showcmd = true
 opt.cmdheight = 1 -- Height of the command bar
 opt.signcolumn = "yes" -- Leave extra space in the gutter (for git signs, etc.)
@@ -68,19 +68,19 @@ opt.joinspaces = false -- Two spaces and grade school, we're done
 opt.fillchars = { eob = "~" }
 
 -- windows to close with "q"
-vim.cmd([[autocmd FileType help,startuptime,qf,lspinfo nnoremap <buffer><silent> q :close<CR>]])
-vim.cmd([[autocmd FileType man nnoremap <buffer><silent> q :quit<CR>]])
+vim.cmd [[autocmd FileType help,startuptime,qf,lspinfo nnoremap <buffer><silent> q :close<CR>]]
+vim.cmd [[autocmd FileType man nnoremap <buffer><silent> q :quit<CR>]]
 
 -- get rid of weird formatoptions
-vim.cmd([[autocmd BufEnter * setlocal formatoptions-=r formatoptions-=o]])
+vim.cmd [[autocmd BufEnter * setlocal formatoptions-=r formatoptions-=o]]
 
-vim.cmd("autocmd TextYankPost * silent! lua vim.highlight.on_yank {}")
+vim.cmd "autocmd TextYankPost * silent! lua vim.highlight.on_yank {}"
 
 -- autoformat on save
-vim.cmd([[
+vim.cmd [[
     augroup fmt
     autocmd!
     autocmd BufWritePre * :%s/\s\+$//e
     autocmd BufWritePre * Neoformat
     augroup END
-]])
+]]

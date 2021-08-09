@@ -1,4 +1,4 @@
-local utils = require("utils")
+local utils = require "utils"
 local silent = { silent = true }
 
 -- move line(s) up/down
@@ -77,9 +77,9 @@ utils.nnoremap("<leader>d", ":lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 -- Lsp Tele
 utils.nnoremap("gd", ":Telescope lsp_definitions<CR>", silent)
 utils.nnoremap("gr", ":Telescope lsp_references<CR>", silent)
-utils.nnoremap("<leader>ca", ":Telescope lsp_code_actions themes=get_cursor<CR>", silent)
+utils.nnoremap("<leader>ca", ":lua require('setup.telescope').lsp_code_actions()<CR>", silent)
 utils.nnoremap("<leader>gi", ":Telescope lsp_implementations<CR>", silent)
-utils.nnoremap("<leader>fs", ":Telescope lsp_document_symbols<CR>", silent)
+utils.nnoremap("<leader>fs", ":Telescope treesitter<CR>", silent)
 utils.nnoremap("<leader>tw", ":Telescope lsp_workspace_diagnostics<CR>", silent)
 utils.nnoremap("<leader>td", ":Telescope lsp_document_diagnostics<CR>", silent)
 
