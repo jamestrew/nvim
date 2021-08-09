@@ -1,7 +1,13 @@
+local utils = require "utils"
+local action_state = require "telescope.actions.state"
+local sorters = require "telescope.sorters"
+local themes = require "telescope.themes"
+local Path = require "plenary.path"
+
 local M = {}
 
 M.config = function()
-  require("telescope").setup({
+  require("telescope").setup {
     defaults = {
       vimgrep_arguments = {
         "rg",
@@ -32,9 +38,9 @@ M.config = function()
         height = 0.80,
         preview_cutoff = 120,
       },
-      file_sorter = require("telescope.sorters").get_fuzzy_file,
+      file_sorter = sorters.get_fuzzy_file,
       file_ignore_patterns = { "node_modules" },
-      generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+      generic_sorter = sorters.get_generic_fuzzy_sorter,
       path_display = { "smart" },
       winblend = 0,
       border = {},
@@ -61,23 +67,22 @@ M.config = function()
         find_cmd = "rg", -- find command (defaults to `fd`)
       },
     },
-  })
+  }
 
-  require("telescope").load_extension("fzf")
-  require("telescope").load_extension("media_files")
-  require("telescope").load_extension("git_worktree")
-  require("telescope").load_extension("project")
+  require("telescope").load_extension "fzf"
+  require("telescope").load_extension "media_files"
+  require("telescope").load_extension "git_worktree"
+  require("telescope").load_extension "project"
 end
 
 M.search_dotfiles = function()
-  require("telescope.builtin").git_files({
+  require("telescope.builtin").git_files {
     prompt_title = "< VimRC >",
     cwd = "~/.config/nvim/",
-  })
+  }
 end
 
 M.find_files = function()
-  local utils = require("utils")
   if utils.os.is_git_dir == "O" then
     return require("telescope.builtin").git_files()
   else
@@ -85,29 +90,61 @@ M.find_files = function()
   end
 end
 
-M.file_browser = function(opts)
-  opts = opts or {}
+M.file_browser = function()
+  local os_sep = Path.path.sep
+  local is_dir = function(path)
+    return path:sub(-1, -1) == os_sep
+  end
 
-  local action_state = require("telescope.actions.state")
-  local os_sep = require("plenary.path").path.sep
-  local cwd = opts.cwd and vim.fn.expand(opts.cwd) or vim.loop.cwd()
+  require("telescope.builtin").file_browser {
+    attach_mappings = function(prompt_bufnr, map)
+      -- local current_picker = action_state.get_current_picker(prompt_bufnr)
 
-  require("telescope.builtin").file_browser({
-    cwd = cwd,
-    attach_mapping = function(prompt_bufnr, map)
       local delete_file = function()
-        local current_picker = action_state.get_current_picker(prompt_bufnr)
-        local file = action_state.get_current_line()
+        local fpath = action_state.get_selected_entry().value
+        local ans = vim.fn.input("Are you sure you want to remove " .. fpath .. "? y/[N] ")
+        utils.clear_prompt()
+        if ans ~= "y" then
+          return
+        end
 
-        local fpath = current_picker.cwd .. os_sep .. file
-        print(fpath)
+        if is_dir(fpath) then
+          Path:new(fpath):rmdir()
+        else
+          Path:new(fpath):rm()
+        end
+        print(fpath .. " successfully removed")
+
+        require("telescope.actions").close(prompt_bufnr)
       end
 
-      map("i", "<C-w>", delete_file)
-      map("n", "<C-w>", delete_file)
-      return false
+      local rename_file = function()
+        local fpath = action_state.get_selected_entry().value
+        local new_name = vim.fn.input("Rename ", fpath)
+        utils.clear_prompt()
+        Path:new(fpath):rename { new_name = new_name }
+      end
+
+      local yank_fpath = function()
+        local entry = action_state.get_selected_entry()
+        vim.fn.setreg("+", entry.value)
+      end
+
+      map("i", "<C-y>d", delete_file)
+      map("i", "<C-y>r", rename_file)
+      map("i", "<C-y>y", yank_fpath)
+      map("n", "yy", yank_fpath)
+
+      return true
     end,
-  })
+  }
+end
+
+M.lsp_code_actions = function()
+  local opts = themes.get_cursor {
+    previewer = false,
+  }
+  require("telescope.builtin").lsp_code_actions(opts)
 end
 
 return M
