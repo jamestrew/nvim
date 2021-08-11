@@ -81,6 +81,7 @@ vim.cmd [[
     augroup fmt
     autocmd!
     autocmd BufWritePre * :%s/\s\+$//e
-    autocmd BufWritePre * Neoformat
     augroup END
 ]]
+
+-- autocmd BufWritePre * Neoformat

@@ -170,7 +170,8 @@ return packer.startup {
         require("neogit").setup {}
       end,
     }
-    use { "ThePrimeagen/git-worktree.nvim" }
+    -- use { "ThePrimeagen/git-worktree.nvim" }
+    local_use "git-worktree.nvim/telescope-opts"
 
     -- Looks
     use {
@@ -179,7 +180,7 @@ return packer.startup {
         require("setup.statusline").config()
       end,
     }
-    use "siduck76/nvim-base16.lua"
+    use { "siduck76/nvim-base16.lua", commit = "084440d9fcae1c759e21941147a7387586aaef61" }
     use {
       "kyazdani42/nvim-web-devicons",
       config = function()

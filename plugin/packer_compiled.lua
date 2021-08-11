@@ -83,10 +83,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
   },
-  ["git-worktree.nvim"] = {
-    loaded = true,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/start/git-worktree.nvim"
-  },
   ["gitsigns.nvim"] = {
     config = { "\27LJ\1\2=\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\19setup.gitsigns\frequire\0" },
     loaded = false,
@@ -224,6 +220,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim"
   },
+  ["telescope-opts"] = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/telescope-opts"
+  },
   ["telescope-project.nvim"] = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/telescope-project.nvim"
@@ -329,7 +329,7 @@ time([[Defining lazy-load filetype autocommands]], false)
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au CursorMoved * ++once lua require("packer.load")({'vim-matchup'}, { event = "CursorMoved *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-compe'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim', 'tabout.nvim', 'emmet-vim', 'nvim-ts-context-commentstring', 'gitsigns.nvim', 'undotree', 'vim-surround', 'nvim-colorizer.lua', 'nvim-lspinstall'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim', 'tabout.nvim', 'emmet-vim', 'nvim-ts-context-commentstring', 'gitsigns.nvim', 'undotree', 'nvim-colorizer.lua', 'vim-surround', 'nvim-lspinstall'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
