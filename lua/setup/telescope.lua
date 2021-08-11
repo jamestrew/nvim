@@ -1,4 +1,5 @@
 local utils = require "utils"
+local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
 local sorters = require "telescope.sorters"
 local themes = require "telescope.themes"
@@ -53,6 +54,12 @@ M.config = function()
       qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
       -- Developer configurations: Not meant for general override
       buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+      mappings = {
+        i = {
+          ["<C-n>"] = actions.move_selection_previous,
+          ["<C-p>"] = actions.move_selection_next,
+        },
+      },
     },
     extensions = {
       fzf = {
@@ -84,10 +91,46 @@ end
 
 M.find_files = function()
   if utils.os.is_git_dir == "O" then
-    return require("telescope.builtin").git_files()
+    require("telescope.builtin").git_files()
   else
-    return require("telescope.builtin").find_files()
+    require("telescope.builtin").find_files()
   end
+end
+
+M.projects = function()
+  local opts = themes.get_dropdown {
+    previewer = false,
+    winblend = 5,
+    layout_config = {
+      width = 50,
+      height = 20,
+    },
+  }
+  require("telescope").extensions.project.project(opts)
+end
+
+M.git_worktrees = function()
+  local opts = themes.get_dropdown {
+    previewer = false,
+    winblend = 5,
+    layout_config = {
+      width = 50,
+      height = 20,
+    },
+  }
+  require("telescope").extensions.git_worktree.git_worktrees(opts)
+end
+
+M.create_git_worktree = function()
+  local opts = themes.get_dropdown {
+    previewer = false,
+    winblend = 5,
+    layout_config = {
+      width = 50,
+      height = 20,
+    },
+  }
+  require("telescope").extensions.git_worktree.create_git_worktree(opts)
 end
 
 M.file_browser = function()
