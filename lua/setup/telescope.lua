@@ -112,10 +112,10 @@ end
 M.git_worktrees = function()
   local opts = themes.get_dropdown {
     previewer = false,
-    winblend = 5,
-    path_display = "short",
+    winblend = 10,
+    path_display = {'shorten', 'absolute'},
     layout_config = {
-      width = 50,
+      width = 60,
       height = 20,
     },
   }
@@ -124,14 +124,12 @@ end
 
 M.create_git_worktree = function()
   local opts = themes.get_dropdown {
-    previewer = false,
     winblend = 5,
-    path_display = { "short" },
-    shorten_path = true,
     layout_config = {
-      width = 50,
-      height = 20,
+      width = 70,
+      height = 40,
     },
+    layout_strategy = "vertical",
   }
   require("telescope").extensions.git_worktree.create_git_worktree(opts)
 end
