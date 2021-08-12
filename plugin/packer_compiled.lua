@@ -89,6 +89,11 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/gitsigns.nvim"
   },
+  harpoon = {
+    config = { "\27LJ\1\2-\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\18setup.harpoon\frequire\0" },
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/harpoon"
+  },
   hop = {
     config = { "\27LJ\1\2U\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\1\tkeys\28etovxqpdygfblzhckisuran\nsetup\bhop\frequire\0" },
     loaded = true,
@@ -233,11 +238,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
-  terminal = {
-    config = { "\27LJ\1\2-\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\18setup.harpoon\frequire\0" },
-    loaded = true,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/start/terminal"
-  },
   ["todo-comments.nvim"] = {
     config = { "\27LJ\1\2;\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\18todo-comments\frequire\0" },
     loaded = true,
@@ -287,10 +287,10 @@ time([[Config for neogit]], false)
 time([[Config for which-key.nvim]], true)
 try_loadstring("\27LJ\1\0027\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
 time([[Config for which-key.nvim]], false)
--- Config for: terminal
-time([[Config for terminal]], true)
-try_loadstring("\27LJ\1\2-\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\18setup.harpoon\frequire\0", "config", "terminal")
-time([[Config for terminal]], false)
+-- Config for: harpoon
+time([[Config for harpoon]], true)
+try_loadstring("\27LJ\1\2-\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\18setup.harpoon\frequire\0", "config", "harpoon")
+time([[Config for harpoon]], false)
 -- Config for: nvim-comment
 time([[Config for nvim-comment]], true)
 try_loadstring("\27LJ\1\2<\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\18setup.comment\frequire\0", "config", "nvim-comment")

@@ -77,15 +77,15 @@ return packer.startup {
     use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
     use { "nvim-telescope/telescope-media-files.nvim" }
     use { "nvim-telescope/telescope-project.nvim" }
-    -- use {
-    --     "ThePrimeagen/harpoon",
-    --     config = function() require("setup.harpoon") end
-    -- }
-    local_use("jt", "harpoon/terminal", {
-      config = function()
-        require "setup.harpoon"
-      end,
-    })
+    use {
+        "ThePrimeagen/harpoon",
+        config = function() require("setup.harpoon") end
+    }
+    -- local_use("jt", "harpoon/terminal", {
+    --   config = function()
+    --     require "setup.harpoon"
+    --   end,
+    -- })
 
     -- Editing Support
     use {
