@@ -78,8 +78,10 @@ return packer.startup {
     use { "nvim-telescope/telescope-media-files.nvim" }
     use { "nvim-telescope/telescope-project.nvim" }
     use {
-        "ThePrimeagen/harpoon",
-        config = function() require("setup.harpoon") end
+      "ThePrimeagen/harpoon",
+      config = function()
+        require "setup.harpoon"
+      end,
     }
     -- local_use("jt", "harpoon/terminal", {
     --   config = function()
@@ -138,6 +140,7 @@ return packer.startup {
       end,
     }
     use { "tpope/vim-surround", event = "BufRead" }
+    use { "tpope/vim-repeat", event = "BufRead" }
     use { "mattn/emmet-vim", event = "BufRead" }
     use { "editorconfig/editorconfig-vim" }
     use { "mbbill/undotree", event = "BufRead" }
@@ -152,6 +155,13 @@ return packer.startup {
       event = "BufRead",
       config = function()
         require("tabout").setup()
+      end,
+    }
+    use {
+      "ThePrimeagen/refactoring.nvim",
+      event = "BufRead",
+      config = function()
+        require("refactoring").setup()
       end,
     }
 
@@ -170,8 +180,8 @@ return packer.startup {
         require("neogit").setup {}
       end,
     }
-    -- use { "ThePrimeagen/git-worktree.nvim" }
-    local_use "git-worktree.nvim/telescope-opts"
+    use { "ThePrimeagen/git-worktree.nvim" }
+    -- local_use "git-worktree.nvim/telescope-opts"
 
     -- Looks
     use {

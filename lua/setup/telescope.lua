@@ -3,6 +3,9 @@ local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
 local sorters = require "telescope.sorters"
 local themes = require "telescope.themes"
+local pickers = require "telescope.pickers"
+local finders = require "telescope.finders"
+local config = require "telescope.config"
 local Path = require "plenary.path"
 
 local M = {}
@@ -113,7 +116,7 @@ M.git_worktrees = function()
   local opts = themes.get_dropdown {
     previewer = false,
     winblend = 10,
-    path_display = {'shorten', 'absolute'},
+    path_display = { "shorten" },
     layout_config = {
       width = 60,
       height = 20,
@@ -142,8 +145,6 @@ M.file_browser = function()
 
   require("telescope.builtin").file_browser {
     attach_mappings = function(prompt_bufnr, map)
-      -- local current_picker = action_state.get_current_picker(prompt_bufnr)
-
       local delete_file = function()
         local fpath = action_state.get_selected_entry().value
         local ans = vim.fn.input("Are you sure you want to remove " .. fpath .. "? y/[N] ")
@@ -159,7 +160,7 @@ M.file_browser = function()
         end
         print(fpath .. " successfully removed")
 
-        require("telescope.actions").close(prompt_bufnr)
+        actions.close(prompt_bufnr)
       end
 
       local rename_file = function()
@@ -189,6 +190,29 @@ M.lsp_code_actions = function()
     previewer = false,
   }
   require("telescope.builtin").lsp_code_actions(opts)
+end
+
+M.refactor = function()
+  local refactoring = require "refactoring"
+  local function refactor(prompt_bufnr)
+    local content = action_state.get_selected_entry(prompt_bufnr)
+    actions.close(prompt_bufnr)
+    refactoring.refactor(content.value)
+  end
+  local opts = themes.get_cursor()
+
+  pickers.new(opts, {
+    prompt_title = "REFACTOR",
+    finder = finders.new_table {
+      results = refactoring.get_refactors(),
+    },
+    sorter = config.values.generic_sorter(opts),
+    attach_mappings = function(_, map)
+      map("i", "<CR>", refactor)
+      map("n", "<CR>", refactor)
+      return true
+    end,
+  }):find()
 end
 
 return M

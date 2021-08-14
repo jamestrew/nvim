@@ -1,5 +1,6 @@
 local utils = require "utils"
 local silent = { silent = true }
+local sexpr = { silent = true, expr = true }
 
 -- move line(s) up/down
 utils.nnoremap("<A-j>", ":m .+1<CR>==", silent)
@@ -38,15 +39,11 @@ utils.nnoremap("<leader>/", ":CommentToggle<CR>", silent)
 utils.vnoremap("<leader>/", ":CommentToggle<CR>", silent)
 
 --  compe mappings
-utils.inoremap("<C-Space>", "compe#complete()", { silent = true, expr = true })
-utils.inoremap(
-  "<CR>",
-  [[compe#confirm(luaeval("require'nvim-autopairs'.autopairs_cr()")]],
-  { silent = true, expr = true }
-)
-utils.inoremap("<C-e>", "compe#close()", { silent = true, expr = true })
-utils.inoremap("<C-u>", "compe#scroll({ 'delta': -4 })", { silent = true, expr = true })
-utils.inoremap("<C-d>", "compe#scroll({ 'delta': +4 })", { silent = true, expr = true })
+utils.inoremap("<C-Space>", "compe#complete()", sexpr)
+utils.inoremap("<CR>", [[compe#confirm(luaeval("require'nvim-autopairs'.autopairs_cr()")]], sexpr)
+utils.inoremap("<C-e>", "compe#close()", sexpr)
+utils.inoremap("<C-u>", "compe#scroll({ 'delta': -4 })", sexpr)
+utils.inoremap("<C-d>", "compe#scroll({ 'delta': +4 })", sexpr)
 
 -- nvim tree
 utils.nnoremap("<C-n>", ":NvimTreeToggle<CR>", silent)
@@ -82,6 +79,9 @@ utils.nnoremap("<leader>gi", ":Telescope lsp_implementations<CR>", silent)
 utils.nnoremap("<leader>fs", ":Telescope treesitter<CR>", silent)
 utils.nnoremap("<leader>tw", ":Telescope lsp_workspace_diagnostics<CR>", silent)
 utils.nnoremap("<leader>td", ":Telescope lsp_document_diagnostics<CR>", silent)
+
+-- Refactoring
+utils.vnoremap("<leader>rt", ":lua require'setup.telescope'.refactor()<CR>", silent)
 
 -- Harpoon
 utils.nnoremap("<leader>a", ":lua require'harpoon.mark'.add_file()<CR>", silent)
