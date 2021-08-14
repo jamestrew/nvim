@@ -132,7 +132,7 @@ end
 
 
 M.is_dir = function(path)
-  return path:sub(-1, -1) == require("Plenary.path").path.sep
+  return path:sub(-1, -1) == require("plenary.path").path.sep
 end
 
 M.clear_prompt = function()
