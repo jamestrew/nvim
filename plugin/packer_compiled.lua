@@ -83,6 +83,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
   },
+  ["git-worktree.nvim"] = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/git-worktree.nvim"
+  },
   ["gitsigns.nvim"] = {
     config = { "\27LJ\1\2=\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\19setup.gitsigns\frequire\0" },
     loaded = false,
@@ -211,6 +215,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
+  ["refactoring.nvim"] = {
+    config = { "\27LJ\1\0029\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\16refactoring\frequire\0" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/opt/refactoring.nvim"
+  },
   ["tabout.nvim"] = {
     config = { "\27LJ\1\0024\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\vtabout\frequire\0" },
     loaded = false,
@@ -224,10 +234,6 @@ _G.packer_plugins = {
   ["telescope-media-files.nvim"] = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim"
-  },
-  ["telescope-opts"] = {
-    loaded = true,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/start/telescope-opts"
   },
   ["telescope-project.nvim"] = {
     loaded = true,
@@ -257,6 +263,11 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/vim-matchup"
+  },
+  ["vim-repeat"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/opt/vim-repeat"
   },
   ["vim-surround"] = {
     loaded = false,
@@ -314,9 +325,9 @@ time([[Config for hop]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file MarkdownPreview lua require("packer.load")({'markdown-preview.nvim'}, { cmd = "MarkdownPreview", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Neoformat lua require("packer.load")({'neoformat'}, { cmd = "Neoformat", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file MarkdownPreview lua require("packer.load")({'markdown-preview.nvim'}, { cmd = "MarkdownPreview", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file Neoformat lua require("packer.load")({'neoformat'}, { cmd = "Neoformat", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
@@ -329,7 +340,7 @@ time([[Defining lazy-load filetype autocommands]], false)
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au CursorMoved * ++once lua require("packer.load")({'vim-matchup'}, { event = "CursorMoved *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-compe'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim', 'tabout.nvim', 'emmet-vim', 'nvim-ts-context-commentstring', 'gitsigns.nvim', 'undotree', 'nvim-colorizer.lua', 'vim-surround', 'nvim-lspinstall'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim', 'tabout.nvim', 'emmet-vim', 'nvim-ts-context-commentstring', 'gitsigns.nvim', 'undotree', 'vim-repeat', 'nvim-colorizer.lua', 'vim-surround', 'refactoring.nvim', 'nvim-lspinstall'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
