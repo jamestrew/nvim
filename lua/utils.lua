@@ -130,6 +130,11 @@ M.modified_buf_count = function()
   return #bufnrs
 end
 
+
+M.is_dir = function(path)
+  return path:sub(-1, -1) == require("Plenary.path").path.sep
+end
+
 M.clear_prompt = function()
   vim.api.nvim_command "normal :esc<CR>"
 end

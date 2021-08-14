@@ -85,6 +85,36 @@ M.config = function()
   require("telescope").load_extension "project"
 end
 
+local delete_file = function(prompt_bufnr)
+  local fpath = action_state.get_selected_entry().value
+  local ans = vim.fn.input("Are you sure you want to remove " .. fpath .. "? y/[N] ")
+  utils.clear_prompt()
+  if ans ~= "y" then
+    return
+  end
+
+  if utils.is_dir(fpath) then
+    Path:new(fpath):rmdir()
+  else
+    Path:new(fpath):rm()
+  end
+  print(fpath .. " successfully removed")
+
+  actions.close(prompt_bufnr)
+end
+
+local rename_file = function()
+  local fpath = action_state.get_selected_entry().value
+  local new_name = vim.fn.input("Rename ", fpath)
+  utils.clear_prompt()
+  Path:new(fpath):rename { new_name = new_name }
+end
+
+local yank_fpath = function()
+  local entry = action_state.get_selected_entry()
+  vim.fn.setreg("+", entry.value)
+end
+
 M.search_dotfiles = function()
   require("telescope.builtin").git_files {
     prompt_title = "< VimRC >",
@@ -92,11 +122,21 @@ M.search_dotfiles = function()
   }
 end
 
-M.find_files = function()
+M.find_files = function(opts)
+  opts = opts or {}
+  opts.attach_mappings = function(_, map)
+    map("i", "<C-y>d", delete_file)
+    map("i", "<C-y>r", rename_file)
+    map("i", "<C-y>y", yank_fpath)
+    map("n", "yy", yank_fpath)
+
+    return true
+  end
+
   if utils.os.is_git_dir == "O" then
-    require("telescope.builtin").git_files()
+    require("telescope.builtin").git_files(opts)
   else
-    require("telescope.builtin").find_files()
+    require("telescope.builtin").find_files(opts)
   end
 end
 
@@ -138,43 +178,8 @@ M.create_git_worktree = function()
 end
 
 M.file_browser = function()
-  local os_sep = Path.path.sep
-  local is_dir = function(path)
-    return path:sub(-1, -1) == os_sep
-  end
-
   require("telescope.builtin").file_browser {
-    attach_mappings = function(prompt_bufnr, map)
-      local delete_file = function()
-        local fpath = action_state.get_selected_entry().value
-        local ans = vim.fn.input("Are you sure you want to remove " .. fpath .. "? y/[N] ")
-        utils.clear_prompt()
-        if ans ~= "y" then
-          return
-        end
-
-        if is_dir(fpath) then
-          Path:new(fpath):rmdir()
-        else
-          Path:new(fpath):rm()
-        end
-        print(fpath .. " successfully removed")
-
-        actions.close(prompt_bufnr)
-      end
-
-      local rename_file = function()
-        local fpath = action_state.get_selected_entry().value
-        local new_name = vim.fn.input("Rename ", fpath)
-        utils.clear_prompt()
-        Path:new(fpath):rename { new_name = new_name }
-      end
-
-      local yank_fpath = function()
-        local entry = action_state.get_selected_entry()
-        vim.fn.setreg("+", entry.value)
-      end
-
+    attach_mappings = function(_, map)
       map("i", "<C-y>d", delete_file)
       map("i", "<C-y>r", rename_file)
       map("i", "<C-y>y", yank_fpath)
