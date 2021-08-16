@@ -140,6 +140,19 @@ M.find_files = function(opts)
   end
 end
 
+M.find_dir = function()
+  local opts = themes.get_dropdown {
+    prompt_bufnr = "Find Directory",
+    find_command = { "fd", "--type", "d" },
+    disable_devicons = true,
+    layout_strategy = "vertical",
+    layout_config = {
+      height = 50,
+    },
+  }
+  M.find_files(opts)
+end
+
 M.projects = function()
   local opts = themes.get_dropdown {
     previewer = false,

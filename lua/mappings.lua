@@ -53,7 +53,7 @@ utils.nnoremap("<Leader>fm", ":Neoformat<CR>", silent)
 
 -- Telescope
 utils.nnoremap("<C-p>", ":lua require('setup.telescope').find_files()<CR>")
-utils.nnoremap("<C-e>", ":lua require('setup.telescope').file_browser()<CR>", silent)
+utils.nnoremap("<C-e>", ":lua require('setup.telescope').find_dir()<CR>", silent)
 utils.nnoremap("<leader>fw", ":Telescope live_grep<CR>", silent)
 utils.nnoremap("<leader>fc", ":Telescope git_commits<CR>", silent)
 utils.nnoremap("<leader>fb", ":Telescope buffers<CR>", silent)
