@@ -8,6 +8,8 @@ local finders = require "telescope.finders"
 local config = require "telescope.config"
 local Path = require "plenary.path"
 
+local os_sep = Path.path.sep
+
 local M = {}
 
 M.config = function()
@@ -110,6 +112,20 @@ local rename_file = function()
   Path:new(fpath):rename { new_name = new_name }
 end
 
+local create_file = function(prompt_bufnr)
+  local fpath = action_state.get_selected_entry().value
+  local new_file = vim.fn.input("Create file: ", fpath .. "/")
+  utils.clear_prompt()
+
+  if not utils.is_dir(new_file) then
+    actions.close(prompt_bufnr)
+    Path:new(new_file):touch { parents = true }
+    vim.cmd(string.format(":e %s", new_file))
+  else
+    print "Given path not a valid file name"
+  end
+end
+
 local yank_fpath = function()
   local entry = action_state.get_selected_entry()
   vim.fn.setreg("+", entry.value)
@@ -142,15 +158,33 @@ end
 
 M.find_dir = function()
   local opts = themes.get_dropdown {
-    prompt_bufnr = "Find Directory",
-    find_command = { "fd", "--type", "d" },
+    cwd = utils.os.project,
     disable_devicons = true,
     layout_strategy = "vertical",
     layout_config = {
       height = 50,
     },
   }
-  M.find_files(opts)
+
+  local find_command = {}
+  if utils.os.is_git_dir == "O" then
+    find_command = { "git", "ls-files", "--exclude-standard", "--cached" }
+  else
+    find_command = { "fd", "--type", "d" }
+  end
+
+  opts.entry_maker = require("telescope.make_entry").gen_from_file(opts)
+  opts.attach_mappings = function(_, map)
+    map("i", "<C-y>c", create_file)
+    return true
+  end
+
+  pickers.new(opts, {
+    prompt_title = "Find Directory",
+    finder = finders.new_oneshot_job(find_command, opts),
+    previewer = config.values.file_previewer(opts),
+    sorter = config.values.file_sorter(opts),
+  }):find()
 end
 
 M.projects = function()

@@ -32,6 +32,7 @@ M.os = {
   cache = vim.fn.stdpath "cache",
   config = vim.fn.stdpath "config",
   name = vim.loop.os_uname().sysname,
+  project = vim.loop.cwd(),
   is_git_dir = os.execute "git rev-parse --is-inside-work-tree >> /dev/null 2>&1",
 }
 
@@ -129,7 +130,6 @@ M.modified_buf_count = function()
 
   return #bufnrs
 end
-
 
 M.is_dir = function(path)
   return path:sub(-1, -1) == require("plenary.path").path.sep
