@@ -63,6 +63,7 @@ utils.nnoremap("<leader>rc", ":lua require'setup.telescope'.search_dotfiles()<CR
 utils.nnoremap("<leader>fg", ":lua require'setup.telescope'.git_worktrees()<CR>", silent)
 utils.nnoremap("<leader>ct", ":lua require'setup.telescope'.create_git_worktree()<CR>", silent)
 utils.nnoremap("<leader>fp", ":lua require'setup.telescope'.projects()<CR>", silent)
+utils.nnoremap("<leader>fy", ":lua require'setup.telescope'.neoclip()<CR>", silent)
 
 -- Lsp
 utils.nnoremap("gD", ":lua vim.lsp.buf.declaration()<CR>", silent)

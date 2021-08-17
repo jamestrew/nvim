@@ -206,6 +206,12 @@ return packer.startup {
         require("which-key").setup()
       end,
     }
+    use {
+      "AckslD/nvim-neoclip.lua",
+      config = function()
+        require("neoclip").setup()
+      end,
+    }
   end,
   config = {
     display = {

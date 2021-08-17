@@ -8,8 +8,6 @@ local finders = require "telescope.finders"
 local config = require "telescope.config"
 local Path = require "plenary.path"
 
-local os_sep = Path.path.sep
-
 local M = {}
 
 M.config = function()
@@ -85,6 +83,7 @@ M.config = function()
   require("telescope").load_extension "media_files"
   require("telescope").load_extension "git_worktree"
   require("telescope").load_extension "project"
+  require("telescope").load_extension "neoclip"
 end
 
 local delete_file = function(prompt_bufnr)
@@ -265,6 +264,10 @@ M.refactor = function()
       return true
     end,
   }):find()
+end
+
+M.neoclip = function()
+  require("telescope").extensions.neoclip.default(themes.get_cursor())
 end
 
 return M

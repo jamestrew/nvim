@@ -180,6 +180,11 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/nvim-lspinstall"
   },
+  ["nvim-neoclip.lua"] = {
+    config = { "\27LJ\1\0025\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\fneoclip\frequire\0" },
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/nvim-neoclip.lua"
+  },
   ["nvim-tree.lua"] = {
     commands = { "NvimTreeToggle" },
     config = { "\27LJ\1\2=\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\19setup.nvimtree\frequire\0" },
@@ -306,6 +311,10 @@ time([[Config for harpoon]], false)
 time([[Config for nvim-comment]], true)
 try_loadstring("\27LJ\1\2<\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\18setup.comment\frequire\0", "config", "nvim-comment")
 time([[Config for nvim-comment]], false)
+-- Config for: nvim-neoclip.lua
+time([[Config for nvim-neoclip.lua]], true)
+try_loadstring("\27LJ\1\0025\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\fneoclip\frequire\0", "config", "nvim-neoclip.lua")
+time([[Config for nvim-neoclip.lua]], false)
 -- Config for: todo-comments.nvim
 time([[Config for todo-comments.nvim]], true)
 try_loadstring("\27LJ\1\2;\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\18todo-comments\frequire\0", "config", "todo-comments.nvim")
@@ -340,7 +349,7 @@ time([[Defining lazy-load filetype autocommands]], false)
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au CursorMoved * ++once lua require("packer.load")({'vim-matchup'}, { event = "CursorMoved *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-compe'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim', 'tabout.nvim', 'emmet-vim', 'nvim-ts-context-commentstring', 'gitsigns.nvim', 'undotree', 'vim-repeat', 'nvim-colorizer.lua', 'vim-surround', 'refactoring.nvim', 'nvim-lspinstall'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim', 'tabout.nvim', 'emmet-vim', 'nvim-ts-context-commentstring', 'gitsigns.nvim', 'undotree', 'vim-repeat', 'vim-surround', 'nvim-colorizer.lua', 'refactoring.nvim', 'nvim-lspinstall'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
