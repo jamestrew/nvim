@@ -270,4 +270,19 @@ M.neoclip = function()
   require("telescope").extensions.neoclip.default(themes.get_cursor())
 end
 
+M.get_symbols = function()
+  local ts_healthy = true
+  for _, definitions in ipairs(require("nvim-treesitter.locals").get_definitions()) do
+    if definitions["node"] ~= nil then
+      ts_healthy = false
+    end
+  end
+
+  if ts_healthy then
+    require("telescope.builtin").treesitter()
+  else
+    require("telescope.builtin").lsp_document_symbols()
+  end
+end
+
 return M

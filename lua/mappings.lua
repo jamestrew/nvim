@@ -77,7 +77,7 @@ utils.nnoremap("gd", ":Telescope lsp_definitions<CR>", silent)
 utils.nnoremap("gr", ":Telescope lsp_references<CR>", silent)
 utils.nnoremap("<leader>ca", ":lua require('setup.telescope').lsp_code_actions()<CR>", silent)
 utils.nnoremap("<leader>gi", ":Telescope lsp_implementations<CR>", silent)
-utils.nnoremap("<leader>fs", ":Telescope treesitter<CR>", silent)
+utils.nnoremap("<leader>fs", ":lua require('setup.telescope').get_symbols()<CR>", silent)
 utils.nnoremap("<leader>tw", ":Telescope lsp_workspace_diagnostics<CR>", silent)
 utils.nnoremap("<leader>td", ":Telescope lsp_document_diagnostics<CR>", silent)
 

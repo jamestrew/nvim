@@ -55,6 +55,7 @@ return packer.startup {
     }
     use { "ray-x/lsp_signature.nvim" }
     use { "folke/lua-dev.nvim" }
+    use { "nvim-treesitter/playground", event = "BufRead" }
 
     -- Telescope & File Management
     use {
