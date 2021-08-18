@@ -97,7 +97,7 @@ utils.nnoremap("<leader>tn", ":lua require('harpoon.term').gotoTerminal(1)<CR>")
 utils.nnoremap("<leader>te", ":lua require('harpoon.term').gotoTerminal(2)<CR>")
 
 -- neogit
-utils.nnoremap("<leader>gs", ":lua require('neogit').open()<CR>")
+utils.nnoremap("<leader>gs", ":lua require('neogit').open({ kind = 'split' })<CR>")
 
 -- Todo Comment
 utils.nnoremap("<leader>ft", ":TodoTelescope<CR>", silent)
