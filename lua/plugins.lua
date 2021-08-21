@@ -213,6 +213,12 @@ return packer.startup {
         require("neoclip").setup()
       end,
     }
+    use {
+      "andweeb/presence.nvim",
+      config = function()
+        require("setup.presence").config()
+      end,
+    }
   end,
   config = {
     display = {
