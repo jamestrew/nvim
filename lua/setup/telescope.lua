@@ -57,12 +57,6 @@ M.config = function()
       qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
       -- Developer configurations: Not meant for general override
       buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
-      mappings = {
-        i = {
-          ["<C-n>"] = actions.move_selection_previous,
-          ["<C-p>"] = actions.move_selection_next,
-        },
-      },
     },
     extensions = {
       fzf = {
@@ -141,6 +135,8 @@ M.find_files = function(opts)
   opts = opts or {}
   opts.cwd = opts.cwd or vim.loop.cwd()
   opts.attach_mappings = function(_, map)
+    map("i", "<C-n>", actions.move_selection_previous)
+    map("i", "<C-p>", actions.move_selection_next)
     map("i", "<C-y>d", delete_file)
     map("i", "<C-y>r", rename_file)
     map("i", "<C-y>y", yank_fpath)
@@ -157,21 +153,11 @@ M.find_files = function(opts)
 end
 
 M.find_dir = function()
-  local opts = themes.get_dropdown {
-    cwd = utils.os.project,
+  local opts = themes.get_ivy {
+    cwd = vim.loop.cwd(),
+    find_command = { "fd", "--type", "d" },
     disable_devicons = true,
-    layout_strategy = "vertical",
-    layout_config = {
-      height = 50,
-    },
   }
-
-  local find_command = {}
-  if utils.os.is_git_dir == 0 then
-    find_command = { "git", "ls-files", "--exclude-standard", "--cached" }
-  else
-    find_command = { "fd", "--type", "d" }
-  end
 
   opts.entry_maker = require("telescope.make_entry").gen_from_file(opts)
   opts.attach_mappings = function(_, map)
@@ -181,7 +167,7 @@ M.find_dir = function()
 
   pickers.new(opts, {
     prompt_title = "Find Directory",
-    finder = finders.new_oneshot_job(find_command, opts),
+    finder = finders.new_oneshot_job(opts.find_command, opts),
     previewer = config.values.file_previewer(opts),
     sorter = config.values.file_sorter(opts),
   }):find()
@@ -297,18 +283,26 @@ M.neoclip = function()
   require("telescope").extensions.neoclip.default(themes.get_cursor())
 end
 
-M.get_symbols = function()
+M.get_symbols = function(opts)
+  opts = opts or {}
   local ts_healthy = true
   for _, definitions in ipairs(require("nvim-treesitter.locals").get_definitions()) do
     if definitions["node"] ~= nil then
       ts_healthy = false
+      break
     end
   end
 
+  opts.attach_mappings = function(_, map)
+    map("i", "<C-n>", actions.move_selection_previous)
+    map("i", "<C-p>", actions.move_selection_next)
+    return true
+  end
+
   if ts_healthy then
-    require("telescope.builtin").treesitter()
+    require("telescope.builtin").treesitter(opts)
   else
-    require("telescope.builtin").lsp_document_symbols()
+    require("telescope.builtin").lsp_document_symbols(opts)
   end
 end
 
