@@ -1,3 +1,5 @@
+local Path = require "plenary.path"
+
 -- for debuging
 _G.dump = function(...)
   print(vim.inspect(...))
@@ -32,8 +34,9 @@ M.os = {
   cache = vim.fn.stdpath "cache",
   config = vim.fn.stdpath "config",
   name = vim.loop.os_uname().sysname,
-  project = vim.loop.cwd(),
+  cwd = vim.loop.cwd(),
   is_git_dir = os.execute "git rev-parse --is-inside-work-tree >> /dev/null 2>&1",
+  is_git_worktree = os.execute "git rev-parse --is-inside-git-dir >> /dev/null 2>&1",
 }
 
 M.functions = {}
@@ -132,11 +135,21 @@ M.modified_buf_count = function()
 end
 
 M.is_dir = function(path)
-  return path:sub(-1, -1) == require("plenary.path").path.sep
+  return path:sub(-1, -1) == Path.path.sep
 end
 
 M.clear_prompt = function()
   vim.api.nvim_command "normal :esc<CR>"
+end
+
+M.change_project_dir = function(project_path)
+  if Path:new(project_path):exists() then
+    vim.fn.execute("cd " .. project_path, "silent")
+    return true
+  else
+    print("The path '" .. project_path .. "' does not exist")
+    return false
+  end
 end
 
 return M

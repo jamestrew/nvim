@@ -139,6 +139,7 @@ end
 
 M.find_files = function(opts)
   opts = opts or {}
+  opts.cwd = opts.cwd or vim.loop.cwd()
   opts.attach_mappings = function(_, map)
     map("i", "<C-y>d", delete_file)
     map("i", "<C-y>r", rename_file)
@@ -148,7 +149,7 @@ M.find_files = function(opts)
     return true
   end
 
-  if utils.os.is_git_dir == "O" then
+  if utils.os.is_git_dir == 0 then
     require("telescope.builtin").git_files(opts)
   else
     require("telescope.builtin").find_files(opts)
@@ -166,7 +167,7 @@ M.find_dir = function()
   }
 
   local find_command = {}
-  if utils.os.is_git_dir == "O" then
+  if utils.os.is_git_dir == 0 then
     find_command = { "git", "ls-files", "--exclude-standard", "--cached" }
   else
     find_command = { "fd", "--type", "d" }
@@ -195,6 +196,19 @@ M.projects = function()
       height = 20,
     },
   }
+  opts.attach_mappings = function(prompt_bufnr, _)
+    local on_project_selected = function()
+      local project_path = actions.get_selected_entry(prompt_bufnr).value
+      actions.close(prompt_bufnr)
+      local cd_successful = utils.change_project_dir(project_path)
+      if cd_successful then
+        M.git_worktrees()
+      end
+    end
+
+    actions.select_default:replace(on_project_selected)
+    return true
+  end
   require("telescope").extensions.project.project(opts)
 end
 
@@ -208,6 +222,19 @@ M.git_worktrees = function()
       height = 20,
     },
   }
+
+  opts.attach_mappings = function(prompt_bufnr, _)
+    local switch_and_find = function()
+      local worktree_path = action_state.get_selected_entry(prompt_bufnr).path
+      actions.close(prompt_bufnr)
+      if worktree_path ~= nil then
+        require("git-worktree").switch_worktree(worktree_path)
+      end
+    end
+
+    actions.select_default:replace(switch_and_find)
+    return true
+  end
   require("telescope").extensions.git_worktree.git_worktrees(opts)
 end
 
