@@ -284,19 +284,13 @@ M.neoclip = function()
 end
 
 M.get_symbols = function(opts)
-  opts = opts or {}
+  opts = opts or themes.get_ivy()
   local ts_healthy = true
   for _, definitions in ipairs(require("nvim-treesitter.locals").get_definitions()) do
     if definitions["node"] ~= nil then
       ts_healthy = false
       break
     end
-  end
-
-  opts.attach_mappings = function(_, map)
-    map("i", "<C-n>", actions.move_selection_previous)
-    map("i", "<C-p>", actions.move_selection_next)
-    return true
   end
 
   if ts_healthy then
