@@ -219,6 +219,7 @@ return packer.startup {
         require("setup.presence").config()
       end,
     }
+    use { "tpope/vim-dadbod" }
   end,
   config = {
     display = {
