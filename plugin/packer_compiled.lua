@@ -277,6 +277,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/vim-dadbod"
   },
+  ["vim-graphql"] = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/vim-graphql"
+  },
   ["vim-matchup"] = {
     after_files = { "/home/jt/.local/share/nvim/site/pack/packer/opt/vim-matchup/after/plugin/matchit.vim" },
     loaded = false,
@@ -365,9 +369,9 @@ vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-prev
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au CursorMoved * ++once lua require("packer.load")({'vim-matchup'}, { event = "CursorMoved *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim', 'playground', 'emmet-vim', 'nvim-ts-context-commentstring', 'undotree', 'vim-repeat', 'nvim-colorizer.lua', 'vim-surround', 'tabout.nvim', 'gitsigns.nvim', 'refactoring.nvim', 'nvim-lspinstall'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-compe'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim', 'playground', 'tabout.nvim', 'emmet-vim', 'nvim-ts-context-commentstring', 'undotree', 'vim-repeat', 'nvim-colorizer.lua', 'vim-surround', 'gitsigns.nvim', 'refactoring.nvim', 'nvim-lspinstall'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au CursorMoved * ++once lua require("packer.load")({'vim-matchup'}, { event = "CursorMoved *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

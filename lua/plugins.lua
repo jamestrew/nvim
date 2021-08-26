@@ -56,6 +56,7 @@ return packer.startup {
     use { "ray-x/lsp_signature.nvim" }
     use { "folke/lua-dev.nvim" }
     use { "nvim-treesitter/playground", event = "BufRead" }
+    use { "jparise/vim-graphql" }
 
     -- Telescope & File Management
     use {
