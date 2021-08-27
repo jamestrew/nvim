@@ -223,6 +223,12 @@ return packer.startup {
       end,
     }
     use { "tpope/vim-dadbod" }
+    use {
+      "glacambre/firenvim",
+      run = function()
+        vim.fn["firenvim#install"](0)
+      end,
+    }
   end,
   config = {
     display = {

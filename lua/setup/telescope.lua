@@ -178,7 +178,7 @@ M.find_dir = function()
       actions.close(prompt_bufnr)
       vim.cmd ":Ntree"
     end)
-    return false
+    return true
   end
 
   pickers.new(opts, {
