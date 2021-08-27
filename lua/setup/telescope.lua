@@ -70,6 +70,9 @@ M.config = function()
         filetypes = { "png", "webp", "jpg", "jpeg" },
         find_cmd = "rg", -- find command (defaults to `fd`)
       },
+      frecency = {
+        ignore_patterns = { "*.git/*", "*/tmp/*", "*/node_modules/*" },
+      },
     },
   }
 
@@ -78,6 +81,7 @@ M.config = function()
   require("telescope").load_extension "git_worktree"
   require("telescope").load_extension "project"
   require("telescope").load_extension "neoclip"
+  require("telescope").load_extension "frecency"
 end
 
 local delete_file = function(prompt_bufnr)
@@ -132,6 +136,8 @@ M.search_dotfiles = function()
 end
 
 M.find_files = function(opts)
+  local use_frecency = false
+
   opts = opts or {}
   opts.cwd = opts.cwd or vim.loop.cwd()
   opts.attach_mappings = function(_, map)
@@ -145,7 +151,13 @@ M.find_files = function(opts)
     return true
   end
 
-  if utils.os.is_git_dir == 0 then
+  if use_frecency then
+    opts.default_text = ":CWD:"
+    require("telescope").extensions.frecency.frecency(opts)
+    return
+  end
+
+  if utils.is_git_dir() == 0 then
     require("telescope.builtin").git_files(opts)
   else
     require("telescope.builtin").find_files(opts)

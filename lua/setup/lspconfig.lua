@@ -3,8 +3,6 @@ local M = {}
 M.config = function()
   local lspconf = require "lspconfig"
   local lspsettings = require "setup.lsp.settings"
-  require("null-ls").config {}
-  lspconf["null-ls"].setup {}
 
   local function on_attach(client, bufnr)
     require("lsp_signature").on_attach() -- lsp signature

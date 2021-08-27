@@ -58,7 +58,6 @@ return packer.startup {
     use { "nvim-treesitter/playground", event = "BufRead" }
     use { "jparise/vim-graphql", event = "BufRead" }
     use { "jose-elias-alvarez/nvim-lsp-ts-utils" }
-    use { "jose-elias-alvarez/null-ls.nvim" }
 
     -- Telescope & File Management
     use {
@@ -81,6 +80,7 @@ return packer.startup {
     use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
     use { "nvim-telescope/telescope-media-files.nvim" }
     use { "nvim-telescope/telescope-project.nvim" }
+    use { "nvim-telescope/telescope-frecency.nvim", requires = { "tami5/sql.nvim" } }
     use {
       "ThePrimeagen/harpoon",
       config = function()

@@ -55,7 +55,7 @@ utils.nnoremap("<Leader>fm", ":Neoformat<CR>", silent)
 utils.nnoremap("<C-p>", ":lua require('setup.telescope').find_files()<CR>")
 utils.nnoremap("<C-e>", ":lua require('setup.telescope').find_dir()<CR>", silent)
 utils.nnoremap("<leader>fw", ":Telescope live_grep<CR>", silent)
-utils.nnoremap("<leader>fc", ":Telescope git_commits<CR>", silent)
+utils.nnoremap("<leader>gc", ":Telescope git_commits<CR>", silent)
 utils.nnoremap("<leader>fb", ":Telescope buffers<CR>", silent)
 utils.nnoremap("<leader>fh", ":Telescope help_tags<CR>", silent)
 utils.nnoremap("<leader>fo", ":Telescope oldfiles<CR>", silent)
@@ -64,6 +64,7 @@ utils.nnoremap("<leader>fg", ":lua require'setup.telescope'.git_worktrees()<CR>"
 utils.nnoremap("<leader>ct", ":lua require'setup.telescope'.create_git_worktree()<CR>", silent)
 utils.nnoremap("<leader>fp", ":lua require'setup.telescope'.projects()<CR>", silent)
 utils.nnoremap("<leader>fy", ":lua require'setup.telescope'.neoclip()<CR>", silent)
+utils.nnoremap("<leader>fc", ":lua require'telescope'.commands()<CR>", silent)
 
 -- Lsp
 utils.nnoremap("gD", ":lua vim.lsp.buf.declaration()<CR>", silent)
