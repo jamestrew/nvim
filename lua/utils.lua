@@ -1,4 +1,5 @@
 local Path = require "plenary.path"
+local scan = require "plenary.scandir"
 
 -- for debuging
 _G.dump = function(...)
@@ -136,6 +137,12 @@ end
 
 M.is_dir = function(path)
   return path:sub(-1, -1) == Path.path.sep
+end
+
+M.is_git_dir = function()
+  local opts = { search_pattern = "git$", add_dirs = true, hidden = true, depth = 1 }
+  local files = scan.scan_dir(vim.loop.cwd(), opts)
+  return #files and true or false
 end
 
 M.clear_prompt = function()
