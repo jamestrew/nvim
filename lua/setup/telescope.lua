@@ -172,9 +172,13 @@ M.find_dir = function()
   }
 
   opts.entry_maker = require("telescope.make_entry").gen_from_file(opts)
-  opts.attach_mappings = function(_, map)
+  opts.attach_mappings = function(prompt_bufnr, map)
     map("i", "<C-y>c", create_file)
-    return true
+    map("i", "<C-h>", function()
+      actions.close(prompt_bufnr)
+      vim.cmd ":Ntree"
+    end)
+    return false
   end
 
   pickers.new(opts, {
