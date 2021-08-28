@@ -81,7 +81,7 @@ M.config = function()
   require("telescope").load_extension "git_worktree"
   require("telescope").load_extension "project"
   require("telescope").load_extension "neoclip"
-  require("telescope").load_extension "frecency"
+  -- require("telescope").load_extension "frecency"
 end
 
 local delete_file = function(prompt_bufnr)

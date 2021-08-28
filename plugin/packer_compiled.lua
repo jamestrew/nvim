@@ -175,16 +175,14 @@ _G.packer_plugins = {
   },
   ["nvim-lspconfig"] = {
     config = { "\27LJ\1\2>\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\20setup.lspconfig\frequire\0" },
-    load_after = {
-      ["nvim-lspinstall"] = true
-    },
-    loaded = false,
+    load_after = {},
+    loaded = true,
     needs_bufread = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig"
   },
   ["nvim-lspinstall"] = {
     after = { "nvim-lspconfig" },
-    loaded = false,
+    loaded = true,
     needs_bufread = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/nvim-lspinstall"
   },
@@ -350,6 +348,13 @@ if not vim.g.packer_custom_loader_enabled then
   vim.g.packer_custom_loader_enabled = true
 end
 
+-- Setup for: nvim-lspinstall
+time([[Setup for nvim-lspinstall]], true)
+try_loadstring("\27LJ\1\2/\0\0\2\0\3\0\0054\0\0\0007\0\1\0%\1\2\0>\0\2\1G\0\1\0\16silent! e %\bcmd\bvim-\1\0\3\0\3\0\0064\0\0\0007\0\1\0001\1\2\0'\2\0\0>\0\3\1G\0\1\0\0\rdefer_fn\bvim\0", "setup", "nvim-lspinstall")
+time([[Setup for nvim-lspinstall]], false)
+time([[packadd for nvim-lspinstall]], true)
+vim.cmd [[packadd nvim-lspinstall]]
+time([[packadd for nvim-lspinstall]], false)
 -- Setup for: indent-blankline.nvim
 time([[Setup for indent-blankline.nvim]], true)
 try_loadstring("\27LJ\1\2/\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\20setup.blankline\frequire\0", "setup", "indent-blankline.nvim")
@@ -398,6 +403,14 @@ time([[Config for nvim-web-devicons]], false)
 time([[Config for presence.nvim]], true)
 try_loadstring("\27LJ\1\2=\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\19setup.presence\frequire\0", "config", "presence.nvim")
 time([[Config for presence.nvim]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-lspconfig ]]
+
+-- Config for: nvim-lspconfig
+try_loadstring("\27LJ\1\2>\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\20setup.lspconfig\frequire\0", "config", "nvim-lspconfig")
+
+time([[Sequenced loading]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
@@ -416,7 +429,7 @@ time([[Defining lazy-load filetype autocommands]], false)
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au CursorHold * ++once lua require("packer.load")({'vim-illuminate'}, { event = "CursorHold *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-compe'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim', 'playground', 'tabout.nvim', 'emmet-vim', 'nvim-ts-context-commentstring', 'undotree', 'vim-repeat', 'vim-graphql', 'vim-surround', 'nvim-colorizer.lua', 'gitsigns.nvim', 'refactoring.nvim', 'nvim-lspinstall'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim', 'playground', 'tabout.nvim', 'emmet-vim', 'nvim-ts-context-commentstring', 'undotree', 'vim-repeat', 'vim-graphql', 'vim-surround', 'nvim-colorizer.lua', 'gitsigns.nvim', 'refactoring.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
