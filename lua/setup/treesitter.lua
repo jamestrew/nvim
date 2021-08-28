@@ -9,6 +9,9 @@ M.config = function()
       enable = true,
       use_languagetree = true,
     },
+    matchup = {
+      enable = true,
+    },
     indent = {
       enable = true,
       disable = { "python" },

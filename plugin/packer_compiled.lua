@@ -298,11 +298,11 @@ _G.packer_plugins = {
     needs_bufread = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/vim-graphql"
   },
-  ["vim-matchup"] = {
-    after_files = { "/home/jt/.local/share/nvim/site/pack/packer/opt/vim-matchup/after/plugin/matchit.vim" },
+  ["vim-illuminate"] = {
+    config = { "\27LJ\1\0022\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1\0\0:\1\2\0G\0\1\0\21Illuminate_delay\6g\bvim\0" },
     loaded = false,
-    needs_bufread = true,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/opt/vim-matchup"
+    needs_bufread = false,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/opt/vim-illuminate"
   },
   ["vim-repeat"] = {
     loaded = false,
@@ -322,6 +322,34 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+local module_lazy_loads = {
+  ["^illuminate"] = "vim-illuminate"
+}
+local lazy_load_called = {['packer.load'] = true}
+local function lazy_load_module(module_name)
+  local to_load = {}
+  if lazy_load_called[module_name] then return nil end
+  lazy_load_called[module_name] = true
+  for module_pat, plugin_name in pairs(module_lazy_loads) do
+    if not _G.packer_plugins[plugin_name].loaded and string.match(module_name, module_pat) then
+      to_load[#to_load + 1] = plugin_name
+    end
+  end
+
+  if #to_load > 0 then
+    require('packer.load')(to_load, {module = module_name}, _G.packer_plugins)
+    local loaded_mod = package.loaded[module_name]
+    if loaded_mod then
+      return function(modname) return loaded_mod end
+    end
+  end
+end
+
+if not vim.g.packer_custom_loader_enabled then
+  table.insert(package.loaders, 1, lazy_load_module)
+  vim.g.packer_custom_loader_enabled = true
+end
+
 -- Setup for: indent-blankline.nvim
 time([[Setup for indent-blankline.nvim]], true)
 try_loadstring("\27LJ\1\2/\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\20setup.blankline\frequire\0", "setup", "indent-blankline.nvim")
@@ -386,9 +414,9 @@ vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-prev
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim', 'playground', 'emmet-vim', 'nvim-ts-context-commentstring', 'undotree', 'vim-repeat', 'vim-surround', 'vim-graphql', 'tabout.nvim', 'nvim-colorizer.lua', 'gitsigns.nvim', 'refactoring.nvim', 'nvim-lspinstall'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au CursorHold * ++once lua require("packer.load")({'vim-illuminate'}, { event = "CursorHold *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-compe'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au CursorMoved * ++once lua require("packer.load")({'vim-matchup'}, { event = "CursorMoved *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim', 'playground', 'tabout.nvim', 'emmet-vim', 'nvim-ts-context-commentstring', 'undotree', 'vim-repeat', 'vim-graphql', 'vim-surround', 'nvim-colorizer.lua', 'gitsigns.nvim', 'refactoring.nvim', 'nvim-lspinstall'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

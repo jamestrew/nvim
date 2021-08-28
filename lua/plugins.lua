@@ -105,7 +105,7 @@ return packer.startup {
         }
       end,
     }
-    use { "andymass/vim-matchup", event = "CursorMoved" }
+    -- use { "andymass/vim-matchup", event = "CursorMoved" }
     use { "JoosepAlviste/nvim-ts-context-commentstring", event = "BufRead" }
     use {
       "terrortylor/nvim-comment",
@@ -199,6 +199,14 @@ return packer.startup {
       "kyazdani42/nvim-web-devicons",
       config = function()
         require("setup.icons").config()
+      end,
+    }
+    use {
+      "RRethy/vim-illuminate",
+      event = "CursorHold",
+      module = "illuminate",
+      config = function()
+        vim.g.Illuminate_delay = 0
       end,
     }
 

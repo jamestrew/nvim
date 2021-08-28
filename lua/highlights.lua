@@ -25,19 +25,18 @@ local purple = colors.purple
 -- for guifg , bg
 
 local function fg(group, color)
-    cmd("hi " .. group .. " guifg=" .. color)
+  cmd("hi " .. group .. " guifg=" .. color)
 end
 
 local function bg(group, color)
-    cmd("hi " .. group .. " guibg=" .. color)
+  cmd("hi " .. group .. " guibg=" .. color)
 end
 
 local function fg_bg(group, fgcol, bgcol)
-    cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
+  cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
 end
 
 -- blankline
-
 fg("IndentBlanklineChar", line)
 
 -- misc --
@@ -57,7 +56,7 @@ bg("PmenuThumb", nord_blue)
 cmd("hi! StatusLineNC gui=underline guifg=" .. line)
 
 -- cursor line
-cmd("hi clear CursorLine")
+cmd "hi clear CursorLine"
 bg("cursorline", line)
 bg("cursorlinenr", line)
 
@@ -103,48 +102,7 @@ fg("LspDiagnosticsVirtualTextInformation", green)
 fg("LspDiagnosticsSignHint", purple)
 fg("LspDiagnosticsVirtualTextHint", purple)
 
--- bufferline
-
-fg_bg("BufferLineFill", grey_fg, black2)
-fg_bg("BufferLineBackground", light_grey, black2)
-
-fg_bg("BufferLineBufferVisible", light_grey, black2)
-fg_bg("BufferLineBufferSelected", white, black)
-
-cmd("hi BufferLineBufferSelected gui=bold")
-
--- tabs
-fg_bg("BufferLineTab", light_grey, one_bg3)
-fg_bg("BufferLineTabSelected", black2, nord_blue)
-fg_bg("BufferLineTabClose", red, black)
-
-fg_bg("BufferLineIndicator", black2, black2)
-fg_bg("BufferLineIndicatorSelected", black, black)
-
--- separators
-fg_bg("BufferLineSeparator", black2, black2)
-fg_bg("BufferLineSeparatorVisible", black2, black2)
-fg_bg("BufferLineSeparatorSelected", black, black2)
-
--- modified buffers
-fg_bg("BufferLineModified", red, black2)
-fg_bg("BufferLineModifiedVisible", red, black2)
-fg_bg("BufferLineModifiedSelected", green, black)
-
--- close buttons
-fg_bg("BufferLineCLoseButtonVisible", light_grey, black2)
-fg_bg("BufferLineCLoseButton", light_grey, black2)
-fg_bg("BufferLineCLoseButtonSelected", red, black)
-
--- dashboard
-
-fg("DashboardHeader", grey_fg)
-fg("DashboardCenter", grey_fg)
-fg("DashboardShortcut", grey_fg)
-fg("DashboardFooter", grey_fg)
-
 -- packer's floating window
-
 bg("NormalFloat", black2)
 bg("FloatBorder", black2)
 fg("FloatBorder", black2)
