@@ -157,7 +157,7 @@ M.find_files = function(opts)
     return
   end
 
-  if utils.is_git_dir() == 0 then
+  if utils.is_git_dir() then
     require("telescope.builtin").git_files(opts)
   else
     require("telescope.builtin").find_files(opts)
