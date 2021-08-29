@@ -1,10 +1,10 @@
 local M = {}
-local utils = require "utils"
+local utils = require("utils")
 
 M.config = function()
-  local gl = require "galaxyline"
+  local gl = require("galaxyline")
   local gls = gl.section
-  local condition = require "galaxyline.condition"
+  local condition = require("galaxyline.condition")
 
   gl.short_line_list = { " " }
 
@@ -232,14 +232,14 @@ M.config = function()
   gls.right[9] = {
     line_percentage = {
       provider = function()
-        local current_line = vim.fn.line "."
-        local total_line = vim.fn.line "$"
-        local current_col = vim.fn.virtcol "."
+        local current_line = vim.fn.line(".")
+        local total_line = vim.fn.line("$")
+        local current_col = vim.fn.virtcol(".")
         local details = current_line .. ":" .. current_col .. " "
 
         if current_line == 1 then
           return "  Top " .. details
-        elseif current_line == vim.fn.line "$" then
+        elseif current_line == vim.fn.line("$") then
           return "  Bot " .. details
         end
         local result, _ = math.modf((current_line / total_line) * 100)

@@ -1,7 +1,7 @@
 local M = {}
 
 M.config = function()
-  require("compe").setup {
+  require("compe").setup({
     enabled = true,
     autocomplete = true,
     debug = false,
@@ -21,10 +21,10 @@ M.config = function()
       nvim_lsp = true,
       nvim_lua = true,
     },
-  }
+  })
 
   vim.opt.completeopt = { "menuone", "noselect" }
-  vim.opt.shortmess:append "c"
+  vim.opt.shortmess:append("c")
 end
 
 return M

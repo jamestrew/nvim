@@ -1,9 +1,9 @@
 local M = {}
 
 M.config = function()
-  local ts_config = require "nvim-treesitter.configs"
+  local ts_config = require("nvim-treesitter.configs")
 
-  ts_config.setup {
+  ts_config.setup({
     ensure_installed = "maintained",
     highlight = {
       enable = true,
@@ -49,7 +49,7 @@ M.config = function()
         show_help = "?",
       },
     },
-  }
+  })
 end
 
 return M

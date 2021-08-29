@@ -2,7 +2,7 @@ local M = {}
 -- The setup config table shows all available config options with their default values:
 
 M.config = function()
-  require("presence"):setup {
+  require("presence"):setup({
     -- General options
     auto_update = true, -- Update activity based on autocmd events (if `false`, map or manually execute `:lua package.loaded.presence:update()`)
     neovim_image_text = "The One True Text Editor", -- Text displayed when hovered over the Neovim image
@@ -22,7 +22,7 @@ M.config = function()
     reading_text = "Reading %s", -- Format string rendered when a read-only or unmodifiable file is loaded in the buffer
     workspace_text = "Working on %s", -- Workspace format string (either string or function(git_project_name: string|nil, buffer: string): string)
     line_number_text = "Line %s out of %s", -- Line number format string (for when enable_line_number is set to true)
-  }
+  })
 end
 
 return M

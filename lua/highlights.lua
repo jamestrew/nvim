@@ -56,7 +56,7 @@ bg("PmenuThumb", nord_blue)
 cmd("hi! StatusLineNC gui=underline guifg=" .. line)
 
 -- cursor line
-cmd "hi clear CursorLine"
+cmd("hi clear CursorLine")
 bg("cursorline", line)
 bg("cursorlinenr", line)
 

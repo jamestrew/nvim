@@ -1,5 +1,5 @@
-local Path = require "plenary.path"
-local scan = require "plenary.scandir"
+local Path = require("plenary.path")
+local scan = require("plenary.scandir")
 
 -- for debuging
 _G.dump = function(...)
@@ -30,14 +30,14 @@ M.hideStuff = function()
 end
 
 M.os = {
-  home = os.getenv "HOME",
-  data = vim.fn.stdpath "data",
-  cache = vim.fn.stdpath "cache",
-  config = vim.fn.stdpath "config",
+  home = os.getenv("HOME"),
+  data = vim.fn.stdpath("data"),
+  cache = vim.fn.stdpath("cache"),
+  config = vim.fn.stdpath("config"),
   name = vim.loop.os_uname().sysname,
   cwd = vim.loop.cwd(),
-  is_git_dir = os.execute "git rev-parse --is-inside-work-tree >> /dev/null 2>&1",
-  is_git_worktree = os.execute "git rev-parse --is-inside-git-dir >> /dev/null 2>&1",
+  is_git_dir = os.execute("git rev-parse --is-inside-work-tree >> /dev/null 2>&1"),
+  is_git_worktree = os.execute("git rev-parse --is-inside-git-dir >> /dev/null 2>&1"),
 }
 
 M.functions = {}
@@ -146,7 +146,7 @@ M.is_git_dir = function()
 end
 
 M.clear_prompt = function()
-  vim.api.nvim_command "normal :esc<CR>"
+  vim.api.nvim_command("normal :esc<CR>")
 end
 
 M.change_project_dir = function(project_path)

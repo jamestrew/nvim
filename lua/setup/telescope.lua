@@ -1,17 +1,17 @@
-local utils = require "utils"
-local actions = require "telescope.actions"
-local action_state = require "telescope.actions.state"
-local sorters = require "telescope.sorters"
-local themes = require "telescope.themes"
-local pickers = require "telescope.pickers"
-local finders = require "telescope.finders"
-local config = require "telescope.config"
-local Path = require "plenary.path"
+local utils = require("utils")
+local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
+local sorters = require("telescope.sorters")
+local themes = require("telescope.themes")
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
+local config = require("telescope.config")
+local Path = require("plenary.path")
 
 local M = {}
 
 M.config = function()
-  require("telescope").setup {
+  require("telescope").setup({
     defaults = {
       vimgrep_arguments = {
         "rg",
@@ -74,13 +74,13 @@ M.config = function()
         ignore_patterns = { "*.git/*", "*/tmp/*", "*/node_modules/*" },
       },
     },
-  }
+  })
 
-  require("telescope").load_extension "fzf"
-  require("telescope").load_extension "media_files"
-  require("telescope").load_extension "git_worktree"
-  require("telescope").load_extension "project"
-  require("telescope").load_extension "neoclip"
+  require("telescope").load_extension("fzf")
+  require("telescope").load_extension("media_files")
+  require("telescope").load_extension("git_worktree")
+  require("telescope").load_extension("project")
+  require("telescope").load_extension("neoclip")
   -- require("telescope").load_extension "frecency"
 end
 
@@ -106,7 +106,7 @@ local rename_file = function()
   local fpath = action_state.get_selected_entry().value
   local new_name = vim.fn.input("Rename ", fpath)
   utils.clear_prompt()
-  Path:new(fpath):rename { new_name = new_name }
+  Path:new(fpath):rename({ new_name = new_name })
 end
 
 local create_file = function(prompt_bufnr)
@@ -116,10 +116,10 @@ local create_file = function(prompt_bufnr)
 
   if not utils.is_dir(new_file) then
     actions.close(prompt_bufnr)
-    Path:new(new_file):touch { parents = true }
+    Path:new(new_file):touch({ parents = true })
     vim.cmd(string.format(":e %s", new_file))
   else
-    print "Given path not a valid file name"
+    print("Given path not a valid file name")
   end
 end
 
@@ -129,10 +129,10 @@ local yank_fpath = function()
 end
 
 M.search_dotfiles = function()
-  require("telescope.builtin").git_files {
+  require("telescope.builtin").git_files({
     prompt_title = "< VimRC >",
     cwd = "~/.config/nvim/",
-  }
+  })
 end
 
 M.find_files = function(opts)
@@ -165,18 +165,18 @@ M.find_files = function(opts)
 end
 
 M.find_dir = function()
-  local opts = themes.get_ivy {
+  local opts = themes.get_ivy({
     cwd = vim.loop.cwd(),
     find_command = { "fd", "--type", "d" },
     disable_devicons = true,
-  }
+  })
 
   opts.entry_maker = require("telescope.make_entry").gen_from_file(opts)
   opts.attach_mappings = function(prompt_bufnr, map)
     map("i", "<C-y>c", create_file)
     map("i", "<C-h>", function()
       actions.close(prompt_bufnr)
-      vim.cmd ":Ntree"
+      vim.cmd(":Ntree")
     end)
     return true
   end
@@ -190,14 +190,14 @@ M.find_dir = function()
 end
 
 M.projects = function()
-  local opts = themes.get_dropdown {
+  local opts = themes.get_dropdown({
     previewer = false,
     winblend = 5,
     layout_config = {
       width = 50,
       height = 20,
     },
-  }
+  })
   opts.attach_mappings = function(prompt_bufnr, _)
     local on_project_selected = function()
       local project_path = actions.get_selected_entry(prompt_bufnr).value
@@ -215,7 +215,7 @@ M.projects = function()
 end
 
 M.git_worktrees = function()
-  local opts = themes.get_dropdown {
+  local opts = themes.get_dropdown({
     previewer = false,
     winblend = 10,
     path_display = { "shorten" },
@@ -223,7 +223,7 @@ M.git_worktrees = function()
       width = 60,
       height = 20,
     },
-  }
+  })
 
   opts.attach_mappings = function(prompt_bufnr, _)
     local switch_and_find = function()
@@ -241,19 +241,19 @@ M.git_worktrees = function()
 end
 
 M.create_git_worktree = function()
-  local opts = themes.get_dropdown {
+  local opts = themes.get_dropdown({
     winblend = 5,
     layout_config = {
       width = 70,
       height = 40,
     },
     layout_strategy = "vertical",
-  }
+  })
   require("telescope").extensions.git_worktree.create_git_worktree(opts)
 end
 
 M.file_browser = function()
-  require("telescope.builtin").file_browser {
+  require("telescope.builtin").file_browser({
     attach_mappings = function(_, map)
       map("i", "<C-y>d", delete_file)
       map("i", "<C-y>r", rename_file)
@@ -262,18 +262,18 @@ M.file_browser = function()
 
       return true
     end,
-  }
+  })
 end
 
 M.lsp_code_actions = function()
-  local opts = themes.get_cursor {
+  local opts = themes.get_cursor({
     previewer = false,
-  }
+  })
   require("telescope.builtin").lsp_code_actions(opts)
 end
 
 M.refactor = function()
-  local refactoring = require "refactoring"
+  local refactoring = require("refactoring")
   local function refactor(prompt_bufnr)
     local content = action_state.get_selected_entry(prompt_bufnr)
     actions.close(prompt_bufnr)
@@ -283,9 +283,9 @@ M.refactor = function()
 
   pickers.new(opts, {
     prompt_title = "REFACTOR",
-    finder = finders.new_table {
+    finder = finders.new_table({
       results = refactoring.get_refactors(),
-    },
+    }),
     sorter = config.values.generic_sorter(opts),
     attach_mappings = function(_, map)
       map("i", "<CR>", refactor)
