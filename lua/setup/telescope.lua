@@ -189,7 +189,7 @@ M.refactor = function()
 end
 
 M.neoclip = function()
-  require("telescope").extensions.neoclip.default(themes.get_cursor())
+  require("telescope").extensions.neoclip.default(themes.get_ivy())
 end
 
 M.get_symbols = function(opts)

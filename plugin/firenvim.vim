@@ -28,6 +28,7 @@ endfunction
 
 function! OnUIEnter(event) abort
   if s:IsFirenvimActive(a:event)
+    set guifont=JetBrains_Mono:h14
     nnoremap <leader>slc :set guifont=JetBrains_Mono:h14<CR>
   endif
 endfunction
