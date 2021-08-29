@@ -7,11 +7,13 @@ local finders = require("telescope.finders")
 local config = require("telescope.config")
 
 local tele_utils = require("setup.telescope.tele_utils")
+local defaults = require("setup.telescope.defaults")
 
 local M = {}
 
 M.config = function()
-  require("telescope").setup(require("setup.telescope.defaults"))
+  require("telescope").setup(defaults.telescope)
+  require("neoclip").setup(defaults.neoclip)
 
   require("telescope").load_extension("fzf")
   require("telescope").load_extension("media_files")
@@ -34,8 +36,6 @@ M.find_files = function(opts)
   opts = opts or {}
   opts.cwd = opts.cwd or vim.loop.cwd()
   opts.attach_mappings = function(_, map)
-    map("i", "<C-n>", actions.move_selection_previous)
-    map("i", "<C-p>", actions.move_selection_next)
     map("i", "<C-y>d", tele_utils.delete_file)
     map("i", "<C-y>r", tele_utils.rename_file)
     map("i", "<C-y>y", tele_utils.yank_fpath)
@@ -66,6 +66,10 @@ M.find_dir = function()
 
   opts.entry_maker = require("telescope.make_entry").gen_from_file(opts)
   opts.attach_mappings = function(prompt_bufnr, map)
+    map("i", "<C-p>", actions.move_selection_previous)
+    map("i", "<C-n>", actions.move_selection_next)
+    map("n", "<C-p>", actions.move_selection_previous)
+    map("n", "<C-n>", actions.move_selection_next)
     map("i", "<C-y>c", tele_utils.create_file)
     map("i", "<C-h>", function()
       actions.close(prompt_bufnr)
@@ -91,7 +95,7 @@ M.projects = function()
       height = 20,
     },
   })
-  opts.attach_mappings = function(prompt_bufnr, _)
+  opts.attach_mappings = function(prompt_bufnr, map)
     local on_project_selected = function()
       local project_path = actions.get_selected_entry(prompt_bufnr).value
       actions.close(prompt_bufnr)
@@ -100,6 +104,11 @@ M.projects = function()
         M.git_worktrees()
       end
     end
+
+    map("i", "<C-p>", actions.move_selection_previous)
+    map("i", "<C-n>", actions.move_selection_next)
+    map("n", "<C-p>", actions.move_selection_previous)
+    map("n", "<C-n>", actions.move_selection_next)
 
     actions.select_default:replace(on_project_selected)
     return true
@@ -118,7 +127,7 @@ M.git_worktrees = function()
     },
   })
 
-  opts.attach_mappings = function(prompt_bufnr, _)
+  opts.attach_mappings = function(prompt_bufnr, map)
     local switch_and_find = function()
       local worktree_path = action_state.get_selected_entry(prompt_bufnr).path
       actions.close(prompt_bufnr)
@@ -126,6 +135,11 @@ M.git_worktrees = function()
         require("git-worktree").switch_worktree(worktree_path)
       end
     end
+
+    map("i", "<C-p>", actions.move_selection_previous)
+    map("i", "<C-n>", actions.move_selection_next)
+    map("n", "<C-p>", actions.move_selection_previous)
+    map("n", "<C-n>", actions.move_selection_next)
 
     actions.select_default:replace(switch_and_find)
     return true
@@ -142,26 +156,30 @@ M.create_git_worktree = function()
     },
     layout_strategy = "vertical",
   })
+
+  opts.attach_mappings = function(_, map)
+    map("i", "<C-p>", actions.move_selection_previous)
+    map("i", "<C-n>", actions.move_selection_next)
+    map("n", "<C-p>", actions.move_selection_previous)
+    map("n", "<C-n>", actions.move_selection_next)
+  end
+
   require("telescope").extensions.git_worktree.create_git_worktree(opts)
-end
-
-M.file_browser = function()
-  require("telescope.builtin").file_browser({
-    attach_mappings = function(_, map)
-      map("i", "<C-y>d", tele_utils.delete_file)
-      map("i", "<C-y>r", tele_utils.rename_file)
-      map("i", "<C-y>y", tele_utils.yank_fpath)
-      map("n", "yy", tele_utils.yank_fpath)
-
-      return true
-    end,
-  })
 end
 
 M.lsp_code_actions = function()
   local opts = themes.get_cursor({
     previewer = false,
   })
+
+  opts.attach_mappings = function(_, map)
+    map("i", "<C-p>", actions.move_selection_previous)
+    map("i", "<C-n>", actions.move_selection_next)
+    map("n", "<C-p>", actions.move_selection_previous)
+    map("n", "<C-n>", actions.move_selection_next)
+    return true
+  end
+
   require("telescope.builtin").lsp_code_actions(opts)
 end
 
@@ -173,6 +191,14 @@ M.refactor = function()
     refactoring.refactor(content.value)
   end
   local opts = themes.get_cursor()
+
+  opts.attach_mappings = function(_, map)
+    map("i", "<C-p>", actions.move_selection_previous)
+    map("i", "<C-n>", actions.move_selection_next)
+    map("n", "<C-p>", actions.move_selection_previous)
+    map("n", "<C-n>", actions.move_selection_next)
+    return true
+  end
 
   pickers.new(opts, {
     prompt_title = "REFACTOR",
@@ -189,7 +215,16 @@ M.refactor = function()
 end
 
 M.neoclip = function()
-  require("telescope").extensions.neoclip.default(themes.get_ivy())
+  local opts = themes.get_ivy()
+
+  opts.attach_mappings = function(_, map)
+    map("i", "<C-p>", actions.move_selection_previous)
+    map("i", "<C-n>", actions.move_selection_next)
+    map("n", "<C-p>", actions.move_selection_previous)
+    map("n", "<C-n>", actions.move_selection_next)
+    return true
+  end
+  require("telescope").extensions.neoclip.default(opts)
 end
 
 M.get_symbols = function(opts)
@@ -200,6 +235,14 @@ M.get_symbols = function(opts)
       ts_healthy = false
       break
     end
+  end
+
+  opts.attach_mappings = function(_, map)
+    map("i", "<C-p>", actions.move_selection_previous)
+    map("i", "<C-n>", actions.move_selection_next)
+    map("n", "<C-p>", actions.move_selection_previous)
+    map("n", "<C-n>", actions.move_selection_next)
+    return true
   end
 
   if ts_healthy then
