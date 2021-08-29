@@ -1,6 +1,9 @@
 local sorters = require("telescope.sorters")
+local actions = require("telescope.actions")
 
-return {
+local M = {}
+
+M.telescope = {
   defaults = {
     vimgrep_arguments = {
       "rg",
@@ -46,6 +49,16 @@ return {
     qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
     -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+    mappings = {
+      i = {
+        ["<C-p>"] = actions.move_selection_next,
+        ["<C-n>"] = actions.move_selection_previous,
+      },
+      n = {
+        ["<C-p>"] = actions.move_selection_next,
+        ["<C-n>"] = actions.move_selection_previous,
+      },
+    },
   },
   extensions = {
     fzf = {
@@ -64,3 +77,13 @@ return {
     },
   },
 }
+
+M.neoclip = {
+  default_register = "+",
+  keys = {
+    paste = "<C-y>p",
+    paste_behind = "<C-y>P",
+  },
+}
+
+return M
