@@ -142,7 +142,8 @@ end
 M.is_git_dir = function()
   local opts = { search_pattern = "git$", add_dirs = true, hidden = true, depth = 1 }
   local files = scan.scan_dir(vim.loop.cwd(), opts)
-  return #files and true or false
+  dump(files)
+  return #files > 0 and true or false
 end
 
 M.clear_prompt = function()
