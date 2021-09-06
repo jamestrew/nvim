@@ -46,14 +46,14 @@ return packer.startup({
         end, 0)
       end,
     })
-    use{
+    use({
       "neovim/nvim-lspconfig",
       after = "nvim-lspinstall",
       config = function()
         require("setup.lspconfig").config()
       end,
-    }
-    use {
+    })
+    use({
       "hrsh7th/nvim-cmp",
       config = function()
         require("setup.cmp").config()
@@ -64,12 +64,12 @@ return packer.startup({
         "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-nvim-lsp",
       },
-    }
-    use { "ray-x/lsp_signature.nvim" }
-    use { "folke/lua-dev.nvim" }
-    use { "nvim-treesitter/playground", event = "BufRead" }
-    use { "jparise/vim-graphql", event = "BufRead" }
-    use { "jose-elias-alvarez/nvim-lsp-ts-utils" }
+    })
+    use({ "ray-x/lsp_signature.nvim" })
+    use({ "folke/lua-dev.nvim" })
+    use({ "nvim-treesitter/playground", event = "BufRead" })
+    use({ "jparise/vim-graphql", event = "BufRead" })
+    use({ "jose-elias-alvarez/nvim-lsp-ts-utils" })
 
     -- Telescope & File Management
     use({
@@ -106,7 +106,7 @@ return packer.startup({
     -- })
 
     -- Editing Support
-    use{ "windwp/nvim-autopairs" }
+    use({ "windwp/nvim-autopairs" })
     -- use { "andymass/vim-matchup", event = "CursorMoved" }
     use({ "JoosepAlviste/nvim-ts-context-commentstring", event = "BufRead" })
     use({
