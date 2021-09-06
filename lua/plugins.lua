@@ -54,11 +54,16 @@ return packer.startup {
       end,
     }
     use {
-      "hrsh7th/nvim-compe",
-      event = "InsertEnter",
+      "hrsh7th/nvim-cmp",
       config = function()
-        require("setup.compe").config()
+        require("setup.cmp").config()
       end,
+      requires = {
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-nvim-lua",
+        "hrsh7th/cmp-nvim-lsp",
+      },
     }
     use { "ray-x/lsp_signature.nvim" }
     use { "folke/lua-dev.nvim" }
@@ -103,14 +108,6 @@ return packer.startup {
     -- Editing Support
     use {
       "windwp/nvim-autopairs",
-      after = "nvim-compe",
-      config = function()
-        require("nvim-autopairs").setup()
-        require("nvim-autopairs.completion.compe").setup {
-          map_cr = true,
-          map_complete = true, -- insert () func completion
-        }
-      end,
     }
     -- use { "andymass/vim-matchup", event = "CursorMoved" }
     use { "JoosepAlviste/nvim-ts-context-commentstring", event = "BufRead" }
