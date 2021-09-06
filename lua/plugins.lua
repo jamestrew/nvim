@@ -46,7 +46,7 @@ return packer.startup({
         end, 0)
       end,
     })
-    use({
+    use{
       "neovim/nvim-lspconfig",
       after = "nvim-lspinstall",
       config = function()
@@ -106,9 +106,7 @@ return packer.startup({
     -- })
 
     -- Editing Support
-    use({
-      "windwp/nvim-autopairs",
-    }
+    use{ "windwp/nvim-autopairs" }
     -- use { "andymass/vim-matchup", event = "CursorMoved" }
     use({ "JoosepAlviste/nvim-ts-context-commentstring", event = "BufRead" })
     use({
