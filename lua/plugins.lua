@@ -52,19 +52,24 @@ return packer.startup({
       config = function()
         require("setup.lspconfig").config()
       end,
-    })
-    use({
-      "hrsh7th/nvim-compe",
-      event = "InsertEnter",
+    }
+    use {
+      "hrsh7th/nvim-cmp",
       config = function()
-        require("setup.compe").config()
+        require("setup.cmp").config()
       end,
-    })
-    use({ "ray-x/lsp_signature.nvim" })
-    use({ "folke/lua-dev.nvim" })
-    use({ "nvim-treesitter/playground", event = "BufRead" })
-    use({ "jparise/vim-graphql", event = "BufRead" })
-    use({ "jose-elias-alvarez/nvim-lsp-ts-utils" })
+      requires = {
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-nvim-lua",
+        "hrsh7th/cmp-nvim-lsp",
+      },
+    }
+    use { "ray-x/lsp_signature.nvim" }
+    use { "folke/lua-dev.nvim" }
+    use { "nvim-treesitter/playground", event = "BufRead" }
+    use { "jparise/vim-graphql", event = "BufRead" }
+    use { "jose-elias-alvarez/nvim-lsp-ts-utils" }
 
     -- Telescope & File Management
     use({
@@ -103,15 +108,7 @@ return packer.startup({
     -- Editing Support
     use({
       "windwp/nvim-autopairs",
-      after = "nvim-compe",
-      config = function()
-        require("nvim-autopairs").setup()
-        require("nvim-autopairs.completion.compe").setup({
-          map_cr = true,
-          map_complete = true, -- insert () func completion
-        })
-      end,
-    })
+    }
     -- use { "andymass/vim-matchup", event = "CursorMoved" }
     use({ "JoosepAlviste/nvim-ts-context-commentstring", event = "BufRead" })
     use({

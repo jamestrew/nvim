@@ -38,13 +38,6 @@ utils.nnoremap("<leader>J", "mzJ`z")
 utils.nnoremap("<leader>/", ":CommentToggle<CR>", silent)
 utils.vnoremap("<leader>/", ":CommentToggle<CR>", silent)
 
---  compe mappings
-utils.inoremap("<C-Space>", "compe#complete()", sexpr)
-utils.inoremap("<CR>", [[compe#confirm(luaeval("require'nvim-autopairs'.autopairs_cr()")]], sexpr)
-utils.inoremap("<C-e>", "compe#close()", sexpr)
-utils.inoremap("<C-u>", "compe#scroll({ 'delta': -4 })", sexpr)
-utils.inoremap("<C-d>", "compe#scroll({ 'delta': +4 })", sexpr)
-
 -- nvim tree
 utils.nnoremap("<C-n>", ":NvimTreeToggle<CR>", silent)
 
