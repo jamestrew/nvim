@@ -53,6 +53,7 @@ return packer.startup({
         require("setup.lspconfig").config()
       end,
     })
+    use({ "L3MON4D3/LuaSnip" })
     use({
       "hrsh7th/nvim-cmp",
       config = function()
@@ -63,6 +64,7 @@ return packer.startup({
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-nvim-lsp",
+        "saadparwaiz1/cmp_luasnip",
       },
     })
     use({ "ray-x/lsp_signature.nvim" })

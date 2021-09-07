@@ -3,6 +3,11 @@ local M = {}
 M.config = function()
   local cmp = require("cmp")
   cmp.setup({
+    snippet = {
+      expand = function(args)
+        require("luasnip").lsp_expand(args.body)
+      end,
+    },
     completion = {
       completeopt = "menuone,noselect",
     },
@@ -21,6 +26,7 @@ M.config = function()
       { name = "buffer" },
       { name = "path" },
       { name = "nvim_lua" },
+      { name = "luasnip" },
     },
   })
 end
