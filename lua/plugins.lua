@@ -38,17 +38,9 @@ return packer.startup({
         require("setup.treesitter").config()
       end,
     })
-    use({
-      "kabouzeid/nvim-lspinstall",
-      setup = function()
-        vim.defer_fn(function()
-          vim.cmd("silent! e %")
-        end, 0)
-      end,
-    })
+    use({ "kabouzeid/nvim-lspinstall" })
     use({
       "neovim/nvim-lspconfig",
-      after = "nvim-lspinstall",
       config = function()
         require("setup.lspconfig").config()
       end,
