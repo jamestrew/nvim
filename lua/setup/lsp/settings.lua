@@ -66,4 +66,9 @@ M.ts_utils_setup = {
   filter_out_diagnostics_by_code = {},
 }
 
+M.sig = {
+  toggle_key = "<C-e>",
+  floating_window = false,
+}
+
 return M
