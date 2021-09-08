@@ -69,6 +69,7 @@ M.ts_utils_setup = {
 M.sig = {
   toggle_key = "<C-e>",
   floating_window = false,
+  hint_prefix = " ",
 }
 
 return M
