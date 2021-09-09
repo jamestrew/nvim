@@ -12,7 +12,6 @@ utils.vnoremap("<A-k>", ":m '<-2<CR>gv=gv", silent)
 
 -- paste/delete and keep register clean
 utils.vnoremap("<leader>p", '"_dP')
-utils.nnoremap("<leader>d", '"_d')
 utils.vnoremap("<leader>d", '"_d')
 
 -- better indenting
@@ -39,7 +38,7 @@ utils.nnoremap("<leader>/", ":CommentToggle<CR>", silent)
 utils.vnoremap("<leader>/", ":CommentToggle<CR>", silent)
 
 -- nvim tree
-utils.nnoremap("<C-n>", ":NvimTreeToggle<CR>", silent)
+-- utils.nnoremap("<C-n>", ":NvimTreeToggle<CR>", silent)
 
 -- format code
 utils.nnoremap("<Leader>fm", ":Neoformat<CR>", silent)
@@ -76,6 +75,7 @@ utils.nnoremap("<leader>tw", ":Telescope lsp_workspace_diagnostics<CR>", silent)
 utils.nnoremap("<leader>td", ":Telescope lsp_document_diagnostics<CR>", silent)
 
 -- Refactoring
+utils.nnoremap("<leader>rt", ":norm! V<CR> :lua require'setup.telescope'.refactor()<CR>", silent)
 utils.vnoremap("<leader>rt", ":lua require'setup.telescope'.refactor()<CR>", silent)
 
 -- Harpoon
