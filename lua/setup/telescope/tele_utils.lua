@@ -31,7 +31,14 @@ M.rename_file = function()
 end
 
 M.create_file = function(prompt_bufnr)
-  local fpath = action_state.get_selected_entry().value
+  local entry = action_state.get_selected_entry()
+  local fpath = ""
+  if entry == nil then
+    fpath = vim.loop.cwd()
+  else
+    fpath = entry.value
+  end
+
   local new_file = vim.fn.input("Create file: ", fpath .. "/")
   utils.clear_prompt()
 
