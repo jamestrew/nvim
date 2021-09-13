@@ -236,7 +236,6 @@ return packer.startup({
         require("setup.presence").config()
       end,
     })
-    use({ "tpope/vim-dadbod" })
     use({
       "glacambre/firenvim",
       run = function()

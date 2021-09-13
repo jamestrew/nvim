@@ -101,6 +101,3 @@ utils.nnoremap("<leader><leader>f", ":HopWord<CR>")
 
 -- undotree
 utils.nnoremap("<leader>u", ":UndotreeShow<CR>", silent)
-
--- sourcetype db dev
-utils.nnoremap("<leader>db", ":DB postgres:///sourcetype_dev")
