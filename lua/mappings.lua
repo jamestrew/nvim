@@ -104,6 +104,6 @@ utils.nnoremap("<leader>u", ":UndotreeShow<CR>", silent)
 
 -- treesitter-unit
 utils.xnoremap("iu", ":lua require('treesitter-unit').select()<CR>")
-utils.xnoremap("ia", ":lua require('treesitter-unit').select(true)<CR>")
+utils.xnoremap("au", ":lua require('treesitter-unit').select(true)<CR>")
 utils.onoremap("iu", ":<C-u>lua require('treesitter-unit').select()<CR>")
-utils.onoremap("ia", ":<C-u>lua require('treesitter-unit').select(true)<CR>")
+utils.onoremap("au", ":<C-u>lua require('treesitter-unit').select(true)<CR>")
