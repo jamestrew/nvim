@@ -59,11 +59,12 @@ return packer.startup({
         "saadparwaiz1/cmp_luasnip",
       },
     })
-    use({ "ray-x/lsp_signature.nvim" })
+    use({ "ray-x/lsp_signature.nvim", event = "BufRead" })
     use({ "folke/lua-dev.nvim" })
     use({ "nvim-treesitter/playground", event = "BufRead" })
     use({ "jparise/vim-graphql", event = "BufRead" })
-    use({ "jose-elias-alvarez/nvim-lsp-ts-utils" })
+    use({ "jose-elias-alvarez/nvim-lsp-ts-utils", event = "BufRead" })
+    use({ "David-Kunz/treesitter-unit", event = "BufRead" })
 
     -- Telescope & File Management
     use({
