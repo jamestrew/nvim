@@ -219,12 +219,12 @@ return packer.startup({
 
     -- Others
     use({ "ThePrimeagen/vim-be-good" })
-    -- use({
-    --   "kwkarlwang/bufresize.nvim",
-    --   config = function()
-    --     require("bufresize").setup()
-    --   end,
-    -- })
+    use({
+      "kwkarlwang/bufresize.nvim",
+      config = function()
+        require("bufresize").setup()
+      end,
+    })
     use({
       "folke/which-key.nvim",
       config = function()
