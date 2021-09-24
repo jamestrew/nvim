@@ -30,6 +30,8 @@ function! OnUIEnter(event) abort
   if s:IsFirenvimActive(a:event)
     set guifont=JetBrains_Mono:h12
     nnoremap <leader>slc :set guifont=JetBrains_Mono:h14<CR>
+  else
+    :lua require('bufresize').setup()
   endif
 endfunction
 autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
