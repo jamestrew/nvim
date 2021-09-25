@@ -76,8 +76,6 @@ vim.cmd([[autocmd BufEnter * setlocal formatoptions-=r formatoptions-=o]])
 
 vim.cmd("autocmd TextYankPost * silent! lua vim.highlight.on_yank {}")
 
-vim.cmd("autocmd TermOpen * startinsert")
-
 -- autoformat on save
 vim.cmd([[
     augroup fmt
