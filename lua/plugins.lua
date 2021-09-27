@@ -188,7 +188,7 @@ return packer.startup({
       "TimUntersberger/neogit",
       requires = "nvim-lua/plenary.nvim",
       config = function()
-        require("neogit").setup({})
+        require("setup.neogit").config()
       end,
     })
     use({ "ThePrimeagen/git-worktree.nvim" })

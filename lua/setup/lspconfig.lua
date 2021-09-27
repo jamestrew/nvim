@@ -1,4 +1,5 @@
 local M = {}
+local E = {}
 
 M.config = function()
   local lspconf = require("lspconfig")
