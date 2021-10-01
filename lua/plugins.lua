@@ -203,6 +203,14 @@ return packer.startup({
     })
     use({ "kyazdani42/nvim-web-devicons" })
     use({
+      "projekt0n/github-nvim-theme",
+      config = function()
+        require("github-theme").setup({
+          theme_style = "dimmed",
+        })
+      end,
+    })
+    use({
       "RRethy/vim-illuminate",
       event = "CursorHold",
       module = "illuminate",
