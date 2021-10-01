@@ -94,11 +94,6 @@ return packer.startup({
         require("setup.harpoon")
       end,
     })
-    -- local_use("jt", "harpoon/terminal", {
-    --   config = function()
-    --     require "setup.harpoon"
-    --   end,
-    -- })
 
     -- Editing Support
     use({
@@ -195,11 +190,17 @@ return packer.startup({
     -- local_use "git-worktree.nvim/telescope-opts"
 
     -- Looks
+    -- use({
+    --   "glepnir/galaxyline.nvim",
+    --   config = function()
+    --     require("setup.statusline").config()
+    --   end,
+    -- })
     use({
-      "glepnir/galaxyline.nvim",
-      -- config = function()
-      --   require("setup.statusline").config()
-      -- end,
+      "windwp/windline.nvim",
+      config = function()
+        require("wlsample.bubble2")
+      end,
     })
     use({ "kyazdani42/nvim-web-devicons" })
     use({
@@ -207,6 +208,7 @@ return packer.startup({
       config = function()
         require("github-theme").setup({
           theme_style = "dimmed",
+          keyword_style = "NONE",
         })
       end,
     })
