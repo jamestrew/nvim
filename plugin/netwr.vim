@@ -1,1 +1,1 @@
-let g:netrw_localrmdir='rm -r'
+let g:netrw_localrmdir='rm -rf'
