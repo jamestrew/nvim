@@ -197,17 +197,11 @@ return packer.startup({
     -- Looks
     use({
       "glepnir/galaxyline.nvim",
-      config = function()
-        require("setup.statusline").config()
-      end,
+      -- config = function()
+      --   require("setup.statusline").config()
+      -- end,
     })
-    use({ "siduck76/nvim-base16.lua", commit = "084440d9fcae1c759e21941147a7387586aaef61" })
-    use({
-      "kyazdani42/nvim-web-devicons",
-      config = function()
-        require("setup.icons").config()
-      end,
-    })
+    use({ "kyazdani42/nvim-web-devicons" })
     use({
       "RRethy/vim-illuminate",
       event = "CursorHold",
