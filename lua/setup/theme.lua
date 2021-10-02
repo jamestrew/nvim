@@ -507,6 +507,12 @@ M.colors = {
       light_default = "#d73a49",
     }),
   },
+
+  status_line = {
+    bg = themes({
+      dimmed = "#282e38",
+    }),
+  },
 }
 
 return M

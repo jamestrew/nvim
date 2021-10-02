@@ -41,7 +41,7 @@ M.config = function()
       end,
       highlight = { colors.bg, colors.blue },
       separator = "  ",
-      separator_highlight = { colors.blue, colors.bg2 },
+      separator_highlight = { colors.blue, colors.bg_visual },
     },
   }
 
@@ -49,7 +49,7 @@ M.config = function()
     FileIcon = {
       provider = "FileIcon",
       condition = condition.buffer_not_empty,
-      highlight = { colors.white, colors.bg2 },
+      highlight = { colors.brightWhite, colors.bg_visual },
     },
   }
 
@@ -57,9 +57,9 @@ M.config = function()
     FileName = {
       provider = { "FileName" },
       condition = condition.buffer_not_empty,
-      highlight = { colors.white, colors.bg2 },
+      highlight = { colors.brightWhite, colors.bg_visual },
       separator = " ",
-      separator_highlight = { colors.bg2, colors.bg_visual },
+      separator_highlight = { colors.bg_visual, colors.bg2 },
     },
   }
 
@@ -69,9 +69,9 @@ M.config = function()
         local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
         return "  " .. dir_name .. " "
       end,
-      highlight = { colors.fg, colors.bg_visual },
+      highlight = { colors.fg, colors.bg2 },
       separator = " ",
-      separator_highlight = { colors.bg_visual, colors.bg },
+      separator_highlight = { colors.bg2, colors.status_line.bg },
     },
   }
 
@@ -88,7 +88,7 @@ M.config = function()
       provider = "DiffAdd",
       condition = checkwidth,
       icon = "  ",
-      highlight = { colors.white, colors.bg },
+      highlight = { colors.git.add, colors.status_line.bg },
     },
   }
 
@@ -97,7 +97,7 @@ M.config = function()
       provider = "DiffModified",
       condition = checkwidth,
       icon = "  ",
-      highlight = { colors.fg, colors.bg },
+      highlight = { colors.git.change, colors.status_line.bg },
     },
   }
 
@@ -106,7 +106,7 @@ M.config = function()
       provider = "DiffRemove",
       condition = checkwidth,
       icon = "  ",
-      highlight = { colors.fg, colors.bg },
+      highlight = { colors.git.delete, colors.status_line.bg },
     },
   }
 
@@ -114,7 +114,7 @@ M.config = function()
     DiagnosticError = {
       provider = "DiagnosticError",
       icon = "  ",
-      highlight = { colors.red, colors.bg },
+      highlight = { colors.error, colors.status_line.bg },
     },
   }
 
@@ -122,7 +122,7 @@ M.config = function()
     DiagnosticWarn = {
       provider = "DiagnosticWarn",
       icon = "  ",
-      highlight = { colors.yellow, colors.bg },
+      highlight = { colors.warning, colors.status_line.bg },
     },
   }
 
@@ -130,7 +130,7 @@ M.config = function()
     DiagnosticInfo = {
       provider = "DiagnosticInfo",
       icon = "  ",
-      highlight = { colors.green, colors.bg },
+      highlight = { colors.info, colors.status_line.bg },
     },
   }
 
@@ -138,7 +138,7 @@ M.config = function()
     DiagnosticHint = {
       provider = "DiagnosticHint",
       icon = "  ",
-      highlight = { colors.magenta, colors.bg },
+      highlight = { colors.hint, colors.status_line.bg },
     },
   }
 
@@ -152,7 +152,7 @@ M.config = function()
         end
       end,
       event = "BufEnter",
-      highlight = { colors.fg, colors.bg },
+      highlight = { colors.fg, colors.status_line.bg },
     },
   }
 
@@ -166,7 +166,7 @@ M.config = function()
           return ""
         end
       end,
-      highlight = { colors.fg, colors.bg },
+      highlight = { colors.fg, colors.status_line.bg },
     },
   }
 
@@ -176,9 +176,9 @@ M.config = function()
         return " "
       end,
       condition = require("galaxyline.condition").check_git_workspace,
-      highlight = { colors.fg, colors.bg },
+      highlight = { colors.fg, colors.status_line.bg },
       separator = " ",
-      separator_highlight = { colors.bg, colors.bg },
+      separator_highlight = { colors.status_line.bg, colors.status_line.bg },
     },
   }
 
@@ -186,7 +186,7 @@ M.config = function()
     GitBranch = {
       provider = "GitBranch",
       condition = require("galaxyline.condition").check_git_workspace,
-      highlight = { colors.fg, colors.bg },
+      highlight = { colors.fg, colors.status_line.bg },
     },
   }
 
@@ -213,7 +213,7 @@ M.config = function()
         end
       end,
       event = "BufWritePost",
-      highlight = { colors.fg, colors.bg },
+      highlight = { colors.fg, colors.status_line.bg },
     },
   }
 
