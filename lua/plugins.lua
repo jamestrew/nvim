@@ -190,18 +190,18 @@ return packer.startup({
     -- local_use "git-worktree.nvim/telescope-opts"
 
     -- Looks
-    -- use({
-    --   "glepnir/galaxyline.nvim",
-    --   config = function()
-    --     require("setup.statusline").config()
-    --   end,
-    -- })
     use({
-      "windwp/windline.nvim",
+      "glepnir/galaxyline.nvim",
       config = function()
-        require("wlsample.bubble2")
+        require("setup.statusline").config()
       end,
     })
+    -- use({
+    --   "windwp/windline.nvim",
+    --   config = function()
+    --     require("wlsample.bubble2")
+    --   end,
+    -- })
     use({ "kyazdani42/nvim-web-devicons" })
     use({
       "projekt0n/github-nvim-theme",
