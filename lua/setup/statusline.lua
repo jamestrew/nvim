@@ -1,5 +1,23 @@
 local M = {}
 local utils = require("utils")
+local colors = require("themes.onedark").colors
+
+local mode_color = function()
+  local mode_colors = {
+    n = colors.nord_blue,
+    i = colors.green,
+    c = colors.white,
+    V = colors.blue,
+    [""] = colors.blue,
+    v = colors.blue,
+    R = colors.teal,
+  }
+  local color = mode_colors[vim.fn.mode()]
+  if color == nil then
+    color = colors.red
+  end
+  return color
+end
 
 M.config = function()
   local gl = require("galaxyline")
@@ -8,14 +26,14 @@ M.config = function()
 
   gl.short_line_list = { " " }
 
-  local colors = require("themes.onedark").colors
-
   gls.left[1] = {
-    FirstElement = {
+    ViModeSeparator1 = {
       provider = function()
+        vim.cmd("hi GalaxyViModeSeparator1 guifg=" .. mode_color())
+        vim.cmd("hi GalaxyViModeSeparator1 guibg=" .. mode_color())
         return "▋"
       end,
-      highlight = { colors.nord_blue, colors.nord_blue },
+      highlight = { colors.nord_blue, colors.statusline_bg },
     },
   }
 
@@ -31,21 +49,30 @@ M.config = function()
           v = "Visual",
           R = "Replace",
         }
-        local current_Mode = alias[vim.fn.mode()]
+        local current_mode = alias[vim.fn.mode()]
+        vim.cmd("hi GalaxyViMode guibg=" .. mode_color())
 
-        if current_Mode == nil then
-          return "  Terminal "
+        if current_mode == nil then
+          return " Terminal "
         else
-          return "  " .. current_Mode .. " "
+          return " " .. current_mode .. " "
         end
       end,
       highlight = { colors.statusline_bg, colors.nord_blue },
-      separator = "  ",
-      separator_highlight = { colors.nord_blue, colors.lightbg },
     },
   }
 
   gls.left[3] = {
+    ViModeSeparator2 = {
+      provider = function()
+        vim.cmd("hi GalaxyViModeSeparator2 guifg=" .. mode_color())
+        return "  "
+      end,
+      highlight = { colors.statusline_bg, colors.lightbg },
+    },
+  }
+
+  gls.left[4] = {
     FileIcon = {
       provider = "FileIcon",
       condition = condition.buffer_not_empty,
@@ -53,7 +80,7 @@ M.config = function()
     },
   }
 
-  gls.left[4] = {
+  gls.left[5] = {
     FileName = {
       provider = { "FileName" },
       condition = condition.buffer_not_empty,
@@ -63,7 +90,7 @@ M.config = function()
     },
   }
 
-  gls.left[5] = {
+  gls.left[6] = {
     current_dir = {
       provider = function()
         local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
@@ -83,7 +110,7 @@ M.config = function()
     return false
   end
 
-  gls.left[6] = {
+  gls.left[7] = {
     DiffAdd = {
       provider = "DiffAdd",
       condition = checkwidth,
@@ -92,7 +119,7 @@ M.config = function()
     },
   }
 
-  gls.left[7] = {
+  gls.left[8] = {
     DiffModified = {
       provider = "DiffModified",
       condition = checkwidth,
@@ -101,7 +128,7 @@ M.config = function()
     },
   }
 
-  gls.left[8] = {
+  gls.left[9] = {
     DiffRemove = {
       provider = "DiffRemove",
       condition = checkwidth,
@@ -110,7 +137,7 @@ M.config = function()
     },
   }
 
-  gls.left[9] = {
+  gls.left[10] = {
     DiagnosticError = {
       provider = "DiagnosticError",
       icon = "  ",
@@ -118,7 +145,7 @@ M.config = function()
     },
   }
 
-  gls.left[10] = {
+  gls.left[11] = {
     DiagnosticWarn = {
       provider = "DiagnosticWarn",
       icon = "  ",
@@ -126,7 +153,7 @@ M.config = function()
     },
   }
 
-  gls.left[11] = {
+  gls.left[12] = {
     DiagnosticInfo = {
       provider = "DiagnosticInfo",
       icon = "  ",
@@ -134,7 +161,7 @@ M.config = function()
     },
   }
 
-  gls.left[12] = {
+  gls.left[13] = {
     DiagnosticHint = {
       provider = "DiagnosticHint",
       icon = "  ",
