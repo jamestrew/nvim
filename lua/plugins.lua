@@ -192,16 +192,15 @@ return packer.startup({
     -- Looks
     use({
       "glepnir/galaxyline.nvim",
-      config = function()
-        require("setup.statusline").config()
-      end,
+      -- config = function()
+      --   require("setup.statusline").config()
+      -- end,
     })
     use({ "kyazdani42/nvim-web-devicons" })
     use({
-      "Th3Whit3Wolf/onebuddy",
-      requires = "tjdevries/colorbuddy.vim",
+      "tjdevries/colorbuddy.vim",
       config = function()
-        require("colorbuddy").colorscheme("onebuddy")
+        require("setup.theme")
       end,
     })
     use({

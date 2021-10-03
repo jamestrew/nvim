@@ -1,518 +1,329 @@
-local M = {}
+local theme = require("themes.onedark")
 
-local theme = "dimmed"
+local Color, colors, Group, groups, styles = require("colorbuddy").setup()
+local bold = styles.bold
+local italics = styles.italic
+local inverse = styles.inverse
+local undercurl = styles.undercurl
+local underline = styles.underline
+local reverse = styles.reverse
+local standout = styles.standout
+local none = styles.NONE
+local v = vim
 
-local themes = function(options)
-  return options[theme]
-end
+v.g.colors_name = theme.name
 
-M.config = function()
-  local github = require("github-theme")
-  github.setup({
-    theme_style = theme,
-    keyword_style = "NONE",
-    dark_float = true,
-  })
-end
+Color.new("white", "#abb2bf")
+Color.new("darker_black", "#1b1f27")
+Color.new("black", "#1e222a")
+Color.new("black2", "#252931")
+Color.new("one_bg", "#282c34")
+Color.new("one_bg2", "#353b45")
+Color.new("one_bg3", "#30343c")
+Color.new("grey", "#42464e")
+Color.new("grey_fg", "#565c64")
+Color.new("grey_fg2", "#6f737b")
+Color.new("light_grey", "#6f737b")
+Color.new("red", "#d47d85")
+Color.new("baby_pink", "#DE8C92")
+Color.new("pink", "#ff75a0")
+Color.new("line", "#2a2e36")
+Color.new("green", "#A3BE8C")
+Color.new("vibrant_green", "#7eca9c")
+Color.new("nord_blue", "#81A1C1")
+Color.new("blue", "#61afef")
+Color.new("yellow", "#e7c787")
+Color.new("sun", "#EBCB8B")
+Color.new("purple", "#b4bbc8")
+Color.new("dark_purple", "#c882e7")
+Color.new("teal", "#519ABA")
+Color.new("orange", "#fca2aa")
+Color.new("cyan", "#a3b8ef")
+Color.new("statusline_bg", "#22262e")
+Color.new("lightbg", "#2d3139")
+Color.new("lightbg2", "#262a32")
 
-M.colors = {
-  none = "NONE",
+-- base16
+Color.new("base00", "#1e222a")
+Color.new("base01", "#353b45")
+Color.new("base02", "#3e4451")
+Color.new("base03", "#545862")
+Color.new("base04", "#565c64")
+Color.new("base05", "#abb2bf")
+Color.new("base06", "#b6bdca")
+Color.new("base07", "#c8ccd4")
+Color.new("base08", "#e06c75")
+Color.new("base09", "#d19a66")
+Color.new("base0A", "#e5c07b")
+Color.new("base0B", "#98c379")
+Color.new("base0C", "#56b6c2")
+Color.new("base0D", "#61afef")
+Color.new("base0E", "#c678dd")
+Color.new("base0F", "#be5046")
 
-  -- Terminal Colors
-  fg_dark = themes({
-    dark = "#666666",
-    dimmed = "#636e7b",
-    light = "#666666",
-    dark_default = "#4d5566",
-    light_default = "#424242",
-  }),
-  term_fg = themes({
-    dark = "#d1d5da",
-    dimmed = "#768390",
-    light = "#586069",
-    dark_default = "#b3b1ad",
-    light_default = "#4d5566",
-  }),
-  orange = "#d18616",
-  black = themes({
-    dark = "#24292e",
-    dimmed = "#22272e",
-    light = "#697179",
-    dark_default = "#484f58",
-    light_default = "#24292e",
-  }),
-  brightBlack = themes({
-    dark = "#666666",
-    dimmed = "#636e7b",
-    light = "#666666",
-    dark_default = "#6e7681",
-    light_default = "#586069",
-  }),
-  white = themes({
-    dark = "#b1bac4",
-    dimmed = "#909dab",
-    light = "#e1e4e8",
-    dark_default = "#b1bac4",
-    light_default = "#6a737d",
-  }),
-  brightWhite = themes({
-    dark = "#e5e5e5",
-    dimmed = "#cdd9e5",
-    light = "#a5a5a5",
-    dark_default = "#f0f6fc",
-    light_default = "#959da5",
-  }),
-  red = themes({
-    dark = "#f14c4c",
-    dimmed = "#ff938a",
-    light = "#d03d3d",
-    dark_default = "#ff7b72",
-    light_default = "#d73a49",
-  }),
-  brightRed = themes({
-    dark = "#f14c4c",
-    dimmed = "#ff938a",
-    light = "#cd3131",
-    dark_default = "#ffa198",
-    light_default = "#cb2431",
-  }),
-  green = themes({
-    dark = "#23d18b",
-    dimmed = "#6bc46d",
-    light = "#14ce14",
-    dark_default = "#3fb950",
-    light_default = "#22863a",
-  }),
-  brightGreen = themes({
-    dark = "#23d18b",
-    dimmed = "#6bc46d",
-    light = "#14ce14",
-    dark_default = "#56d364",
-    light_default = "#28a745",
-  }),
-  yellow = themes({
-    dark = "#e2e210",
-    dimmed = "#c69026",
-    light = "#949800",
-    dark_default = "#d29922",
-    light_default = "#b08800",
-  }),
-  brightYellow = themes({
-    dark = "#f5f543",
-    dimmed = "#daaa3f",
-    light = "#b5ba00",
-    dark_default = "#e3b341",
-    light_default = "#dbab09",
-  }),
-  blue = themes({
-    dark = "#3b8eea",
-    dimmed = "#6cb6ff",
-    light = "#0451a5",
-    dark_default = "#58a6ff",
-    light_default = "#0366d6",
-  }),
-  brightBlue = themes({
-    dark = "#3b8eea",
-    dimmed = "#6cb6ff",
-    light = "#0451a5",
-    dark_default = "#79c0ff",
-    light_default = "#2188ff",
-  }),
-  magenta = themes({
-    dark = "#bc3fbc",
-    dimmed = "#b083f0",
-    light = "#bc05bc",
-    dark_default = "#bc8cff",
-    light_default = "#6f42c1",
-  }),
-  brightMagenta = themes({
-    dark = "#d670d6",
-    dimmed = "#dcbdfb",
-    light = "#bc05bc",
-    dark_default = "#d2a8ff",
-    light_default = "#8a63d2",
-  }),
-  cyan = themes({
-    dark = "#29b7da",
-    dimmed = "#56d4dd",
-    light = "#0598bc",
-    dark_default = "#39c5cf",
-    light_default = "#1b7c83",
-  }),
-  brightCyan = themes({
-    dark = "#29b8db",
-    dimmed = "#56d4dd",
-    light = "#0598bc",
-    dark_default = "#56d4dd",
-    light_default = "#3192aa",
-  }),
+-- Vim editor colors
+Group.new("Normal", colors.base05, colors.one_bg, none)
+Group.new("Bold", colors.none, colors.none, bold)
+Group.new("Debug", colors.base08, colors.none, none)
+Group.new("Directory", colors.base0D, colors.none, none)
+Group.new("Error", colors.base00, colors.base08, none)
+Group.new("ErrorMsg", colors.base08, colors.base00, none)
+Group.new("Exception", colors.base08, colors.none, none)
+Group.new("FoldColumn", colors.base0C, colors.base01, none)
+Group.new("Folded", colors.base03, colors.base01, none)
+Group.new("IncSearch", colors.base01, colors.base09, none)
+Group.new("Italic", colors.none, colors.none, italics)
+Group.new("Macro", colors.base08, colors.none, none)
+Group.new("MatchParen", colors.none, colors.base03, none)
+Group.new("ModeMsg", colors.base0B, colors.none, none)
+Group.new("MoreMsg", colors.base0B, colors.none, none)
+Group.new("Question", colors.base0D, colors.none, none)
+Group.new("Search", colors.base01, colors.base0A, none)
+Group.new("Substitute", colors.base01, colors.base0A, none)
+Group.new("SpecialKey", colors.base03, colors.none, none)
+Group.new("TooLong", colors.base08, colors.none, none)
+Group.new("Underlined", colors.base08, colors.none, none)
+Group.new("Visual", colors.none, colors.base02, none)
+Group.new("VisualNOS", colors.base08, colors.none, none)
+Group.new("WarningMsg", colors.base08, colors.none, none)
+Group.new("WildMenu", colors.base08, colors.base0A, none)
+Group.new("Title", colors.base0D, colors.none, none)
+Group.new("Conceal", colors.base0D, colors.base00, none)
+Group.new("Cursor", colors.base00, colors.base05, none)
+Group.new("NonText", colors.base03, colors.none, none)
+Group.new("LineNr", colors.base03, colors.one_bg, none)
+Group.new("SignColumn", colors.base03, colors.one_bg, none)
+Group.new("StatusLine", colors.base04, colors.base02, none)
+Group.new("StatusLineNC", colors.base03, colors.one_bg, none)
+Group.new("VertSplit", colors.base02, colors.one_bg, none)
+Group.new("ColorColumn", colors.none, colors.base01, none)
+Group.new("CursorColumn", colors.none, colors.base01, none)
+Group.new("CursorLine", colors.none, colors.base01, none)
+Group.new("CursorLineNr", colors.base04, colors.one_bg, none)
+Group.new("QuickFixLine", colors.none, colors.base01, none)
+Group.new("PMenu", colors.base05, colors.base01, none)
+Group.new("PMenuSel", colors.base01, colors.base05, none)
+Group.new("TabLine", colors.base03, colors.base01, none)
+Group.new("TabLineFill", colors.base03, colors.base01, none)
+Group.new("TabLineSel", colors.base0B, colors.base01, none)
 
-  -- basic
-  bg = themes({
-    dark = "#24292e",
-    dimmed = "#22272e",
-    light = "#ffffff",
-    dark_default = "#0d1117",
-    light_default = "#ffffff",
-  }),
-  bg2 = themes({
-    dark = "#1f2428",
-    dimmed = "#1e2228",
-    light = "#f6f8fa",
-    dark_default = "#090c10",
-    light_default = "#f6f8fa",
-  }),
+-- Standard syntax Group.newing
+Group.new("Boolean", colors.base09, colors.none, none)
+Group.new("Character", colors.base08, colors.none, none)
+Group.new("Comment", colors.base03, colors.none, none)
+Group.new("Conditional", colors.base0E, colors.none, none)
+Group.new("Constant", colors.base09, colors.none, none)
+Group.new("Define", colors.base0E, colors.none, none)
+Group.new("Delimiter", colors.base0F, colors.none, none)
+Group.new("Float", colors.base09, colors.none, none)
+Group.new("Function", colors.base0D, colors.none, none)
+Group.new("Identifier", colors.base08, colors.none, none)
+Group.new("Include", colors.base0D, colors.none, none)
+Group.new("Keyword", colors.base0E, colors.none, none)
+Group.new("Label", colors.base0A, colors.none, none)
+Group.new("Number", colors.base09, colors.none, none)
+Group.new("Operator", colors.base05, colors.none, none)
+Group.new("PreProc", colors.base0A, colors.none, none)
+Group.new("Repeat", colors.base0A, colors.none, none)
+Group.new("Special", colors.base0C, colors.none, none)
+Group.new("SpecialChar", colors.base0F, colors.none, none)
+Group.new("Statement", colors.base08, colors.none, none)
+Group.new("StorageClass", colors.base0A, colors.none, none)
+Group.new("String", colors.base0B, colors.none, none)
+Group.new("Structure", colors.base0E, colors.none, none)
+Group.new("Tag", colors.base0A, colors.none, none)
+Group.new("Todo", colors.base0A, colors.base01, none)
+Group.new("Type", colors.base0A, colors.none, none)
+Group.new("Typedef", colors.base0A, colors.none, none)
 
-  bg_visual = themes({
-    dark = "#444c56",
-    dimmed = "#444c56",
-    light = "#e1e4e8",
-    dark_default = "#b3b1ad",
-    light_default = "#e1e4e8",
-  }),
-  bg_visual_selection = themes({
-    dark = "#284566",
-    dimmed = "#264466",
-    light = "#dbe9f9",
-    dark_default = "#163356",
-    light_default = "#dbe9f9",
-  }),
-  bg_highlight = themes({
-    dark = "#2c313a",
-    dimmed = "#2d333b",
-    light = "#f6f8fa",
-    dark_default = "#161b22",
-    light_default = "#fafbfc",
-  }),
+---
+-- Extra definitions
+---
 
-  border = themes({
-    dark = "#c9d1d9",
-    dimmed = "#444c56",
-    light = "#044289",
-    dark_default = "#b3b1ad",
-    light_default = "#044289",
-  }),
+-- C Group.newing
+Group.new("cOperator", colors.base0C, colors.none, none)
+Group.new("cPreCondit", colors.base0E, colors.none, none)
 
-  fg = themes({
-    dark = "#c9d1d9",
-    dimmed = "#adbac7",
-    light = "#24292e",
-    dark_default = "#c9d1d9",
-    light_default = "#24292e",
-  }),
+-- C# Group.newing
+Group.new("csClass", colors.base0A, colors.none, none)
+Group.new("csAttribute", colors.base0A, colors.none, none)
+Group.new("csModifier", colors.base0E, colors.none, none)
+Group.new("csType", colors.base08, colors.none, none)
+Group.new("csUnspecifiedStatement", colors.base0D, colors.none, none)
+Group.new("csContextualStatement", colors.base0E, colors.none, none)
+Group.new("csNewDecleration", colors.base08, colors.none, none)
 
-  fg_light = themes({
-    dark = "#d1d5da",
-    dimmed = "#adbac7",
-    light = "#586069",
-    dark_default = "#b3b1ad",
-    light_default = "#24292e",
-  }),
-  fg_gutter = themes({
-    dark = "#e1e4e8",
-    dimmed = "#768390",
-    light = "#babbbd",
-    dark_default = "#c5c5c5",
-    light_default = "#24292e",
-  }),
+-- CSS Group.newing
+Group.new("cssBraces", colors.base05, colors.none, none)
+Group.new("cssClassName", colors.base0E, colors.none, none)
+Group.new("cssColor", colors.base0C, colors.none, none)
 
-  -- cursor
-  cursor = themes({
-    dark = "#c8e1ff",
-    dimmed = "#6cb6ff",
-    light = "#044289",
-    dark_default = "#73b7f2",
-    light_default = "#044289",
-  }),
+-- Diff Group.newing
+Group.new("DiffAdd", colors.base0B, colors.base01, none)
+Group.new("DiffChange", colors.base03, colors.base01, none)
+Group.new("DiffDelete", colors.base08, colors.base01, none)
+Group.new("DiffText", colors.base0D, colors.base01, none)
+Group.new("DiffAdded", colors.base0B, colors.base00, none)
+Group.new("DiffFile", colors.base08, colors.base00, none)
+Group.new("DiffNewFile", colors.base0B, colors.base00, none)
+Group.new("DiffLine", colors.base0D, colors.base00, none)
+Group.new("DiffRemoved", colors.base08, colors.base00, none)
 
-  line_nr = themes({
-    dark = "#444d56",
-    dimmed = "#768390",
-    light = "#babbbd",
-    dark_default = "#8b949e",
-    light_default = "#959da5",
-  }),
-  cursor_line_nr = themes({
-    dark = "#e1e4e8",
-    dimmed = "#adbac7",
-    light = "#24292e",
-    dark_default = "#c9d1d9",
-    light_default = "#24292e",
-  }),
+-- Git Group.newing
+Group.new("gitcommitOverflow", colors.base08, colors.none, none)
+Group.new("gitcommitSummary", colors.base0B, colors.none, none)
+Group.new("gitcommitComment", colors.base03, colors.none, none)
+Group.new("gitcommitUntracked", colors.base03, colors.none, none)
+Group.new("gitcommitDiscarded", colors.base03, colors.none, none)
+Group.new("gitcommitSelected", colors.base03, colors.none, none)
+Group.new("gitcommitHeader", colors.base0E, colors.none, none)
+Group.new("gitcommitSelectedType", colors.base0D, colors.none, none)
+Group.new("gitcommitUnmergedType", colors.base0D, colors.none, none)
+Group.new("gitcommitDiscardedType", colors.base0D, colors.none, none)
+Group.new("gitcommitBranch", colors.base09, colors.none, bold)
+Group.new("gitcommitUntrackedFile", colors.base0A, colors.none, none)
+Group.new("gitcommitUnmergedFile", colors.base08, colors.none, bold)
+Group.new("gitcommitDiscardedFile", colors.base08, colors.none, bold)
+Group.new("gitcommitSelectedFile", colors.base0B, colors.none, bold)
 
-  bg_search = themes({
-    dark = "#404030",
-    dimmed = "#3f3e30",
-    light = "#fff2be",
-    dark_default = "#2c2b1c",
-    light_default = "#fff2be",
-  }),
+-- GitGutter Group.newing
+Group.new("GitGutterAdd", colors.base0B, colors.base01, none)
+Group.new("GitGutterChange", colors.base0D, colors.base01, none)
+Group.new("GitGutterDelete", colors.base08, colors.base01, none)
+Group.new("GitGutterChangeDelete", colors.base0E, colors.base01, none)
 
-  -- lsp
-  error = themes({
-    dark = "#f97583",
-    dimmed = "#e5534b",
-    light = "#cb2431",
-    dark_default = "#f85149",
-    light_default = "#cb2431",
-  }),
-  warning = themes({
-    dark = "#cca700",
-    dimmed = "#cca700",
-    light = "#bf8803",
-    dark_default = "#f0883e",
-    light_default = "#bf8803",
-  }),
-  info = "#75beff",
-  hint = themes({
-    dark = "#eeeeb3",
-    dimmed = "#eeeeb3",
-    light = "#6c6c6c",
-    dark_default = "#eeeeb3",
-    light_default = "#6c6c6c",
-  }),
+-- HTML Group.newing
+Group.new("htmlBold", colors.base0A, colors.none, none)
+Group.new("htmlItalic", colors.base0E, colors.none, none)
+Group.new("htmlEndTag", colors.base05, colors.none, none)
+Group.new("htmlTag", colors.base05, colors.none, none)
 
-  lsp = {
-    referenceText = themes({
-      dark = "#265459",
-      dimmed = "#28575d",
-      light = "#c6eed2",
-      dark_default = "#164449",
-      light_default = "#ccf3d5",
-    }),
-  },
+-- JavaScript Group.newing
+Group.new("javaScript", colors.base05, colors.none, none)
+Group.new("javaScriptBraces", colors.base05, colors.none, none)
+Group.new("javaScriptNumber", colors.base09, colors.none, none)
+-- pangloss/vim-javascript Group.newing
+Group.new("jsOperator", colors.base0D, colors.none, none)
+Group.new("jsStatement", colors.base0E, colors.none, none)
+Group.new("jsReturn", colors.base0E, colors.none, none)
+Group.new("jsThis", colors.base08, colors.none, none)
+Group.new("jsClassDefinition", colors.base0A, colors.none, none)
+Group.new("jsFunction", colors.base0E, colors.none, none)
+Group.new("jsFuncName", colors.base0D, colors.none, none)
+Group.new("jsFuncCall", colors.base0D, colors.none, none)
+Group.new("jsClassFuncName", colors.base0D, colors.none, none)
+Group.new("jsClassMethodType", colors.base0E, colors.none, none)
+Group.new("jsRegexpString", colors.base0C, colors.none, none)
+Group.new("jsGlobalObjects", colors.base0A, colors.none, none)
+Group.new("jsGlobalNodeObjects", colors.base0A, colors.none, none)
+Group.new("jsExceptions", colors.base0A, colors.none, none)
+Group.new("jsBuiltins", colors.base0A, colors.none, none)
 
-  syntax = {
-    comment = themes({
-      dark = "#6a737d",
-      dimmed = "#768390",
-      light = "#6a737d",
-      dark_default = "#8b949e",
-      light_default = "#6a737d",
-    }),
-    constant = themes({
-      dark = "#79b8ff",
-      dimmed = "#6cb6ff",
-      light = "#005cc5",
-      dark_default = "#79c0ff",
-      light_default = "#005cc5",
-    }),
-    string = themes({
-      dark = "#9ecbff",
-      dimmed = "#96d0ff",
-      light = "#032f62",
-      dark_default = "#A5D6FF",
-      light_default = "#032f62",
-    }),
-    variable = themes({
-      dark = "#79b8ff",
-      dimmed = "#6cb6ff",
-      light = "#005cc5",
-      dark_default = "#FFA657",
-      light_default = "#e36209",
-    }),
-    keyword = themes({
-      dark = "#f97583",
-      dimmed = "#f47067",
-      light = "#d73a49",
-      dark_default = "#ff7b72",
-      light_default = "#d73a49",
-    }),
-    func = themes({
-      dark = "#b392f0",
-      dimmed = "#dcbdfb",
-      light = "#6f42c1",
-      dark_default = "#d2a8ff",
-      light_default = "#6f42c1",
-    }),
-    func_param = themes({
-      dark = "#e1e4e8",
-      dimmed = "#adbac7",
-      light = "#24292e",
-      dark_default = "#c9d1d9",
-      light_default = "#24292e",
-    }),
-    match_paren_bg = themes({
-      dark = "#25686c",
-      dimmed = "#266a70",
-      light = "#c6eed2",
-      dark_default = "#105357",
-      light_default = "#ccf3d5",
-    }),
-    tag = themes({
-      dark = "#85e89d",
-      dimmed = "#8ddb8c",
-      light = "#22863a",
-      dark_default = "#7ee787",
-      light_default = "#22863a",
-    }),
-    html_arg = themes({
-      dark = "#fdaeb7",
-      dimmed = "#ff938a",
-      light = "#b31d28",
-      dark_default = "#ff7b72",
-      light_default = "#b31d28",
-    }),
-    param = themes({
-      dark = "#ffab70",
-      dimmed = "#f69d50",
-      light = "#e36209",
-      dark_default = "#ffa657",
-      light_default = "#e36209",
-    }),
-    json_label = themes({
-      dark = "#79b8ff",
-      dimmed = "#6cb6ff",
-      light = "#005cc5",
-      dark_default = "#79c0ff",
-      light_default = "#005cc5",
-    }),
-  },
+-- Mail Group.newing
+Group.new("mailQuoted1", colors.base0A, colors.none, none)
+Group.new("mailQuoted2", colors.base0B, colors.none, none)
+Group.new("mailQuoted3", colors.base0E, colors.none, none)
+Group.new("mailQuoted4", colors.base0C, colors.none, none)
+Group.new("mailQuoted5", colors.base0D, colors.none, none)
+Group.new("mailQuoted6", colors.base0A, colors.none, none)
+Group.new("mailURL", colors.base0D, colors.none, none)
+Group.new("mailEmail", colors.base0D, colors.none, none)
 
-  -- auto complication
-  pmenu = {
-    bg = themes({
-      dark = "#1f2428",
-      dimmed = "#323941",
-      light = "#f6f8fa",
-      dark_default = "#1c2128",
-      light_default = "#fafbfc",
-    }),
-    select = themes({
-      dark = "#044289",
-      dimmed = "#373e47",
-      light = "#cce5ff",
-      dark_default = "#39414a",
-      light_default = "#e2e5e9",
-    }),
-    sbar = themes({
-      dark = "#32383e",
-      dimmed = "#363b44",
-      light = "#f0f1f3",
-      dark_default = "#31373d",
-      light_default = "#e7e9eb",
-    }),
-  },
+-- Markdown Group.newing
+Group.new("markdownCode", colors.base0B, colors.none, none)
+Group.new("markdownError", colors.base05, colors.base00, none)
+Group.new("markdownCodeBlock", colors.base0B, colors.none, none)
+Group.new("markdownHeadingDelimiter", colors.base0D, colors.none, none)
 
-  git = {
-    add = themes({
-      dark = "#34d058",
-      dimmed = "#6bc46d",
-      light = "#28a745",
-      dark_default = "#56d364",
-      light_default = "#22863a",
-    }),
-    change = themes({
-      dark = "#e2c08d",
-      dimmed = "#daaa3f",
-      light = "#895503",
-      dark_default = "#ac8934",
-      light_default = "#b08800",
-    }),
-    delete = themes({
-      dark = "#ea4a5a",
-      dimmed = "#b34642",
-      light = "#d73a49",
-      dark_default = "#f85149",
-      light_default = "#cb2431",
-    }),
-    conflict = themes({
-      dark = "#ffab70",
-      dimmed = "#daaa3f",
-      light = "#e36209",
-      dark_default = "#e3b341",
-      light_default = "#b08800",
-    }),
-    ignore = themes({
-      dark = "#6a737d",
-      dimmed = "#545d68",
-      light = "#959da5",
-      dark_default = "#484f58",
-      light_default = "#959da5",
-    }),
-    renamed = themes({
-      dark = "#73c991",
-      dimmed = "#73c991",
-      light = "#007100",
-      dark_default = "#73c991",
-      light_default = "#007100",
-    }),
-  },
+-- PHP Group.newing
+Group.new("phpMemberSelector", colors.base05, colors.none, none)
+Group.new("phpComparison", colors.base05, colors.none, none)
+Group.new("phpParent", colors.base05, colors.none, none)
+Group.new("phpMethodsVar", colors.base0C, colors.none, none)
 
-  diff = {
-    add = themes({
-      dark = "#244032",
-      dimmed = "#293d34",
-      light = "#d4f8db",
-      dark_default = "#244032",
-      light_default = "#d4f8db",
-    }),
-    add_fg = themes({
-      dark = "#56d364",
-      dimmed = "#6bc46d",
-      light = "#22863a",
-      dark_default = "#56d364",
-      light_default = "#22863a",
-    }),
-    change = themes({
-      dark = "#341a00",
-      dimmed = "#452700",
-      light = "#fff5b1",
-      dark_default = "#341a00",
-      light_default = "#fff5b1",
-    }),
-    change_fg = themes({
-      dark = "#e3b341",
-      dimmed = "#daaa3f",
-      light = "#b08800",
-      dark_default = "#e3b341",
-      light_default = "#b08800",
-    }),
-    delete = themes({
-      dark = "#462c32",
-      dimmed = "#432b30",
-      light = "#fae5e7",
-      dark_default = "#462c32",
-      light_default = "#fae5e7",
-    }),
-    delete_fg = themes({
-      dark = "#f85149",
-      dimmed = "#e5534b",
-      light = "#cb2431",
-      dark_default = "#f85149",
-      light_default = "#cb2431",
-    }),
-  },
+-- Python Group.newing
+Group.new("pythonOperator", colors.base0E, colors.none, none)
+Group.new("pythonRepeat", colors.base0E, colors.none, none)
+Group.new("pythonInclude", colors.base0E, colors.none, none)
+Group.new("pythonStatement", colors.base0E, colors.none, none)
 
-  git_signs = {
-    add = themes({
-      dark = "#28a745",
-      dimmed = "#2b6a30",
-      light = "#28a745",
-      dark_default = "#196c2e",
-      light_default = "#34d058",
-    }),
-    change = themes({
-      dark = "#2188ff",
-      dimmed = "#966600",
-      light = "#2188ff",
-      dark_default = "#9e6a03",
-      light_default = "#f9c513",
-    }),
-    delete = themes({
-      dark = "#ea4a5a",
-      dimmed = "#ad2e2c",
-      light = "#d73a49",
-      dark_default = "#b62324",
-      light_default = "#d73a49",
-    }),
-  },
+-- Ruby Group.newing
+Group.new("rubyAttribute", colors.base0D, colors.none, none)
+Group.new("rubyConstant", colors.base0A, colors.none, none)
+Group.new("rubyInterpolationDelimiter", colors.base0F, colors.none, none)
+Group.new("rubyRegexp", colors.base0C, colors.none, none)
+Group.new("rubySymbol", colors.base0B, colors.none, none)
+Group.new("rubyStringDelimiter", colors.base0B, colors.none, none)
 
-  status_line = {
-    bg = themes({
-      dimmed = "#282e38",
-    }),
-  },
-}
+-- SASS Group.newing
+Group.new("sassidChar", colors.base08, colors.none, none)
+Group.new("sassClassChar", colors.base09, colors.none, none)
+Group.new("sassInclude", colors.base0E, colors.none, none)
+Group.new("sassMixing", colors.base0E, colors.none, none)
+Group.new("sassMixinName", colors.base0D, colors.none, none)
 
-return M
+-- Signify Group.newing
+Group.new("SignifySignAdd", colors.base0B, colors.base01, none)
+Group.new("SignifySignChange", colors.base0D, colors.base01, none)
+Group.new("SignifySignDelete", colors.base08, colors.base01, none)
+
+-- Spelling Group.newing
+Group.new("SpellBad", colors.none, colors.none, undercurl)
+Group.new("SpellLocal", colors.none, colors.none, undercurl)
+Group.new("SpellCap", colors.none, colors.none, undercurl)
+Group.new("SpellRare", colors.none, colors.none, undercurl)
+
+-- Java Group.newing
+Group.new("javaOperator", colors.base0D, colors.none, none)
+
+-- treesitter
+Group.new("TSNone", colors.base05, colors.base00, none)
+Group.new("TSPunctDelimiter", colors.base07, colors.none, none)
+Group.new("TSPunctBracket", colors.base07, colors.none, none)
+Group.new("TSPunctSpecial", colors.base0F, colors.none, none)
+Group.new("TSConstant", colors.base09, colors.none, bold)
+Group.new("TSConstBuiltin", colors.base0C, colors.none, none)
+Group.new("TSConstMacro", colors.base0E, colors.none, none)
+Group.new("TSString", colors.base0B, colors.none, none)
+Group.new("TSStringRegex", colors.base0B, colors.none, none)
+Group.new("TSStringEscape", colors.base0F, colors.none, none)
+Group.new("TSCharacter", colors.base08, colors.none, none)
+Group.new("TSNumber", colors.base0B, colors.none, none)
+Group.new("TSBoolean", colors.base0B, colors.none, bold)
+Group.new("TSFloat", colors.base0B, colors.none, none)
+Group.new("TSFunction", colors.base0D, colors.none, bold)
+Group.new("TSFuncBuiltin", colors.base0C, colors.none, none)
+Group.new("TSFuncMacro", colors.base08, colors.none, none)
+Group.new("TSParameter", colors.base08, colors.none, none)
+Group.new("TSParameterReference", colors.base08, colors.none, none)
+Group.new("TSMethod", colors.base0D, colors.none, bold)
+Group.new("TSField", colors.base0A, colors.none, none)
+Group.new("TSProperty", colors.base08, colors.none, none)
+Group.new("TSConstructor", colors.base0C, colors.none, none)
+Group.new("TSAnnotation", colors.base0A, colors.none, none)
+Group.new("TSAttribute", colors.base0A, colors.none, none)
+Group.new("TSNamespace", colors.base0D, colors.none, none)
+Group.new("TSConditional", colors.base0E, colors.none, none)
+Group.new("TSRepeat", colors.base0A, colors.none, none)
+Group.new("TSLabel", colors.base0A, colors.none, none)
+Group.new("TSOperator", colors.base07, colors.none, none)
+Group.new("TSKeyword", colors.base0E, colors.none, none)
+Group.new("TSKeywordFunction", colors.base0E, colors.none, bold)
+Group.new("TSKeywordOperator", colors.base05, colors.none, none)
+Group.new("TSException", colors.base08, colors.none, none)
+Group.new("TSType", colors.base0A, colors.none, bold)
+Group.new("TSTypeBuiltin", colors.base0A, colors.none, bold)
+Group.new("TSInclude", colors.base0D, colors.none, none)
+Group.new("TSVariableBuiltin", colors.base0C, colors.none, none)
+Group.new("TSText", colors.base05, colors.base00, none)
+Group.new("TSStrong", colors.base07, colors.base00, bold)
+Group.new("TSEmphasis", colors.base06, colors.base00, italics)
+Group.new("TSUnderline", colors.base05, colors.base00, underline)
+Group.new("TSTitle", colors.base0D, colors.none, none)
+Group.new("TSLiteral", colors.base0B, colors.none, none)
+Group.new("TSURI", colors.base08, colors.none, none)
+Group.new("TSTag", colors.base0A, colors.none, none)
+Group.new("TSTagDelimiter", colors.base0F, colors.none, none)
+Group.new("TSDefinitionUsage", colors.none, colors.base02, none)
+Group.new("TSDefinition", colors.base01, colors.base0A, none)
+Group.new("TSCurrentScope", colors.none, colors.base01, none)
