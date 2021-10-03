@@ -12,57 +12,12 @@ local none = styles.NONE
 local v = vim
 
 v.g.colors_name = theme.name
-
-Color.new("white", "#abb2bf")
-Color.new("darker_black", "#1b1f27")
-Color.new("black", "#1e222a")
-Color.new("black2", "#252931")
-Color.new("one_bg", "#282c34")
-Color.new("one_bg2", "#353b45")
-Color.new("one_bg3", "#30343c")
-Color.new("grey", "#42464e")
-Color.new("grey_fg", "#565c64")
-Color.new("grey_fg2", "#6f737b")
-Color.new("light_grey", "#6f737b")
-Color.new("red", "#d47d85")
-Color.new("baby_pink", "#DE8C92")
-Color.new("pink", "#ff75a0")
-Color.new("line", "#2a2e36")
-Color.new("green", "#A3BE8C")
-Color.new("vibrant_green", "#7eca9c")
-Color.new("nord_blue", "#81A1C1")
-Color.new("blue", "#61afef")
-Color.new("yellow", "#e7c787")
-Color.new("sun", "#EBCB8B")
-Color.new("purple", "#b4bbc8")
-Color.new("dark_purple", "#c882e7")
-Color.new("teal", "#519ABA")
-Color.new("orange", "#fca2aa")
-Color.new("cyan", "#a3b8ef")
-Color.new("statusline_bg", "#22262e")
-Color.new("lightbg", "#2d3139")
-Color.new("lightbg2", "#262a32")
-
--- base16
-Color.new("base00", "#1e222a")
-Color.new("base01", "#353b45")
-Color.new("base02", "#3e4451")
-Color.new("base03", "#545862")
-Color.new("base04", "#565c64")
-Color.new("base05", "#abb2bf")
-Color.new("base06", "#b6bdca")
-Color.new("base07", "#c8ccd4")
-Color.new("base08", "#e06c75")
-Color.new("base09", "#d19a66")
-Color.new("base0A", "#e5c07b")
-Color.new("base0B", "#98c379")
-Color.new("base0C", "#56b6c2")
-Color.new("base0D", "#61afef")
-Color.new("base0E", "#c678dd")
-Color.new("base0F", "#be5046")
+for name, hex in pairs(theme.colors) do
+  Color.new(name, hex)
+end
 
 -- Vim editor colors
-Group.new("Normal", colors.base05, colors.one_bg, none)
+Group.new("Normal", colors.base05, colors.black, none)
 Group.new("Bold", colors.none, colors.none, bold)
 Group.new("Debug", colors.base08, colors.none, none)
 Group.new("Directory", colors.base0D, colors.none, none)
@@ -91,18 +46,20 @@ Group.new("Title", colors.base0D, colors.none, none)
 Group.new("Conceal", colors.base0D, colors.base00, none)
 Group.new("Cursor", colors.base00, colors.base05, none)
 Group.new("NonText", colors.base03, colors.none, none)
-Group.new("LineNr", colors.base03, colors.one_bg, none)
-Group.new("SignColumn", colors.base03, colors.one_bg, none)
+Group.new("LineNr", colors.grey, colors.black, none)
+Group.new("SignColumn", colors.base03, colors.black, none)
 Group.new("StatusLine", colors.base04, colors.base02, none)
-Group.new("StatusLineNC", colors.base03, colors.one_bg, none)
-Group.new("VertSplit", colors.base02, colors.one_bg, none)
+Group.new("StatusLineNC", colors.base03, colors.black, none)
+Group.new("VertSplit", colors.line, colors.black, none)
 Group.new("ColorColumn", colors.none, colors.base01, none)
 Group.new("CursorColumn", colors.none, colors.base01, none)
-Group.new("CursorLine", colors.none, colors.base01, none)
-Group.new("CursorLineNr", colors.base04, colors.one_bg, none)
+Group.new("CursorLine", colors.none, colors.line, none)
+Group.new("CursorLineNr", colors.base04, colors.line, none)
 Group.new("QuickFixLine", colors.none, colors.base01, none)
-Group.new("PMenu", colors.base05, colors.base01, none)
-Group.new("PMenuSel", colors.base01, colors.base05, none)
+Group.new("PMenu", colors.base05, colors.one_bg, none)
+Group.new("PMenuSel", colors.base01, colors.green, none)
+Group.new("PmenuSbar", colors.none, colors.one_bg2, none)
+Group.new("PmenuThumb", colors.none, colors.nord_blue, none)
 Group.new("TabLine", colors.base03, colors.base01, none)
 Group.new("TabLineFill", colors.base03, colors.base01, none)
 Group.new("TabLineSel", colors.base0B, colors.base01, none)
@@ -110,7 +67,7 @@ Group.new("TabLineSel", colors.base0B, colors.base01, none)
 -- Standard syntax Group.newing
 Group.new("Boolean", colors.base09, colors.none, none)
 Group.new("Character", colors.base08, colors.none, none)
-Group.new("Comment", colors.base03, colors.none, none)
+Group.new("Comment", colors.grey_fg2, colors.none, none)
 Group.new("Conditional", colors.base0E, colors.none, none)
 Group.new("Constant", colors.base09, colors.none, none)
 Group.new("Define", colors.base0E, colors.none, none)
@@ -327,3 +284,57 @@ Group.new("TSTagDelimiter", colors.base0F, colors.none, none)
 Group.new("TSDefinitionUsage", colors.none, colors.base02, none)
 Group.new("TSDefinition", colors.base01, colors.base0A, none)
 Group.new("TSCurrentScope", colors.none, colors.base01, none)
+
+-- LSP
+Group.new("LspDiagnosticsDefaultError", colors.red, colors.none, none)
+Group.new("LspDiagnosticsDefaultWarning", colors.yellow, colors.none, none)
+Group.new("LspDiagnosticsDefaultInformation", colors.blue, colors.none, none)
+Group.new("LspDiagnosticsDefaultHint", colors.base0C, colors.none, none)
+Group.new("LspDiagnosticsVirtualTextError", colors.red, colors.none, none)
+Group.new("LspDiagnosticsVirtualTextWarning", colors.yellow, colors.none, none)
+Group.new("LspDiagnosticsVirtualTextInformation", colors.green, colors.none, none)
+Group.new("LspDiagnosticsVirtualTextHint", colors.purple, colors.none, none)
+Group.new("LspDiagnosticsUnderlineError", colors.red, colors.none, underline)
+Group.new("LspDiagnosticsUnderlineWarning", colors.yellow, colors.none, underline)
+Group.new("LspDiagnosticsUnderlineInformation", colors.green, colors.none, underline)
+Group.new("LspDiagnosticsUnderlineHint", colors.purple, colors.none, underline)
+Group.new("LspDiagnosticsFloatingError", colors.red, groups.pmenu, underline)
+Group.new("LspDiagnosticsFloatingWarning", colors.yellow, groups.pmenu, underline)
+Group.new("LspDiagnosticsFloatingInformation", colors.green, groups.pmenu, underline)
+Group.new("LspDiagnosticsFloatingHint", colors.purple, groups.pmenu, underline)
+Group.new("LspDiagnosticsSignError", colors.red, colors.none, none)
+Group.new("LspDiagnosticsSignWarning", colors.yellow, colors.none, none)
+Group.new("LspDiagnosticsSignInformation", colors.green, colors.none, none)
+Group.new("LspDiagnosticsSignHint", colors.purple, colors.none, none)
+
+-- Terminal
+v.g.terminal_color_0 = theme.base00
+v.g.terminal_color_1 = theme.base08
+v.g.terminal_color_2 = theme.base0B
+v.g.terminal_color_3 = theme.base0A
+v.g.terminal_color_4 = theme.base0D
+v.g.terminal_color_5 = theme.base0E
+v.g.terminal_color_6 = theme.base0C
+v.g.terminal_color_7 = theme.base05
+v.g.terminal_color_8 = theme.base03
+v.g.terminal_color_9 = theme.base08
+v.g.terminal_color_10 = theme.base0B
+v.g.terminal_color_11 = theme.base0A
+v.g.terminal_color_12 = theme.base0D
+v.g.terminal_color_13 = theme.base0E
+v.g.terminal_color_14 = theme.base0C
+v.g.terminal_color_15 = theme.base07
+
+-- blankline
+Group.new("IndentBlanklineChar", colors.line, colors.none, none)
+
+-- misc
+Group.new("NvimInternalError", colors.red, colors.none, none)
+Group.new("EndOfBuffer", colors.black, colors.none, none)
+v.cmd("hi! StatusLineNC gui=underline guifg=" .. theme.colors.line)
+
+-- telescope
+Group.new("TelescopeBorder", colors.line, colors.none, none)
+Group.new("TelescopePromptBorder", colors.line, colors.none, none)
+Group.new("TelescopeResultsBorder", colors.line, colors.none, none)
+Group.new("TelescopePreviewBorder", colors.line, colors.none, none)
