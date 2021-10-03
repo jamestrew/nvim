@@ -5,6 +5,7 @@
 # FIX: this need fixing
 # WARNING: ???
 
+
 def test(foo: str, bar: int) -> str:
     """
     This is a string to demonstrate
