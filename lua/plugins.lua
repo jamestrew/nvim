@@ -196,17 +196,12 @@ return packer.startup({
         require("setup.statusline").config()
       end,
     })
-    -- use({
-    --   "windwp/windline.nvim",
-    --   config = function()
-    --     require("wlsample.bubble2")
-    --   end,
-    -- })
     use({ "kyazdani42/nvim-web-devicons" })
     use({
-      "projekt0n/github-nvim-theme",
+      "Th3Whit3Wolf/onebuddy",
+      requires = "tjdevries/colorbuddy.vim",
       config = function()
-        require("setup.theme").config()
+        require("colorbuddy").colorscheme("onebuddy")
       end,
     })
     use({
