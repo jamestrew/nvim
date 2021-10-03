@@ -53,9 +53,9 @@ M.config = function()
         vim.cmd("hi GalaxyViMode guibg=" .. mode_color())
 
         if current_mode == nil then
-          return " Terminal "
+          return "  Terminal "
         else
-          return " " .. current_mode .. " "
+          return "  " .. current_mode .. " "
         end
       end,
       highlight = { colors.statusline_bg, colors.nord_blue },
