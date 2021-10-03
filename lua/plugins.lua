@@ -192,9 +192,9 @@ return packer.startup({
     -- Looks
     use({
       "glepnir/galaxyline.nvim",
-      -- config = function()
-      --   require("setup.statusline").config()
-      -- end,
+      config = function()
+        require("setup.statusline").config()
+      end,
     })
     use({ "kyazdani42/nvim-web-devicons" })
     use({

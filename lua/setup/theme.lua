@@ -117,7 +117,7 @@ Group.new("cssColor", colors.base0C, colors.none, none)
 
 -- Diff Group.newing
 Group.new("DiffAdd", colors.base0B, colors.base01, none)
-Group.new("DiffChange", colors.base03, colors.base01, none)
+Group.new("DiffChange", colors.sun, colors.base01, none)
 Group.new("DiffDelete", colors.base08, colors.base01, none)
 Group.new("DiffText", colors.base0D, colors.base01, none)
 Group.new("DiffAdded", colors.base0B, colors.base00, none)
