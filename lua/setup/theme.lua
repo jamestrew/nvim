@@ -235,8 +235,8 @@ Group.new("javaOperator", colors.base0D, colors.none, none)
 
 -- treesitter
 Group.new("TSNone", colors.base05, colors.base00, none)
-Group.new("TSPunctDelimiter", colors.base07, colors.none, none)
-Group.new("TSPunctBracket", colors.base07, colors.none, none)
+Group.new("TSPunctDelimiter", colors.base08, colors.none, none)
+Group.new("TSPunctBracket", colors.base08, colors.none, none)
 Group.new("TSPunctSpecial", colors.base0F, colors.none, none)
 Group.new("TSConstant", colors.base09, colors.none, bold)
 Group.new("TSConstBuiltin", colors.base0C, colors.none, none)
