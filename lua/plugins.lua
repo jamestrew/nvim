@@ -85,9 +85,7 @@ return packer.startup({
       end,
     })
     use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-    use({ "nvim-telescope/telescope-media-files.nvim" })
-    use({ "nvim-telescope/telescope-project.nvim" })
-    use({ "nvim-telescope/telescope-frecency.nvim", requires = { "tami5/sql.nvim" } })
+    -- use({ "nvim-telescope/telescope-frecency.nvim", requires = { "tami5/sql.nvim" } })
     use({
       "ThePrimeagen/harpoon",
       config = function()

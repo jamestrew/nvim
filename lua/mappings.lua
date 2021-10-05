@@ -50,13 +50,11 @@ utils.nnoremap("<leader>fw", ":Telescope live_grep<CR>", silent)
 utils.nnoremap("<leader>gc", ":Telescope git_commits<CR>", silent)
 utils.nnoremap("<leader>fb", ":Telescope buffers<CR>", silent)
 utils.nnoremap("<leader>fh", ":Telescope help_tags<CR>", silent)
-utils.nnoremap("<leader>fo", ":Telescope oldfiles<CR>", silent)
 utils.nnoremap("<leader>rc", ":lua require'setup.telescope'.search_dotfiles()<CR>", silent)
 utils.nnoremap("<leader>fg", ":lua require'setup.telescope'.git_worktrees()<CR>", silent)
 utils.nnoremap("<leader>ct", ":lua require'setup.telescope'.create_git_worktree()<CR>", silent)
-utils.nnoremap("<leader>fp", ":lua require'setup.telescope'.projects()<CR>", silent)
 utils.nnoremap("<leader>fy", ":lua require'setup.telescope'.neoclip()<CR>", silent)
-utils.nnoremap("<leader>fc", ":lua require'telescope'.commands()<CR>", silent)
+utils.nnoremap("<leader>fc", ":Telescope commands<CR>", silent)
 
 -- Lsp
 utils.nnoremap("gD", ":lua vim.lsp.buf.declaration()<CR>", silent)
@@ -107,3 +105,6 @@ utils.xnoremap("iu", ":lua require('treesitter-unit').select()<CR>")
 utils.xnoremap("au", ":lua require('treesitter-unit').select(true)<CR>")
 utils.onoremap("iu", ":<C-u>lua require('treesitter-unit').select()<CR>")
 utils.onoremap("au", ":<C-u>lua require('treesitter-unit').select(true)<CR>")
+
+-- unbinding
+utils.nnoremap("<C-F>", "")

@@ -18,7 +18,6 @@ M.config = function()
   require("telescope").load_extension("fzf")
   require("telescope").load_extension("media_files")
   require("telescope").load_extension("git_worktree")
-  require("telescope").load_extension("project")
   require("telescope").load_extension("neoclip")
   -- require("telescope").load_extension "frecency"
 end
@@ -84,36 +83,6 @@ M.find_dir = function()
     previewer = config.values.file_previewer(opts),
     sorter = config.values.file_sorter(opts),
   }):find()
-end
-
-M.projects = function()
-  local opts = themes.get_dropdown({
-    previewer = false,
-    winblend = 5,
-    layout_config = {
-      width = 50,
-      height = 20,
-    },
-  })
-  opts.attach_mappings = function(prompt_bufnr, map)
-    local on_project_selected = function()
-      local project_path = actions.get_selected_entry(prompt_bufnr).value
-      actions.close(prompt_bufnr)
-      local cd_successful = utils.change_project_dir(project_path)
-      if cd_successful then
-        M.git_worktrees()
-      end
-    end
-
-    map("i", "<C-p>", actions.move_selection_previous)
-    map("i", "<C-n>", actions.move_selection_next)
-    map("n", "<C-p>", actions.move_selection_previous)
-    map("n", "<C-n>", actions.move_selection_next)
-
-    actions.select_default:replace(on_project_selected)
-    return true
-  end
-  require("telescope").extensions.project.project(opts)
 end
 
 M.git_worktrees = function()
