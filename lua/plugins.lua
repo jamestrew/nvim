@@ -179,13 +179,14 @@ return packer.startup({
         require("setup.gitsigns").config()
       end,
     })
-    use({
-      "TimUntersberger/neogit",
-      requires = "nvim-lua/plenary.nvim",
-      config = function()
-        require("setup.neogit").config()
-      end,
-    })
+    -- use({
+    --   "TimUntersberger/neogit",
+    --   requires = "nvim-lua/plenary.nvim",
+    --   config = function()
+    --     require("setup.neogit").config()
+    --   end,
+    -- })
+    use({ "tpope/vim-fugitive" })
     use({ "ThePrimeagen/git-worktree.nvim" })
     -- local_use "git-worktree.nvim/telescope-opts"
 
