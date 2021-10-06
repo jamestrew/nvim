@@ -16,7 +16,6 @@ M.config = function()
   require("neoclip").setup(defaults.neoclip)
 
   require("telescope").load_extension("fzf")
-  require("telescope").load_extension("media_files")
   require("telescope").load_extension("git_worktree")
   require("telescope").load_extension("neoclip")
   -- require("telescope").load_extension "frecency"
