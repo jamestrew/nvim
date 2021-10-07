@@ -1,7 +1,7 @@
 local M = {}
 
 M.config = function()
-  local comment = require("comment")
+  local comment = require("Comment")
   comment.setup({
     ---Add a space b/w comment and the line
     ---@type boolean
