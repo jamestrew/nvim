@@ -33,10 +33,6 @@ utils.nnoremap("<leader>J", "mzJ`z")
 ------------------------ Plugin Specifics -------------------------
 ------------------------                  -------------------------
 
--- Commenter Keybinding
-utils.nnoremap("<leader>/", ":CommentToggle<CR>", silent)
-utils.vnoremap("<leader>/", ":CommentToggle<CR>", silent)
-
 -- nvim tree
 -- utils.nnoremap("<C-n>", ":NvimTreeToggle<CR>", silent)
 

@@ -108,7 +108,7 @@ return packer.startup({
     -- use { "andymass/vim-matchup", event = "CursorMoved" }
     use({ "JoosepAlviste/nvim-ts-context-commentstring", event = "BufRead" })
     use({
-      "terrortylor/nvim-comment",
+      "numToStr/Comment.nvim",
       config = function()
         require("setup.comment").config()
       end,
