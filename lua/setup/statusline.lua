@@ -114,7 +114,7 @@ M.config = function()
     DiffAdd = {
       provider = "DiffAdd",
       condition = checkwidth,
-      icon = "  ",
+      icon = "+",
       highlight = { colors.base0B, colors.statusline_bg },
     },
   }
@@ -123,7 +123,7 @@ M.config = function()
     DiffModified = {
       provider = "DiffModified",
       condition = checkwidth,
-      icon = "  ",
+      icon = "~",
       highlight = { colors.sun, colors.statusline_bg },
     },
   }
@@ -132,7 +132,7 @@ M.config = function()
     DiffRemove = {
       provider = "DiffRemove",
       condition = checkwidth,
-      icon = "  ",
+      icon = "-",
       highlight = { colors.base08, colors.statusline_bg },
     },
   }
