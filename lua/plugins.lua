@@ -185,7 +185,12 @@ return packer.startup({
     --   end,
     -- })
     use({ "tpope/vim-fugitive" })
-    use({ "ThePrimeagen/git-worktree.nvim" })
+    use({
+      "ThePrimeagen/git-worktree.nvim",
+      config = function()
+        require("setup.worktree").config()
+      end,
+    })
     -- local_use "git-worktree.nvim/telescope-opts"
 
     -- Looks
