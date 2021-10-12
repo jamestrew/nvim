@@ -67,6 +67,7 @@ return packer.startup({
     use({ "David-Kunz/treesitter-unit", event = "BufRead" })
 
     -- Telescope & File Management
+    use({ "kevinhwang91/rnvimr" })
     use({
       "kyazdani42/nvim-tree.lua",
       cmd = "NvimTreeToggle",

@@ -33,8 +33,8 @@ utils.nnoremap("<leader>J", "mzJ`z")
 ------------------------ Plugin Specifics -------------------------
 ------------------------                  -------------------------
 
--- nvim tree
--- utils.nnoremap("<C-n>", ":NvimTreeToggle<CR>", silent)
+-- ranger
+utils.nnoremap("<C-n>", ":RnvimrToggle<CR>", silent)
 
 -- format code
 utils.nnoremap("<Leader>fm", ":Neoformat<CR>", silent)
