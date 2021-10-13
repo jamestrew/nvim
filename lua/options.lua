@@ -9,7 +9,7 @@ opt.wildignore = opt.wildignore + { "*.o", "*~", "*.pyc", "*pycache*" }
 opt.wildmode = { "longest", "list", "full" }
 
 -- Cool floating window popup menu for completion on command line
-opt.pumblend = 17
+opt.pumblend = 0
 
 opt.wildmode = opt.wildmode - "list"
 opt.wildmode = opt.wildmode + { "longest", "full" }
