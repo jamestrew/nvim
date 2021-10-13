@@ -87,7 +87,6 @@ end
 M.git_worktrees = function()
   local opts = themes.get_dropdown({
     previewer = false,
-    winblend = 10,
     path_display = { "shorten" },
     layout_config = {
       width = 60,
@@ -117,7 +116,6 @@ end
 
 M.create_git_worktree = function()
   local opts = themes.get_dropdown({
-    winblend = 5,
     layout_config = {
       width = 70,
       height = 40,
