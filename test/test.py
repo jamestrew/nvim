@@ -19,7 +19,7 @@ def test(foo: str, bar: int) -> str:
 
 x = 1 + 1  # hello
 
-if x == 2:
+if x == 2 and y:
     y = 19 + 3
 else:
     pass
