@@ -190,6 +190,10 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/nvim-colorizer.lua"
   },
+  ["nvim-lsp-installer"] = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer"
+  },
   ["nvim-lsp-ts-utils"] = {
     loaded = false,
     needs_bufread = false,
@@ -199,10 +203,6 @@ _G.packer_plugins = {
     config = { "\27LJ\1\2>\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\20setup.lspconfig\frequire\0" },
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
-  },
-  ["nvim-lspinstall"] = {
-    loaded = true,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
   },
   ["nvim-neoclip.lua"] = {
     config = { "\27LJ\1\0025\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\fneoclip\frequire\0" },
@@ -362,10 +362,10 @@ end
 time([[Setup for indent-blankline.nvim]], true)
 try_loadstring("\27LJ\1\2/\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\20setup.blankline\frequire\0", "setup", "indent-blankline.nvim")
 time([[Setup for indent-blankline.nvim]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-try_loadstring("\27LJ\1\2>\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\20setup.telescope\frequire\0", "config", "telescope.nvim")
-time([[Config for telescope.nvim]], false)
+-- Config for: git-worktree.nvim
+time([[Config for git-worktree.nvim]], true)
+try_loadstring("\27LJ\1\2=\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\19setup.worktree\frequire\0", "config", "git-worktree.nvim")
+time([[Config for git-worktree.nvim]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
 try_loadstring("\27LJ\1\0028\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\14setup.cmp\frequire\0", "config", "nvim-cmp")
@@ -382,14 +382,14 @@ time([[Config for colorbuddy.vim]], false)
 time([[Config for harpoon]], true)
 try_loadstring("\27LJ\1\2-\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\18setup.harpoon\frequire\0", "config", "harpoon")
 time([[Config for harpoon]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+try_loadstring("\27LJ\1\2>\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\20setup.telescope\frequire\0", "config", "telescope.nvim")
+time([[Config for telescope.nvim]], false)
 -- Config for: nvim-lspconfig
 time([[Config for nvim-lspconfig]], true)
 try_loadstring("\27LJ\1\2>\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\20setup.lspconfig\frequire\0", "config", "nvim-lspconfig")
 time([[Config for nvim-lspconfig]], false)
--- Config for: git-worktree.nvim
-time([[Config for git-worktree.nvim]], true)
-try_loadstring("\27LJ\1\2=\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\19setup.worktree\frequire\0", "config", "git-worktree.nvim")
-time([[Config for git-worktree.nvim]], false)
 -- Config for: nvim-neoclip.lua
 time([[Config for nvim-neoclip.lua]], true)
 try_loadstring("\27LJ\1\0025\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\fneoclip\frequire\0", "config", "nvim-neoclip.lua")
@@ -439,7 +439,7 @@ time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au CursorHold * ++once lua require("packer.load")({'vim-illuminate'}, { event = "CursorHold *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'lsp_signature.nvim', 'nvim-treesitter', 'indent-blankline.nvim', 'playground', 'tabout.nvim', 'emmet-vim', 'nvim-ts-context-commentstring', 'vim-surround', 'undotree', 'gitsigns.nvim', 'vim-graphql', 'nvim-lsp-ts-utils', 'nvim-colorizer.lua', 'treesitter-unit', 'refactoring.nvim', 'vim-repeat'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'lsp_signature.nvim', 'nvim-treesitter', 'indent-blankline.nvim', 'playground', 'tabout.nvim', 'emmet-vim', 'nvim-ts-context-commentstring', 'vim-surround', 'undotree', 'gitsigns.nvim', 'vim-graphql', 'nvim-lsp-ts-utils', 'treesitter-unit', 'nvim-colorizer.lua', 'refactoring.nvim', 'vim-repeat'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

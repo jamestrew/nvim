@@ -38,7 +38,7 @@ return packer.startup({
         require("setup.treesitter").config()
       end,
     })
-    use({ "kabouzeid/nvim-lspinstall" })
+    use({ "williamboman/nvim-lsp-installer" })
     use({
       "neovim/nvim-lspconfig",
       config = function()

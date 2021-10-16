@@ -1,7 +1,6 @@
 local M = {}
 
 M.config = function()
-  local lspconf = require("lspconfig")
   local lspsettings = require("setup.lsp.settings")
 
   local function on_attach(client, bufnr)
@@ -19,42 +18,28 @@ M.config = function()
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-  -- capabilities.textDocument.completion.completionItem.snippetSupport = true
-  -- capabilities.textDocument.completion.completionItem.resolveSupport = {
-  --   properties = { "documentation", "detail", "additionalTextEdits" },
-  -- }
 
-  local function setup_servers()
-    require("lspinstall").setup()
-    local servers = require("lspinstall").installed_servers()
-
-    for _, lang in pairs(servers) do
-      if lang == "lua" then
-        local luadev = require("lua-dev").setup({
-          lspconfig = {
-            on_attach = on_attach,
-            capabilities = capabilities,
-            settings = lspsettings.lua,
-          },
-        })
-        lspconf[lang].setup(luadev)
-      else
-        lspconf[lang].setup({
+  local lsp_installer = require("nvim-lsp-installer")
+  lsp_installer.on_server_ready(function(server)
+    local opts = {}
+    if server.name == "sumneko_lua" then
+      opts = require("lua-dev").setup({
+        lspconfig = {
           on_attach = on_attach,
           capabilities = capabilities,
-          root_dir = vim.loop.cwd,
-        })
-      end
+          settings = lspsettings.lua,
+        },
+      })
+    else
+      opts = {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        root_dir = vim.loop.cwd,
+      }
     end
-  end
-
-  setup_servers()
-
-  -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-  require("lspinstall").post_install_hook = function()
-    setup_servers() -- reload installed servers
-    vim.cmd("bufdo e")
-  end
+    server:setup(opts)
+    vim.cmd([[ do User LspAttachBuffers ]])
+  end)
 
   -- replace the default lsp diagnostic letters with prettier symbols
   vim.fn.sign_define("LspDiagnosticsSignError", { text = "", numhl = "LspDiagnosticsDefaultError" })
