@@ -69,13 +69,6 @@ return packer.startup({
     -- Telescope & File Management
     use({ "kevinhwang91/rnvimr" })
     use({
-      "kyazdani42/nvim-tree.lua",
-      cmd = "NvimTreeToggle",
-      config = function()
-        require("setup.nvimtree").config()
-      end,
-    })
-    use({
       "nvim-telescope/telescope.nvim",
       requires = {
         { "nvim-lua/popup.nvim" },
