@@ -114,6 +114,7 @@ _G.packer_plugins = {
   ["emmet-vim"] = {
     loaded = false,
     needs_bufread = false,
+    only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/emmet-vim"
   },
   firenvim = {
@@ -134,6 +135,7 @@ _G.packer_plugins = {
     config = { "\27LJ\1\2=\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\19setup.gitsigns\frequire\0" },
     loaded = false,
     needs_bufread = false,
+    only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/gitsigns.nvim"
   },
   harpoon = {
@@ -149,11 +151,13 @@ _G.packer_plugins = {
   ["indent-blankline.nvim"] = {
     loaded = false,
     needs_bufread = false,
+    only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/indent-blankline.nvim"
   },
   ["lsp_signature.nvim"] = {
     loaded = false,
     needs_bufread = false,
+    only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/lsp_signature.nvim"
   },
   ["lua-dev.nvim"] = {
@@ -164,12 +168,14 @@ _G.packer_plugins = {
     commands = { "MarkdownPreview" },
     loaded = false,
     needs_bufread = false,
+    only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim"
   },
   neoformat = {
     commands = { "Neoformat" },
     loaded = false,
     needs_bufread = false,
+    only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/neoformat"
   },
   ["nvim-autopairs"] = {
@@ -188,6 +194,7 @@ _G.packer_plugins = {
     config = { "\27LJ\1\2i\0\0\2\0\6\0\n4\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\0014\0\3\0007\0\4\0%\1\5\0>\0\2\1G\0\1\0\30ColorizerReloadAllBuffers\bcmd\bvim\nsetup\14colorizer\frequire\0" },
     loaded = false,
     needs_bufread = false,
+    only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/nvim-colorizer.lua"
   },
   ["nvim-lsp-installer"] = {
@@ -197,6 +204,7 @@ _G.packer_plugins = {
   ["nvim-lsp-ts-utils"] = {
     loaded = false,
     needs_bufread = false,
+    only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/nvim-lsp-ts-utils"
   },
   ["nvim-lspconfig"] = {
@@ -213,11 +221,13 @@ _G.packer_plugins = {
     config = { "\27LJ\1\2?\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\21setup.treesitter\frequire\0" },
     loaded = false,
     needs_bufread = true,
+    only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/nvim-treesitter"
   },
   ["nvim-ts-context-commentstring"] = {
     loaded = false,
     needs_bufread = false,
+    only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/nvim-ts-context-commentstring"
   },
   ["nvim-web-devicons"] = {
@@ -231,6 +241,7 @@ _G.packer_plugins = {
   playground = {
     loaded = false,
     needs_bufread = true,
+    only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/playground"
   },
   ["plenary.nvim"] = {
@@ -250,6 +261,7 @@ _G.packer_plugins = {
     config = { "\27LJ\1\0029\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\16refactoring\frequire\0" },
     loaded = false,
     needs_bufread = false,
+    only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/refactoring.nvim"
   },
   rnvimr = {
@@ -260,6 +272,7 @@ _G.packer_plugins = {
     config = { "\27LJ\1\0024\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\vtabout\frequire\0" },
     loaded = false,
     needs_bufread = false,
+    only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/tabout.nvim"
   },
   ["telescope-fzf-native.nvim"] = {
@@ -279,11 +292,13 @@ _G.packer_plugins = {
   ["treesitter-unit"] = {
     loaded = false,
     needs_bufread = false,
+    only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/treesitter-unit"
   },
   undotree = {
     loaded = false,
     needs_bufread = false,
+    only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/undotree"
   },
   ["vim-be-good"] = {
@@ -297,22 +312,26 @@ _G.packer_plugins = {
   ["vim-graphql"] = {
     loaded = false,
     needs_bufread = true,
+    only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/vim-graphql"
   },
   ["vim-illuminate"] = {
     config = { "\27LJ\1\0022\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1\0\0:\1\2\0G\0\1\0\21Illuminate_delay\6g\bvim\0" },
     loaded = false,
     needs_bufread = false,
+    only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/vim-illuminate"
   },
   ["vim-repeat"] = {
     loaded = false,
     needs_bufread = false,
+    only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/vim-repeat"
   },
   ["vim-surround"] = {
     loaded = false,
     needs_bufread = false,
+    only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/vim-surround"
   },
   ["which-key.nvim"] = {
