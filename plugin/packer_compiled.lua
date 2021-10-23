@@ -179,7 +179,7 @@ _G.packer_plugins = {
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/neoformat"
   },
   ["nvim-autopairs"] = {
-    config = { '\27LJ\1\2‹\1\0\0\2\0\5\0\f4\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\0014\0\0\0%\1\3\0>\0\2\0027\0\2\0003\1\4\0>\0\2\1G\0\1\0\1\0\2\17map_complete\2\vmap_cr\2"nvim-autopairs.completion.cmp\nsetup\19nvim-autopairs\frequire\0' },
+    config = { '\27LJ\1\2\1\0\0\2\0\5\0\r4\0\0\0%\1\1\0>\0\2\0027\0\2\0002\1\0\0>\0\2\0014\0\0\0%\1\3\0>\0\2\0027\0\2\0003\1\4\0>\0\2\1G\0\1\0\1\0\2\17map_complete\2\vmap_cr\2"nvim-autopairs.completion.cmp\nsetup\19nvim-autopairs\frequire\0' },
     load_after = {},
     loaded = true,
     needs_bufread = false,
@@ -431,7 +431,7 @@ time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-autopairs ]]
 
 -- Config for: nvim-autopairs
-try_loadstring('\27LJ\1\2‹\1\0\0\2\0\5\0\f4\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\0014\0\0\0%\1\3\0>\0\2\0027\0\2\0003\1\4\0>\0\2\1G\0\1\0\1\0\2\17map_complete\2\vmap_cr\2"nvim-autopairs.completion.cmp\nsetup\19nvim-autopairs\frequire\0', "config", "nvim-autopairs")
+try_loadstring('\27LJ\1\2\1\0\0\2\0\5\0\r4\0\0\0%\1\1\0>\0\2\0027\0\2\0002\1\0\0>\0\2\0014\0\0\0%\1\3\0>\0\2\0027\0\2\0003\1\4\0>\0\2\1G\0\1\0\1\0\2\17map_complete\2\vmap_cr\2"nvim-autopairs.completion.cmp\nsetup\19nvim-autopairs\frequire\0', "config", "nvim-autopairs")
 
 time([[Sequenced loading]], false)
 

@@ -3,10 +3,11 @@ local silent = { silent = true }
 local sexpr = { silent = true, expr = true }
 
 -- move line(s) up/down
-utils.nnoremap("<A-j>", ":m .+1<CR>==")
-utils.nnoremap("<A-k>", ":m .-2<CR>==")
-utils.imap("<A-j>", "<Esc>:m .+1<CR>==i")
-utils.imap("<A-k>", "<Esc>:m .-2<CR>==i")
+-- BUG: ESC followed quickly by j/k triggers the next two commands
+-- utils.nnoremap("<A-j>", ":m .+1<CR>==")
+-- utils.nnoremap("<A-k>", ":m .-2<CR>==")
+-- utils.imap("<A-j>", "<Esc>:m .+1<CR>==i")
+-- utils.imap("<A-k>", "<Esc>:m .-2<CR>==i")
 utils.vnoremap("<A-j>", ":m '>+1<CR>gv=gv", silent)
 utils.vnoremap("<A-k>", ":m '<-2<CR>gv=gv", silent)
 
