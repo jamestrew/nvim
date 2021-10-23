@@ -105,3 +105,12 @@ utils.onoremap("au", ":<C-u>lua require('treesitter-unit').select(true)<CR>")
 
 -- unbinding
 utils.nnoremap("<C-F>", "")
+
+-- luasnips
+vim.cmd [[
+  imap <silent><expr> <C-k> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<C-k>'
+  inoremap <silent> <C-j> <Cmd>lua require('luasnip').jump(-1)<CR>
+  imap <silent><expr> <C-l> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-l>'
+  snoremap <silent> <C-k> <Cmd>lua require('luasnip').jump(1)<CR>
+  snoremap <silent> <C-j> <Cmd>lua require('luasnip').jump(-1)<CR>
+]]

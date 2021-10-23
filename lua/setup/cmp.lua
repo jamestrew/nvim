@@ -1,3 +1,4 @@
+
 local M = {}
 
 M.config = function()
@@ -23,9 +24,9 @@ M.config = function()
     },
     sources = {
       { name = "nvim_lsp" },
-      { name = "buffer" },
       { name = "path" },
       { name = "nvim_lua" },
+      { name = "buffer", keyword_length = 3 },
       { name = "luasnip" },
     },
   })
