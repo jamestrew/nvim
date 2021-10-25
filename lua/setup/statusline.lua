@@ -11,6 +11,7 @@ local mode_color = function()
     [""] = colors.blue,
     v = colors.blue,
     R = colors.teal,
+    s = colors.dark_purple,
   }
   local color = mode_colors[vim.fn.mode()]
   if color == nil then
@@ -48,11 +49,13 @@ M.config = function()
           [""] = "Visual",
           v = "Visual",
           R = "Replace",
+          s = "Select",
         }
         local current_mode = alias[vim.fn.mode()]
         vim.cmd("hi GalaxyViMode guibg=" .. mode_color())
 
         if current_mode == nil then
+          print(vim.fn.mode())
           return "  Terminal "
         else
           return "  " .. current_mode .. " "
