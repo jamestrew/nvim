@@ -1,4 +1,3 @@
-
 local M = {}
 
 M.config = function()
@@ -28,8 +27,11 @@ M.config = function()
       { name = "nvim_lua" },
       { name = "buffer", keyword_length = 3 },
       { name = "luasnip" },
+      { name = "cmp_git" },
     },
   })
+
+  require("cmp_git").setup()
 end
 
 return M

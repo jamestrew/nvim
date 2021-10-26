@@ -57,6 +57,7 @@ return packer.startup({
         "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-nvim-lsp",
         "saadparwaiz1/cmp_luasnip",
+        "petertriho/cmp-git",
       },
     })
     use({ "ray-x/lsp_signature.nvim", event = "BufRead" })

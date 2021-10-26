@@ -86,6 +86,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/cmp-buffer"
   },
+  ["cmp-git"] = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/cmp-git"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp"
@@ -179,7 +183,7 @@ _G.packer_plugins = {
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/neoformat"
   },
   ["nvim-autopairs"] = {
-    config = { '\27LJ\1\2\1\0\0\2\0\5\0\r4\0\0\0%\1\1\0>\0\2\0027\0\2\0002\1\0\0>\0\2\0014\0\0\0%\1\3\0>\0\2\0027\0\2\0003\1\4\0>\0\2\1G\0\1\0\1\0\2\17map_complete\2\vmap_cr\2"nvim-autopairs.completion.cmp\nsetup\19nvim-autopairs\frequire\0' },
+    config = { '\27LJ\1\2‹\1\0\0\2\0\5\0\f4\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\0014\0\0\0%\1\3\0>\0\2\0027\0\2\0003\1\4\0>\0\2\1G\0\1\0\1\0\2\17map_complete\2\vmap_cr\2"nvim-autopairs.completion.cmp\nsetup\19nvim-autopairs\frequire\0' },
     load_after = {},
     loaded = true,
     needs_bufread = false,
@@ -431,7 +435,7 @@ time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-autopairs ]]
 
 -- Config for: nvim-autopairs
-try_loadstring('\27LJ\1\2\1\0\0\2\0\5\0\r4\0\0\0%\1\1\0>\0\2\0027\0\2\0002\1\0\0>\0\2\0014\0\0\0%\1\3\0>\0\2\0027\0\2\0003\1\4\0>\0\2\1G\0\1\0\1\0\2\17map_complete\2\vmap_cr\2"nvim-autopairs.completion.cmp\nsetup\19nvim-autopairs\frequire\0', "config", "nvim-autopairs")
+try_loadstring('\27LJ\1\2‹\1\0\0\2\0\5\0\f4\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\0014\0\0\0%\1\3\0>\0\2\0027\0\2\0003\1\4\0>\0\2\1G\0\1\0\1\0\2\17map_complete\2\vmap_cr\2"nvim-autopairs.completion.cmp\nsetup\19nvim-autopairs\frequire\0', "config", "nvim-autopairs")
 
 time([[Sequenced loading]], false)
 
@@ -450,7 +454,7 @@ time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au CursorHold * ++once lua require("packer.load")({'vim-illuminate'}, { event = "CursorHold *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'lsp_signature.nvim', 'nvim-treesitter', 'indent-blankline.nvim', 'tabout.nvim', 'emmet-vim', 'nvim-ts-context-commentstring', 'undotree', 'vim-surround', 'gitsigns.nvim', 'vim-graphql', 'nvim-lsp-ts-utils', 'playground', 'treesitter-unit', 'nvim-colorizer.lua', 'refactoring.nvim', 'vim-repeat'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'lsp_signature.nvim', 'nvim-treesitter', 'indent-blankline.nvim', 'playground', 'tabout.nvim', 'emmet-vim', 'nvim-ts-context-commentstring', 'vim-surround', 'undotree', 'gitsigns.nvim', 'vim-graphql', 'nvim-lsp-ts-utils', 'treesitter-unit', 'nvim-colorizer.lua', 'refactoring.nvim', 'vim-repeat'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
