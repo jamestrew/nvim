@@ -41,6 +41,12 @@ M.config = function()
     vim.cmd([[ do User LspAttachBuffers ]])
   end)
 
+  require("lspconfig").perlls.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+  })
+
+
   -- replace the default lsp diagnostic letters with prettier symbols
   vim.fn.sign_define("LspDiagnosticsSignError", { text = "", numhl = "LspDiagnosticsDefaultError" })
   vim.fn.sign_define("LspDiagnosticsSignWarning", { text = "", numhl = "LspDiagnosticsDefaultWarning" })
