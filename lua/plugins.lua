@@ -91,13 +91,8 @@ return packer.startup({
     -- Editing Support
     use({
       "windwp/nvim-autopairs",
-      after = "nvim-cmp",
       config = function()
         require("nvim-autopairs").setup()
-        require("nvim-autopairs.completion.cmp").setup({
-          map_cr = true, --  map <CR> on insert mode
-          map_complete = true, -- it will auto insert `(` after select function or method item
-        })
       end,
     })
     -- use { "andymass/vim-matchup", event = "CursorMoved" }
@@ -239,7 +234,6 @@ return packer.startup({
       end,
     })
     use("nathom/filetype.nvim")
-    -- use("nathom/filetype.nvim")
   end,
   config = {
     display = {

@@ -2,6 +2,7 @@ local M = {}
 
 M.config = function()
   local cmp = require("cmp")
+  local cmp_autopairs = require("nvim-autopairs.completion.cmp")
   cmp.setup({
     snippet = {
       expand = function(args)
@@ -32,6 +33,7 @@ M.config = function()
   })
 
   require("cmp_git").setup()
+  cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
 return M
