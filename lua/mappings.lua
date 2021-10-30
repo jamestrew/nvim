@@ -2,6 +2,10 @@ local utils = require("utils")
 local silent = { silent = true }
 local sexpr = { silent = true, expr = true }
 
+vim.cmd([[command Q :q]])
+vim.cmd([[command W :w]])
+vim.cmd([[command Wq :wq]])
+
 -- move line(s) up/down
 -- BUG: ESC followed quickly by j/k triggers the next two commands
 -- utils.nnoremap("<A-j>", ":m .+1<CR>==")
