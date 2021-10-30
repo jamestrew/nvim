@@ -21,31 +21,25 @@ M.config = function()
 
   local lsp_installer = require("nvim-lsp-installer")
   lsp_installer.on_server_ready(function(server)
-    local opts = {}
+    local opts = {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      settings = lspsettings[server.name],
+      root_dir = vim.loop.cwd,
+    }
     if server.name == "sumneko_lua" then
       opts = require("lua-dev").setup({
-        lspconfig = {
-          on_attach = on_attach,
-          capabilities = capabilities,
-          settings = lspsettings.lua,
-        },
+        lspconfig = opts,
       })
-    else
-      opts = {
-        on_attach = on_attach,
-        capabilities = capabilities,
-        root_dir = vim.loop.cwd,
-      }
     end
     server:setup(opts)
     vim.cmd([[ do User LspAttachBuffers ]])
   end)
 
   require("lspconfig").perlls.setup({
-        on_attach = on_attach,
-        capabilities = capabilities,
+    on_attach = on_attach,
+    capabilities = capabilities,
   })
-
 
   -- replace the default lsp diagnostic letters with prettier symbols
   vim.fn.sign_define("LspDiagnosticsSignError", { text = "", numhl = "LspDiagnosticsDefaultError" })
