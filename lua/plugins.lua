@@ -60,7 +60,7 @@ return packer.startup({
         "petertriho/cmp-git",
       },
     })
-    use({ "ray-x/lsp_signature.nvim", event = "BufRead" })
+    use({ "ray-x/lsp_signature.nvim" })
     use({ "folke/lua-dev.nvim" })
     use({ "nvim-treesitter/playground", event = "BufRead" })
     use({ "jparise/vim-graphql", event = "BufRead" })
