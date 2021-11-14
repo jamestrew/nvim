@@ -25,7 +25,6 @@ M.config = function()
       on_attach = on_attach,
       capabilities = capabilities,
       settings = lspsettings[server.name],
-      root_dir = vim.loop.cwd,
     }
     if server.name == "sumneko_lua" then
       opts = require("lua-dev").setup({
