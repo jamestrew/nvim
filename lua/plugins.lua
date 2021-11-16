@@ -66,6 +66,13 @@ return packer.startup({
     use({ "jparise/vim-graphql", event = "BufRead" })
     use({ "jose-elias-alvarez/nvim-lsp-ts-utils", event = "BufRead" })
     use({ "David-Kunz/treesitter-unit", event = "BufRead" })
+    use({
+      "simrat39/symbols-outline.nvim",
+      config = function()
+        require("setup.symbols").config()
+      end,
+      event = "BufRead",
+    })
 
     -- Telescope & File Management
     use({ "kevinhwang91/rnvimr" })

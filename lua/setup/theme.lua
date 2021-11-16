@@ -340,3 +340,6 @@ Group.new("TelescopeResultsBorder", colors.lightbg, colors.none, none)
 Group.new("TelescopePreviewBorder", colors.lightbg, colors.none, none)
 Group.new("TelescopePreviewLine", colors.none, colors.line, none)
 Group.new("TelescopeSelection", colors.none, colors.line, none)
+
+-- symbols-outline
+Group.new("FocusedSymbol", colors.base08, colors.line, none)

@@ -107,6 +107,8 @@ utils.xnoremap("au", ":lua require('treesitter-unit').select(true)<CR>")
 utils.onoremap("iu", ":<C-u>lua require('treesitter-unit').select()<CR>")
 utils.onoremap("au", ":<C-u>lua require('treesitter-unit').select(true)<CR>")
 
+-- symbols
+utils.nnoremap("<leader>ss", ":SymbolsOutline<CR>", silent)
 -- unbinding
 utils.nnoremap("<C-F>", "")
 
