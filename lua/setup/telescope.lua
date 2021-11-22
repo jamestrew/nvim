@@ -218,4 +218,12 @@ M.get_symbols = function(opts)
   end
 end
 
+M.curbuf = function(opts)
+  opts = opts or themes.get_dropdown({
+    previewer = false,
+    shorten_path = false,
+    border = true,
+  })
+  require("telescope.builtin").current_buffer_fuzzy_find(opts)
+end
 return M
