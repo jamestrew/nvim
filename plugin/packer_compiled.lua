@@ -170,7 +170,7 @@ _G.packer_plugins = {
     url = "https://github.com/ThePrimeagen/harpoon"
   },
   hop = {
-    config = { "\27LJ\1\2U\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\1\tkeys\28etovxqpdygfblzhckisuran\nsetup\bhop\frequire\0" },
+    config = { "\27LJ\1\2S\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\1\tkeys\26tnhesoaiwfrudpclvkmzq\nsetup\bhop\frequire\0" },
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/hop",
     url = "https://github.com/phaazon/hop.nvim"
@@ -462,7 +462,7 @@ try_loadstring("\27LJ\1\2-\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\18setup.h
 time([[Config for harpoon]], false)
 -- Config for: hop
 time([[Config for hop]], true)
-try_loadstring("\27LJ\1\2U\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\1\tkeys\28etovxqpdygfblzhckisuran\nsetup\bhop\frequire\0", "config", "hop")
+try_loadstring("\27LJ\1\2S\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\1\tkeys\26tnhesoaiwfrudpclvkmzq\nsetup\bhop\frequire\0", "config", "hop")
 time([[Config for hop]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)

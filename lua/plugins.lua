@@ -137,7 +137,7 @@ return packer.startup({
       "phaazon/hop.nvim",
       as = "hop",
       config = function()
-        require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
+        require("hop").setup({ keys = "tnhesoaiwfrudpclvkmzq" })
       end,
     })
     use({ "tpope/vim-surround", event = "BufRead" })
