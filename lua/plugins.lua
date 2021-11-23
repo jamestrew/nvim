@@ -164,7 +164,7 @@ return packer.startup({
       config = function()
         require("refactoring").setup()
       end,
-      commit = "41caf9d207887779255fa659a2ddb2182b158e3b"
+      commit = "41caf9d207887779255fa659a2ddb2182b158e3b",
     })
 
     -- Git
