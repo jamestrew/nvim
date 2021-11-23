@@ -137,14 +137,8 @@ M.clear_prompt = function()
   vim.api.nvim_command("normal :esc<CR>")
 end
 
-M.change_project_dir = function(project_path)
-  if Path:new(project_path):exists() then
-    vim.fn.execute("cd " .. project_path, "silent")
-    return true
-  else
-    print("The path '" .. project_path .. "' does not exist")
-    return false
-  end
+M.echo_path = function()
+  print(vim.fn.expand("%:p"))
 end
 
 return M

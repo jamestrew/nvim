@@ -34,6 +34,8 @@ utils.nnoremap("n", "nzzzv")
 utils.nnoremap("N", "Nzzzv")
 utils.nnoremap("<leader>J", "mzJ`z")
 
+utils.nnoremap("<leader>pp", ":lua require('utils').echo_path()<CR>")
+
 ------------------------                  -------------------------
 ------------------------ Plugin Specifics -------------------------
 ------------------------                  -------------------------
