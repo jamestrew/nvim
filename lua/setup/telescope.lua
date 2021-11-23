@@ -64,16 +64,9 @@ M.find_dir = function()
 
   opts.entry_maker = require("telescope.make_entry").gen_from_file(opts)
   opts.attach_mappings = function(prompt_bufnr, map)
-    map("i", "<C-p>", actions.move_selection_previous)
-    map("i", "<C-n>", actions.move_selection_next)
-    map("n", "<C-p>", actions.move_selection_previous)
-    map("n", "<C-n>", actions.move_selection_next)
     map("i", "<C-y>c", tele_utils.create_file)
-    map("i", "<C-h>", function()
-      actions.close(prompt_bufnr)
-      vim.cmd(":Ntree")
-    end)
-    return true
+    map("i", "<C-h>", function() actions.close(prompt_bufnr) vim.cmd(":Ntree") end)
+    return tele_utils.alt_scroll(map)
   end
 
   pickers.new(opts, {
@@ -102,14 +95,8 @@ M.git_worktrees = function()
         require("git-worktree").switch_worktree(worktree_path)
       end
     end
-
-    map("i", "<C-p>", actions.move_selection_previous)
-    map("i", "<C-n>", actions.move_selection_next)
-    map("n", "<C-p>", actions.move_selection_previous)
-    map("n", "<C-n>", actions.move_selection_next)
-
     actions.select_default:replace(switch_and_find)
-    return true
+    return tele_utils.alt_scroll(map)
   end
   require("telescope").extensions.git_worktree.git_worktrees(opts)
 end
@@ -123,13 +110,7 @@ M.create_git_worktree = function()
     layout_strategy = "vertical",
   })
 
-  opts.attach_mappings = function(_, map)
-    map("i", "<C-p>", actions.move_selection_previous)
-    map("i", "<C-n>", actions.move_selection_next)
-    map("n", "<C-p>", actions.move_selection_previous)
-    map("n", "<C-n>", actions.move_selection_next)
-  end
-
+  opts.attach_mappings = function(_, map) return tele_utils.alt_scroll(map) end
   require("telescope").extensions.git_worktree.create_git_worktree(opts)
 end
 
@@ -137,15 +118,7 @@ M.lsp_code_actions = function()
   local opts = themes.get_cursor({
     previewer = false,
   })
-
-  opts.attach_mappings = function(_, map)
-    map("i", "<C-p>", actions.move_selection_previous)
-    map("i", "<C-n>", actions.move_selection_next)
-    map("n", "<C-p>", actions.move_selection_previous)
-    map("n", "<C-n>", actions.move_selection_next)
-    return true
-  end
-
+  opts.attach_mappings = function(_, map) return tele_utils.alt_scroll(map) end
   require("telescope.builtin").lsp_code_actions(opts)
 end
 
@@ -157,14 +130,7 @@ M.refactor = function()
     refactoring.refactor(content.value)
   end
   local opts = themes.get_cursor()
-
-  opts.attach_mappings = function(_, map)
-    map("i", "<C-p>", actions.move_selection_previous)
-    map("i", "<C-n>", actions.move_selection_next)
-    map("n", "<C-p>", actions.move_selection_previous)
-    map("n", "<C-n>", actions.move_selection_next)
-    return true
-  end
+  opts.attach_mappings = function(_, map) return tele_utils.alt_scroll(map) end
 
   pickers.new(opts, {
     prompt_title = "REFACTOR",
@@ -182,14 +148,7 @@ end
 
 M.neoclip = function()
   local opts = themes.get_ivy()
-
-  opts.attach_mappings = function(_, map)
-    map("i", "<C-p>", actions.move_selection_previous)
-    map("i", "<C-n>", actions.move_selection_next)
-    map("n", "<C-p>", actions.move_selection_previous)
-    map("n", "<C-n>", actions.move_selection_next)
-    return true
-  end
+  opts.attach_mappings = function(_, map) return tele_utils.alt_scroll(map) end
   require("telescope").extensions.neoclip.default(opts)
 end
 
@@ -203,13 +162,7 @@ M.get_symbols = function(opts)
     end
   end
 
-  opts.attach_mappings = function(_, map)
-    map("i", "<C-p>", actions.move_selection_previous)
-    map("i", "<C-n>", actions.move_selection_next)
-    map("n", "<C-p>", actions.move_selection_previous)
-    map("n", "<C-n>", actions.move_selection_next)
-    return true
-  end
+  opts.attach_mappings = function(_, map) return tele_utils.alt_scroll(map) end
 
   if ts_healthy then
     require("telescope.builtin").treesitter(opts)
@@ -224,6 +177,7 @@ M.curbuf = function(opts)
     shorten_path = false,
     border = true,
   })
+  opts.attach_mappings = function(_, map) return tele_utils.alt_scroll(map) end
   require("telescope.builtin").current_buffer_fuzzy_find(opts)
 end
 return M

@@ -56,4 +56,13 @@ M.yank_fpath = function()
   vim.fn.setreg("+", entry.value)
 end
 
+M.alt_scroll = function(map)
+    map("i", "<C-p>", actions.move_selection_previous)
+    map("i", "<C-n>", actions.move_selection_next)
+    map("n", "<C-p>", actions.move_selection_previous)
+    map("n", "<C-n>", actions.move_selection_next)
+    return true
+end
+
+
 return M
