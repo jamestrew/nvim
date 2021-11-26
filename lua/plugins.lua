@@ -66,14 +66,8 @@ return packer.startup({
     use({ "jparise/vim-graphql", event = "BufRead" })
     use({ "jose-elias-alvarez/nvim-lsp-ts-utils", event = "BufRead" })
     use({ "David-Kunz/treesitter-unit", event = "BufRead" })
-    -- use({
-    --   "simrat39/symbols-outline.nvim",
-    --   config = function()
-    --     require("setup.symbols").config()
-    --   end,
-    --   event = "BufRead",
-    -- })
-    local_use("symbols-outline.nvim", nil, {
+    use({
+      "simrat39/symbols-outline.nvim",
       config = function()
         require("setup.symbols").config()
       end,
@@ -248,6 +242,13 @@ return packer.startup({
       end,
     })
     use("nathom/filetype.nvim")
+    -- use({
+    --   "sunjon/Shade.nvim",
+    --   config = function()
+    --     require("shade").setup()
+    --   end,
+    -- })
+    local_use("dimmer.nvim", nil, {config = function() require('dimmer').setup() end})
   end,
   config = {
     display = {
