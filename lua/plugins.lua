@@ -162,9 +162,8 @@ return packer.startup({
       "ThePrimeagen/refactoring.nvim",
       event = "BufRead",
       config = function()
-        require("refactoring").setup()
+        require("refactoring").setup({})
       end,
-      commit = "41caf9d207887779255fa659a2ddb2182b158e3b",
     })
 
     -- Git
@@ -243,12 +242,16 @@ return packer.startup({
     })
     use("nathom/filetype.nvim")
     -- use({
-    --   "sunjon/Shade.nvim",
+    --   "sunjon/shade.nvim",
     --   config = function()
     --     require("shade").setup()
     --   end,
     -- })
-    local_use("dimmer.nvim", nil, {config = function() require('dimmer').setup() end})
+    local_use("dimmer.nvim", nil, {
+      config = function()
+        require("dimmer").setup({ log_level = "trace", debug = true })
+      end,
+    })
   end,
   config = {
     display = {

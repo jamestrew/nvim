@@ -30,7 +30,13 @@ M.telescope = {
       vertical = {
         mirror = false,
       },
-      width = 0.87,
+      width = function(_, cols, _)
+        if cols > 200 then
+          return 170
+        else
+          return math.floor(cols * 0.87)
+        end
+      end,
       height = 0.80,
       preview_cutoff = 120,
     },

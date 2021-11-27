@@ -122,7 +122,7 @@ _G.packer_plugins = {
     url = "https://github.com/tjdevries/colorbuddy.vim"
   },
   ["dimmer.nvim"] = {
-    config = { "\27LJ\1\0024\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\vdimmer\frequire\0" },
+    config = { "\27LJ\1\2R\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\2\ndebug\2\14log_level\ntrace\nsetup\vdimmer\frequire\0" },
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/dimmer.nvim",
     url = "/home/jt/Documents/projects/dimmer.nvim"
@@ -307,7 +307,7 @@ _G.packer_plugins = {
     url = "https://github.com/andweeb/presence.nvim"
   },
   ["refactoring.nvim"] = {
-    config = { "\27LJ\1\0029\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\16refactoring\frequire\0" },
+    config = { "\27LJ\1\2=\0\0\2\0\3\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0002\1\0\0>\0\2\1G\0\1\0\nsetup\16refactoring\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -472,7 +472,7 @@ try_loadstring("\27LJ\1\2S\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>
 time([[Config for hop]], false)
 -- Config for: dimmer.nvim
 time([[Config for dimmer.nvim]], true)
-try_loadstring("\27LJ\1\0024\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\vdimmer\frequire\0", "config", "dimmer.nvim")
+try_loadstring("\27LJ\1\2R\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\2\ndebug\2\14log_level\ntrace\nsetup\vdimmer\frequire\0", "config", "dimmer.nvim")
 time([[Config for dimmer.nvim]], false)
 -- Config for: nvim-lspconfig
 time([[Config for nvim-lspconfig]], true)
