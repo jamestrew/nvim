@@ -58,6 +58,7 @@ return packer.startup({
         "hrsh7th/cmp-nvim-lsp",
         "saadparwaiz1/cmp_luasnip",
         "petertriho/cmp-git",
+        "hrsh7th/cmp-cmdline",
       },
     })
     use({ "ray-x/lsp_signature.nvim" })

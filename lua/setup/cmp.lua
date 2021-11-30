@@ -29,10 +29,21 @@ M.config = function()
       { name = "buffer", keyword_length = 3 },
       { name = "luasnip" },
       { name = "cmp_git" },
+      { name = "cmdline" },
     },
   })
 
   require("cmp_git").setup()
+  cmp.setup.cmdline("/", {
+    sources = {
+      { name = "buffer" },
+    },
+  })
+  cmp.setup.cmdline(":", {
+    sources = {
+      { name = "cmdline" },
+    },
+  })
   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
