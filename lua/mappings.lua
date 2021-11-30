@@ -2,8 +2,8 @@ local utils = require("utils")
 local silent = { silent = true }
 local sexpr = { silent = true, expr = true }
 
-vim.cmd([[command Q :q]])
 vim.cmd([[command W :w]])
+vim.cmd([[command Q :q]])
 vim.cmd([[command Wq :wq]])
 
 -- move line(s) up/down
@@ -26,16 +26,15 @@ utils.vnoremap(">", ">gv", silent)
 -- easier exit insert mode in the terminal
 utils.tnoremap("<Esc>", "<C-\\><C-n>")
 
--- endofline behavior for Y like D, C
-utils.nnoremap("Y", "y$")
-
 -- keeps jumps centered
 utils.nnoremap("n", "nzzzv")
 utils.nnoremap("N", "Nzzzv")
 utils.nnoremap("<leader>J", "mzJ`z")
 
-utils.nnoremap("<leader>pp", ":lua require('utils').echo_path()<CR>")
+utils.nnoremap("<leader>pp", ":echo expand('%:p')<CR>")
 
+-- unbinding
+utils.nnoremap("<C-F>", "")
 ------------------------                  -------------------------
 ------------------------ Plugin Specifics -------------------------
 ------------------------                  -------------------------
@@ -112,8 +111,6 @@ utils.onoremap("au", ":<C-u>lua require('treesitter-unit').select(true)<CR>")
 
 -- symbols
 utils.nnoremap("<leader>ss", ":SymbolsOutline<CR>", silent)
--- unbinding
-utils.nnoremap("<C-F>", "")
 
 -- luasnips
 vim.cmd [[

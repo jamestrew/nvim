@@ -137,8 +137,4 @@ M.clear_prompt = function()
   vim.api.nvim_command("normal :esc<CR>")
 end
 
-M.echo_path = function()
-  print(vim.fn.expand("%:p"))
-end
-
 return M

@@ -32,8 +32,7 @@ return packer.startup({
     -- LSP & Treeshitter
     use({
       "nvim-treesitter/nvim-treesitter",
-      branch = "0.5-compat",
-      event = "BufRead",
+      run = ":TSUpdate",
       config = function()
         require("setup.treesitter").config()
       end,
@@ -131,7 +130,7 @@ return packer.startup({
       "folke/todo-comments.nvim",
       requires = "nvim-lua/plenary.nvim",
       config = function()
-        require("todo-comments").setup()
+        require("setup.todo-comments").config()
       end,
     })
     use({

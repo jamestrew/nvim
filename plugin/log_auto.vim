@@ -36,6 +36,7 @@ endfunction
 " - FuncUndefined
 
 let s:aulist = [
+      \ 'OptionSet',
       \ 'BufNewFile',
       \ 'BufReadPre',
       \ 'BufRead',
@@ -91,10 +92,6 @@ let s:aulist = [
       \ 'VimResized',
       \ 'FocusGained',
       \ 'FocusLost',
-      \ 'CursorHold',
-      \ 'CursorHoldI',
-      \ 'CursorMoved',
-      \ 'CursorMovedI',
       \ 'WinEnter',
       \ 'WinLeave',
       \ 'TabEnter',
@@ -116,3 +113,9 @@ let s:aulist = [
       \ 'CompleteDone',
       \ 'User',
       \ ]
+
+" ignoring cursor events
+  " \ 'CursorHold',
+  " \ 'CursorHoldI',
+  " \ 'CursorMoved',
+  " \ 'CursorMovedI',
