@@ -1,4 +1,5 @@
 local M = {}
+thth
 
 M.config = function()
   local lspsettings = require("setup.lsp.settings")
@@ -41,10 +42,10 @@ M.config = function()
   })
 
   -- replace the default lsp diagnostic letters with prettier symbols
-  vim.fn.sign_define("LspDiagnosticsSignError", { text = "", numhl = "LspDiagnosticsDefaultError" })
-  vim.fn.sign_define("LspDiagnosticsSignWarning", { text = "", numhl = "LspDiagnosticsDefaultWarning" })
-  vim.fn.sign_define("LspDiagnosticsSignInformation", { text = "", numhl = "LspDiagnosticsDefaultInformation" })
-  vim.fn.sign_define("LspDiagnosticsSignHint", { text = "", numhl = "LspDiagnosticsDefaultHint" })
+  vim.fn.sign_define("DiagnosticSignError", { text = "", numhl = "DiagnosticWarn" })
+  vim.fn.sign_define("DiagnosticSignWarning", { text = "", numhl = "DiagnosticWarn" })
+  vim.fn.sign_define("DiagnosticSignInformation", { text = "", numhl = "DiagnosticInfo" })
+  vim.fn.sign_define("DiagnosticSignHint", { text = "", numhl = "DiagnosticHint" })
 
   vim.api.nvim_command([[ hi def link LspReferenceText CursorLine ]])
   vim.api.nvim_command([[ hi def link LspReferenceWrite CursorLine ]])
