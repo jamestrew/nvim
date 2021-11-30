@@ -11,7 +11,7 @@ local standout = styles.standout
 local none = styles.NONE
 local v = vim
 
--- v.g.colors_name = theme.name
+v.g.colors_name = theme.name
 for name, hex in pairs(theme.colors) do
   Color.new(name, hex)
 end
