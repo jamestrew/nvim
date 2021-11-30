@@ -32,8 +32,7 @@ return packer.startup({
     -- LSP & Treeshitter
     use({
       "nvim-treesitter/nvim-treesitter",
-      branch = "0.5-compat",
-      event = "BufRead",
+      run = ":TSUpdate",
       config = function()
         require("setup.treesitter").config()
       end,
