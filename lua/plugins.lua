@@ -252,8 +252,10 @@ return packer.startup({
         require("dimmer").setup({ log_level = "trace", debug = true })
       end,
     })
+    use("lewis6991/impatient.nvim")
   end,
   config = {
+    compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
     display = {
       open_fn = function()
         return require("packer.util").float({ border = "single" })

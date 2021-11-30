@@ -90,6 +90,11 @@ _G.packer_plugins = {
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/cmp-buffer",
     url = "https://github.com/hrsh7th/cmp-buffer"
   },
+  ["cmp-cmdline"] = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
+    url = "https://github.com/hrsh7th/cmp-cmdline"
+  },
   ["cmp-git"] = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/cmp-git",
@@ -122,7 +127,7 @@ _G.packer_plugins = {
     url = "https://github.com/tjdevries/colorbuddy.vim"
   },
   ["dimmer.nvim"] = {
-    config = { "\27LJ\1\2R\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\2\ndebug\2\14log_level\ntrace\nsetup\vdimmer\frequire\0" },
+    config = { "\27LJ\1\2\0\0\3\0\6\0\t4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\4\0003\2\3\0:\2\5\1>\0\2\1G\0\1\0\14ft_ignore\1\0\2\14log_level\ntrace\ndebug\2\1\4\0\0\nnetrw\fOutline\rundotree\nsetup\vdimmer\frequire\0" },
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/dimmer.nvim",
     url = "/home/jt/Documents/projects/dimmer.nvim"
@@ -472,16 +477,16 @@ try_loadstring("\27LJ\1\2S\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>
 time([[Config for hop]], false)
 -- Config for: dimmer.nvim
 time([[Config for dimmer.nvim]], true)
-try_loadstring("\27LJ\1\2R\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\2\ndebug\2\14log_level\ntrace\nsetup\vdimmer\frequire\0", "config", "dimmer.nvim")
+try_loadstring("\27LJ\1\2\0\0\3\0\6\0\t4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\4\0003\2\3\0:\2\5\1>\0\2\1G\0\1\0\14ft_ignore\1\0\2\14log_level\ntrace\ndebug\2\1\4\0\0\nnetrw\fOutline\rundotree\nsetup\vdimmer\frequire\0", "config", "dimmer.nvim")
 time([[Config for dimmer.nvim]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-try_loadstring("\27LJ\1\2>\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\20setup.lspconfig\frequire\0", "config", "nvim-lspconfig")
-time([[Config for nvim-lspconfig]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 try_loadstring("\27LJ\1\2>\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\20setup.telescope\frequire\0", "config", "telescope.nvim")
 time([[Config for telescope.nvim]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+try_loadstring("\27LJ\1\2>\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\20setup.lspconfig\frequire\0", "config", "nvim-lspconfig")
+time([[Config for nvim-lspconfig]], false)
 -- Config for: nvim-neoclip.lua
 time([[Config for nvim-neoclip.lua]], true)
 try_loadstring("\27LJ\1\0025\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\fneoclip\frequire\0", "config", "nvim-neoclip.lua")
@@ -522,7 +527,7 @@ time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au CursorHold * ++once lua require("packer.load")({'vim-illuminate'}, { event = "CursorHold *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim', 'playground', 'tabout.nvim', 'symbols-outline.nvim', 'emmet-vim', 'vim-surround', 'nvim-ts-context-commentstring', 'undotree', 'vim-graphql', 'nvim-colorizer.lua', 'nvim-lsp-ts-utils', 'treesitter-unit', 'gitsigns.nvim', 'refactoring.nvim', 'vim-repeat'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim', 'playground', 'tabout.nvim', 'symbols-outline.nvim', 'emmet-vim', 'nvim-ts-context-commentstring', 'gitsigns.nvim', 'undotree', 'vim-graphql', 'nvim-colorizer.lua', 'treesitter-unit', 'nvim-lsp-ts-utils', 'vim-surround', 'refactoring.nvim', 'vim-repeat'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
