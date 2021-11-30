@@ -1,5 +1,4 @@
 local M = {}
-thth
 
 M.config = function()
   local lspsettings = require("setup.lsp.settings")
