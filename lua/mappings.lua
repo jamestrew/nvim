@@ -33,6 +33,8 @@ utils.nnoremap("<leader>J", "mzJ`z")
 
 utils.nnoremap("<leader>pp", ":echo expand('%:p')<CR>")
 
+-- unbinding
+utils.nnoremap("<C-F>", "")
 ------------------------                  -------------------------
 ------------------------ Plugin Specifics -------------------------
 ------------------------                  -------------------------
@@ -109,8 +111,6 @@ utils.onoremap("au", ":<C-u>lua require('treesitter-unit').select(true)<CR>")
 
 -- symbols
 utils.nnoremap("<leader>ss", ":SymbolsOutline<CR>", silent)
--- unbinding
-utils.nnoremap("<C-F>", "")
 
 -- luasnips
 vim.cmd [[
