@@ -1,4 +1,4 @@
-require("impatient")
+require("impatient").enable_profile()
 require("plugins")
 require("packer_compiled")
 require("options")
