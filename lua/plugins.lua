@@ -244,14 +244,19 @@ return packer.startup({
     -- use({
     --   "sunjon/shade.nvim",
     --   config = function()
-    --     require("shade").setup()
+    --     require("shade").setup({debug = true})
     --   end,
     -- })
-    local_use("dimmer.nvim", nil, {
-      config = function()
-        require("dimmer").setup({ log_level = "trace", debug = true })
-      end,
-    })
+    -- local_use("dimmer.nvim", nil, {
+    --   config = function()
+    --     require("dimmer").setup({
+    --       opacity = 85,
+    --       ft_ignore = { "netrw", "Outline", "undotree" },
+    --       log_level = "trace",
+    --       debug = true,
+    --     })
+    --   end,
+    -- })
     use("lewis6991/impatient.nvim")
   end,
   config = {
