@@ -120,3 +120,7 @@ vim.cmd [[
   snoremap <silent> <C-k> <Cmd>lua require('luasnip').jump(1)<CR>
   snoremap <silent> <C-j> <Cmd>lua require('luasnip').jump(-1)<CR>
 ]]
+
+  utils.nnoremap("<leader><leader>d", ":DimmerToggle<CR>")
+  utils.nnoremap("<leader>od", ":lua dump(require('dimmer').get_state().overlays)<CR>")
+  utils.nnoremap("<leader>lw", ":lua dump(require('setup.dimmer').list_windows())<CR>")
