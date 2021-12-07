@@ -241,17 +241,11 @@ return packer.startup({
       end,
     })
     use("nathom/filetype.nvim")
-    -- use({
-    --   "sunjon/shade.nvim",
+    -- local_use("dimmer.nvim", nil, {
     --   config = function()
-    --     require("shade").setup({debug = true})
+    --     require("setup.dimmer").config()
     --   end,
     -- })
-    local_use("dimmer.nvim", nil, {
-      config = function()
-        require("setup.dimmer").config()
-      end,
-    })
     use("lewis6991/impatient.nvim")
   end,
   config = {

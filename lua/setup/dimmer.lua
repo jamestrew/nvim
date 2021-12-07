@@ -3,10 +3,10 @@ local M = {}
 M.config = function()
   local dimmer = require("dimmer")
   dimmer.setup({
-    opacity = 10,
+    opacity = 40,
     ft_ignore = { "netrw", "Outline", "undotree" },
     log_level = "trace",
-    debug = true,
+    debug = false,
   })
 end
 

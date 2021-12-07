@@ -10,6 +10,7 @@ M.config = function()
       changedelete = { hl = "DiffChange", text = "~", numhl = "GitSignsChangeNr" },
     },
     numhl = false,
+    current_line_blame = true,
     keymaps = {
       -- Default keymap options
       noremap = true,
