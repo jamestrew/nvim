@@ -18,9 +18,12 @@ M.config = function()
       ---operator-pending mapping
       ---Includes `gcc`, `gcb`, `gc[count]{motion}` and `gb[count]{motion}`
       basic = true,
+      ---extra mapping
+      ---Includes `gco`, `gcO`, `gcA`
+      extra = true,
       ---extended mapping
       ---Includes `g>`, `g<`, `g>[count]{motion}` and `g<[count]{motion}`
-      extra = false,
+      extended = false,
     },
 
     ---LHS of line and block comment toggle mapping in NORMAL/VISUAL mode
@@ -51,6 +54,9 @@ M.config = function()
     ---@type function|nil
     post_hook = nil,
   })
+
+  local comment_ft = require("Comment.ft")
+  comment_ft.set("lua", { "--%s", "--[[%s]]" })
 end
 
 return M
