@@ -112,9 +112,9 @@ return packer.startup({
     })
     use({
       "lukas-reineke/indent-blankline.nvim",
-      event = "BufRead",
+      after="tjdevries/colorbuddy.vim",
       setup = function()
-        require("setup.blankline")
+        require("setup.blankline").config()
       end,
     })
     use({ "sbdchd/neoformat", cmd = "Neoformat" })
@@ -137,7 +137,7 @@ return packer.startup({
       "phaazon/hop.nvim",
       as = "hop",
       config = function()
-        require("hop").setup({ keys = "tnhesoaiwfrudpclvkmzq" })
+        require("hop").setup({ keys = "tnhesoaiwfrudpclm" })
       end,
     })
     use({ "tpope/vim-surround", event = "BufRead" })

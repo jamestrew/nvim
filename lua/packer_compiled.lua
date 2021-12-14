@@ -175,7 +175,7 @@ _G.packer_plugins = {
     url = "https://github.com/ThePrimeagen/harpoon"
   },
   hop = {
-    config = { "\27LJ\1\2S\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\1\tkeys\26tnhesoaiwfrudpclvkmzq\nsetup\bhop\frequire\0" },
+    config = { "\27LJ\1\2O\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\1\tkeys\22tnhesoaiwfrudpclm\nsetup\bhop\frequire\0" },
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/hop",
     url = "https://github.com/phaazon/hop.nvim"
@@ -186,9 +186,8 @@ _G.packer_plugins = {
     url = "https://github.com/lewis6991/impatient.nvim"
   },
   ["indent-blankline.nvim"] = {
-    loaded = false,
+    loaded = true,
     needs_bufread = false,
-    only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
@@ -446,8 +445,11 @@ end
 
 -- Setup for: indent-blankline.nvim
 time([[Setup for indent-blankline.nvim]], true)
-try_loadstring("\27LJ\1\2/\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\20setup.blankline\frequire\0", "setup", "indent-blankline.nvim")
+try_loadstring("\27LJ\1\2>\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\20setup.blankline\frequire\0", "setup", "indent-blankline.nvim")
 time([[Setup for indent-blankline.nvim]], false)
+time([[packadd for indent-blankline.nvim]], true)
+vim.cmd [[packadd indent-blankline.nvim]]
+time([[packadd for indent-blankline.nvim]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
 try_loadstring("\27LJ\1\2?\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\21setup.treesitter\frequire\0", "config", "nvim-treesitter")
@@ -470,7 +472,7 @@ try_loadstring("\27LJ\1\2-\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\18setup.h
 time([[Config for harpoon]], false)
 -- Config for: hop
 time([[Config for hop]], true)
-try_loadstring("\27LJ\1\2S\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\1\tkeys\26tnhesoaiwfrudpclvkmzq\nsetup\bhop\frequire\0", "config", "hop")
+try_loadstring("\27LJ\1\2O\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\1\tkeys\22tnhesoaiwfrudpclm\nsetup\bhop\frequire\0", "config", "hop")
 time([[Config for hop]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
@@ -524,7 +526,7 @@ time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au CursorHold * ++once lua require("packer.load")({'vim-illuminate'}, { event = "CursorHold *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'indent-blankline.nvim', 'playground', 'tabout.nvim', 'symbols-outline.nvim', 'emmet-vim', 'vim-surround', 'nvim-ts-context-commentstring', 'undotree', 'vim-graphql', 'nvim-lsp-ts-utils', 'nvim-colorizer.lua', 'treesitter-unit', 'gitsigns.nvim', 'refactoring.nvim', 'vim-repeat'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'playground', 'tabout.nvim', 'symbols-outline.nvim', 'emmet-vim', 'vim-surround', 'nvim-ts-context-commentstring', 'undotree', 'vim-graphql', 'nvim-lsp-ts-utils', 'nvim-colorizer.lua', 'treesitter-unit', 'gitsigns.nvim', 'refactoring.nvim', 'vim-repeat'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

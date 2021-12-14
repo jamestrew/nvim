@@ -327,11 +327,13 @@ v.g.terminal_color_15 = theme.base07
 
 -- blankline
 Group.new("IndentBlanklineChar", colors.line, colors.none, none)
+Group.new("IndentBlanklineContextChar", colors.base0E, colors.none, none)
+Group.new("IndentBlanklineContextStart", colors.none, colors.none, none)
 
 -- misc
 Group.new("NvimInternalError", colors.red, colors.none, none)
 Group.new("EndOfBuffer", colors.black, colors.none, none)
-v.cmd("hi! StatusLineNC gui=underline guifg=" .. theme.colors.line)
+Group.new("StatusLineNC", colors.line, colors.none, underline)
 
 -- telescope
 Group.new("TelescopeBorder", colors.lightbg, colors.none, none)
