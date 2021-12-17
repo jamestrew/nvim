@@ -74,8 +74,8 @@ nnoremap("gr", ":Telescope lsp_references<CR>", silent)
 nnoremap("<leader>ca", ":lua require('setup.telescope').lsp_code_actions()<CR>", silent)
 nnoremap("<leader>gi", ":Telescope lsp_implementations<CR>", silent)
 nnoremap("<leader>fs", ":lua require('setup.telescope').get_symbols()<CR>", silent)
-nnoremap("<leader>tw", ":Telescope lsp_workspace_diagnostics<CR>", silent)
-nnoremap("<leader>td", ":Telescope lsp_document_diagnostics<CR>", silent)
+nnoremap("<leader>tw", ":Telescope diagnostics bufnr=0<CR>", silent)
+nnoremap("<leader>td", ":Telescope diagnostics<CR>", silent)
 
 -- Refactoring
 nnoremap("<leader>rt", ":norm! V<CR> :lua require'setup.telescope'.refactor()<CR>", silent)
