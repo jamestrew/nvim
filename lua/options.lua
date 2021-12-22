@@ -33,7 +33,7 @@ opt.splitright = true -- Prefer windows splitting to the right
 opt.splitbelow = true -- Prefer windows splitting to the bottom
 opt.updatetime = 1000 -- Make updates happen faster
 opt.hlsearch = false -- Get rid of highlights once done with search
-opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
+opt.scrolloff = 20 -- Make it so there are always ten lines below my cursor
 
 -- Tabs
 opt.tabstop = 4
@@ -41,7 +41,7 @@ opt.shiftwidth = 4
 opt.softtabstop = 4
 opt.expandtab = true
 opt.autoindent = true
-opt.cindent = true
+opt.smartindent = true
 opt.wrap = false
 opt.colorcolumn = "80"
 
