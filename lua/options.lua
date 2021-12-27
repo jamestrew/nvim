@@ -36,9 +36,9 @@ opt.hlsearch = false -- Get rid of highlights once done with search
 opt.scrolloff = 20 -- Make it so there are always ten lines below my cursor
 
 -- Tabs
-opt.tabstop = 4
-opt.shiftwidth = 4
-opt.softtabstop = 4
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.softtabstop = 2
 opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
