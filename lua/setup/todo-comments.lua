@@ -8,7 +8,7 @@ M.config = function()
     sign_priority = 8, -- sign priority
     -- keywords recognized as todo comments
     keywords = {
-      FIX = { icon = " ", color = colors.base08, alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, },
+      FIX = { icon = " ", color = colors.base08, alt = { "FIXME", "BUG", "FIXIT", "ISSUE" } },
       TODO = { icon = " ", color = colors.base0D },
       HACK = { icon = " ", color = colors.base06 },
       WARN = { icon = " ", color = colors.base0A, alt = { "WARNING", "XXX" } },

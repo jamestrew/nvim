@@ -22,7 +22,7 @@ M.config = function()
       code_actions = "a",
     },
     lsp_blacklist = {},
-    symbol_blacklist = {"Variable"},
+    symbol_blacklist = { "Variable" },
     symbols = {
       File = { icon = "", hl = "TSURI" },
       Module = { icon = "", hl = "TSNamespace" },

@@ -116,13 +116,13 @@ utils.onoremap("au", ":<C-u>lua require('treesitter-unit').select(true)<CR>")
 nnoremap("<leader>so", ":SymbolsOutline<CR>", silent)
 
 -- luasnips
-vim.cmd [[
+vim.cmd([[
   imap <silent><expr> <C-k> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<C-k>'
   inoremap <silent> <C-j> <Cmd>lua require('luasnip').jump(-1)<CR>
   imap <silent><expr> <C-l> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-l>'
   snoremap <silent> <C-k> <Cmd>lua require('luasnip').jump(1)<CR>
   snoremap <silent> <C-j> <Cmd>lua require('luasnip').jump(-1)<CR>
-]]
+]])
 
 nnoremap("<leader><leader>d", ":DimmerToggle<CR>")
 nnoremap("<leader>od", ":lua dump(require('dimmer').get_state().overlays)<CR>")
