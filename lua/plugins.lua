@@ -87,6 +87,7 @@ return packer.startup({
       end,
     })
     use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+    use({ "nvim-telescope/telescope-file-browser.nvim" })
     -- use({ "nvim-telescope/telescope-frecency.nvim", requires = { "tami5/sql.nvim" } })
     use({
       "ThePrimeagen/harpoon",
@@ -112,7 +113,7 @@ return packer.startup({
     })
     use({
       "lukas-reineke/indent-blankline.nvim",
-      after="tjdevries/colorbuddy.vim",
+      after = "tjdevries/colorbuddy.vim",
       setup = function()
         require("setup.blankline").config()
       end,

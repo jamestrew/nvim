@@ -82,6 +82,10 @@ M.telescope = {
     frecency = {
       ignore_patterns = { "*.git/*", "*/tmp/*", "*/node_modules/*" },
     },
+    file_browser = {
+      theme = "ivy",
+      files = false,
+    },
   },
 }
 

@@ -18,6 +18,7 @@ M.config = function()
   require("telescope").load_extension("fzf")
   require("telescope").load_extension("git_worktree")
   require("telescope").load_extension("neoclip")
+  require("telescope").load_extension("file_browser")
   -- require("telescope").load_extension "frecency"
 end
 
@@ -89,7 +90,7 @@ M.git_worktrees = function()
 
   opts.attach_mappings = function(prompt_bufnr, map)
     local switch_and_find = function()
-      local worktree_path = action_state.get_selected_entry(prompt_bufnr).path
+      local worktree_path = action_state.get_selected_entry().path
       actions.close(prompt_bufnr)
       if worktree_path ~= nil then
         require("git-worktree").switch_worktree(worktree_path)
@@ -125,7 +126,7 @@ end
 M.refactor = function()
   local refactoring = require("refactoring")
   local function refactor(prompt_bufnr)
-    local content = action_state.get_selected_entry(prompt_bufnr)
+    local content = action_state.get_selected_entry()
     actions.close(prompt_bufnr)
     refactoring.refactor(content.value)
   end
