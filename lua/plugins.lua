@@ -113,7 +113,7 @@ return packer.startup({
     })
     use({
       "lukas-reineke/indent-blankline.nvim",
-      after = "tjdevries/colorbuddy.vim",
+      -- after = "tjdevries/colorbuddy.vim",
       setup = function()
         require("setup.blankline").config()
       end,
