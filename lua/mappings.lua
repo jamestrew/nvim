@@ -8,15 +8,6 @@ vim.cmd([[command W :w]])
 vim.cmd([[command Q :q]])
 vim.cmd([[command Wq :wq]])
 
--- move line(s) up/down
--- BUG: ESC followed quickly by j/k triggers the next two commands
--- nnoremap("<A-j>", ":m .+1<CR>==")
--- nnoremap("<A-k>", ":m .-2<CR>==")
--- utils.imap("<A-j>", "<Esc>:m .+1<CR>==i")
--- utils.imap("<A-k>", "<Esc>:m .-2<CR>==i")
-vnoremap("<A-j>", ":m '>+1<CR>gv=gv", silent)
-vnoremap("<A-k>", ":m '<-2<CR>gv=gv", silent)
-
 -- paste/delete and keep register clean
 vnoremap("<leader>p", '"_dP')
 vnoremap("<leader>d", '"_d')

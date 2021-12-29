@@ -166,6 +166,12 @@ return packer.startup({
         require("refactoring").setup({})
       end,
     })
+    use({
+      "booperlv/nvim-gomove",
+      config = function()
+        require("gomove").setup()
+      end,
+    })
 
     -- Git
     use({
