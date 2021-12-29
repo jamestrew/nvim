@@ -196,4 +196,12 @@ M.curbuf = function(opts)
   end
   require("telescope.builtin").current_buffer_fuzzy_find(opts)
 end
+
+M.file_browser = function(opts)
+  opts = opts or {}
+  opts.attach_mappings = function(_, map)
+    return tele_utils.alt_scroll(map)
+  end
+  require('telescope').extensions.file_browser.file_browser(opts)
+end
 return M

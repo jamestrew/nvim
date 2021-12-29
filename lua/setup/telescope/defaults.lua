@@ -84,7 +84,7 @@ M.telescope = {
     },
     file_browser = {
       theme = "ivy",
-      files = false,
+      files = true,
       hidden = true,
     },
   },
