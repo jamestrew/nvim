@@ -141,6 +141,7 @@ return packer.startup({
         require("hop").setup({ keys = "tnhesoaiwfrudpclm" })
       end,
     })
+    use("ggandor/lightspeed.nvim")
     use({ "tpope/vim-surround", event = "BufRead" })
     use({ "tpope/vim-repeat", event = "BufRead" })
     use({ "mattn/emmet-vim", event = "BufRead" })
