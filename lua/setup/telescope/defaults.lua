@@ -60,6 +60,7 @@ M.telescope = {
         ["<C-p>"] = actions.move_selection_next,
         ["<C-n>"] = actions.move_selection_previous,
         ["<Esc>"] = actions.close,
+        ["<C-c>"] = false,
       },
       n = {
         ["<C-p>"] = actions.move_selection_next,
@@ -85,7 +86,7 @@ M.telescope = {
     file_browser = {
       theme = "ivy",
       files = true,
-      hidden = true,
+      hidden = false,
     },
   },
 }
