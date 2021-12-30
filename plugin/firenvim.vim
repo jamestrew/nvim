@@ -31,7 +31,6 @@ function! OnUIEnter(event) abort
     set guifont=JetBrains_Mono:h12
     nnoremap <leader>slc :set guifont=JetBrains_Mono:h14<CR>
   else
-    :lua require('bufresize').setup()
   endif
 endfunction
 autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
