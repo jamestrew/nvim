@@ -273,6 +273,13 @@ _G.packer_plugins = {
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["nvim-treesitter-context"] = {
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-context",
+    url = "https://github.com/romgrk/nvim-treesitter-context"
+  },
   ["nvim-ts-context-commentstring"] = {
     loaded = false,
     needs_bufread = false,
@@ -461,10 +468,10 @@ time([[Setup for indent-blankline.nvim]], false)
 time([[packadd for indent-blankline.nvim]], true)
 vim.cmd [[packadd indent-blankline.nvim]]
 time([[packadd for indent-blankline.nvim]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-try_loadstring("\27LJ\1\2?\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\21setup.treesitter\frequire\0", "config", "nvim-treesitter")
-time([[Config for nvim-treesitter]], false)
+-- Config for: git-worktree.nvim
+time([[Config for git-worktree.nvim]], true)
+try_loadstring("\27LJ\1\2=\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\19setup.worktree\frequire\0", "config", "git-worktree.nvim")
+time([[Config for git-worktree.nvim]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 try_loadstring("\27LJ\1\2>\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\20setup.telescope\frequire\0", "config", "telescope.nvim")
@@ -489,10 +496,10 @@ time([[Config for nvim-gomove]], false)
 time([[Config for nvim-lspconfig]], true)
 try_loadstring("\27LJ\1\2>\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\20setup.lspconfig\frequire\0", "config", "nvim-lspconfig")
 time([[Config for nvim-lspconfig]], false)
--- Config for: git-worktree.nvim
-time([[Config for git-worktree.nvim]], true)
-try_loadstring("\27LJ\1\2=\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\19setup.worktree\frequire\0", "config", "git-worktree.nvim")
-time([[Config for git-worktree.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+try_loadstring("\27LJ\1\2?\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vconfig\21setup.treesitter\frequire\0", "config", "nvim-treesitter")
+time([[Config for nvim-treesitter]], false)
 -- Config for: harpoon
 time([[Config for harpoon]], true)
 try_loadstring("\27LJ\1\2-\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\18setup.harpoon\frequire\0", "config", "harpoon")
@@ -541,7 +548,7 @@ time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au CursorHold * ++once lua require("packer.load")({'vim-illuminate'}, { event = "CursorHold *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'playground', 'vim-surround', 'tabout.nvim', 'symbols-outline.nvim', 'emmet-vim', 'nvim-ts-context-commentstring', 'gitsigns.nvim', 'vim-graphql', 'nvim-lsp-ts-utils', 'nvim-colorizer.lua', 'treesitter-unit', 'undotree', 'refactoring.nvim', 'vim-repeat'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'symbols-outline.nvim', 'playground', 'vim-surround', 'tabout.nvim', 'emmet-vim', 'nvim-ts-context-commentstring', 'vim-graphql', 'gitsigns.nvim', 'nvim-treesitter-context', 'nvim-lsp-ts-utils', 'nvim-colorizer.lua', 'treesitter-unit', 'undotree', 'refactoring.nvim', 'vim-repeat'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

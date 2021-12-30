@@ -2,6 +2,7 @@ local M = {}
 
 M.config = function()
   local ts_config = require("nvim-treesitter.configs")
+  local ts_context = require("treesitter-context")
 
   ts_config.setup({
     ensure_installed = "maintained",
@@ -50,6 +51,8 @@ M.config = function()
       },
     },
   })
+
+  ts_context.setup()
 end
 
 return M
