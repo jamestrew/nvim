@@ -24,8 +24,8 @@ M.os = {
   config = vim.fn.stdpath("config"),
   name = vim.loop.os_uname().sysname,
   cwd = vim.loop.cwd(),
-  is_git_dir = os.execute("git rev-parse --is-inside-work-tree >> /dev/null 2>&1"),
-  is_git_worktree = os.execute("git rev-parse --is-inside-git-dir >> /dev/null 2>&1"),
+  in_worktree = os.execute("git rev-parse --is-inside-work-tree >> /dev/null 2>&1") == 0,
+  in_bare = os.execute("git rev-parse --is-bare-repository >> /dev/null 2>&1") == 0,
 }
 
 M.functions = {}
@@ -125,12 +125,6 @@ end
 
 M.is_dir = function(path)
   return path:sub(-1, -1) == Path.path.sep
-end
-
-M.is_git_dir = function()
-  local opts = { search_pattern = "git$", add_dirs = true, hidden = true, depth = 1 }
-  local files = scan.scan_dir(vim.loop.cwd(), opts)
-  return #files > 0 and true or false
 end
 
 M.clear_prompt = function()
