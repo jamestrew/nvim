@@ -115,6 +115,8 @@ vim.cmd([[
   snoremap <silent> <C-j> <Cmd>lua require('luasnip').jump(-1)<CR>
 ]])
 
-nnoremap("<leader><leader>d", ":DimmerToggle<CR>")
-nnoremap("<leader>od", ":lua dump(require('dimmer').get_state().overlays)<CR>")
-nnoremap("<leader>lw", ":lua dump(require('setup.dimmer').list_windows())<CR>")
+-- gomove
+utils.imap("<A-h>", "<Esc>:lua require('gomove.mappings.base').MoveLineHorizontal(-vim.v.count1)<CR>i")
+utils.imap("<A-j>", "<Esc>:lua require('gomove.mappings.base').MoveLineVertical(vim.v.count1)<CR>i")
+utils.imap("<A-k>", "<Esc>:lua require('gomove.mappings.base').MoveLineVertical(-vim.v.count1)<CR>i")
+utils.imap("<A-l>", "<Esc>:lua require('gomove.mappings.base').MoveLineHorizontal(vim.v.count1)<CR>i")
