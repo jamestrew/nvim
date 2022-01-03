@@ -201,7 +201,7 @@ return packer.startup({
 
     -- Looks
     use({
-      "glepnir/galaxyline.nvim",
+      "NTBBloodbath/galaxyline.nvim",
       config = function()
         require("setup.statusline").config()
       end,
