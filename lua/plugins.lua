@@ -76,7 +76,6 @@ return packer.startup({
     })
 
     -- Telescope & File Management
-    use({ "kevinhwang91/rnvimr" })
     use({
       "nvim-telescope/telescope.nvim",
       requires = {

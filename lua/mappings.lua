@@ -32,9 +32,6 @@ nnoremap("<C-F>", "")
 ------------------------ Plugin Specifics -------------------------
 ------------------------                  -------------------------
 
--- ranger
-nnoremap("<C-n>", ":RnvimrToggle<CR>", silent)
-
 -- format code
 nnoremap("<Leader>fm", ":Neoformat<CR>", silent)
 
