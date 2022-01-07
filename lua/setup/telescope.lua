@@ -181,10 +181,10 @@ M.get_symbols = function(opts)
   if ts_healthy then
     require("telescope.builtin").treesitter(opts)
   else
+    print("error exists in treesitter nodes - using lsp instead")
     require("telescope.builtin").lsp_document_symbols(opts)
   end
 end
-
 M.curbuf = function(opts)
   opts = opts or themes.get_dropdown({
     previewer = false,
@@ -202,6 +202,85 @@ M.file_browser = function(opts)
   opts.attach_mappings = function(_, map)
     return tele_utils.alt_scroll(map)
   end
-  require('telescope').extensions.file_browser.file_browser(opts)
+  require("telescope").extensions.file_browser.file_browser(opts)
 end
+
+local function make_entry_custom(opts)
+  opts = opts or {}
+
+  local displayer = require("telescope.pickers.entry_display").create({
+    separator = "▏",
+    items = {
+      { width = 5 },
+      { width = 22 },
+      { remaining = true },
+    },
+  })
+
+  local make_display = function(entry)
+    local diff_map = {
+      add = "TeleDiffAdd",
+      delete = "TeleDiffDelete",
+      change = "TeleDiffChange",
+    }
+    return displayer({
+      { entry.lnum, "TelescopeResultsLineNr" },
+      { entry.head, diff_map[entry.type] },
+      entry.text:gsub(".* | ", ""),
+    })
+  end
+
+  return function(entry)
+    local filename = entry.filename or vim.api.nvim_buf_get_name(entry.bufnr)
+
+    return {
+      valid = true,
+      value = entry,
+      ordinal = (not opts.ignore_filename and filename or "") .. " " .. entry.text,
+      display = make_display,
+      bufnr = entry.bufnr,
+      filename = filename,
+      lnum = entry.lnum,
+      head = entry.head,
+      text = entry.text,
+      type = entry.type,
+    }
+  end
+end
+
+M.git_hunks = function(opts)
+  local gs_cache = require("gitsigns.cache")
+  local buf_cache = gs_cache.cache[vim.api.nvim_get_current_buf()]
+  local hunks = {}
+
+  local function get_hunk_text(hunk_data)
+    local hunk_field
+    if hunk_data.type == "delete" then
+      hunk_field = "removed"
+    else
+      hunk_field = "added"
+    end
+    return string.gsub(hunk_data[hunk_field].lines[1] or "", "^%s+", "")
+  end
+
+  for _, hunk_data in pairs(buf_cache.hunks or {}) do
+    local hunk = {
+      lnum = hunk_data.start,
+      col = 0,
+      head = hunk_data.head,
+      text = get_hunk_text(hunk_data),
+      type = hunk_data.type
+    }
+    table.insert(hunks, hunk)
+  end
+
+  opts = opts or {}
+  pickers.new(opts, {
+    prompt_title = "Git Hunks",
+    finder = finders.new_table({ results = hunks, entry_maker = make_entry_custom(opts) }),
+    previewer = config.values.qflist_previewer(opts),
+    sorter = config.values.generic_sorter(opts),
+  }):find()
+end
+
 return M

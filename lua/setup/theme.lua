@@ -343,5 +343,9 @@ Group.new("TelescopePreviewBorder", colors.lightbg, colors.none, none)
 Group.new("TelescopePreviewLine", colors.none, colors.line, none)
 Group.new("TelescopeSelection", colors.none, colors.line, none)
 
+Group.new("TeleDiffAdd", colors.base0B, colors.none, none)
+Group.new("TeleDiffChange", colors.sun, colors.none, none)
+Group.new("TeleDiffDelete", colors.base08, colors.none, none)
+
 -- symbols-outline
 Group.new("FocusedSymbol", colors.base08, colors.line, none)

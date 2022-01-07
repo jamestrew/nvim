@@ -87,6 +87,11 @@ M.telescope = {
       theme = "ivy",
       files = true,
       hidden = false,
+      mappings = {
+        ["i"] = {
+          ["<A-n>"] = require("telescope._extensions.file_browser.actions").select_all + actions.select_default,
+        },
+      },
     },
   },
 }
