@@ -1,5 +1,5 @@
 local Path = require("plenary.path")
-local scan = require("plenary.scandir")
+local Job = require("plenary.job")
 
 -- for debuging
 _G.dump = function(...)
@@ -17,6 +17,22 @@ end
 
 local M = {}
 
+function M.get_os_command_output(cmd, cwd)
+  local command = table.remove(cmd, 1)
+  local stderr = {}
+  local stdout, ret = Job
+    :new({
+      command = command,
+      args = cmd,
+      cwd = cwd,
+      on_stderr = function(_, data)
+        table.insert(stderr, data)
+      end,
+    })
+    :sync()
+  return stdout, ret, stderr
+end
+
 M.os = {
   home = os.getenv("HOME"),
   data = vim.fn.stdpath("data"),
@@ -24,8 +40,8 @@ M.os = {
   config = vim.fn.stdpath("config"),
   name = vim.loop.os_uname().sysname,
   cwd = vim.loop.cwd(),
-  in_worktree = os.execute("git rev-parse --is-inside-work-tree >> /dev/null 2>&1") == 0,
-  in_bare = os.execute("git rev-parse --is-bare-repository >> /dev/null 2>&1") == 0,
+  in_worktree = M.get_os_command_output({ "git", "rev-parse", "--is-inside-work-tree" }, vim.loop.cwd())[1] == "true",
+  in_bare = M.get_os_command_output({ "git", "rev-parse", "--is-bare-repository" }, vim.loop.cwd())[1] == "true",
 }
 
 M.functions = {}

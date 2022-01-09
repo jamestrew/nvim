@@ -48,6 +48,7 @@ nnoremap("<leader>ct", ":lua require'setup.telescope'.create_git_worktree()<CR>"
 nnoremap("<leader>fy", ":lua require'setup.telescope'.neoclip()<CR>", silent)
 nnoremap("<leader>ff", ":lua require'setup.telescope'.curbuf()<CR>", silent)
 nnoremap("<leader>fc", ":Telescope commands<CR>", silent)
+nnoremap("<leader>gh", ":lua require'setup.telescope'.git_hunks()<CR>", silent)
 
 -- Lsp
 nnoremap("gD", ":lua vim.lsp.buf.declaration()<CR>", silent)
@@ -117,3 +118,6 @@ utils.imap("<A-h>", "<Esc>:lua require('gomove.mappings.base').MoveLineHorizonta
 utils.imap("<A-j>", "<Esc>:lua require('gomove.mappings.base').MoveLineVertical(vim.v.count1)<CR>i")
 utils.imap("<A-k>", "<Esc>:lua require('gomove.mappings.base').MoveLineVertical(-vim.v.count1)<CR>i")
 utils.imap("<A-l>", "<Esc>:lua require('gomove.mappings.base').MoveLineHorizontal(vim.v.count1)<CR>i")
+
+-- plenary
+vim.cmd("nmap <leader>pt <Plug>PlenaryTestFile")

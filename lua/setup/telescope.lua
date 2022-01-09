@@ -166,6 +166,11 @@ end
 
 M.get_symbols = function(opts)
   opts = opts or themes.get_ivy()
+
+  opts.attach_mappings = function(_, map)
+    return tele_utils.alt_scroll(map)
+  end
+
   local ts_healthy = true
   for _, definitions in ipairs(require("nvim-treesitter.locals").get_definitions()) do
     if definitions["node"] ~= nil then
@@ -174,10 +179,8 @@ M.get_symbols = function(opts)
     end
   end
 
-  opts.attach_mappings = function(_, map)
-    return tele_utils.alt_scroll(map)
-  end
-
+  -- if vim.bo.filetype == "lua" then
+  --   require("telescope.builtin").lsp_document_symbols(opts)
   if ts_healthy then
     require("telescope.builtin").treesitter(opts)
   else
@@ -249,6 +252,7 @@ local function make_entry_custom(opts)
 end
 
 M.git_hunks = function(opts)
+  -- TODO: selecting entry doesn't take me there
   local gs_cache = require("gitsigns.cache")
   local buf_cache = gs_cache.cache[vim.api.nvim_get_current_buf()]
   local hunks = {}
