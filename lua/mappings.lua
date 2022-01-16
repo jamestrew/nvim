@@ -56,7 +56,7 @@ nnoremap("K", ":lua vim.lsp.buf.hover()<CR>", silent)
 nnoremap("<C-k>", ":lua vim.lsp.buf.signature_help()<CR>", silent)
 nnoremap("<leader>D", ":lua vim.lsp.buf.type_definition()<CR>", silent)
 nnoremap("<leader>rn", ":lua vim.lsp.buf.rename()<CR>", silent)
-nnoremap("<leader>d", ":lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", silent)
+nnoremap("<leader>d", ":lua vim.diagnostic.open_float()<CR>", silent)
 -- Lsp Tele
 nnoremap("gd", ":Telescope lsp_definitions<CR>", silent)
 nnoremap("gr", ":Telescope lsp_references<CR>", silent)
