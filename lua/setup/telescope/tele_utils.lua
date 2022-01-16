@@ -64,4 +64,48 @@ M.alt_scroll = function(map)
   return true
 end
 
+M.git_hunks_entry = function(opts)
+  opts = opts or {}
+
+  local displayer = require("telescope.pickers.entry_display").create({
+    separator = "▏",
+    items = {
+      { width = 5 },
+      { width = 22 },
+      { remaining = true },
+    },
+  })
+
+  local make_display = function(entry)
+    local diff_map = {
+      add = "TeleDiffAdd",
+      delete = "TeleDiffDelete",
+      change = "TeleDiffChange",
+    }
+    return displayer({
+      { entry.lnum, "TelescopeResultsLineNr" },
+      { entry.head, diff_map[entry.type] },
+      entry.text:gsub(".* | ", ""),
+    })
+  end
+
+  return function(entry)
+    local filename = entry.filename or vim.api.nvim_buf_get_name(entry.bufnr)
+
+    return {
+      valid = true,
+      value = entry,
+      ordinal = (not opts.ignore_filename and filename or "") .. " " .. entry.text,
+      display = make_display,
+      bufnr = entry.bufnr,
+      filename = filename,
+      lnum = entry.lnum,
+      col = 1,
+      head = entry.head,
+      text = entry.text,
+      type = entry.type,
+    }
+  end
+end
+
 return M

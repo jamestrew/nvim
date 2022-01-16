@@ -208,49 +208,6 @@ M.file_browser = function(opts)
   require("telescope").extensions.file_browser.file_browser(opts)
 end
 
-local function make_entry_custom(opts)
-  opts = opts or {}
-
-  local displayer = require("telescope.pickers.entry_display").create({
-    separator = "▏",
-    items = {
-      { width = 5 },
-      { width = 22 },
-      { remaining = true },
-    },
-  })
-
-  local make_display = function(entry)
-    local diff_map = {
-      add = "TeleDiffAdd",
-      delete = "TeleDiffDelete",
-      change = "TeleDiffChange",
-    }
-    return displayer({
-      { entry.lnum, "TelescopeResultsLineNr" },
-      { entry.head, diff_map[entry.type] },
-      entry.text:gsub(".* | ", ""),
-    })
-  end
-
-  return function(entry)
-    local filename = entry.filename or vim.api.nvim_buf_get_name(entry.bufnr)
-
-    return {
-      valid = true,
-      value = entry,
-      ordinal = (not opts.ignore_filename and filename or "") .. " " .. entry.text,
-      display = make_display,
-      bufnr = entry.bufnr,
-      filename = filename,
-      lnum = entry.lnum,
-      head = entry.head,
-      text = entry.text,
-      type = entry.type,
-    }
-  end
-end
-
 M.git_hunks = function(opts)
   -- TODO: selecting entry doesn't take me there
   local gs_cache = require("gitsigns.cache")
@@ -270,10 +227,9 @@ M.git_hunks = function(opts)
   for _, hunk_data in pairs(buf_cache.hunks or {}) do
     local hunk = {
       lnum = hunk_data.start,
-      col = 0,
       head = hunk_data.head,
       text = get_hunk_text(hunk_data),
-      type = hunk_data.type
+      type = hunk_data.type,
     }
     table.insert(hunks, hunk)
   end
@@ -281,7 +237,7 @@ M.git_hunks = function(opts)
   opts = opts or {}
   pickers.new(opts, {
     prompt_title = "Git Hunks",
-    finder = finders.new_table({ results = hunks, entry_maker = make_entry_custom(opts) }),
+    finder = finders.new_table({ results = hunks, entry_maker = tele_utils.git_hunks_entry(opts) }),
     previewer = config.values.qflist_previewer(opts),
     sorter = config.values.generic_sorter(opts),
   }):find()
