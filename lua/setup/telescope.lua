@@ -49,10 +49,10 @@ M.find_files = function(opts)
     return
   end
 
-  if utils.os.in_worktree and not utils.os.in_bare then
-    require("telescope.builtin").git_files(opts)
-  else
+  if not utils.os.in_worktree and not utils.os.in_bare then
     require("telescope.builtin").find_files(opts)
+  else
+    require("telescope.builtin").git_files(opts)
   end
 end
 
@@ -83,26 +83,35 @@ end
 
 M.git_worktrees = function()
   local opts = themes.get_dropdown({
-    previewer = false,
+    -- previewer = false,
     path_display = { "shorten" },
     layout_config = {
-      width = 60,
+      width = 70,
       height = 20,
     },
+    -- layout_strategy = "vertical",
   })
 
-  opts.attach_mappings = function(prompt_bufnr, map)
-    local switch_and_find = function()
-      local worktree_path = action_state.get_selected_entry().path
-      actions.close(prompt_bufnr)
-      if worktree_path ~= nil then
-        require("git-worktree").switch_worktree(worktree_path)
+  if utils.os.in_bare and not utils.os.in_worktree then
+    opts.prompt_title = "Git Worktrees"
+    opts.attach_mappings = function(prompt_bufnr, map)
+      local switch_and_find = function()
+        local worktree_path = action_state.get_selected_entry().path
+        actions.close(prompt_bufnr)
+        if worktree_path ~= nil then
+          require("git-worktree").switch_worktree(worktree_path)
+        end
       end
+      actions.select_default:replace(switch_and_find)
+      return tele_utils.alt_scroll(map)
     end
-    actions.select_default:replace(switch_and_find)
-    return tele_utils.alt_scroll(map)
+    require("telescope").extensions.git_worktree.git_worktrees(opts)
+  elseif utils.os.in_worktree and not utils.os.in_bare then
+    opts.prompt_title = "Git Branches"
+    require("telescope.builtin").git_branches(opts)
+  else
+    vim.notify("[telescope] Not in a git repository. Unable to pull up any branches info.", vim.log.levels.WARN)
   end
-  require("telescope").extensions.git_worktree.git_worktrees(opts)
 end
 
 M.create_git_worktree = function()
@@ -117,7 +126,13 @@ M.create_git_worktree = function()
   opts.attach_mappings = function(_, map)
     return tele_utils.alt_scroll(map)
   end
-  require("telescope").extensions.git_worktree.create_git_worktree(opts)
+
+  if utils.os.in_bare and not utils.os.in_worktree then
+    opts.prompt_title = "Create Worktree"
+    require("telescope").extensions.git_worktree.create_git_worktree(opts)
+  else
+    vim.notify("[telescope] Not in a git worktree repository.", vim.log.levels.WARN)
+  end
 end
 
 M.lsp_code_actions = function()
