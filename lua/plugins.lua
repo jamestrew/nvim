@@ -33,6 +33,7 @@ return packer.startup({
     use({
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
+      commit = "723d91e8217ae66ea75f809f404d801ed939f497",
       config = function()
         require("setup.treesitter").config()
       end,
@@ -103,6 +104,7 @@ return packer.startup({
         require("nvim-autopairs").setup()
       end,
     })
+    use("wellle/targets.vim")
     -- use { "andymass/vim-matchup", event = "CursorMoved" }
     use({ "JoosepAlviste/nvim-ts-context-commentstring", event = "BufRead" })
     use({
