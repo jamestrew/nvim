@@ -352,7 +352,7 @@ _G.packer_plugins = {
   ["telescope-file-browser.nvim"] = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
-    url = "/home/jt/Documents/projects/telescope-file-browser.nvim"
+    url = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
   },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,

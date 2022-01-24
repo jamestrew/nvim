@@ -88,7 +88,7 @@ return packer.startup({
       end,
     })
     use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-    local_use("telescope-file-browser.nvim")
+    use("nvim-telescope/telescope-file-browser.nvim")
     -- use({ "nvim-telescope/telescope-frecency.nvim", requires = { "tami5/sql.nvim" } })
     use({
       "ThePrimeagen/harpoon",

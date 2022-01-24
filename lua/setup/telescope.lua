@@ -91,10 +91,13 @@ M.git_worktrees = function()
     },
     -- layout_strategy = "vertical",
   })
+  opts.attach_mappings = function(_, map)
+    return tele_utils.alt_scroll(map)
+  end
 
   if utils.os.in_bare and not utils.os.in_worktree then
     opts.prompt_title = "Git Worktrees"
-    opts.attach_mappings = function(prompt_bufnr, map)
+    opts.attach_mappings = function(prompt_bufnr, _)
       local switch_and_find = function()
         local worktree_path = action_state.get_selected_entry().path
         actions.close(prompt_bufnr)
@@ -103,7 +106,7 @@ M.git_worktrees = function()
         end
       end
       actions.select_default:replace(switch_and_find)
-      return tele_utils.alt_scroll(map)
+      return true
     end
     require("telescope").extensions.git_worktree.git_worktrees(opts)
   elseif utils.os.in_worktree and not utils.os.in_bare then
