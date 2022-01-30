@@ -68,6 +68,7 @@ return packer.startup({
     use({ "jose-elias-alvarez/nvim-lsp-ts-utils", event = "BufRead" })
     use({ "David-Kunz/treesitter-unit", event = "BufRead" })
     use({ "romgrk/nvim-treesitter-context", event = "BufRead" })
+    use("b0o/SchemaStore.nvim")
     use({
       "simrat39/symbols-outline.nvim",
       config = function()
@@ -198,7 +199,6 @@ return packer.startup({
         require("setup.worktree").config()
       end,
     })
-    -- local_use "git-worktree.nvim/telescope-opts"
 
     -- Looks
     use({
@@ -224,8 +224,6 @@ return packer.startup({
     })
 
     -- Others
-    use({ "ThePrimeagen/vim-be-good" })
-    -- use({ "kwkarlwang/bufresize.nvim" })
     use({
       "folke/which-key.nvim",
       config = function()
@@ -257,6 +255,8 @@ return packer.startup({
     --   end,
     -- })
     use("lewis6991/impatient.nvim")
+    use("j-hui/fidget.nvim")
+    use("rcarriga/nvim-notify")
   end,
   config = {
     compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
