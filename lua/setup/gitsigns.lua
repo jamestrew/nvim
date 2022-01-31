@@ -9,7 +9,7 @@ M.config = function()
       topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
       changedelete = { hl = "DiffChange", text = "~", numhl = "GitSignsChangeNr" },
     },
-    numhl = false,
+    numhl = true,
     current_line_blame = true,
     keymaps = {
       -- Default keymap options

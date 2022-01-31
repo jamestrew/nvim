@@ -147,4 +147,14 @@ M.clear_prompt = function()
   vim.api.nvim_command("normal :esc<CR>")
 end
 
+M.save_and_source = function()
+  local ft = vim.bo.filetype
+  vim.cmd(":silent! w")
+  if ft == "vim" then
+    vim.cmd(":source %")
+  elseif ft == "lua" then
+    vim.cmd(":luafile %")
+  end
+end
+
 return M

@@ -92,6 +92,10 @@ M.git_worktrees = function()
     -- layout_strategy = "vertical",
   })
   opts.attach_mappings = function(_, map)
+      map("i", "<A-a>", actions.git_create_branch)
+      map("n", "<A-a>", actions.git_create_branch)
+      map("i", "<A-d>", actions.git_delete_branch)
+      map("n", "<A-d>", actions.git_delete_branch)
     return tele_utils.alt_scroll(map)
   end
 

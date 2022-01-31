@@ -25,6 +25,7 @@ nnoremap("N", "Nzzzv")
 nnoremap("<leader>J", "mzJ`z")
 
 nnoremap("<leader>pp", ":echo expand('%:p')<CR>")
+nnoremap("<leader>ss", ":lua require('utils').save_and_source()<CR>")
 
 -- unbinding
 nnoremap("<C-F>", "")
@@ -121,3 +122,5 @@ utils.imap("<A-l>", "<Esc>:lua require('gomove.mappings.base').MoveLineHorizonta
 
 -- plenary
 vim.cmd("nmap <leader>pt <Plug>PlenaryTestFile")
+
+nnoremap("<leader>ty", ":lua require('telescope._extensions.file_browser.utils').get_answer_yes('blah')<CR>")
