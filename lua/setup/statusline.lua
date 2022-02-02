@@ -72,7 +72,7 @@ M.config = function()
         vim.cmd("hi GalaxyViModeSeparator2 guifg=" .. mode_color())
         return "  "
       end,
-      highlight = { colors.statusline_bg, colors.lightbg },
+      highlight = { colors.statusline_bg, colors.lightbg2 },
     },
   }
 
@@ -183,6 +183,13 @@ M.config = function()
     FileName = {
       provider = function()
         local filename = Path:new(vim.fn.expand("%:p")):make_relative(vim.loop.cwd())
+        if vim.bo.modifiable then
+          if vim.bo.modified then
+            filename = filename .. " " .. ""
+          end
+        else
+          filename = filename .. " " .. ""
+        end
         return filename
       end,
       condition = condition.buffer_not_empty,
