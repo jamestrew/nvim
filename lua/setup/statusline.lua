@@ -1,6 +1,7 @@
 local M = {}
 local utils = require("utils")
 local colors = require("themes.onedark").colors
+local Path = require("plenary.path")
 
 local mode_color = function()
   local mode_colors = {
@@ -25,7 +26,7 @@ M.config = function()
   local gls = gl.section
   local condition = require("galaxyline.condition")
 
-  gl.short_line_list = { " " }
+  gl.short_line_list = { "Outline", }
 
   gls.left[1] = {
     ViModeSeparator1 = {
@@ -76,24 +77,6 @@ M.config = function()
   }
 
   gls.left[4] = {
-    FileIcon = {
-      provider = "FileIcon",
-      condition = condition.buffer_not_empty,
-      highlight = { colors.white, colors.lightbg },
-    },
-  }
-
-  gls.left[5] = {
-    FileName = {
-      provider = { "FileName" },
-      condition = condition.buffer_not_empty,
-      highlight = { colors.white, colors.lightbg },
-      separator = " ",
-      separator_highlight = { colors.lightbg, colors.lightbg2 },
-    },
-  }
-
-  gls.left[6] = {
     current_dir = {
       provider = function()
         local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
@@ -113,7 +96,7 @@ M.config = function()
     return false
   end
 
-  gls.left[7] = {
+  gls.left[5] = {
     DiffAdd = {
       provider = "DiffAdd",
       condition = checkwidth,
@@ -172,6 +155,41 @@ M.config = function()
     },
   }
 
+  gls.left[14] = {
+    lsp_status = {
+      provider = function()
+        local clients = vim.lsp.get_active_clients()
+        if #clients == 0 then
+          return " No LSP "
+        else
+          return ""
+        end
+      end,
+      highlight = { colors.grey_fg2, colors.statusline_bg },
+      condition = condition.buffer_not_empty,
+    },
+  }
+
+  -- MIDDLE
+  gls.mid[1] = {
+    FileIcon = {
+      provider = "FileIcon",
+      condition = condition.buffer_not_empty,
+      highlight = { colors.white, colors.statusline_bg },
+    },
+  }
+
+  gls.mid[2] = {
+    FileName = {
+      provider = function()
+        local filename = Path:new(vim.fn.expand("%:p")):make_relative(vim.loop.cwd())
+        return filename
+      end,
+      condition = condition.buffer_not_empty,
+      highlight = { colors.white, colors.statusline_bg },
+    },
+  }
+
   -- RIGHT SIDE
   gls.right[1] = {
     unsaved = {
@@ -182,20 +200,6 @@ M.config = function()
         end
       end,
       event = "BufEnter",
-      highlight = { colors.grey_fg2, colors.statusline_bg },
-    },
-  }
-
-  gls.right[2] = {
-    lsp_status = {
-      provider = function()
-        local clients = vim.lsp.get_active_clients()
-        if next(clients) ~= nil then
-          return " " .. "  " .. " LSP "
-        else
-          return ""
-        end
-      end,
       highlight = { colors.grey_fg2, colors.statusline_bg },
     },
   }
@@ -214,35 +218,14 @@ M.config = function()
 
   gls.right[4] = {
     GitBranch = {
-      provider = "GitBranch",
-      condition = require("galaxyline.condition").check_git_workspace,
-      highlight = { colors.grey_fg2, colors.statusline_bg },
-    },
-  }
-
-  gls.right[5] = {
-    git_count = {
       provider = function()
-        local stderr = {}
-        local stdout, _ = require("plenary.job")
-          :new({
-            command = "git",
-            args = { "diff-files" },
-            cwd = vim.fn.getcwd(),
-            on_stderr = function(_, data)
-              table.insert(stderr, data)
-            end,
-          })
-          :sync()
-
-        local count = #stdout
-        if count > 0 then
-          return "[" .. count .. "] "
-        else
-          return " "
+        local branch = require("galaxyline.providers.vcs").get_git_branch()
+        if #branch > 15 then
+          branch = branch:sub(1, 15)
         end
+        return branch .. " "
       end,
-      event = "BufWritePost",
+      condition = require("galaxyline.condition").check_git_workspace,
       highlight = { colors.grey_fg2, colors.statusline_bg },
     },
   }
@@ -250,11 +233,10 @@ M.config = function()
   gls.right[8] = {
     some_icon = {
       provider = function()
-        return " "
+        return ""
       end,
-      separator = "",
-      separator_highlight = { colors.green, colors.lightbg },
-      highlight = { colors.lightbg, colors.green },
+      separator_highlight = { colors.base0B, colors.lightbg },
+      highlight = { colors.statusline_bg, colors.base0B },
     },
   }
 
@@ -274,7 +256,7 @@ M.config = function()
         local result, _ = math.modf((current_line / total_line) * 100)
         return "  " .. result .. "% " .. details
       end,
-      highlight = { colors.green, colors.lightbg },
+      highlight = { colors.statusline_bg, colors.base0B },
     },
   }
 end
