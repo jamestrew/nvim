@@ -18,6 +18,7 @@ end
 local M = {}
 
 function M.get_os_command_output(cmd, cwd)
+  cwd = cwd or vim.loop.cwd()
   local command = table.remove(cmd, 1)
   local stderr = {}
   local stdout, ret = Job
@@ -40,8 +41,8 @@ M.os = {
   config = vim.fn.stdpath("config"),
   name = vim.loop.os_uname().sysname,
   cwd = vim.loop.cwd(),
-  in_worktree = M.get_os_command_output({ "git", "rev-parse", "--is-inside-work-tree" }, vim.loop.cwd())[1] == "true",
-  in_bare = M.get_os_command_output({ "git", "rev-parse", "--is-bare-repository" }, vim.loop.cwd())[1] == "true",
+  in_worktree = M.get_os_command_output({ "git", "rev-parse", "--is-inside-work-tree" })[1] == "true",
+  in_bare = M.get_os_command_output({ "git", "rev-parse", "--is-bare-repository" })[1] == "true",
 }
 
 M.functions = {}

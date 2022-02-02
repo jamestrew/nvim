@@ -56,31 +56,6 @@ M.find_files = function(opts)
   end
 end
 
-M.find_dir = function()
-  local opts = themes.get_ivy({
-    cwd = vim.loop.cwd(),
-    find_command = { "fd", "--type", "d" },
-    disable_devicons = true,
-  })
-
-  opts.entry_maker = require("telescope.make_entry").gen_from_file(opts)
-  opts.attach_mappings = function(prompt_bufnr, map)
-    map("i", "<C-y>c", tele_utils.create_file)
-    map("i", "<C-h>", function()
-      actions.close(prompt_bufnr)
-      vim.cmd(":Ntree")
-    end)
-    return tele_utils.alt_scroll(map)
-  end
-
-  pickers.new(opts, {
-    prompt_title = "Find Directory",
-    finder = finders.new_oneshot_job(opts.find_command, opts),
-    previewer = config.values.file_previewer(opts),
-    sorter = config.values.file_sorter(opts),
-  }):find()
-end
-
 M.git_worktrees = function()
   local opts = themes.get_dropdown({
     -- previewer = false,
@@ -92,10 +67,10 @@ M.git_worktrees = function()
     -- layout_strategy = "vertical",
   })
   opts.attach_mappings = function(_, map)
-      map("i", "<A-a>", actions.git_create_branch)
-      map("n", "<A-a>", actions.git_create_branch)
-      map("i", "<A-d>", actions.git_delete_branch)
-      map("n", "<A-d>", actions.git_delete_branch)
+    map("i", "<A-c>", actions.git_create_branch)
+    map("n", "<A-c>", actions.git_create_branch)
+    map("i", "<A-d>", actions.git_delete_branch)
+    map("n", "<A-d>", actions.git_delete_branch)
     return tele_utils.alt_scroll(map)
   end
 
@@ -231,7 +206,6 @@ M.file_browser = function(opts)
 end
 
 M.git_hunks = function(opts)
-  -- TODO: selecting entry doesn't take me there
   local gs_cache = require("gitsigns.cache")
   local buf_cache = gs_cache.cache[vim.api.nvim_get_current_buf()]
   local hunks = {}
