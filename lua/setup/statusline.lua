@@ -226,9 +226,10 @@ M.config = function()
   gls.right[4] = {
     GitBranch = {
       provider = function()
+        local max_len = 25
         local branch = require("galaxyline.providers.vcs").get_git_branch()
-        if #branch > 15 then
-          branch = branch:sub(1, 15)
+        if #branch > max_len then
+          branch = branch:sub(1, max_len) .. ".."
         end
         return branch .. " "
       end,

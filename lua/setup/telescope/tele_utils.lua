@@ -108,4 +108,14 @@ M.git_hunks_entry = function(opts)
   end
 end
 
+M.open_using = function(finder)
+  return function(prompt_bufnr)
+    print("open_using")
+    local entry_path = action_state.get_selected_entry().Path
+    local path = entry_path:is_dir() and entry_path:absolute() or entry_path:parent():absolute()
+    actions._close(prompt_bufnr, true)
+    finder({ cwd = path })
+  end
+end
+
 return M

@@ -1,5 +1,7 @@
 local sorters = require("telescope.sorters")
 local actions = require("telescope.actions")
+local tele_utils = require("setup.telescope.tele_utils")
+local builtin = require("telescope.builtin")
 
 local M = {}
 
@@ -43,7 +45,7 @@ M.telescope = {
     file_sorter = sorters.get_fuzzy_file,
     file_ignore_patterns = { "node_modules" },
     generic_sorter = sorters.get_generic_fuzzy_sorter,
-    path_display = { "smart" },
+    -- path_display = { "smart" },
     winblend = 0,
     border = {},
     borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
@@ -93,6 +95,12 @@ M.telescope = {
       mappings = {
         ["i"] = {
           ["<A-n>"] = require("telescope._extensions.file_browser.actions").select_all,
+          ["<A-f>"] = tele_utils.open_using(builtin.find_files),
+          ["<A-g>"] = tele_utils.open_using(builtin.live_grep),
+        ["n"] = {
+          ["<A-f>"] = tele_utils.open_using(builtin.find_files),
+          ["<A-g>"] = tele_utils.open_using(builtin.live_grep),
+          }
         },
       },
     },
