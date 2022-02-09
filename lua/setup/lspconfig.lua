@@ -4,7 +4,6 @@ M.config = function()
   local lspsettings = require("setup.lsp.settings")
 
   local function on_attach(client, bufnr)
-    require("lsp_signature").on_attach(lspsettings.sig)
     require("illuminate").on_attach(client)
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 

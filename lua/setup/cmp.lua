@@ -30,6 +30,7 @@ M.config = function()
       { name = "luasnip" },
       { name = "cmp_git" },
       { name = "cmdline" },
+      { name = 'nvim_lsp_signature_help'}
     },
   })
 
