@@ -93,14 +93,16 @@ M.telescope = {
       hide_parent_dir = true,
       quiet = true,
       mappings = {
-        ["i"] = {
+        i = {
           ["<A-n>"] = require("telescope._extensions.file_browser.actions").select_all,
           ["<A-f>"] = tele_utils.open_using(builtin.find_files),
           ["<A-g>"] = tele_utils.open_using(builtin.live_grep),
-        ["n"] = {
+          ["<C-u>"] = require("telescope._extensions.file_browser.actions").select_all,
+        },
+        n = {
           ["<A-f>"] = tele_utils.open_using(builtin.find_files),
           ["<A-g>"] = tele_utils.open_using(builtin.live_grep),
-          }
+          ["<C-u>"] = require("telescope._extensions.file_browser.actions").select_all,
         },
       },
     },
