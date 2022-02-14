@@ -180,7 +180,7 @@ return packer.startup({
     -- Git
     use({
       "lewis6991/gitsigns.nvim",
-      event = "BufRead",
+      -- event = "BufRead",
       config = function()
         require("setup.gitsigns").config()
       end,
