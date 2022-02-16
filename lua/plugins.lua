@@ -75,6 +75,7 @@ return packer.startup({
         require("setup.symbols").config()
       end,
       event = "BufRead",
+      disable = true,
     })
 
     -- Telescope & File Management
