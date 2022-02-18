@@ -29,38 +29,27 @@ return packer.startup({
     -- packer itself
     use("wbthomason/packer.nvim")
 
+    use("nvim-lua/plenary.nvim")
+
     -- LSP & Treeshitter
     use({
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
       commit = "723d91e8217ae66ea75f809f404d801ed939f497",
-      config = function()
-        require("setup.treesitter").config()
-      end,
     })
     use({ "williamboman/nvim-lsp-installer" })
-    use({
-      "neovim/nvim-lspconfig",
-      config = function()
-        require("setup.lspconfig").config()
-      end,
-    })
+    use({ "neovim/nvim-lspconfig" })
     use({ "L3MON4D3/LuaSnip" })
     use({
       "hrsh7th/nvim-cmp",
-      config = function()
-        require("setup.cmp").config()
-      end,
-      requires = {
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "hrsh7th/cmp-nvim-lua",
-        "hrsh7th/cmp-nvim-lsp",
-        "saadparwaiz1/cmp_luasnip",
-        "petertriho/cmp-git",
-        "hrsh7th/cmp-cmdline",
-        "hrsh7th/cmp-nvim-lsp-signature-help",
-      },
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-nvim-lsp",
+      "saadparwaiz1/cmp_luasnip",
+      "petertriho/cmp-git",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
     })
     use({ "folke/lua-dev.nvim" })
     use({ "nvim-treesitter/playground", event = "BufRead" })
@@ -71,79 +60,26 @@ return packer.startup({
     use("b0o/SchemaStore.nvim")
     use({
       "simrat39/symbols-outline.nvim",
-      config = function()
-        require("setup.symbols").config()
-      end,
       event = "BufRead",
       disable = true,
     })
 
     -- Telescope & File Management
-    use({
-      "nvim-telescope/telescope.nvim",
-      requires = {
-        { "nvim-lua/popup.nvim" },
-        { "nvim-lua/plenary.nvim" },
-      },
-      config = function()
-        require("setup.telescope").config()
-      end,
-    })
+    use({ "nvim-telescope/telescope.nvim" })
     use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
     use("nvim-telescope/telescope-file-browser.nvim")
     -- use({ "nvim-telescope/telescope-frecency.nvim", requires = { "tami5/sql.nvim" } })
-    use({
-      "ThePrimeagen/harpoon",
-      config = function()
-        require("setup.harpoon")
-      end,
-    })
+    use({ "ThePrimeagen/harpoon" })
 
     -- Editing Support
-    use({
-      "windwp/nvim-autopairs",
-      config = function()
-        require("nvim-autopairs").setup()
-      end,
-    })
+    use({ "windwp/nvim-autopairs" })
     use("wellle/targets.vim")
-    -- use { "andymass/vim-matchup", event = "CursorMoved" }
     use({ "JoosepAlviste/nvim-ts-context-commentstring", event = "BufRead" })
-    use({
-      "numToStr/Comment.nvim",
-      config = function()
-        require("setup.comment").config()
-      end,
-    })
-    use({
-      "lukas-reineke/indent-blankline.nvim",
-      setup = function()
-        require("setup.blankline").config()
-      end,
-    })
+    use({ "numToStr/Comment.nvim" })
+    use({ "lukas-reineke/indent-blankline.nvim" })
     use({ "sbdchd/neoformat", cmd = "Neoformat" })
-    use({
-      "norcalli/nvim-colorizer.lua",
-      event = "BufRead",
-      config = function()
-        require("colorizer").setup()
-        vim.cmd("ColorizerReloadAllBuffers")
-      end,
-    })
-    use({
-      "folke/todo-comments.nvim",
-      requires = "nvim-lua/plenary.nvim",
-      config = function()
-        require("setup.todo-comments").config()
-      end,
-    })
-    use({
-      "phaazon/hop.nvim",
-      as = "hop",
-      config = function()
-        require("hop").setup({ keys = "tnhesoaiwfrudpclm" })
-      end,
-    })
+    use({ "norcalli/nvim-colorizer.lua", event = "BufRead" })
+    use({ "folke/todo-comments.nvim" })
     use("ggandor/lightspeed.nvim")
     use({ "tpope/vim-surround", event = "BufRead" })
     use({ "tpope/vim-repeat", event = "BufRead" })
@@ -156,64 +92,18 @@ return packer.startup({
       run = "cd app && yarn install",
       cmd = "MarkdownPreview",
     })
-    use({
-      "abecodes/tabout.nvim",
-      event = "BufRead",
-      config = function()
-        require("tabout").setup()
-      end,
-    })
-    use({
-      "ThePrimeagen/refactoring.nvim",
-      event = "BufRead",
-      config = function()
-        require("refactoring").setup({})
-      end,
-    })
-    use({
-      "booperlv/nvim-gomove",
-      config = function()
-        require("gomove").setup()
-      end,
-    })
+    use({ "ThePrimeagen/refactoring.nvim", event = "BufRead" })
+    use({ "booperlv/nvim-gomove" })
 
     -- Git
-    use({
-      "lewis6991/gitsigns.nvim",
-      -- event = "BufRead",
-      config = function()
-        require("setup.gitsigns").config()
-      end,
-    })
-    -- use({
-    --   "TimUntersberger/neogit",
-    --   requires = "nvim-lua/plenary.nvim",
-    --   config = function()
-    --     require("setup.neogit").config()
-    --   end,
-    -- })
+    use({ "lewis6991/gitsigns.nvim" })
     use({ "tpope/vim-fugitive" })
-    use({
-      "ThePrimeagen/git-worktree.nvim",
-      config = function()
-        require("setup.worktree").config()
-      end,
-    })
+    use({ "ThePrimeagen/git-worktree.nvim" })
 
     -- Looks
-    use({
-      "NTBBloodbath/galaxyline.nvim",
-      config = function()
-        require("setup.statusline").config()
-      end,
-    })
+    use({ "NTBBloodbath/galaxyline.nvim" })
     use({ "kyazdani42/nvim-web-devicons" })
-    use({
-      "tjdevries/colorbuddy.vim",
-      config = function()
-        require("setup.theme")
-      end,
-    })
+    use({ "tjdevries/colorbuddy.vim" })
     use({
       "RRethy/vim-illuminate",
       event = "CursorHold",
@@ -224,23 +114,10 @@ return packer.startup({
     })
 
     -- Others
-    use({
-      "folke/which-key.nvim",
-      config = function()
-        require("which-key").setup()
-      end,
-    })
-    use({
-      "AckslD/nvim-neoclip.lua",
-      config = function()
-        require("neoclip").setup()
-      end,
-    })
+    use({ "folke/which-key.nvim" })
+    use({ "AckslD/nvim-neoclip.lua" })
     use({
       "andweeb/presence.nvim",
-      config = function()
-        require("setup.presence").config()
-      end,
     })
     use({
       "glacambre/firenvim",

@@ -1,2 +1,7 @@
 require("fidget").setup()
--- vim.notify = require("notify")
+require("nvim-autopairs").setup()
+require("colorizer").setup()
+require("refactoring").setup()
+require("gomove").setup()
+require("which-key").setup()
+require("neoclip").setup()

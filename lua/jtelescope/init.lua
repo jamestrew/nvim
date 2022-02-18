@@ -6,21 +6,9 @@ local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 local config = require("telescope.config")
 
-local tele_utils = require("setup.telescope.tele_utils")
-local defaults = require("setup.telescope.defaults")
+local tele_utils = require("jtelescope.utils")
 
 local M = {}
-
-M.config = function()
-  require("telescope").setup(defaults.telescope)
-  require("neoclip").setup(defaults.neoclip)
-
-  require("telescope").load_extension("fzf")
-  require("telescope").load_extension("git_worktree")
-  require("telescope").load_extension("neoclip")
-  require("telescope").load_extension("file_browser")
-  -- require("telescope").load_extension "frecency"
-end
 
 M.search_dotfiles = function()
   require("telescope.builtin").git_files({
@@ -34,6 +22,7 @@ M.find_files = function(opts)
 
   opts = opts or {}
   opts.cwd = opts.cwd or vim.loop.cwd()
+  -- TODO: match mapping with file_browser (in fact maybe use it's actions)
   opts.attach_mappings = function(_, map)
     map("i", "<C-y>d", tele_utils.delete_file)
     map("i", "<C-y>r", tele_utils.rename_file)
