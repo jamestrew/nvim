@@ -67,7 +67,7 @@ return packer.startup({
     use({ "jparise/vim-graphql", event = "BufRead" })
     use({ "jose-elias-alvarez/nvim-lsp-ts-utils", event = "BufRead" })
     use({ "David-Kunz/treesitter-unit", event = "BufRead" })
-    use({ "romgrk/nvim-treesitter-context", event = "BufRead" })
+    use({ "romgrk/nvim-treesitter-context" })
     use("b0o/SchemaStore.nvim")
     use({
       "simrat39/symbols-outline.nvim",
@@ -117,7 +117,6 @@ return packer.startup({
     })
     use({
       "lukas-reineke/indent-blankline.nvim",
-      -- after = "tjdevries/colorbuddy.vim",
       setup = function()
         require("setup.blankline").config()
       end,

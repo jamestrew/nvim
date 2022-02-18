@@ -129,6 +129,7 @@ Group.new("DiffRemoved", colors.base08, colors.base00, none)
 Group.new("GitSignsAddNr", colors.base0B, colors.none, none)
 Group.new("GitSignsChangeNr", colors.sun, colors.none, none)
 Group.new("GitSignsDeleteNr", colors.base08, colors.none, none)
+Group.new("GitSignsCurrentLineBlame", colors.base03, colors.none, none)
 
 -- Git Group.newing
 Group.new("gitcommitOverflow", colors.base08, colors.none, none)
