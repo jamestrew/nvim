@@ -50,6 +50,7 @@ nnoremap("<leader>fy", ":lua require'jtelescope'.neoclip()<CR>", silent)
 nnoremap("<leader>ff", ":lua require'jtelescope'.curbuf()<CR>", silent)
 nnoremap("<leader>fc", ":Telescope commands<CR>", silent)
 nnoremap("<leader>gh", ":lua require'jtelescope'.git_hunks()<CR>", silent)
+nnoremap("<leader>fgs", ":Telescope git_status<CR>", silent)
 
 -- Lsp
 nnoremap("gD", ":lua vim.lsp.buf.declaration()<CR>", silent)
