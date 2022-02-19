@@ -197,7 +197,10 @@ end
 M.git_hunks = function(opts)
   local gs_cache = require("gitsigns.cache")
   local buf_cache = gs_cache.cache[vim.api.nvim_get_current_buf()]
-  local hunks = {}
+  if not buf_cache then
+    vim.notify("[jtelescope] Gitsigns buf_cache is empty", vim.log.levels.WARN)
+    return
+  end
 
   local function get_hunk_text(hunk_data)
     local hunk_field
@@ -209,12 +212,15 @@ M.git_hunks = function(opts)
     return string.gsub(hunk_data[hunk_field].lines[1] or "", "^%s+", "")
   end
 
-  for _, hunk_data in pairs(buf_cache.hunks or {}) do
+  local hunks = {}
+  for _, hunk_data in pairs(buf_cache.hunks) do
     local hunk = {
       lnum = hunk_data.start,
       head = hunk_data.head,
       text = get_hunk_text(hunk_data),
       type = hunk_data.type,
+      bufnr = vim.api.nvim_get_current_buf(),
+      filename = vim.api.nvim_buf_get_name(0)
     }
     table.insert(hunks, hunk)
   end

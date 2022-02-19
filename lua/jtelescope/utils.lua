@@ -90,17 +90,14 @@ M.git_hunks_entry = function(opts)
   end
 
   return function(entry)
-    print(entry.bufnr)
-    print(type(entry.bufnr))
-    local filename = entry.filename or vim.api.nvim_buf_get_name(entry.bufnr)
 
     return {
       valid = true,
       value = entry,
-      ordinal = (not opts.ignore_filename and filename or "") .. " " .. entry.text,
+      ordinal = (not opts.ignore_filename and entry.filename or "") .. " " .. entry.text,
       display = make_display,
       bufnr = entry.bufnr,
-      filename = filename,
+      filename = entry.filename,
       lnum = entry.lnum,
       col = 1,
       head = entry.head,
