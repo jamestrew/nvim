@@ -90,6 +90,8 @@ M.git_hunks_entry = function(opts)
   end
 
   return function(entry)
+    print(entry.bufnr)
+    print(type(entry.bufnr))
     local filename = entry.filename or vim.api.nvim_buf_get_name(entry.bufnr)
 
     return {

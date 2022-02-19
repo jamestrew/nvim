@@ -1,4 +1,9 @@
-local theme = require("themes.onedark")
+local theme = require("themes." .. vim.g.colors_name)
+
+local ok, _ = pcall(require, "colorbuddy")
+if not ok then
+  return
+end
 
 local Color, colors, Group, groups, styles = require("colorbuddy").setup()
 local bold = styles.bold
@@ -11,7 +16,6 @@ local standout = styles.standout
 local none = styles.NONE
 local v = vim
 
-v.g.colors_name = theme.name
 for name, hex in pairs(theme.colors) do
   Color.new(name, hex)
 end
@@ -129,6 +133,7 @@ Group.new("DiffRemoved", colors.base08, colors.base00, none)
 Group.new("GitSignsAddNr", colors.base0B, colors.none, none)
 Group.new("GitSignsChangeNr", colors.sun, colors.none, none)
 Group.new("GitSignsDeleteNr", colors.base08, colors.none, none)
+Group.new("GitSignsCurrentLineBlame", colors.base03, colors.none, none)
 
 -- Git Group.newing
 Group.new("gitcommitOverflow", colors.base08, colors.none, none)
