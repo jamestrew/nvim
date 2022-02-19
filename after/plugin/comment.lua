@@ -1,5 +1,6 @@
 local ok, comment = pcall(require, "Comment")
 if not ok then
+  vim.notify("Comment.nvim not loaded", vim.log.levels.WARN)
   return
 end
 

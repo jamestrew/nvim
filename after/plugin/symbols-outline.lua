@@ -1,6 +1,7 @@
 local ok, symbols = pcall(require, "symbols-outline")
 
 if not ok then
+  vim.notify("symbols-outline.nvim not loaded", vim.log.levels.WARN)
   return
 end
 

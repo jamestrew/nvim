@@ -1,5 +1,6 @@
 local ok, todo = pcall(require, "todo-comments")
 if not ok then
+  vim.notify("todo-comments not loaded", vim.log.levels.WARN)
   return
 end
 

@@ -19,4 +19,6 @@ if has_harpoon then
       mark_branch = true,
     },
   })
+else
+  vim.notify("harpoon not loaded", vim.log.levels.WARN)
 end

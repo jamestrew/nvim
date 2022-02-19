@@ -58,11 +58,7 @@ return packer.startup({
     use({ "David-Kunz/treesitter-unit", event = "BufRead" })
     use({ "romgrk/nvim-treesitter-context" })
     use("b0o/SchemaStore.nvim")
-    use({
-      "simrat39/symbols-outline.nvim",
-      event = "BufRead",
-      disable = true,
-    })
+    use({ "simrat39/symbols-outline.nvim" })
 
     -- Telescope & File Management
     use({ "nvim-telescope/telescope.nvim" })
