@@ -19,8 +19,6 @@ M.delete_file = function(prompt_bufnr)
     Path:new(fpath):rm()
   end
   print(fpath .. " successfully removed")
-
-  actions.close(prompt_bufnr)
 end
 
 M.rename_file = function()
