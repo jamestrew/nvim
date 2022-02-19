@@ -7,7 +7,13 @@ local utils = require("utils")
 local colors = require("themes." .. vim.g.colors_name).colors
 local Path = require("plenary.path")
 
--- TODO: clean this up - use table.insert or something
+local checkwidth = function()
+  local squeeze_width = vim.fn.winwidth(0) / 2
+  if squeeze_width > 60 then
+    return true
+  end
+  return false
+end
 
 local mode_color = function()
   local mode_colors = {
@@ -32,7 +38,7 @@ local condition = require("galaxyline.condition")
 
 gl.short_line_list = { "Outline" }
 
-gls.left[1] = {
+local vi_mode_separator1 = {
   ViModeSeparator1 = {
     provider = function()
       vim.cmd("hi GalaxyViModeSeparator1 guifg=" .. mode_color())
@@ -43,7 +49,7 @@ gls.left[1] = {
   },
 }
 
-gls.left[2] = {
+local vi_mode = {
   ViMode = {
     provider = function()
       local alias = {
@@ -70,7 +76,7 @@ gls.left[2] = {
   },
 }
 
-gls.left[3] = {
+local vi_mode_separator2 = {
   ViModeSeparator2 = {
     provider = function()
       vim.cmd("hi GalaxyViModeSeparator2 guifg=" .. mode_color())
@@ -80,7 +86,7 @@ gls.left[3] = {
   },
 }
 
-gls.left[4] = {
+local current_dir = {
   current_dir = {
     provider = function()
       local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
@@ -92,15 +98,7 @@ gls.left[4] = {
   },
 }
 
-local checkwidth = function()
-  local squeeze_width = vim.fn.winwidth(0) / 2
-  if squeeze_width > 30 then
-    return true
-  end
-  return false
-end
-
-gls.left[5] = {
+local diff_add = {
   DiffAdd = {
     provider = "DiffAdd",
     condition = checkwidth,
@@ -109,7 +107,7 @@ gls.left[5] = {
   },
 }
 
-gls.left[8] = {
+local diff_modified = {
   DiffModified = {
     provider = "DiffModified",
     condition = checkwidth,
@@ -118,7 +116,7 @@ gls.left[8] = {
   },
 }
 
-gls.left[9] = {
+local diff_remove = {
   DiffRemove = {
     provider = "DiffRemove",
     condition = checkwidth,
@@ -127,7 +125,7 @@ gls.left[9] = {
   },
 }
 
-gls.left[10] = {
+local diagnostic_error = {
   DiagnosticError = {
     provider = "DiagnosticError",
     icon = "  ",
@@ -135,7 +133,7 @@ gls.left[10] = {
   },
 }
 
-gls.left[11] = {
+local diagnostic_warn = {
   DiagnosticWarn = {
     provider = "DiagnosticWarn",
     icon = "  ",
@@ -143,7 +141,7 @@ gls.left[11] = {
   },
 }
 
-gls.left[12] = {
+local diagnostic_info = {
   DiagnosticInfo = {
     provider = "DiagnosticInfo",
     icon = "  ",
@@ -151,7 +149,7 @@ gls.left[12] = {
   },
 }
 
-gls.left[13] = {
+local diagnostic_hint = {
   DiagnosticHint = {
     provider = "DiagnosticHint",
     icon = "  ",
@@ -159,7 +157,7 @@ gls.left[13] = {
   },
 }
 
-gls.left[14] = {
+local lsp_provider = {
   lsp_status = {
     provider = function()
       local clients = vim.lsp.get_active_clients()
@@ -174,8 +172,21 @@ gls.left[14] = {
   },
 }
 
+table.insert(gls.left, vi_mode_separator1)
+table.insert(gls.left, vi_mode)
+table.insert(gls.left, vi_mode_separator2)
+table.insert(gls.left, current_dir)
+table.insert(gls.left, diff_add)
+table.insert(gls.left, diff_modified)
+table.insert(gls.left, diff_remove)
+table.insert(gls.left, diagnostic_error)
+table.insert(gls.left, diagnostic_warn)
+table.insert(gls.left, diagnostic_info)
+table.insert(gls.left, diagnostic_hint)
+table.insert(gls.left, lsp_provider)
+
 -- MIDDLE
-gls.mid[1] = {
+local file_icon = {
   FileIcon = {
     provider = "FileIcon",
     condition = condition.buffer_not_empty,
@@ -183,10 +194,10 @@ gls.mid[1] = {
   },
 }
 
-gls.mid[2] = {
+local file_name = {
   FileName = {
     provider = function()
-      local max_len = 50
+      local max_len = checkwidth() and 50 or 35
       local filename = Path:new(vim.fn.expand("%:p")):make_relative(vim.loop.cwd())
       if #filename > max_len then
         filename = Path:new(filename):shorten()
@@ -205,8 +216,11 @@ gls.mid[2] = {
   },
 }
 
+table.insert(gls.mid, file_icon)
+table.insert(gls.mid, file_name)
+
 -- RIGHT SIDE
-gls.right[1] = {
+local unsaved = {
   unsaved = {
     provider = function()
       local unsaved_cnt = utils.modified_buf_count()
@@ -219,7 +233,7 @@ gls.right[1] = {
   },
 }
 
-gls.right[3] = {
+local git_icon = {
   GitIcon = {
     provider = function()
       return " "
@@ -231,7 +245,7 @@ gls.right[3] = {
   },
 }
 
-gls.right[4] = {
+local git_branch = {
   GitBranch = {
     provider = function()
       local max_len = 25
@@ -241,12 +255,14 @@ gls.right[4] = {
       end
       return branch .. " "
     end,
-    condition = require("galaxyline.condition").check_git_workspace,
+    condition = function()
+      return require("galaxyline.condition").check_git_workspace() and checkwidth()
+    end,
     highlight = { colors.grey_fg2, colors.statusline_bg },
   },
 }
 
-gls.right[8] = {
+local line_percentage_sep = {
   some_icon = {
     provider = function()
       return ""
@@ -256,7 +272,7 @@ gls.right[8] = {
   },
 }
 
-gls.right[9] = {
+local line_percentage = {
   line_percentage = {
     provider = function()
       local current_line = vim.fn.line(".")
@@ -275,3 +291,9 @@ gls.right[9] = {
     highlight = { colors.statusline_bg, colors.base0B },
   },
 }
+
+table.insert(gls.right, unsaved)
+table.insert(gls.right, git_icon)
+table.insert(gls.right, git_branch)
+table.insert(gls.right, line_percentage_sep)
+table.insert(gls.right, line_percentage)
