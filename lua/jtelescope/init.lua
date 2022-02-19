@@ -24,9 +24,9 @@ M.find_files = function(opts)
   opts.cwd = opts.cwd or vim.loop.cwd()
   -- TODO: match mapping with file_browser (in fact maybe use it's actions)
   opts.attach_mappings = function(_, map)
-    map("i", "<C-y>d", tele_utils.delete_file)
-    map("i", "<C-y>r", tele_utils.rename_file)
-    map("i", "<C-y>y", tele_utils.yank_fpath)
+    map("i", "<A-d>", tele_utils.delete_file)
+    map("i", "<A-r>", tele_utils.rename_file)
+    map("i", "<A-y>", tele_utils.yank_fpath)
     map("n", "yy", tele_utils.yank_fpath)
 
     return true
@@ -57,9 +57,9 @@ M.git_worktrees = function()
   })
   opts.attach_mappings = function(_, map)
     map("i", "<A-c>", actions.git_create_branch)
-    map("n", "<A-c>", actions.git_create_branch)
+    map("n", "c", actions.git_create_branch)
     map("i", "<A-d>", actions.git_delete_branch)
-    map("n", "<A-d>", actions.git_delete_branch)
+    map("n", "d", actions.git_delete_branch)
     return tele_utils.alt_scroll(map)
   end
 
@@ -170,7 +170,7 @@ M.get_symbols = function(opts)
   if ts_healthy then
     require("telescope.builtin").treesitter(opts)
   else
-    print("error exists in treesitter nodes - using lsp instead")
+    print("[jtelescope] error exists in treesitter nodes - using lsp instead")
     require("telescope.builtin").lsp_document_symbols(opts)
   end
 end
