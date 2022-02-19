@@ -186,7 +186,11 @@ gls.mid[1] = {
 gls.mid[2] = {
   FileName = {
     provider = function()
+      local max_len = 50
       local filename = Path:new(vim.fn.expand("%:p")):make_relative(vim.loop.cwd())
+      if #filename > max_len then
+        filename = Path:new(filename):shorten()
+      end
       if vim.bo.modifiable then
         if vim.bo.modified then
           filename = filename .. " " .. ""
