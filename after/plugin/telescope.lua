@@ -1,11 +1,9 @@
 local sorters = require("telescope.sorters")
 local actions = require("telescope.actions")
-local tele_utils = require("setup.telescope.tele_utils")
+local tele_utils = require("jtelescope.utils")
 local builtin = require("telescope.builtin")
 
-local M = {}
-
-M.telescope = {
+require("telescope").setup({
   defaults = {
     vimgrep_arguments = {
       "rg",
@@ -97,24 +95,28 @@ M.telescope = {
           ["<A-n>"] = require("telescope._extensions.file_browser.actions").select_all,
           ["<A-f>"] = tele_utils.open_using(builtin.find_files),
           ["<A-g>"] = tele_utils.open_using(builtin.live_grep),
-          ["<C-u>"] = require("telescope._extensions.file_browser.actions").select_all,
+          ["<C-u>"] = require("telescope._extensions.file_browser.actions").goto_parent_dir,
         },
         n = {
           ["<A-f>"] = tele_utils.open_using(builtin.find_files),
           ["<A-g>"] = tele_utils.open_using(builtin.live_grep),
-          ["<C-u>"] = require("telescope._extensions.file_browser.actions").select_all,
+          ["<C-u>"] = require("telescope._extensions.file_browser.actions").goto_parent_dir,
         },
       },
     },
   },
-}
+})
 
-M.neoclip = {
+require("neoclip").setup({
   default_register = "+",
   keys = {
     paste = "<C-y>p",
     paste_behind = "<C-y>P",
   },
-}
+})
 
-return M
+require("telescope").load_extension("fzf")
+require("telescope").load_extension("git_worktree")
+require("telescope").load_extension("neoclip")
+require("telescope").load_extension("file_browser")
+-- require("telescope").load_extension "frecency"

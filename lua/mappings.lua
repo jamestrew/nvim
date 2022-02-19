@@ -37,19 +37,19 @@ nnoremap("<C-F>", "")
 nnoremap("<Leader>fm", ":Neoformat<CR>", silent)
 
 -- Telescope
-nnoremap("<C-p>", ":lua require('setup.telescope').find_files()<CR>")
-nnoremap("<C-e>", ":lua require('setup.telescope').file_browser()<CR>", silent)
+nnoremap("<C-p>", ":lua require('jtelescope').find_files()<CR>")
+nnoremap("<C-e>", ":lua require('jtelescope').file_browser()<CR>", silent)
 nnoremap("<leader>fw", ":Telescope live_grep<CR>", silent)
 nnoremap("<leader>gc", ":Telescope git_commits<CR>", silent)
 nnoremap("<leader>fb", ":Telescope buffers<CR>", silent)
 nnoremap("<leader>fh", ":Telescope help_tags<CR>", silent)
-nnoremap("<leader>rc", ":lua require'setup.telescope'.search_dotfiles()<CR>", silent)
-nnoremap("<leader>fg", ":lua require'setup.telescope'.git_worktrees()<CR>", silent)
-nnoremap("<leader>ct", ":lua require'setup.telescope'.create_git_worktree()<CR>", silent)
-nnoremap("<leader>fy", ":lua require'setup.telescope'.neoclip()<CR>", silent)
-nnoremap("<leader>ff", ":lua require'setup.telescope'.curbuf()<CR>", silent)
+nnoremap("<leader>rc", ":lua require'jtelescope'.search_dotfiles()<CR>", silent)
+nnoremap("<leader>fg", ":lua require'jtelescope'.git_worktrees()<CR>", silent)
+nnoremap("<leader>ct", ":lua require'jtelescope'.create_git_worktree()<CR>", silent)
+nnoremap("<leader>fy", ":lua require'jtelescope'.neoclip()<CR>", silent)
+nnoremap("<leader>ff", ":lua require'jtelescope'.curbuf()<CR>", silent)
 nnoremap("<leader>fc", ":Telescope commands<CR>", silent)
-nnoremap("<leader>gh", ":lua require'setup.telescope'.git_hunks()<CR>", silent)
+nnoremap("<leader>gh", ":lua require'jtelescope'.git_hunks()<CR>", silent)
 
 -- Lsp
 nnoremap("gD", ":lua vim.lsp.buf.declaration()<CR>", silent)
@@ -61,15 +61,15 @@ nnoremap("<leader>d", ":lua vim.diagnostic.open_float()<CR>", silent)
 -- Lsp Tele
 nnoremap("gd", ":Telescope lsp_definitions<CR>", silent)
 nnoremap("gr", ":Telescope lsp_references<CR>", silent)
-nnoremap("<leader>ca", ":lua require('setup.telescope').lsp_code_actions()<CR>", silent)
+nnoremap("<leader>ca", ":lua require('jtelescope').lsp_code_actions()<CR>", silent)
 nnoremap("<leader>gi", ":Telescope lsp_implementations<CR>", silent)
-nnoremap("<leader>fs", ":lua require('setup.telescope').get_symbols()<CR>", silent)
+nnoremap("<leader>fs", ":lua require('jtelescope').get_symbols()<CR>", silent)
 nnoremap("<leader>td", ":Telescope diagnostics bufnr=0<CR>", silent)
 nnoremap("<leader>tw", ":Telescope diagnostics<CR>", silent)
 
 -- Refactoring
-nnoremap("<leader>rt", ":norm! V<CR> :lua require'setup.telescope'.refactor()<CR>", silent)
-vnoremap("<leader>rt", ":lua require'setup.telescope'.refactor()<CR>", silent)
+nnoremap("<leader>rt", ":norm! V<CR> :lua require'jtelescope'.refactor()<CR>", silent)
+vnoremap("<leader>rt", ":lua require'jtelescope'.refactor()<CR>", silent)
 
 -- Harpoon
 nnoremap("<leader>a", ":lua require'harpoon.mark'.add_file()<CR>", silent)
