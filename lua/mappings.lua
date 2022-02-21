@@ -123,5 +123,3 @@ utils.imap("<A-l>", "<Esc>:lua require('gomove.mappings.base').MoveLineHorizonta
 
 -- plenary
 vim.cmd("nmap <leader>pt <Plug>PlenaryTestFile")
-
-nnoremap("<leader>ty", ":lua require('telescope._extensions.file_browser.utils').get_answer_yes('blah')<CR>")
