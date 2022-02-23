@@ -89,10 +89,15 @@ local vi_mode_separator2 = {
 local current_dir = {
   current_dir = {
     provider = function()
+      local max_len = 12
       local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+      if #dir_name > max_len then
+        dir_name = dir_name:sub(0, max_len) .. "..."
+      end
       return "  " .. dir_name .. " "
     end,
     highlight = { colors.grey_fg2, colors.lightbg2 },
+    condition = checkwidth,
     separator = " ",
     separator_highlight = { colors.lightbg2, colors.statusline_bg },
   },
@@ -197,7 +202,7 @@ local file_icon = {
 local file_name = {
   FileName = {
     provider = function()
-      local max_len = checkwidth() and 50 or 35
+      local max_len = checkwidth() and 60 or 35
       local filename = Path:new(vim.fn.expand("%:p")):make_relative(vim.loop.cwd())
       if #filename > max_len then
         filename = Path:new(filename):shorten()
