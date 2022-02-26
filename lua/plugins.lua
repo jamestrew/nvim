@@ -94,7 +94,6 @@ return packer.startup({
 
     -- Git
     use({ "lewis6991/gitsigns.nvim" })
-    -- use({ "tpope/vim-fugitive" })
     use({ "ThePrimeagen/git-worktree.nvim" })
     use({ "TimUntersberger/neogit" })
     use({ "sindrets/diffview.nvim" })
