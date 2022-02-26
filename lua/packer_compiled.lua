@@ -129,6 +129,11 @@ _G.packer_plugins = {
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/colorbuddy.vim",
     url = "https://github.com/tjdevries/colorbuddy.vim"
   },
+  ["diffview.nvim"] = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/diffview.nvim",
+    url = "https://github.com/sindrets/diffview.nvim"
+  },
   ["editorconfig-vim"] = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/editorconfig-vim",
@@ -211,6 +216,11 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/neoformat",
     url = "https://github.com/sbdchd/neoformat"
+  },
+  neogit = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/neogit",
+    url = "https://github.com/TimUntersberger/neogit"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -322,6 +332,11 @@ _G.packer_plugins = {
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/targets.vim",
     url = "https://github.com/wellle/targets.vim"
   },
+  ["tarpoon.nvim"] = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/tarpoon.nvim",
+    url = "https://github.com/jamestrew/tarpoon.nvim"
+  },
   ["telescope-file-browser.nvim"] = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
@@ -355,11 +370,6 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/undotree",
     url = "https://github.com/mbbill/undotree"
-  },
-  ["vim-fugitive"] = {
-    loaded = true,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/start/vim-fugitive",
-    url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-graphql"] = {
     loaded = false,
@@ -441,8 +451,8 @@ vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-prev
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'playground', 'nvim-ts-context-commentstring', 'emmet-vim', 'treesitter-unit', 'vim-surround', 'vim-repeat', 'nvim-lsp-ts-utils', 'vim-graphql', 'nvim-colorizer.lua', 'undotree', 'refactoring.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au CursorHold * ++once lua require("packer.load")({'vim-illuminate'}, { event = "CursorHold *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'refactoring.nvim', 'vim-surround', 'playground', 'treesitter-unit', 'nvim-ts-context-commentstring', 'emmet-vim', 'vim-graphql', 'vim-repeat', 'nvim-lsp-ts-utils', 'undotree', 'nvim-colorizer.lua'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

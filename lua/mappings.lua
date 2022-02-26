@@ -84,8 +84,8 @@ nnoremap("<leader>hi", ":lua require('harpoon.ui').nav_file(4)<CR>")
 nnoremap("<leader>tn", ":lua require('harpoon.term').gotoTerminal(1)<CR>")
 nnoremap("<leader>te", ":lua require('harpoon.term').gotoTerminal(2)<CR>")
 
--- fugitive
-nnoremap("<leader>gs", ":Git<CR>", silent)
+-- git wrapper
+nnoremap("<leader>gs", ":Neogit<CR>", silent)
 
 -- Todo Comment
 nnoremap("<leader>ft", ":TodoTelescope<CR>", silent)
