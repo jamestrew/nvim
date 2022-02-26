@@ -36,7 +36,7 @@ end
 local gls = gl.section
 local condition = require("galaxyline.condition")
 
-gl.short_line_list = { "Outline" }
+gl.short_line_list = { "Outline", "undotree" }
 
 local vi_mode_separator1 = {
   ViModeSeparator1 = {

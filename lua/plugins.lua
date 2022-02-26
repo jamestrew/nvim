@@ -66,6 +66,7 @@ return packer.startup({
     use("nvim-telescope/telescope-file-browser.nvim")
     -- use({ "nvim-telescope/telescope-frecency.nvim", requires = { "tami5/sql.nvim" } })
     use({ "ThePrimeagen/harpoon" })
+    use({ "jamestrew/tarpoon.nvim" })
 
     -- Editing Support
     use({ "windwp/nvim-autopairs" })
@@ -76,7 +77,7 @@ return packer.startup({
     use({ "sbdchd/neoformat", cmd = "Neoformat" })
     use({ "norcalli/nvim-colorizer.lua", event = "BufRead" })
     use({ "folke/todo-comments.nvim" })
-    use("ggandor/lightspeed.nvim")
+    use({ "ggandor/lightspeed.nvim" })
     use({ "tpope/vim-surround", event = "BufRead" })
     use({ "tpope/vim-repeat", event = "BufRead" })
     use({ "mattn/emmet-vim", event = "BufRead" })

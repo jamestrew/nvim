@@ -64,6 +64,11 @@ M.git_worktrees = function()
   end
 
   if utils.os.in_bare and not utils.os.in_worktree then
+    opts.widths = {
+      path = false,
+      branch = 50,
+      sha = 7,
+    }
     opts.prompt_title = "Git Worktrees"
     opts.attach_mappings = function(prompt_bufnr, _)
       local switch_and_find = function()
