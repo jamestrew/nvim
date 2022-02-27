@@ -27,6 +27,8 @@ nnoremap("<leader>J", "mzJ`z")
 nnoremap("<leader>pp", ":echo expand('%:p')<CR>")
 nnoremap("<leader>ss", ":lua require('utils').save_and_source()<CR>")
 
+vnoremap("<leader>fr", ":s/") -- quick find & replace
+
 -- unbinding
 nnoremap("<C-F>", "")
 ------------------------                  -------------------------
