@@ -2,7 +2,9 @@ local lspsettings = require("lsp.settings")
 
 local function on_attach(client, bufnr)
   require("illuminate").on_attach(client)
-  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  -- vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  client.resolved_capabilities.document_formatting = false
+  client.resolved_capabilities.document_range_formatting = false
 
   if client.name == "typescript" then
     local ts_utils = require("nvim-lsp-ts-utils")
