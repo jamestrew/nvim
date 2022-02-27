@@ -120,20 +120,28 @@ Group.new("cssClassName", colors.base0E, colors.none, none)
 Group.new("cssColor", colors.base0C, colors.none, none)
 
 -- Diff Group.newing
-Group.new("DiffAdd", colors.base0B, colors.base01, none)
-Group.new("DiffChange", colors.sun, colors.base01, none)
-Group.new("DiffDelete", colors.base08, colors.base01, none)
-Group.new("DiffText", colors.base0D, colors.base01, none)
+Group.new("DiffAdd", colors.base0B, colors.none, none)
+Group.new("DiffChange", colors.sun, colors.none, none)
+Group.new("DiffDelete", colors.base08, colors.none, none)
+Group.new("DiffText", colors.base0D, colors.none, none)
 Group.new("DiffAdded", colors.base0B, colors.base00, none)
 Group.new("DiffFile", colors.base08, colors.base00, none)
 Group.new("DiffNewFile", colors.base0B, colors.base00, none)
 Group.new("DiffLine", colors.base0D, colors.base00, none)
 Group.new("DiffRemoved", colors.base08, colors.base00, none)
 
+-- Gitsigns
 Group.new("GitSignsAddNr", colors.base0B, colors.none, none)
 Group.new("GitSignsChangeNr", colors.sun, colors.none, none)
 Group.new("GitSignsDeleteNr", colors.base08, colors.none, none)
 Group.new("GitSignsCurrentLineBlame", colors.base03, colors.none, none)
+
+-- Neogit
+-- Group.new("NeogitDiffAddHighlight", groups.DiffAdd)
+-- Group.new("NeogitDiffDeleteHighlight", groups.DiffDelete)
+-- Group.new("NeogitDiffContextHighlight", colors.pink)
+-- Group.new("NeogitHunkHeader", colors.blue)
+Group.new("NeogitHunkHeaderHighlight", groups.DiffText)
 
 -- Git Group.newing
 Group.new("gitcommitOverflow", colors.base08, colors.none, none)
