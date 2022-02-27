@@ -36,7 +36,8 @@ nnoremap("<C-F>", "")
 ------------------------                  -------------------------
 
 -- format code
-nnoremap("<Leader>fm", ":Neoformat<CR>", silent)
+nnoremap("<Leader>fm", ":lua vim.lsp.buf.formatting()<CR>")
+vnoremap("<Leader>fm", ":lua vim.lsp.buf.range_formatting()<CR>")
 
 -- Telescope
 nnoremap("<C-p>", ":lua require('jtelescope').find_files()<CR>")

@@ -59,6 +59,7 @@ return packer.startup({
     use({ "romgrk/nvim-treesitter-context" })
     use("b0o/SchemaStore.nvim")
     use({ "simrat39/symbols-outline.nvim" })
+    use({ "jose-elias-alvarez/null-ls.nvim" })
 
     -- Telescope & File Management
     use({ "nvim-telescope/telescope.nvim" })
@@ -74,7 +75,6 @@ return packer.startup({
     use({ "JoosepAlviste/nvim-ts-context-commentstring", event = "BufRead" })
     use({ "numToStr/Comment.nvim" })
     use({ "lukas-reineke/indent-blankline.nvim" })
-    use({ "sbdchd/neoformat", cmd = "Neoformat" })
     use({ "norcalli/nvim-colorizer.lua", event = "BufRead" })
     use({ "folke/todo-comments.nvim" })
     use({ "ggandor/lightspeed.nvim" })
