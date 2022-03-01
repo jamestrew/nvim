@@ -1,5 +1,8 @@
+local utils = require("utils")
+
 local has_harpoon, harpoon = pcall(require, "harpoon")
 local has_galaxyline, _ = pcall(require, "galaxyline")
+
 if has_harpoon then
   if has_galaxyline then
     require("harpoon.utils").branch_key = function()
@@ -16,7 +19,7 @@ if has_harpoon then
     global_settings = {
       save_on_toggle = true,
       save_on_change = true,
-      mark_branch = true,
+      mark_branch = not utils.os.in_bare,
     },
   })
 else
