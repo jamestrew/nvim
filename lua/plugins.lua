@@ -54,7 +54,7 @@ return packer.startup({
     use({ "lukas-reineke/indent-blankline.nvim" })
     use({ "norcalli/nvim-colorizer.lua", event = "BufRead" })
     use({ "folke/todo-comments.nvim" })
-    use({ "ggandor/lightspeed.nvim" })
+    use({ "phaazon/hop.nvim", event = "BufRead" })
     use({ "tpope/vim-surround", event = "BufRead" })
     use({ "tpope/vim-repeat", event = "BufRead" })
     use({ "mattn/emmet-vim", event = "BufRead" })
