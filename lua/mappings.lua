@@ -27,6 +27,7 @@ nnoremap("<leader>J", "mzJ`z")
 nnoremap("<leader>pp", ":echo expand('%:p')<CR>")
 nnoremap("<leader>ss", ":lua require('utils').save_and_source()<CR>")
 
+nnoremap("<leader>fr", ":norm! V<CR> :s/") -- quick find & replace
 vnoremap("<leader>fr", ":s/") -- quick find & replace
 
 -- unbinding
@@ -36,8 +37,8 @@ nnoremap("<C-F>", "")
 ------------------------                  -------------------------
 
 -- format code
-nnoremap("<Leader>fm", ":lua vim.lsp.buf.formatting()<CR>")
-vnoremap("<Leader>fm", ":lua vim.lsp.buf.range_formatting()<CR>")
+nnoremap("<leader>fm", ":lua vim.lsp.buf.formatting()<CR>")
+vnoremap("<leader>fm", ":lua vim.lsp.buf.range_formatting()<CR>")
 
 -- Telescope
 nnoremap("<C-p>", ":lua require('jtelescope').find_files()<CR>")
@@ -53,7 +54,7 @@ nnoremap("<leader>fy", ":lua require'jtelescope'.neoclip()<CR>", silent)
 nnoremap("<leader>ff", ":lua require'jtelescope'.curbuf()<CR>", silent)
 nnoremap("<leader>fc", ":Telescope commands<CR>", silent)
 nnoremap("<leader>gh", ":lua require'jtelescope'.git_hunks()<CR>", silent)
-nnoremap("<leader>fgs", ":Telescope git_status<CR>", silent)
+-- nnoremap("<leader>fgs", ":Telescope git_status<CR>", silent)
 
 -- Lsp
 nnoremap("gD", ":lua vim.lsp.buf.declaration()<CR>", silent)
