@@ -38,10 +38,9 @@ M.find_files = function(opts)
     return
   end
 
-  if not utils.os.in_worktree and not utils.os.in_bare then
+  local ok, _ = pcall(require("telescope.builtin").git_files, opts)
+  if not ok then
     require("telescope.builtin").find_files(opts)
-  else
-    require("telescope.builtin").git_files(opts)
   end
 end
 
@@ -64,23 +63,6 @@ M.git_worktrees = function()
   end
 
   if utils.os.in_bare and not utils.os.in_worktree then
-    opts.widths = {
-      path = false,
-      branch = 50,
-      sha = 7,
-    }
-    opts.prompt_title = "Git Worktrees"
-    opts.attach_mappings = function(prompt_bufnr, _)
-      local switch_and_find = function()
-        local worktree_path = action_state.get_selected_entry().path
-        actions.close(prompt_bufnr)
-        if worktree_path ~= nil then
-          require("git-worktree").switch_worktree(worktree_path)
-        end
-      end
-      actions.select_default:replace(switch_and_find)
-      return true
-    end
     require("telescope").extensions.git_worktree.git_worktrees(opts)
   elseif utils.os.in_worktree and not utils.os.in_bare then
     opts.prompt_title = "Git Branches"
@@ -225,7 +207,7 @@ M.git_hunks = function(opts)
       text = get_hunk_text(hunk_data),
       type = hunk_data.type,
       bufnr = vim.api.nvim_get_current_buf(),
-      filename = vim.api.nvim_buf_get_name(0)
+      filename = vim.api.nvim_buf_get_name(0),
     }
     table.insert(hunks, hunk)
   end

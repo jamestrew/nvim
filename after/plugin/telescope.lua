@@ -69,6 +69,18 @@ require("telescope").setup({
     },
   },
   extensions = {
+    git_worktree = {
+      theme = "dropdown",
+      path_display = { "shorten" },
+      layout_config = {
+        width = 70,
+        height = 20,
+      },
+      items = {
+        { "branch", 57 },
+        { "sha", 7 },
+      },
+    },
     fzf = {
       fuzzy = true, -- false will only do exact matching
       override_generic_sorter = false, -- override the generic sorter
@@ -88,19 +100,20 @@ require("telescope").setup({
       files = true,
       hidden = false,
       grouped = true,
-      hide_parent_dir = true,
+      hide_parent_dir = false,
       quiet = true,
       mappings = {
         i = {
           ["<A-n>"] = require("telescope._extensions.file_browser.actions").select_all,
           ["<A-f>"] = tele_utils.open_using(builtin.find_files),
           ["<A-g>"] = tele_utils.open_using(builtin.live_grep),
-          ["<C-u>"] = require("telescope._extensions.file_browser.actions").goto_parent_dir,
+          ["<A-a>"] = require("harpoon.folder").add_folder,
         },
         n = {
           ["<A-f>"] = tele_utils.open_using(builtin.find_files),
           ["<A-g>"] = tele_utils.open_using(builtin.live_grep),
           ["<C-u>"] = require("telescope._extensions.file_browser.actions").goto_parent_dir,
+          ["<A-a>"] = require("harpoon.folder").add_folder,
         },
       },
     },
