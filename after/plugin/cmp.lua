@@ -31,7 +31,9 @@ cmp.setup({
   },
 })
 
-require("cmp_git").setup()
+require("cmp_git").setup({
+  filetypes = { "gitcommit", "NeogitCommitMessage" }
+})
 cmp.setup.cmdline("/", {
   sources = {
     { name = "buffer" },
