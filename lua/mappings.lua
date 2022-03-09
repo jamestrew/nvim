@@ -41,7 +41,7 @@ nnoremap("<leader>fm", ":lua vim.lsp.buf.formatting()<CR>")
 vnoremap("<leader>fm", ":lua vim.lsp.buf.range_formatting()<CR>")
 
 -- Telescope
-nnoremap("<C-p>", ":lua require('jtelescope').find_files()<CR>")
+nnoremap("<C-p>", ":lua require('jtelescope').project_files()<CR>")
 nnoremap("<C-e>", ":lua require('jtelescope').file_browser()<CR>", silent)
 nnoremap("<leader>fw", ":Telescope live_grep<CR>", silent)
 nnoremap("<leader>gc", ":Telescope git_commits<CR>", silent)

@@ -123,4 +123,9 @@ M.open_using = function(finder)
   end
 end
 
+M.toggle_files = function()
+  -- TODO: temporary hack... but kinda good enough?
+  require("telescope.builtin").find_files()
+end
+
 return M

@@ -17,25 +17,17 @@ M.search_dotfiles = function()
   })
 end
 
-M.find_files = function(opts)
-  local use_frecency = false
-
+M.project_files = function(opts)
   opts = opts or {}
-  opts.cwd = opts.cwd or vim.loop.cwd()
-  -- TODO: match mapping with file_browser (in fact maybe use it's actions)
+  -- TODO: add toggle to switch between find_files and git_files
   opts.attach_mappings = function(_, map)
     map("i", "<A-d>", tele_utils.delete_file)
     map("i", "<A-r>", tele_utils.rename_file)
     map("i", "<A-y>", tele_utils.yank_fpath)
+    map("i", "<C-f>", tele_utils.toggle_files)
     map("n", "yy", tele_utils.yank_fpath)
-
+    map("n", "<C-f>", tele_utils.toggle_files)
     return true
-  end
-
-  if use_frecency then
-    opts.default_text = ":CWD:"
-    require("telescope").extensions.frecency.frecency(opts)
-    return
   end
 
   local ok, _ = pcall(require("telescope.builtin").git_files, opts)
