@@ -53,7 +53,7 @@ Group.new("NonText", colors.base03, colors.none, none)
 Group.new("LineNr", colors.grey, colors.none, none)
 Group.new("SignColumn", colors.base03, colors.black, none)
 Group.new("StatusLine", colors.base04, colors.statusline_bg, none)
-Group.new("StatusLineNC", colors.base03, colors.black, none)
+Group.new("StatusLineNC", colors.base04, colors.black, underline)
 Group.new("VertSplit", colors.line, colors.black, none)
 Group.new("ColorColumn", colors.none, colors.base01, none)
 Group.new("CursorColumn", colors.none, colors.base01, none)
@@ -350,7 +350,6 @@ Group.new("IndentBlanklineContextStart", colors.none, colors.none, none)
 -- misc
 Group.new("NvimInternalError", colors.red, colors.none, none)
 Group.new("EndOfBuffer", colors.black, colors.none, none)
-Group.new("StatusLineNC", colors.line, colors.none, underline)
 
 -- telescope
 Group.new("TelescopeBorder", colors.lightbg, colors.none, none)

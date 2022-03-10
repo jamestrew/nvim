@@ -15,6 +15,22 @@ local checkwidth = function()
   return false
 end
 
+local filename = function()
+  local max_len = checkwidth() and 60 or 35
+  local filename = Path:new(vim.fn.expand("%:p")):make_relative(vim.loop.cwd())
+  if #filename > max_len then
+    filename = Path:new(filename):shorten()
+  end
+  if vim.bo.modifiable then
+    if vim.bo.modified then
+      filename = filename .. " " .. ""
+    end
+  else
+    filename = filename .. " " .. ""
+  end
+  return filename
+end
+
 local mode_color = function()
   local mode_colors = {
     n = colors.nord_blue,
@@ -201,21 +217,7 @@ local file_icon = {
 
 local file_name = {
   FileName = {
-    provider = function()
-      local max_len = checkwidth() and 60 or 35
-      local filename = Path:new(vim.fn.expand("%:p")):make_relative(vim.loop.cwd())
-      if #filename > max_len then
-        filename = Path:new(filename):shorten()
-      end
-      if vim.bo.modifiable then
-        if vim.bo.modified then
-          filename = filename .. " " .. ""
-        end
-      else
-        filename = filename .. " " .. ""
-      end
-      return filename
-    end,
+    provider = filename,
     condition = condition.buffer_not_empty,
     highlight = { colors.white, colors.statusline_bg },
   },
@@ -302,3 +304,24 @@ table.insert(gls.right, git_icon)
 table.insert(gls.right, git_branch)
 table.insert(gls.right, line_percentage_sep)
 table.insert(gls.right, line_percentage)
+
+
+-- StatuslineNC/short_line
+local file_icon_short = {
+  FileIconShort = {
+    provider = "FileIcon",
+    condition = condition.buffer_not_empty,
+    -- highlight = { colors.white, colors.black },
+  },
+}
+
+local file_name_short = {
+  FileNameShort = {
+    provider = filename,
+    condition = condition.buffer_not_empty,
+    -- highlight = { colors.white, colors.black },
+  },
+}
+
+table.insert(gls.short_line_mid, file_icon_short)
+table.insert(gls.short_line_mid, file_name_short)
