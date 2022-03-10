@@ -19,7 +19,7 @@ neogit.setup({
     kind = "split",
   },
   -- Change the default way of opening neogit
-  kind = "vsplit",
+  kind = "tab",
   -- customize displayed signs
   signs = {
     -- { CLOSED, OPENED }
