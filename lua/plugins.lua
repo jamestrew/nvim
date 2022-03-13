@@ -71,7 +71,7 @@ return packer.startup({
 
     -- Git
     use({ "lewis6991/gitsigns.nvim" })
-    use({ "ThePrimeagen/git-worktree.nvim" })
+    use({ "ThePrimeagen/git-worktree.nvim", lock = true })
     use({ "TimUntersberger/neogit" })
     use({ "sindrets/diffview.nvim" })
 
@@ -91,9 +91,7 @@ return packer.startup({
     -- Others
     use({ "folke/which-key.nvim" })
     use({ "AckslD/nvim-neoclip.lua" })
-    use({
-      "andweeb/presence.nvim",
-    })
+    use({ "andweeb/presence.nvim"})
     use({
       "glacambre/firenvim",
       run = function()
@@ -109,6 +107,7 @@ return packer.startup({
     use("lewis6991/impatient.nvim")
     use("j-hui/fidget.nvim")
     use("rcarriga/nvim-notify")
+    use("tpope/vim-scriptease")
   end,
   config = {
     compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",

@@ -305,7 +305,6 @@ table.insert(gls.right, git_branch)
 table.insert(gls.right, line_percentage_sep)
 table.insert(gls.right, line_percentage)
 
-
 -- StatuslineNC/short_line
 local file_icon_short = {
   FileIconShort = {

@@ -149,6 +149,7 @@ M.clear_prompt = function()
 end
 
 M.save_and_source = function()
+  print("savin' and sourcin'")
   local ft = vim.bo.filetype
   vim.cmd(":silent! w")
   if ft == "vim" then
