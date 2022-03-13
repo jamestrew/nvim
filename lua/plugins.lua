@@ -12,7 +12,6 @@ return packer.startup({
     use({
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
-      commit = "723d91e8217ae66ea75f809f404d801ed939f497",
     })
     use({ "williamboman/nvim-lsp-installer" })
     use({ "neovim/nvim-lspconfig" })
@@ -68,6 +67,7 @@ return packer.startup({
     })
     use({ "ThePrimeagen/refactoring.nvim", event = "BufRead" })
     use({ "booperlv/nvim-gomove" })
+    use("andymass/vim-matchup")
 
     -- Git
     use({ "lewis6991/gitsigns.nvim" })

@@ -385,12 +385,22 @@ _G.packer_plugins = {
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/vim-illuminate",
     url = "https://github.com/RRethy/vim-illuminate"
   },
+  ["vim-matchup"] = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/vim-matchup",
+    url = "https://github.com/andymass/vim-matchup"
+  },
   ["vim-repeat"] = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/vim-repeat",
     url = "https://github.com/tpope/vim-repeat"
+  },
+  ["vim-scriptease"] = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/vim-scriptease",
+    url = "https://github.com/tpope/vim-scriptease"
   },
   ["vim-surround"] = {
     loaded = false,
@@ -449,8 +459,8 @@ vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-prev
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'hop.nvim', 'playground', 'refactoring.nvim', 'nvim-ts-context-commentstring', 'vim-repeat', 'emmet-vim', 'vim-surround', 'nvim-lsp-ts-utils', 'nvim-colorizer.lua', 'treesitter-unit', 'undotree', 'vim-graphql'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au CursorHold * ++once lua require("packer.load")({'vim-illuminate'}, { event = "CursorHold *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'vim-surround', 'nvim-lsp-ts-utils', 'vim-graphql', 'undotree', 'nvim-colorizer.lua', 'vim-repeat', 'treesitter-unit', 'hop.nvim', 'playground', 'refactoring.nvim', 'emmet-vim', 'nvim-ts-context-commentstring'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

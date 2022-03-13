@@ -369,3 +369,6 @@ Group.new("TeleDiffDelete", colors.base08, colors.none, none)
 
 -- symbols-outline
 Group.new("FocusedSymbol", colors.base08, colors.line, none)
+
+-- vim-matchup
+Group.new("MatchParen", colors.none, groups.CursorLine)
