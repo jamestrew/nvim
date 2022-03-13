@@ -67,19 +67,31 @@ opt.joinspaces = false -- Two spaces and grade school, we're done
 -- set fillchars=eob:~
 opt.fillchars = { eob = "~" }
 
+vim.api.nvim_create_augroup("my_config", { clear = true })
+
 -- windows to close with "q"
-vim.cmd([[autocmd FileType help,qf,lspinfo,fugitive nnoremap <buffer><silent> q :close<CR>]])
-vim.cmd([[autocmd FileType man nnoremap <buffer><silent> q :quit<CR>]])
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "help", "man", "lspinfo", "fugitive" },
+  command = "nnoremap <buffer><silent> q :quit<CR>",
+  group = "my_config",
+})
 
 -- get rid of weird formatoptions
-vim.cmd([[autocmd BufEnter * setlocal formatoptions-=r formatoptions-=o]])
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*",
+  command = "setlocal formatoptions-=r formatoptions-=o",
+  group = "my_config",
+})
 
-vim.cmd("autocmd TextYankPost * silent! lua vim.highlight.on_yank {}")
+vim.api.nvim_create_autocmd("TextYankPost", {
+  pattern = "*",
+  command = "silent! lua vim.highlight.on_yank()",
+  group = "my_config",
+})
 
 -- autoformat on save
-vim.cmd([[
-    augroup fmt
-    autocmd!
-    autocmd BufWritePre * :%s/\s\+$//e
-    augroup END
-]])
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  command = ":%s/\\s\\+$//e",
+  group = "my_config",
+})
