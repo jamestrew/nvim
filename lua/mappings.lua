@@ -78,7 +78,8 @@ vnoremap("<leader>rt", ":lua require'jtelescope'.refactor()<CR>", silent)
 
 -- Harpoon
 nnoremap("<leader>a", ":lua require'harpoon.mark'.add_file()<CR>", silent)
-nnoremap("<leader>e", ":lua require'harpoon.ui'.toggle_quick_menu()<CR>", silent)
+nnoremap("<leader>e", ":lua require'harpoon.ui'.toggle_quick_menu({ mark = true })<CR>", silent)
+nnoremap("<leader>o", ":lua require'harpoon.ui'.toggle_quick_menu({ mark = false })<CR>", silent)
 
 nnoremap("<leader>hn", ":lua require('harpoon.ui').nav_file(1)<CR>")
 nnoremap("<leader>he", ":lua require('harpoon.ui').nav_file(2)<CR>")
