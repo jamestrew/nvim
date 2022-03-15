@@ -41,7 +41,6 @@ return packer.startup({
     use({ "nvim-telescope/telescope.nvim" })
     use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
     use("nvim-telescope/telescope-file-browser.nvim")
-    -- use({ "nvim-telescope/telescope-frecency.nvim", requires = { "tami5/sql.nvim" } })
     use({ "jamestrew/harpoon", branch = "telescope-file-browser" })
 
     -- Editing Support
@@ -90,7 +89,7 @@ return packer.startup({
     -- Others
     use({ "folke/which-key.nvim" })
     use({ "AckslD/nvim-neoclip.lua" })
-    use({ "andweeb/presence.nvim"})
+    use({ "andweeb/presence.nvim" })
     use({
       "glacambre/firenvim",
       run = function()
@@ -107,6 +106,7 @@ return packer.startup({
     use("j-hui/fidget.nvim")
     use("rcarriga/nvim-notify")
     use("tpope/vim-scriptease")
+    use("petertriho/nvim-scrollbar")
   end,
   config = {
     compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",

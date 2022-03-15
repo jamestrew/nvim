@@ -140,7 +140,7 @@ Group.new("GitSignsCurrentLineBlame", colors.base03, colors.none, none)
 -- Group.new("NeogitDiffAddHighlight", groups.DiffAdd)
 -- Group.new("NeogitDiffDeleteHighlight", groups.DiffDelete)
 -- Group.new("NeogitDiffContextHighlight", colors.pink)
--- Group.new("NeogitHunkHeader", colors.blue)
+Group.new("NeogitHunkHeader", groups.DiffText)
 Group.new("NeogitHunkHeaderHighlight", groups.DiffText)
 
 -- Git Group.newing

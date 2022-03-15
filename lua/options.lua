@@ -71,7 +71,7 @@ vim.api.nvim_create_augroup("my_config", { clear = true })
 
 -- windows to close with "q"
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "help", "man", "lspinfo", "fugitive" },
+  pattern = { "help", "man", "lspinfo", "fugitive", "qf" },
   command = "nnoremap <buffer><silent> q :quit<CR>",
   group = "my_config",
 })

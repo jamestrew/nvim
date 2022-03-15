@@ -179,7 +179,7 @@ _G.packer_plugins = {
   harpoon = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/harpoon",
-    url = "https://github.com/ThePrimeagen/harpoon"
+    url = "https://github.com/jamestrew/harpoon"
   },
   ["hop.nvim"] = {
     loaded = false,
@@ -270,6 +270,11 @@ _G.packer_plugins = {
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/nvim-notify",
     url = "https://github.com/rcarriga/nvim-notify"
   },
+  ["nvim-scrollbar"] = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/nvim-scrollbar",
+    url = "https://github.com/petertriho/nvim-scrollbar"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
@@ -330,11 +335,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/targets.vim",
     url = "https://github.com/wellle/targets.vim"
-  },
-  ["tarpoon.nvim"] = {
-    loaded = true,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/start/tarpoon.nvim",
-    url = "https://github.com/jamestrew/tarpoon.nvim"
   },
   ["telescope-file-browser.nvim"] = {
     loaded = true,
@@ -459,8 +459,8 @@ vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-prev
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'hop.nvim', 'playground', 'refactoring.nvim', 'nvim-ts-context-commentstring', 'vim-repeat', 'emmet-vim', 'vim-surround', 'nvim-lsp-ts-utils', 'nvim-colorizer.lua', 'treesitter-unit', 'undotree', 'vim-graphql'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au CursorHold * ++once lua require("packer.load")({'vim-illuminate'}, { event = "CursorHold *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-ts-context-commentstring', 'emmet-vim', 'treesitter-unit', 'nvim-lsp-ts-utils', 'vim-graphql', 'nvim-colorizer.lua', 'vim-surround', 'vim-repeat', 'undotree', 'refactoring.nvim', 'hop.nvim', 'playground'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
