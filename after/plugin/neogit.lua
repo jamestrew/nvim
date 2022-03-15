@@ -1,7 +1,9 @@
 local ok, neogit = pcall(require, "neogit")
 
 if not ok then
-  vim.notify("neogit not installed", vim.log.levels.WARN)
+  if not Working then
+    vim.notify("neogit not installed", vim.log.levels.WARN)
+  end
   return
 end
 

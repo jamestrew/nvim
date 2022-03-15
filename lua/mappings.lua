@@ -30,8 +30,6 @@ nnoremap("<leader>ss", ":lua require('utils').save_and_source()<CR>")
 nnoremap("<leader>fr", ":norm! V<CR> :s/") -- quick find & replace
 vnoremap("<leader>fr", ":s/") -- quick find & replace
 
--- unbinding
-nnoremap("<C-F>", "")
 ------------------------                  -------------------------
 ------------------------ Plugin Specifics -------------------------
 ------------------------                  -------------------------
@@ -54,7 +52,6 @@ nnoremap("<leader>fy", ":lua require'jtelescope'.neoclip()<CR>", silent)
 nnoremap("<leader>ff", ":lua require'jtelescope'.curbuf()<CR>", silent)
 nnoremap("<leader>fc", ":Telescope commands<CR>", silent)
 nnoremap("<leader>gh", ":lua require'jtelescope'.git_hunks()<CR>", silent)
--- nnoremap("<leader>fgs", ":Telescope git_status<CR>", silent)
 
 -- Lsp
 nnoremap("gD", ":lua vim.lsp.buf.declaration()<CR>", silent)
@@ -72,10 +69,6 @@ nnoremap("<leader>fs", ":lua require('jtelescope').get_symbols()<CR>", silent)
 nnoremap("<leader>td", ":Telescope diagnostics bufnr=0<CR>", silent)
 nnoremap("<leader>tw", ":Telescope diagnostics<CR>", silent)
 
--- Refactoring
-nnoremap("<leader>rt", ":norm! V<CR> :lua require'jtelescope'.refactor()<CR>", silent)
-vnoremap("<leader>rt", ":lua require'jtelescope'.refactor()<CR>", silent)
-
 -- Harpoon
 nnoremap("<leader>a", ":lua require'harpoon.mark'.add_file()<CR>", silent)
 nnoremap("<leader>e", ":lua require'harpoon.ui'.toggle_quick_menu({ mark = true })<CR>", silent)
@@ -90,10 +83,11 @@ nnoremap("<leader>tn", ":lua require('harpoon.term').gotoTerminal(1)<CR>")
 nnoremap("<leader>te", ":lua require('harpoon.term').gotoTerminal(2)<CR>")
 
 -- git wrapper
-nnoremap("<leader>gs", ":Neogit<CR>", silent)
-
--- Todo Comment
-nnoremap("<leader>ft", ":TodoTelescope<CR>", silent)
+if Working then
+  nnoremap("<leader>gs", ":tab G<CR>", silent)
+else
+  nnoremap("<leader>gs", ":Neogit<CR>", silent)
+end
 
 -- Hop
 nnoremap("<leader><leader>b", ":HopWordBC<CR>")
@@ -101,12 +95,6 @@ nnoremap("<leader><leader>w", ":HopWordAC<CR>")
 
 -- undotree
 nnoremap("<leader>u", ":UndotreeShow<CR>", silent)
-
--- treesitter-unit
-utils.xnoremap("iu", ":lua require('treesitter-unit').select()<CR>")
-utils.xnoremap("au", ":lua require('treesitter-unit').select(true)<CR>")
-utils.onoremap("iu", ":<C-u>lua require('treesitter-unit').select()<CR>")
-utils.onoremap("au", ":<C-u>lua require('treesitter-unit').select(true)<CR>")
 
 -- symbols
 nnoremap("<leader>so", ":SymbolsOutline<CR>", silent)
