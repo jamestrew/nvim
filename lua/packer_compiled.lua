@@ -265,11 +265,6 @@ _G.packer_plugins = {
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/nvim-neoclip.lua",
     url = "https://github.com/AckslD/nvim-neoclip.lua"
   },
-  ["nvim-notify"] = {
-    loaded = true,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/start/nvim-notify",
-    url = "https://github.com/rcarriga/nvim-notify"
-  },
   ["nvim-scrollbar"] = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/nvim-scrollbar",
@@ -319,13 +314,6 @@ _G.packer_plugins = {
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/presence.nvim",
     url = "https://github.com/andweeb/presence.nvim"
   },
-  ["refactoring.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/opt/refactoring.nvim",
-    url = "https://github.com/ThePrimeagen/refactoring.nvim"
-  },
   ["symbols-outline.nvim"] = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",
@@ -351,31 +339,12 @@ _G.packer_plugins = {
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["todo-comments.nvim"] = {
-    loaded = true,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/start/todo-comments.nvim",
-    url = "https://github.com/folke/todo-comments.nvim"
-  },
-  ["treesitter-unit"] = {
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/opt/treesitter-unit",
-    url = "https://github.com/David-Kunz/treesitter-unit"
-  },
   undotree = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/undotree",
     url = "https://github.com/mbbill/undotree"
-  },
-  ["vim-graphql"] = {
-    loaded = false,
-    needs_bufread = true,
-    only_cond = false,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/opt/vim-graphql",
-    url = "https://github.com/jparise/vim-graphql"
   },
   ["vim-illuminate"] = {
     config = { "\27LJ\2\n2\0\0\2\0\3\0\0056\0\0\0009\0\1\0)\1\0\0=\1\2\0K\0\1\0\21Illuminate_delay\6g\bvim\0" },
@@ -408,11 +377,6 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/vim-surround",
     url = "https://github.com/tpope/vim-surround"
-  },
-  ["which-key.nvim"] = {
-    loaded = true,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/start/which-key.nvim",
-    url = "https://github.com/folke/which-key.nvim"
   }
 }
 
@@ -459,8 +423,8 @@ vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-prev
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-lsp-ts-utils', 'vim-surround', 'nvim-colorizer.lua', 'playground', 'vim-repeat', 'undotree', 'hop.nvim', 'emmet-vim', 'nvim-ts-context-commentstring'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au CursorHold * ++once lua require("packer.load")({'vim-illuminate'}, { event = "CursorHold *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-ts-context-commentstring', 'emmet-vim', 'treesitter-unit', 'nvim-lsp-ts-utils', 'vim-graphql', 'nvim-colorizer.lua', 'vim-surround', 'vim-repeat', 'undotree', 'refactoring.nvim', 'hop.nvim', 'playground'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
