@@ -1,5 +1,30 @@
 local cmp = require("cmp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+
+local cmp_git_ok, cmp_git = pcall(require, "cmp_git")
+
+if not cmp_git_ok and not Working then
+  vim.notify("cmp_git not installed", vim.log.levels.WARN)
+  return
+end
+
+local sources = {
+  { name = "nvim_lsp" },
+  { name = "path" },
+  { name = "nvim_lua" },
+  { name = "buffer", keyword_length = 3 },
+  { name = "luasnip" },
+  { name = "cmdline" },
+  { name = "nvim_lsp_signature_help" },
+}
+
+if cmp_git_ok then
+  table.insert(sources, { name = "cmp_git" })
+  cmp_git.setup({
+    filetypes = { "gitcommit", "NeogitCommitMessage" },
+  })
+end
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -19,21 +44,9 @@ cmp.setup({
       select = false,
     }),
   },
-  sources = {
-    { name = "nvim_lsp" },
-    { name = "path" },
-    { name = "nvim_lua" },
-    { name = "buffer", keyword_length = 3 },
-    { name = "luasnip" },
-    { name = "cmp_git" },
-    { name = "cmdline" },
-    { name = "nvim_lsp_signature_help" },
-  },
+  sources = sources,
 })
 
-require("cmp_git").setup({
-  filetypes = { "gitcommit", "NeogitCommitMessage" }
-})
 cmp.setup.cmdline("/", {
   sources = {
     { name = "buffer" },

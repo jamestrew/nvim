@@ -15,6 +15,8 @@ local checkwidth = function()
   return false
 end
 
+-- TODO: add function to trim branch name with `Working`
+
 local filename = function()
   local max_len = checkwidth() and 60 or 35
   local filename = Path:new(vim.fn.expand("%:p")):make_relative(vim.loop.cwd())
