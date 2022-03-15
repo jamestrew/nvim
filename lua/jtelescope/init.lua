@@ -37,15 +37,7 @@ M.project_files = function(opts)
 end
 
 M.git_worktrees = function()
-  local opts = themes.get_dropdown({
-    -- previewer = false,
-    path_display = { "shorten" },
-    layout_config = {
-      width = 70,
-      height = 20,
-    },
-    -- layout_strategy = "vertical",
-  })
+  local opts = {}
   opts.attach_mappings = function(_, map)
     map("i", "<A-c>", actions.git_create_branch)
     map("n", "c", actions.git_create_branch)
@@ -55,6 +47,11 @@ M.git_worktrees = function()
   end
 
   if utils.os.in_bare and not utils.os.in_worktree then
+    opts.attach_mappings = function(_, map)
+      map("i", "<A-d>", require("telescope").extensions.git_worktree.actions.delete_worktree)
+      map("n", "d", require("telescope").extensions.git_worktree.actions.delete_worktree)
+      return true
+    end
     require("telescope").extensions.git_worktree.git_worktrees(opts)
   elseif utils.os.in_worktree and not utils.os.in_bare then
     opts.prompt_title = "Git Branches"
@@ -163,14 +160,6 @@ M.curbuf = function(opts)
     return tele_utils.alt_scroll(map)
   end
   require("telescope.builtin").current_buffer_fuzzy_find(opts)
-end
-
-M.file_browser = function(opts)
-  opts = opts or {}
-  opts.attach_mappings = function(_, map)
-    return tele_utils.alt_scroll(map)
-  end
-  require("telescope").extensions.file_browser.file_browser(opts)
 end
 
 M.git_hunks = function(opts)
