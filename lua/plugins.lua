@@ -4,9 +4,12 @@ local use = packer.use
 return packer.startup({
   function()
     -- packer itself
-    use("wbthomason/packer.nvim")
+    use({ "wbthomason/packer.nvim" })
 
-    use("nvim-lua/plenary.nvim")
+    -- experimental
+    use({ "kyazdani42/nvim-tree.lua" })
+
+    use({ "nvim-lua/plenary.nvim" })
 
     -- LSP & Treeshitter
     use({ "nvim-treesitter/nvim-treesitter" })

@@ -37,7 +37,7 @@ M.project_files = function(opts)
 end
 
 M.git_worktrees = function()
-  local opts = {}
+  local opts = themes.get_dropdown()
   opts.attach_mappings = function(_, map)
     map("i", "<A-c>", actions.git_create_branch)
     map("n", "c", actions.git_create_branch)
@@ -133,6 +133,11 @@ M.get_symbols = function(opts)
     return tele_utils.alt_scroll(map)
   end
 
+  if true then
+    require("telescope.builtin").lsp_document_symbols(opts)
+    return
+  end
+
   local ts_healthy = true
   for _, definitions in ipairs(require("nvim-treesitter.locals").get_definitions()) do
     if definitions["node"] ~= nil then
@@ -150,6 +155,7 @@ M.get_symbols = function(opts)
     require("telescope.builtin").lsp_document_symbols(opts)
   end
 end
+
 M.curbuf = function(opts)
   opts = opts or themes.get_dropdown({
     previewer = false,

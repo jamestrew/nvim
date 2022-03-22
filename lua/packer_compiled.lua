@@ -270,6 +270,11 @@ _G.packer_plugins = {
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/nvim-scrollbar",
     url = "https://github.com/petertriho/nvim-scrollbar"
   },
+  ["nvim-tree.lua"] = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/kyazdani42/nvim-tree.lua"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
@@ -423,7 +428,7 @@ vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-prev
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'vim-surround', 'vim-repeat', 'undotree', 'hop.nvim', 'nvim-lsp-ts-utils', 'emmet-vim', 'nvim-ts-context-commentstring', 'nvim-colorizer.lua', 'playground'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'vim-repeat', 'nvim-colorizer.lua', 'undotree', 'playground', 'hop.nvim', 'nvim-ts-context-commentstring', 'emmet-vim', 'vim-surround', 'nvim-lsp-ts-utils'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au CursorHold * ++once lua require("packer.load")({'vim-illuminate'}, { event = "CursorHold *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")

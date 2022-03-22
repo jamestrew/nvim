@@ -70,7 +70,6 @@ require("telescope").setup({
   },
   extensions = {
     git_worktree = {
-      theme = "dropdown",
       path_display = { "shorten" },
       layout_config = {
         width = 70,
@@ -136,4 +135,3 @@ require("telescope").load_extension("fzf")
 require("telescope").load_extension("git_worktree")
 require("telescope").load_extension("neoclip")
 require("telescope").load_extension("file_browser")
--- require("telescope").load_extension "frecency"
