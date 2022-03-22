@@ -1,7 +1,0 @@
-require("fidget").setup()
-require("nvim-autopairs").setup()
-require("colorizer").setup()
-require("gomove").setup()
-require("neoclip").setup()
-require("hop").setup({ key = "tnhesoaiwfrudpclm"})
-require("scrollbar").setup()
