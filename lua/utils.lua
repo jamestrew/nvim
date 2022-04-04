@@ -159,4 +159,8 @@ M.save_and_source = function()
   end
 end
 
+M.trim_TDAMPA = function(name)
+  return name:gsub("^.*TDAMPA--", "")
+end
+
 return M

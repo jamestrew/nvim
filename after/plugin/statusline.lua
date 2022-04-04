@@ -15,8 +15,6 @@ local checkwidth = function()
   return false
 end
 
--- TODO: add function to trim branch name with `Working`
-
 local filename = function()
   local max_len = checkwidth() and 60 or 35
   local filename = Path:new(vim.fn.expand("%:p")):make_relative(vim.loop.cwd())
@@ -53,8 +51,6 @@ end
 
 local gls = gl.section
 local condition = require("galaxyline.condition")
-
-gl.short_line_list = { "Outline", "undotree" }
 
 local vi_mode_separator1 = {
   ViModeSeparator1 = {
@@ -109,6 +105,7 @@ local current_dir = {
     provider = function()
       local max_len = 12
       local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+      dir_name = utils.trim_TDAMPA(dir_name)
       if #dir_name > max_len then
         dir_name = dir_name:sub(0, max_len) .. "..."
       end
@@ -259,6 +256,7 @@ local git_branch = {
     provider = function()
       local max_len = 25
       local branch = require("galaxyline.providers.vcs").get_git_branch()
+      branch = utils.trim_TDAMPA(branch)
       if #branch > max_len then
         branch = branch:sub(1, max_len) .. ".."
       end
@@ -306,23 +304,3 @@ table.insert(gls.right, git_icon)
 table.insert(gls.right, git_branch)
 table.insert(gls.right, line_percentage_sep)
 table.insert(gls.right, line_percentage)
-
--- StatuslineNC/short_line
-local file_icon_short = {
-  FileIconShort = {
-    provider = "FileIcon",
-    condition = condition.buffer_not_empty,
-    -- highlight = { colors.white, colors.black },
-  },
-}
-
-local file_name_short = {
-  FileNameShort = {
-    provider = filename,
-    condition = condition.buffer_not_empty,
-    -- highlight = { colors.white, colors.black },
-  },
-}
-
-table.insert(gls.short_line_mid, file_icon_short)
-table.insert(gls.short_line_mid, file_name_short)
