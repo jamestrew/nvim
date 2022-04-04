@@ -1,13 +1,34 @@
 local packer = require("packer")
-local use = packer.use
+local use
+
+--[[
+  Installing all plugins from a local directory for work
+  Only exception is packer itself which I manually put into the packer path (why??)
+]]
+
+if Working then
+  use = function(opts)
+    opts = opts or {}
+    local install_path = "~/neovim/plugins"
+    if type(opts) == "string" then
+      opts = install_path .. opts:match("%/.*")
+    else
+      opts[1] = install_path .. opts[1]:match("%/.*")
+    end
+    packer.use(opts)
+  end
+else
+  use = packer.use
+end
 
 return packer.startup({
   function()
     -- packer itself
-    use({ "wbthomason/packer.nvim" })
-
-    -- experimental
-    use({ "kyazdani42/nvim-tree.lua" })
+    if Working then
+      packer.use({ "wbthomason/packer.nvim" })
+    else
+      use({ "wbthomason/packer.nvim" })
+    end
 
     use({ "nvim-lua/plenary.nvim" })
 
@@ -56,6 +77,7 @@ return packer.startup({
     -- Git
     use({ "lewis6991/gitsigns.nvim" })
     use({ "ThePrimeagen/git-worktree.nvim", lock = true })
+    use({ "tpope/vim-fugitive" })
 
     -- Looks
     use({ "NTBBloodbath/galaxyline.nvim" })
@@ -77,6 +99,7 @@ return packer.startup({
     use({ "j-hui/fidget.nvim" })
     use({ "petertriho/nvim-scrollbar" })
 
+    -- Work vs not Work
     if not Working then
       use({ "andweeb/presence.nvim" })
       use({ "tpope/vim-scriptease" })
@@ -98,9 +121,11 @@ return packer.startup({
       use({ "editorconfig/editorconfig-vim" })
       use({ "nvim-treesitter/playground", event = "BufRead" })
       use({ "petertriho/cmp-git" })
-    else
-      use({ "tpope/vim-fugitive" })
+
+      -- experimental
+      use({ "kyazdani42/nvim-tree.lua" })
     end
+
   end,
   config = {
     compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",

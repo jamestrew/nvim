@@ -33,7 +33,7 @@ opt.equalalways = true -- I don't like my windows changing all the time
 opt.splitright = true -- Prefer windows splitting to the right
 opt.splitbelow = true -- Prefer windows splitting to the bottom
 opt.updatetime = 200 -- Make updates happen faster
-opt.hlsearch = false -- Get rid of highlights once done with search
+opt.hlsearch = true -- Get rid of highlights once done with search
 opt.scrolloff = 15 -- Make it so there are always ten lines below my cursor
 
 -- Tabs

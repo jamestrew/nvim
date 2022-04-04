@@ -8,6 +8,8 @@ vim.cmd([[command W :w]])
 vim.cmd([[command Q :q]])
 vim.cmd([[command Wq :wq]])
 
+nnoremap("<CR>", ":nohl<CR>")
+
 -- paste/delete and keep register clean
 vnoremap("<leader>p", '"_dP')
 vnoremap("<leader>d", '"_d')

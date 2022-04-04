@@ -351,6 +351,11 @@ _G.packer_plugins = {
     path = "/home/jt/.local/share/nvim/site/pack/packer/opt/undotree",
     url = "https://github.com/mbbill/undotree"
   },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
+  },
   ["vim-illuminate"] = {
     config = { "\27LJ\2\n2\0\0\2\0\3\0\0056\0\0\0009\0\1\0)\1\0\0=\1\2\0K\0\1\0\21Illuminate_delay\6g\bvim\0" },
     loaded = false,
@@ -428,8 +433,8 @@ vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-prev
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'vim-repeat', 'nvim-colorizer.lua', 'undotree', 'playground', 'hop.nvim', 'nvim-ts-context-commentstring', 'emmet-vim', 'vim-surround', 'nvim-lsp-ts-utils'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au CursorHold * ++once lua require("packer.load")({'vim-illuminate'}, { event = "CursorHold *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'hop.nvim', 'nvim-ts-context-commentstring', 'emmet-vim', 'vim-surround', 'vim-repeat', 'nvim-lsp-ts-utils', 'nvim-colorizer.lua', 'undotree', 'playground'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
