@@ -1,5 +1,3 @@
-local utils = require("utils")
-
 vim.api.nvim_create_augroup("my_config", { clear = true })
 
 -- windows to close with "q"
@@ -28,3 +26,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   command = ":%s/\\s\\+$//e",
   group = "my_config",
 })
+
+-- TODO: is User autocmds doable with lua?
+vim.cmd([[
+  autocmd User PackerComplete lua require'utils'.plugin_urls()
+]])

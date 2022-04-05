@@ -1,0 +1,13 @@
+#!/bin/bash
+
+pushd $NVIM_PLUGIN_PATH > /dev/null
+
+for plugin in */
+do
+  pushd $plugin > /dev/null
+  echo $plugin $(git pull origin)
+  popd > /dev/null
+done
+
+popd > /dev/null
+

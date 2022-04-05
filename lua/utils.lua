@@ -163,4 +163,16 @@ M.trim_TDAMPA = function(name)
   return name:gsub("^.*TDAMPA--", "")
 end
 
+M.plugin_urls = function()
+  local file = io.open("work/plugin_urls.txt", "w")
+  io.output(file)
+
+  for _, plug_data in pairs(_G.packer_plugins) do
+    if plug_data.url then
+      io.write(string.format("%s\n", plug_data.url))
+    end
+  end
+  io.close(file)
+end
+
 return M
