@@ -1,4 +1,4 @@
-Working = false
+Work = false
 local g = vim.g
 require("impatient").enable_profile()
 require("plugins")

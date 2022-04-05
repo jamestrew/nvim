@@ -6,7 +6,7 @@ local use
   Only exception is packer itself which I manually put into the packer path (why??)
 ]]
 
-if Working then
+if Work then
   use = function(opts)
     opts = opts or {}
     local install_path = "~/neovim/plugins"
@@ -24,11 +24,7 @@ end
 return packer.startup({
   function()
     -- packer itself
-    if Working then
-      packer.use({ "wbthomason/packer.nvim" })
-    else
-      use({ "wbthomason/packer.nvim" })
-    end
+    packer.use({ "wbthomason/packer.nvim" })
 
     use({ "nvim-lua/plenary.nvim" })
 
@@ -53,6 +49,7 @@ return packer.startup({
     use({ "b0o/SchemaStore.nvim" })
     use({ "simrat39/symbols-outline.nvim" })
     use({ "jose-elias-alvarez/null-ls.nvim" })
+    use({ "nvim-treesitter/playground", event = "BufRead", disable = Work })
 
     -- Telescope & File Management
     use({ "nvim-telescope/telescope.nvim" })
@@ -73,11 +70,16 @@ return packer.startup({
     use({ "mbbill/undotree", event = "BufRead" })
     use({ "booperlv/nvim-gomove" })
     use({ "andymass/vim-matchup" })
+    use({ "editorconfig/editorconfig-vim", disable = Work })
+    use({ "mattn/emmet-vim", event = "BufRead", disable = Work })
 
     -- Git
     use({ "lewis6991/gitsigns.nvim" })
-    use({ "ThePrimeagen/git-worktree.nvim", lock = true })
+    use({ "jamestrew/git-worktree.nvim" })
     use({ "tpope/vim-fugitive" })
+    use({ "TimUntersberger/neogit", disable = Work })
+    use({ "sindrets/diffview.nvim", disable = Work })
+    use({ "petertriho/cmp-git", disable = Work })
 
     -- Looks
     use({ "NTBBloodbath/galaxyline.nvim" })
@@ -98,34 +100,25 @@ return packer.startup({
     use({ "lewis6991/impatient.nvim" })
     use({ "j-hui/fidget.nvim" })
     use({ "petertriho/nvim-scrollbar" })
+    use({ "andweeb/presence.nvim", disable = Work })
+    use({ "tpope/vim-scriptease", disable = Work })
+    use({
+      "glacambre/firenvim",
+      run = function()
+        vim.fn["firenvim#install"](0)
+      end,
+      disable = Work,
+    })
+    use({
+      "iamcco/markdown-preview.nvim",
+      ft = { "markdown" },
+      run = "cd app && yarn install",
+      cmd = "MarkdownPreview",
+      disable = Work,
+    })
 
-    -- Work vs not Work
-    if not Working then
-      use({ "andweeb/presence.nvim" })
-      use({ "tpope/vim-scriptease" })
-      use({
-        "glacambre/firenvim",
-        run = function()
-          vim.fn["firenvim#install"](0)
-        end,
-      })
-      use({ "TimUntersberger/neogit" })
-      use({ "sindrets/diffview.nvim" })
-      use({
-        "iamcco/markdown-preview.nvim",
-        ft = { "markdown" },
-        run = "cd app && yarn install",
-        cmd = "MarkdownPreview",
-      })
-      use({ "mattn/emmet-vim", event = "BufRead" })
-      use({ "editorconfig/editorconfig-vim" })
-      use({ "nvim-treesitter/playground", event = "BufRead" })
-      use({ "petertriho/cmp-git" })
-
-      -- experimental
-      use({ "kyazdani42/nvim-tree.lua" })
-    end
-
+    -- experimental
+    use({ "kyazdani42/nvim-tree.lua", disable = Work })
   end,
   config = {
     compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",

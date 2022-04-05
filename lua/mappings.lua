@@ -85,7 +85,7 @@ nnoremap("<leader>tn", ":lua require('harpoon.term').gotoTerminal(1)<CR>")
 nnoremap("<leader>te", ":lua require('harpoon.term').gotoTerminal(2)<CR>")
 
 -- git wrapper
-if Working then
+if Work then
   nnoremap("<leader>gs", ":tab G<CR>", silent)
 else
   nnoremap("<leader>gs", ":Neogit<CR>", silent)

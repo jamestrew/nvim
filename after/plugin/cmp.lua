@@ -3,7 +3,7 @@ local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 local cmp_git_ok, cmp_git = pcall(require, "cmp_git")
 
-if not cmp_git_ok and not Working then
+if not cmp_git_ok and not Work then
   vim.notify("cmp_git not installed", vim.log.levels.WARN)
   return
 end
