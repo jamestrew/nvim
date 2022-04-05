@@ -169,7 +169,7 @@ _G.packer_plugins = {
   ["git-worktree.nvim"] = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/git-worktree.nvim",
-    url = "https://github.com/ThePrimeagen/git-worktree.nvim"
+    url = "https://github.com/jamestrew/git-worktree.nvim"
   },
   ["gitsigns.nvim"] = {
     loaded = true,
@@ -433,8 +433,8 @@ vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-prev
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-lsp-ts-utils', 'nvim-colorizer.lua', 'nvim-ts-context-commentstring', 'emmet-vim', 'playground', 'vim-surround', 'vim-repeat', 'hop.nvim', 'undotree'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au CursorHold * ++once lua require("packer.load")({'vim-illuminate'}, { event = "CursorHold *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'hop.nvim', 'nvim-ts-context-commentstring', 'emmet-vim', 'vim-surround', 'vim-repeat', 'nvim-lsp-ts-utils', 'nvim-colorizer.lua', 'undotree', 'playground'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
