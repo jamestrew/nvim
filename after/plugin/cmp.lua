@@ -1,4 +1,5 @@
 local cmp = require("cmp")
+local lspkind = require("lspkind")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 local cmp_git_ok, cmp_git = pcall(require, "cmp_git")
@@ -26,6 +27,9 @@ if cmp_git_ok then
 end
 
 cmp.setup({
+  formatting = {
+    format = lspkind.cmp_format(),
+  },
   snippet = {
     expand = function(args)
       require("luasnip").lsp_expand(args.body)

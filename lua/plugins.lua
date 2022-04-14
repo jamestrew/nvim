@@ -85,6 +85,7 @@ return packer.startup({
     use({ "NTBBloodbath/galaxyline.nvim" })
     use({ "kyazdani42/nvim-web-devicons" })
     use({ "tjdevries/colorbuddy.vim" })
+    use({ "onsails/lspkind-nvim" })
     use({
       "RRethy/vim-illuminate",
       event = "CursorHold",
