@@ -2,7 +2,28 @@ local ts_config = require("nvim-treesitter.configs")
 local ts_context = require("treesitter-context")
 
 ts_config.setup({
-  ensure_installed = "maintained",
+  ensure_installed = {
+    "bash",
+    "c",
+    "cmake",
+    "cpp",
+    "css",
+    "dockerfile",
+    "go",
+    "graphql",
+    "html",
+    "javascript",
+    "json",
+    "latex",
+    "lua",
+    "make",
+    "perl",
+    "php",
+    "python",
+    "rust",
+    "tsx",
+    "yaml",
+  },
   highlight = {
     enable = true,
     use_languagetree = true,
