@@ -34,27 +34,30 @@ cmp.setup({
   completion = {
     completeopt = "menuone,noselect",
   },
-  mapping = {
-    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-u>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-e>"] = cmp.mapping.close(),
-    ["<CR>"] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = false,
-    }),
-  },
-  sources = sources,
+  mapping = cmp.mapping.preset.insert({
+  ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+  ["<C-u>"] = cmp.mapping.scroll_docs(4),
+  ["<C-Space>"] = cmp.mapping.complete(),
+  ["<C-e>"] = cmp.mapping.close(),
+  ["<CR>"] = cmp.mapping.confirm({
+    behavior = cmp.ConfirmBehavior.Replace,
+    select = false,
+  }),
+}),
+  sources = cmp.config.sources(sources),
 })
 
 cmp.setup.cmdline("/", {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = "buffer" },
   },
 })
 cmp.setup.cmdline(":", {
-  sources = {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = "path" },
     { name = "cmdline" },
-  },
+  }),
 })
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
