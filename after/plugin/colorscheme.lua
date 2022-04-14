@@ -747,3 +747,16 @@ Group.new("FocusedSymbol", colors.base08, colors.line, styles.NONE)
 
 -- vim-matchup
 Group.new("MatchParen", colors.none, groups.CursorLine)
+
+-- cmp
+Group.new("CmpItemAbbrDeprecated", colors.base03, colors.none, styles.NONE)
+Group.new("CmpItemAbbrMatch", colors.base0D, colors.none, styles.NONE)
+Group.new("CmpItemAbbrMatchFuzzy", colors.base0D, colors.none, styles.NONE)
+Group.new("CmpItemKindVariable", colors.nord_blue, colors.none, styles.NONE)
+Group.new("CmpItemKindInterface", colors.nord_blue, colors.none, styles.NONE)
+Group.new("CmpItemKindText", colors.nord_blue, colors.none, styles.NONE)
+Group.new("CmpItemKindFunction", colors.base0E, colors.none, styles.NONE)
+Group.new("CmpItemKindMethod", colors.base0E, colors.none, styles.NONE)
+Group.new("CmpItemKindKeyword", colors.base05, colors.none, styles.NONE)
+Group.new("CmpItemKindProperty", colors.base05, colors.none, styles.NONE)
+Group.new("CmpItemKindUnit", colors.base05, colors.none, styles.NONE)
