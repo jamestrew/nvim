@@ -164,13 +164,19 @@ M.trim_TDAMPA = function(name)
 end
 
 M.plugin_urls = function()
+  local plugins = {}
+  for _, plug_data in pairs(_G.packer_plugins) do
+    if plug_data.url then
+      table.insert(plugins, plug_data.url)
+    end
+  end
+  table.sort(plugins)
+
   local file = io.open("work/plugin_urls.txt", "w")
   io.output(file)
 
-  for _, plug_data in pairs(_G.packer_plugins) do
-    if plug_data.url then
-      io.write(string.format("%s\n", plug_data.url))
-    end
+  for _, url in pairs(plugins) do
+    io.write(string.format("%s\n", url))
   end
   io.close(file)
 end

@@ -439,7 +439,7 @@ time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au CursorHold * ++once lua require("packer.load")({'vim-illuminate'}, { event = "CursorHold *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-lsp-ts-utils', 'vim-repeat', 'nvim-colorizer.lua', 'hop.nvim', 'playground', 'nvim-ts-context-commentstring', 'emmet-vim', 'undotree', 'vim-surround'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-colorizer.lua', 'playground', 'vim-repeat', 'undotree', 'hop.nvim', 'vim-surround', 'emmet-vim', 'nvim-ts-context-commentstring', 'nvim-lsp-ts-utils'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
