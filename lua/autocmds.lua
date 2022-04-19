@@ -27,7 +27,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   group = my_group,
 })
 
--- TODO: is User autocmds doable with lua?
-vim.cmd([[
-  autocmd User PackerComplete lua require'utils'.plugin_urls()
-]])
+vim.api.nvim_create_autocmd("User", {
+  pattern = "PackerComplete",
+  callback = require("utils").plugin_urls,
+  group = my_group,
+})
