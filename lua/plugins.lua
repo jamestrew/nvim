@@ -33,16 +33,14 @@ return packer.startup({
     use({ "williamboman/nvim-lsp-installer" })
     use({ "neovim/nvim-lspconfig" })
     use({ "L3MON4D3/LuaSnip" })
-    use({
-      "hrsh7th/nvim-cmp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-nvim-lua",
-      "hrsh7th/cmp-nvim-lsp",
-      "saadparwaiz1/cmp_luasnip",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-nvim-lsp-signature-help",
-    })
+    use({ "hrsh7th/nvim-cmp" })
+    use({ "hrsh7th/cmp-buffer" })
+    use({ "hrsh7th/cmp-path" })
+    use({ "hrsh7th/cmp-nvim-lua" })
+    use({ "hrsh7th/cmp-nvim-lsp" })
+    use({ "saadparwaiz1/cmp_luasnip" })
+    use({ "hrsh7th/cmp-cmdline" })
+    use({ "hrsh7th/cmp-nvim-lsp-signature-help" })
     use({ "folke/lua-dev.nvim" })
     use({ "jose-elias-alvarez/nvim-lsp-ts-utils", event = "BufRead" })
     use({ "romgrk/nvim-treesitter-context" })
@@ -77,8 +75,8 @@ return packer.startup({
     use({ "lewis6991/gitsigns.nvim" })
     use({ "jamestrew/git-worktree.nvim" })
     use({ "tpope/vim-fugitive" })
-    use({ "TimUntersberger/neogit", disable = Work })
-    use({ "sindrets/diffview.nvim", disable = Work })
+    use({ "TimUntersberger/neogit" })
+    use({ "sindrets/diffview.nvim" })
     use({ "petertriho/cmp-git", disable = Work })
 
     -- Looks
