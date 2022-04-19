@@ -4,6 +4,12 @@ local use
 --[[
   Installing all plugins from a local directory for work
   Only exception is packer itself which I manually put into the packer path (why??)
+
+  bootstrap on work machine:
+  ```
+  lua require'plugins'
+  PackerInstall
+  ```
 ]]
 
 if Work then
@@ -24,7 +30,7 @@ end
 return packer.startup({
   function()
     -- packer itself
-    packer.use({ "wbthomason/packer.nvim" })
+    packer.use({ "wbthomason/packer.nvim", lock = Work })
 
     use({ "nvim-lua/plenary.nvim" })
 
@@ -53,7 +59,7 @@ return packer.startup({
     use({ "nvim-telescope/telescope.nvim" })
     use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
     use({ "nvim-telescope/telescope-file-browser.nvim" })
-    use({ "jamestrew/harpoon", branch = "telescope-file-browser" })
+    use({ "jamestrew/harpoon" })
 
     -- Editing Support
     use({ "windwp/nvim-autopairs" })
@@ -61,8 +67,8 @@ return packer.startup({
     use({ "JoosepAlviste/nvim-ts-context-commentstring", event = "BufRead" })
     use({ "numToStr/Comment.nvim" })
     use({ "lukas-reineke/indent-blankline.nvim" })
-    use({ "norcalli/nvim-colorizer.lua", event = "BufRead" })
-    use({ "phaazon/hop.nvim", event = "BufRead" })
+    use({ "norcalli/nvim-colorizer.lua" })
+    use({ "phaazon/hop.nvim" })
     use({ "tpope/vim-surround", event = "BufRead" })
     use({ "tpope/vim-repeat", event = "BufRead" })
     use({ "mbbill/undotree", event = "BufRead" })

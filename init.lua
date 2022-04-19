@@ -1,4 +1,4 @@
-Work = false
+Work = os.getenv("NVIM_WORK") or false
 local g = vim.g
 g.mapleader = " "
 g.auto_save = false

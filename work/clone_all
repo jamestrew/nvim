@@ -1,7 +1,7 @@
 #!/bin/bash
 
-mkdir -p $NVIM_PLUGIN_PATH
-pushd $NVIM_PLUGIN_PATH > /dev/null
+mkdir -p "$NVIM_PLUGIN_PATH"
+pushd "$NVIM_PLUGIN_PATH" > /dev/null
 
 cat "$NVIM_CONFIG/work/plugin_urls.txt" | while read url
 do

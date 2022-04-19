@@ -182,10 +182,8 @@ _G.packer_plugins = {
     url = "https://github.com/jamestrew/harpoon"
   },
   ["hop.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/opt/hop.nvim",
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/hop.nvim",
     url = "https://github.com/phaazon/hop.nvim"
   },
   ["impatient.nvim"] = {
@@ -237,10 +235,8 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-colorizer.lua"] = {
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/opt/nvim-colorizer.lua",
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
     url = "https://github.com/norcalli/nvim-colorizer.lua"
   },
   ["nvim-gomove"] = {
@@ -438,7 +434,7 @@ vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-prev
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'hop.nvim', 'undotree', 'playground', 'nvim-ts-context-commentstring', 'nvim-lsp-ts-utils', 'vim-surround', 'nvim-colorizer.lua', 'vim-repeat', 'emmet-vim'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'vim-surround', 'playground', 'nvim-ts-context-commentstring', 'nvim-lsp-ts-utils', 'vim-repeat', 'emmet-vim', 'undotree'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au CursorHold * ++once lua require("packer.load")({'vim-illuminate'}, { event = "CursorHold *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
