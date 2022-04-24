@@ -90,14 +90,6 @@ return packer.startup({
     use({ "kyazdani42/nvim-web-devicons" })
     use({ "tjdevries/colorbuddy.vim" })
     use({ "onsails/lspkind-nvim" })
-    use({
-      "RRethy/vim-illuminate",
-      event = "CursorHold",
-      module = "illuminate",
-      config = function()
-        vim.g.Illuminate_delay = 0
-      end,
-    })
 
     -- Others
     use({ "AckslD/nvim-neoclip.lua" })

@@ -1,7 +1,19 @@
 local lspsettings = require("lsp.settings")
 
 local function on_attach(client, bufnr)
-  require("illuminate").on_attach(client)
+  local doc_hl_group = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true })
+
+  vim.api.nvim_create_autocmd("CursorHold", {
+    buffer = 0,
+    callback = vim.lsp.buf.document_highlight,
+    group = doc_hl_group,
+  })
+
+  vim.api.nvim_create_autocmd("CursorMoved", {
+    buffer = 0,
+    callback = vim.lsp.buf.clear_references,
+    group = doc_hl_group,
+  })
   -- vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
   client.resolved_capabilities.document_formatting = false
   client.resolved_capabilities.document_range_formatting = false

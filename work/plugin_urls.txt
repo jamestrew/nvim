@@ -2,7 +2,6 @@ https://github.com/AckslD/nvim-neoclip.lua
 https://github.com/JoosepAlviste/nvim-ts-context-commentstring
 https://github.com/L3MON4D3/LuaSnip
 https://github.com/NTBBloodbath/galaxyline.nvim
-https://github.com/RRethy/vim-illuminate
 https://github.com/TimUntersberger/neogit
 https://github.com/andweeb/presence.nvim
 https://github.com/andymass/vim-matchup
