@@ -2,7 +2,6 @@ local utils = require("utils")
 local nnoremap = utils.nnoremap
 local vnoremap = utils.vnoremap
 local silent = { silent = true }
-local sexpr = { silent = true, expr = true }
 
 vim.cmd([[command W :w]])
 vim.cmd([[command Q :q]])
@@ -27,7 +26,7 @@ nnoremap("N", "Nzzzv")
 nnoremap("<leader>J", "mzJ`z")
 
 nnoremap("<leader>pp", ":echo expand('%:p')<CR>")
-nnoremap("<leader>ss", ":lua require('utils').save_and_source()<CR>")
+nnoremap("<leader>ss", require("utils").save_and_source)
 
 nnoremap("<leader>fr", ":norm! V<CR> :s/") -- quick find & replace
 vnoremap("<leader>fr", ":s/") -- quick find & replace
@@ -37,53 +36,53 @@ vnoremap("<leader>fr", ":s/") -- quick find & replace
 ------------------------                  -------------------------
 
 -- format code
-nnoremap("<leader>fm", ":lua vim.lsp.buf.formatting()<CR>")
-vnoremap("<leader>fm", ":lua vim.lsp.buf.range_formatting()<CR>")
+nnoremap("<leader>fm", vim.lsp.buf.formatting)
+vnoremap("<leader>fm", vim.lsp.buf.range_formatting)
 
 -- Telescope
-nnoremap("<C-p>", ":lua require('jtelescope').project_files()<CR>")
+nnoremap("<C-p>", require("jtelescope").project_files)
 nnoremap("<C-e>", ":Telescope file_browser<CR>", silent)
 nnoremap("<leader>fw", ":Telescope live_grep<CR>", silent)
 nnoremap("<leader>gc", ":Telescope git_commits<CR>", silent)
 nnoremap("<leader>fb", ":Telescope buffers<CR>", silent)
 nnoremap("<leader>fh", ":Telescope help_tags<CR>", silent)
 nnoremap("<leader>gw", ":Telescope grep_string<CR>", silent)
-nnoremap("<leader>rc", ":lua require'jtelescope'.search_dotfiles()<CR>", silent)
-nnoremap("<leader>fg", ":lua require'jtelescope'.git_worktrees()<CR>", silent)
-nnoremap("<leader>ct", ":lua require'jtelescope'.create_git_worktree()<CR>", silent)
-nnoremap("<leader>fy", ":lua require'jtelescope'.neoclip()<CR>", silent)
-nnoremap("<leader>ff", ":lua require'jtelescope'.curbuf()<CR>", silent)
+nnoremap("<leader>rc", require("jtelescope").search_dotfiles, silent)
+nnoremap("<leader>fg", require("jtelescope").git_worktrees, silent)
+nnoremap("<leader>ct", require("jtelescope").create_git_worktree, silent)
+nnoremap("<leader>fy", require("jtelescope").neoclip, silent)
+nnoremap("<leader>ff", require("jtelescope").curbuf, silent)
 nnoremap("<leader>fc", ":Telescope commands<CR>", silent)
-nnoremap("<leader>gh", ":lua require'jtelescope'.git_hunks()<CR>", silent)
+nnoremap("<leader>gh", require("jtelescope").git_hunks, silent)
 
 -- Lsp
-nnoremap("gD", ":lua vim.lsp.buf.declaration()<CR>", silent)
-nnoremap("K", ":lua vim.lsp.buf.hover()<CR>", silent)
-nnoremap("<C-k>", ":lua vim.lsp.buf.signature_help()<CR>", silent)
-nnoremap("<leader>D", ":lua vim.lsp.buf.type_definition()<CR>", silent)
-nnoremap("<leader>rn", ":lua vim.lsp.buf.rename()<CR>", silent)
-nnoremap("<leader>d", ":lua vim.diagnostic.open_float()<CR>", silent)
+nnoremap("gD", vim.lsp.buf.declaration, silent)
+nnoremap("K", vim.lsp.buf.hover, silent)
+nnoremap("<C-k>", vim.lsp.buf.signature_help, silent)
+nnoremap("<leader>D", vim.lsp.buf.type_definition, silent)
+nnoremap("<leader>rn", vim.lsp.buf.rename, silent)
+nnoremap("<leader>d", vim.diagnostic.open_float, silent)
 -- Lsp Tele
 nnoremap("gd", ":Telescope lsp_definitions<CR>", silent)
 nnoremap("gr", ":Telescope lsp_references<CR>", silent)
-nnoremap("<leader>ca", ":lua require('jtelescope').lsp_code_actions()<CR>", silent)
+nnoremap("<leader>ca", require("jtelescope").lsp_code_actions, silent)
 nnoremap("<leader>gi", ":Telescope lsp_implementations<CR>", silent)
-nnoremap("<leader>fs", ":lua require('jtelescope').get_symbols()<CR>", silent)
+nnoremap("<leader>fs", require("jtelescope").get_symbols, silent)
 nnoremap("<leader>td", ":Telescope diagnostics bufnr=0<CR>", silent)
 nnoremap("<leader>tw", ":Telescope diagnostics<CR>", silent)
 
 -- Harpoon
-nnoremap("<leader>a", ":lua require'harpoon.mark'.add_file()<CR>", silent)
-nnoremap("<leader>e", ":lua require'harpoon.ui'.toggle_quick_menu({ mark = true })<CR>", silent)
-nnoremap("<leader>o", ":lua require'harpoon.ui'.toggle_quick_menu({ mark = false })<CR>", silent)
+nnoremap("<leader>a", require("harpoon.mark").add_file, silent)
+nnoremap("<leader>e", function() require'harpoon.ui'.toggle_quick_menu({ mark = true }) end, silent)
+nnoremap("<leader>o", function() require'harpoon.ui'.toggle_quick_menu({ mark = false }) end, silent)
 
-nnoremap("<leader>hn", ":lua require('harpoon.ui').nav_file(1)<CR>")
-nnoremap("<leader>he", ":lua require('harpoon.ui').nav_file(2)<CR>")
-nnoremap("<leader>ho", ":lua require('harpoon.ui').nav_file(3)<CR>")
-nnoremap("<leader>hi", ":lua require('harpoon.ui').nav_file(4)<CR>")
+nnoremap("<leader>hn", function() require('harpoon.ui').nav_file(1) end)
+nnoremap("<leader>he", function() require('harpoon.ui').nav_file(2) end)
+nnoremap("<leader>ho", function() require('harpoon.ui').nav_file(3) end)
+nnoremap("<leader>hi", function() require('harpoon.ui').nav_file(4) end)
 
-nnoremap("<leader>tn", ":lua require('harpoon.term').gotoTerminal(1)<CR>")
-nnoremap("<leader>te", ":lua require('harpoon.term').gotoTerminal(2)<CR>")
+nnoremap("<leader>tn", function() require('harpoon.term').gotoTerminal(1) end)
+nnoremap("<leader>te", function() require('harpoon.term').gotoTerminal(2) end)
 
 -- git wrapper
 nnoremap("<leader>gs", ":Neogit<CR>", silent)
@@ -98,20 +97,5 @@ nnoremap("<leader>u", ":UndotreeShow<CR>", silent)
 -- symbols
 nnoremap("<leader>so", ":SymbolsOutline<CR>", silent)
 
--- luasnips
-vim.cmd([[
-  imap <silent><expr> <C-k> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<C-k>'
-  inoremap <silent> <C-j> <Cmd>lua require('luasnip').jump(-1)<CR>
-  imap <silent><expr> <C-l> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-l>'
-  snoremap <silent> <C-k> <Cmd>lua require('luasnip').jump(1)<CR>
-  snoremap <silent> <C-j> <Cmd>lua require('luasnip').jump(-1)<CR>
-]])
-
--- gomove
-utils.imap("<A-h>", "<Esc>:lua require('gomove.mappings.base').MoveLineHorizontal(-vim.v.count1)<CR>i")
-utils.imap("<A-j>", "<Esc>:lua require('gomove.mappings.base').MoveLineVertical(vim.v.count1)<CR>i")
-utils.imap("<A-k>", "<Esc>:lua require('gomove.mappings.base').MoveLineVertical(-vim.v.count1)<CR>i")
-utils.imap("<A-l>", "<Esc>:lua require('gomove.mappings.base').MoveLineHorizontal(vim.v.count1)<CR>i")
-
 -- plenary
-vim.cmd("nmap <leader>pt <Plug>PlenaryTestFile")
+utils.nmap("<leader>pt", "<Plug>PlenaryTestFile")

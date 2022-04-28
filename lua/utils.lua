@@ -45,86 +45,35 @@ M.os = {
   in_bare = M.get_os_command_output({ "git", "rev-parse", "--is-bare-repository" })[1] == "true",
 }
 
-M.functions = {}
-
-function M.execute(id)
-  local func = M.functions[id]
-  if not func then
-    error("Function does not exist: " .. id)
-  end
-  return func()
+M.nnoremap = function(lhs, rhs, opts)
+  vim.keymap.set("n", lhs, rhs, opts)
+end
+M.inoremap = function(lhs, rhs, opts)
+  vim.keymap.set("i", lhs, rhs, opts)
+end
+M.vnoremap = function(lhs, rhs, opts)
+  vim.keymap.set("v", lhs, rhs, opts)
+end
+M.tnoremap = function(lhs, rhs, opts)
+  vim.keymap.set("t", lhs, rhs, opts)
 end
 
--- mapping support
-local map = function(mode, key, cmd, opts, defaults)
-  opts = vim.tbl_deep_extend("force", { silent = true }, defaults or {}, opts or {})
-
-  if type(cmd) == "function" then
-    table.insert(M.functions, cmd)
-    if opts.expr then
-      cmd = ([[luaeval('require("util").execute(%d)')]]):format(#M.functions)
-    else
-      cmd = ("<cmd>lua require('utils').execute(%d)<cr>"):format(#M.functions)
-    end
-  end
-  if opts.buffer ~= nil then
-    local buffer = opts.buffer
-    opts.buffer = nil
-    return vim.api.nvim_buf_set_keymap(buffer, mode, key, cmd, opts)
-  else
-    return vim.api.nvim_set_keymap(mode, key, cmd, opts)
-  end
+M.nmap = function(lhs, rhs, opts)
+  opts = opts or {}
+  opts.remap = true
+  vim.keymap.set("n", lhs, rhs, opts)
+end
+M.imap = function(lhs, rhs, opts)
+  opts = opts or {}
+  opts.remap = true
+  vim.keymap.set("i", lhs, rhs, opts)
+end
+M.vmap = function(lhs, rhs, opts)
+  opts = opts or {}
+  opts.remap = true
+  vim.keymap.set("v", lhs, rhs, opts)
 end
 
-function M.map(mode, key, cmd, opts, defaults)
-  return map(mode, key, cmd, opts, defaults)
-end
-
--- nmap keys action
-function M.nmap(key, cmd, opts)
-  return map("n", key, cmd, opts)
-end
-function M.vmap(key, cmd, opts)
-  return map("v", key, cmd, opts)
-end
-function M.xmap(key, cmd, opts)
-  return map("x", key, cmd, opts)
-end
-function M.imap(key, cmd, opts)
-  return map("i", key, cmd, opts)
-end
-function M.omap(key, cmd, opts)
-  return map("o", key, cmd, opts)
-end
-function M.smap(key, cmd, opts)
-  return map("s", key, cmd, opts)
-end
-function M.tmap(key, cmd, opts)
-  return map("t", key, cmd, opts)
-end
-
-local nore = { noremap = true }
-function M.nnoremap(key, cmd, opts)
-  return map("n", key, cmd, opts, nore)
-end
-function M.vnoremap(key, cmd, opts)
-  return map("v", key, cmd, opts, nore)
-end
-function M.xnoremap(key, cmd, opts)
-  return map("x", key, cmd, opts, nore)
-end
-function M.inoremap(key, cmd, opts)
-  return map("i", key, cmd, opts, nore)
-end
-function M.onoremap(key, cmd, opts)
-  return map("o", key, cmd, opts, nore)
-end
-function M.snoremap(key, cmd, opts)
-  return map("s", key, cmd, opts, nore)
-end
-function M.tnoremap(key, cmd, opts)
-  return map("t", key, cmd, opts, nore)
-end
 
 M.modified_buf_count = function()
   local bufnrs = vim.tbl_filter(function(b)
