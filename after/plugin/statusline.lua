@@ -16,7 +16,7 @@ local checkwidth = function()
 end
 
 local filename = function()
-  local max_len = checkwidth() and 60 or 35
+  local max_len = checkwidth() and 75 or 50
   local filename = Path:new(vim.fn.expand("%:p")):make_relative(vim.loop.cwd())
   if #filename > max_len then
     filename = Path:new(filename):shorten()
@@ -103,7 +103,7 @@ local vi_mode_separator2 = {
 local current_dir = {
   current_dir = {
     provider = function()
-      local max_len = 12
+      local max_len = 25
       local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
       dir_name = utils.trim_TDAMPA(dir_name)
       if #dir_name > max_len then
