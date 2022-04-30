@@ -3,6 +3,8 @@ local nnoremap = utils.nnoremap
 local vnoremap = utils.vnoremap
 local silent = { silent = true }
 
+local M = {}
+
 vim.cmd([[command W :w]])
 vim.cmd([[command Q :q]])
 vim.cmd([[command Wq :wq]])
@@ -35,10 +37,6 @@ vnoremap("<leader>fr", ":s/") -- quick find & replace
 ------------------------ Plugin Specifics -------------------------
 ------------------------                  -------------------------
 
--- format code
-nnoremap("<leader>fm", vim.lsp.buf.formatting)
-vnoremap("<leader>fm", vim.lsp.buf.range_formatting)
-
 -- Telescope
 nnoremap("<C-p>", require("jtelescope").project_files)
 nnoremap("<C-e>", ":Telescope file_browser<CR>", silent)
@@ -55,21 +53,26 @@ nnoremap("<leader>ff", require("jtelescope").curbuf, silent)
 nnoremap("<leader>fc", ":Telescope commands<CR>", silent)
 nnoremap("<leader>gh", require("jtelescope").git_hunks, silent)
 
--- Lsp
-nnoremap("gD", vim.lsp.buf.declaration, silent)
-nnoremap("K", vim.lsp.buf.hover, silent)
-nnoremap("<C-k>", vim.lsp.buf.signature_help, silent)
-nnoremap("<leader>D", vim.lsp.buf.type_definition, silent)
-nnoremap("<leader>rn", vim.lsp.buf.rename, silent)
-nnoremap("<leader>d", vim.diagnostic.open_float, silent)
--- Lsp Tele
-nnoremap("gd", ":Telescope lsp_definitions<CR>", silent)
-nnoremap("gr", ":Telescope lsp_references<CR>", silent)
-nnoremap("<leader>ca", require("jtelescope").lsp_code_actions, silent)
-nnoremap("<leader>gi", ":Telescope lsp_implementations<CR>", silent)
-nnoremap("<leader>fs", require("jtelescope").get_symbols, silent)
-nnoremap("<leader>td", ":Telescope diagnostics bufnr=0<CR>", silent)
-nnoremap("<leader>tw", ":Telescope diagnostics<CR>", silent)
+M.lsp = function(bufnr)
+  local opts = { silent = true, buffer = bufnr }
+  nnoremap("gD", vim.lsp.buf.declaration, opts)
+  nnoremap("K", vim.lsp.buf.hover, opts)
+  nnoremap("<C-k>", vim.lsp.buf.signature_help, opts)
+  nnoremap("<leader>D", vim.lsp.buf.type_definition, opts)
+  nnoremap("<leader>rn", vim.lsp.buf.rename, opts)
+  nnoremap("<leader>d", vim.diagnostic.open_float, opts)
+  nnoremap("<leader>ca", vim.lsp.buf.code_action, opts)
+  nnoremap("<leader>fm", function() vim.lsp.buf.format({ async = true }) end, opts)
+  vnoremap("<leader>fm", vim.lsp.buf.range_formatting, opts)
+
+  -- Lsp Tele
+  nnoremap("gd", ":Telescope lsp_definitions<CR>", opts)
+  nnoremap("gr", ":Telescope lsp_references<CR>", opts)
+  nnoremap("<leader>gi", ":Telescope lsp_implementations<CR>", opts)
+  nnoremap("<leader>fs", require("jtelescope").get_symbols, opts)
+  nnoremap("<leader>td", ":Telescope diagnostics bufnr=0<CR>", opts)
+  nnoremap("<leader>tw", ":Telescope diagnostics<CR>", opts)
+end
 
 -- Harpoon
 nnoremap("<leader>a", require("harpoon.mark").add_file, silent)
@@ -99,3 +102,5 @@ nnoremap("<leader>so", ":SymbolsOutline<CR>", silent)
 
 -- plenary
 utils.nmap("<leader>pt", "<Plug>PlenaryTestFile")
+
+return M

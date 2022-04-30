@@ -1,3 +1,5 @@
+local M = {}
+
 local my_group = vim.api.nvim_create_augroup("my_group", { clear = true })
 
 -- windows to close with "q"
@@ -32,3 +34,21 @@ vim.api.nvim_create_autocmd("User", {
   callback = require("utils").plugin_urls,
   group = my_group,
 })
+
+M.lsp_group = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true })
+M.lsp = function(bufnr)
+
+  vim.api.nvim_create_autocmd("CursorHold", {
+    buffer = bufnr,
+    callback = vim.lsp.buf.document_highlight,
+    group = M.lsp_group,
+  })
+
+  vim.api.nvim_create_autocmd("CursorMoved", {
+    buffer = bufnr,
+    callback = vim.lsp.buf.clear_references,
+    group = M.lsp_group,
+  })
+end
+
+return M

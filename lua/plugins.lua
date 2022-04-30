@@ -90,6 +90,7 @@ return packer.startup({
     use({ "kyazdani42/nvim-web-devicons" })
     use({ "tjdevries/colorbuddy.vim" })
     use({ "onsails/lspkind-nvim" })
+    use({ "stevearc/dressing.nvim" })
 
     -- Others
     use({ "AckslD/nvim-neoclip.lua" })

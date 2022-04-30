@@ -15,16 +15,14 @@ vim.cmd("set packpath=" .. join_paths(temp_dir, "nvim", "site"))
 local package_root = join_paths(temp_dir, "nvim", "site", "pack")
 local install_path = join_paths(package_root, "packer", "start", "packer.nvim")
 local compile_path = join_paths(install_path, "plugin", "packer_compiled.lua")
--- print(package_root)
--- print(install_path)
--- print(compile_path)
 
 local function load_plugins()
   require("packer").startup({
     {
       "wbthomason/packer.nvim",
+      "nvim-lua/plenary.nvim",
       "neovim/nvim-lspconfig",
-      "nvim-treesitter/nvim-treesitter",
+      "jose-elias-alvarez/null-ls.nvim",
     },
     config = {
       package_root = package_root,
@@ -66,6 +64,21 @@ _G.load_config = function()
     buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
     buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
     buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+    buf_set_keymap("n", "<space>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+
+    -- local lsp_group = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true })
+    --
+    -- vim.api.nvim_create_autocmd("CursorHold", {
+    --   buffer = bufnr,
+    --   callback = vim.lsp.buf.document_highlight,
+    --   group = lsp_group,
+    -- })
+    --
+    -- vim.api.nvim_create_autocmd("CursorMoved", {
+    --   buffer = bufnr,
+    --   callback = vim.lsp.buf.clear_references,
+    --   group = lsp_group,
+    -- })
   end
 
   -- Add the server that troubles you here
@@ -84,20 +97,13 @@ _G.load_config = function()
     on_attach = on_attach,
   })
 
-  -- Tree
-  require("nvim-treesitter.configs").setup({
-    ensure_installed = "python",
-    highlight = {
-      enable = true,
-      use_languagetree = true,
+  local null_ls = require("null-ls")
+  null_ls.setup({
+    sources = {
+      null_ls.builtins.formatting.isort,
+      null_ls.builtins.formatting.black,
     },
   })
-  vim.cmd("hi DiagnosticVirtualTextError ctermfg=Green")
-  vim.cmd("hi DiagnosticError ctermfg=Green")
-  vim.cmd("hi DiagnosticUnderlineError ctermfg=Green")
-  vim.cmd("hi DiagnosticSignError ctermfg=Green")
-  vim.cmd("hi DiagnosticFloatingError ctermfg=Green")
-  vim.cmd("hi TSFunction ctermfg=Red")
 end
 
 if vim.fn.isdirectory(install_path) == 0 then
@@ -110,5 +116,3 @@ else
   require("packer").sync()
   _G.load_config()
 end
-
-print("yay")
