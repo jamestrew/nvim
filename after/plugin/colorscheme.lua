@@ -386,7 +386,6 @@ for name, hex in pairs(theme.colors) do
   Color.new(name, hex)
 end
 
-
 --[[
 Usage:
 ```

@@ -74,7 +74,6 @@ M.vmap = function(lhs, rhs, opts)
   vim.keymap.set("v", lhs, rhs, opts)
 end
 
-
 M.modified_buf_count = function()
   local bufnrs = vim.tbl_filter(function(b)
     if 1 ~= vim.fn.buflisted(b) then

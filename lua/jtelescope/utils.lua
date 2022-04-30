@@ -88,7 +88,6 @@ M.git_hunks_entry = function(opts)
   end
 
   return function(entry)
-
     return {
       valid = true,
       value = entry,

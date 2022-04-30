@@ -1,3 +1,4 @@
+local hijack_netrw = false
 local sorters = require("telescope.sorters")
 local actions = require("telescope.actions")
 local tele_utils = require("jtelescope.utils")
@@ -95,6 +96,7 @@ require("telescope").setup({
       ignore_patterns = { "*.git/*", "*/tmp/*", "*/node_modules/*" },
     },
     file_browser = {
+      hijack_netrw = hijack_netrw,
       theme = "ivy",
       files = true,
       hidden = false,

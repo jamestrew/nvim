@@ -9,7 +9,6 @@ local lspsettings = require("lsp.settings")
 
 lsp_installer.setup({})
 
-
 local function on_attach(client, bufnr)
   require("mappings").lsp(bufnr)
   require("autocmds").lsp(bufnr)
