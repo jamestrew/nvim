@@ -2,9 +2,9 @@ local cmp = require("cmp")
 local lspkind = require("lspkind")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
-local cmp_git_ok, cmp_git = pcall(require, "cmp_git")
+local git_ok, git = pcall(require, "cmp_git")
 
-if not cmp_git_ok and not Work then
+if not git_ok and not Work then
   vim.notify("cmp_git not installed", vim.log.levels.WARN)
   return
 end
@@ -19,9 +19,9 @@ local sources = {
   { name = "nvim_lsp_signature_help" },
 }
 
-if cmp_git_ok then
-  table.insert(sources, { name = "cmp_git" })
-  cmp_git.setup({
+if git_ok then
+  table.insert(sources, { name = "git" })
+  git.setup({
     filetypes = { "gitcommit", "NeogitCommitMessage" },
   })
 end
