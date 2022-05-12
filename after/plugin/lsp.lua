@@ -11,7 +11,9 @@ lsp_installer.setup({})
 
 local function on_attach(client, bufnr)
   require("mappings").lsp(bufnr)
-  require("autocmds").lsp(bufnr)
+  if client.server_capabilities.documentHighlightProvider then
+    require("autocmds").lsp(bufnr)
+  end
 
   if client.name == "typescript" then
     local ts_utils = require("nvim-lsp-ts-utils")
