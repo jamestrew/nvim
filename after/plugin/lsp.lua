@@ -31,7 +31,7 @@ capabilities.offsetEncoding = { "utf-16" }
 local servers = {
   "jsonls",
   "gopls",
-  -- "graphql",
+  "graphql",
   "bashls",
   "tsserver",
   "sumneko_lua",
@@ -42,15 +42,16 @@ local servers = {
   "sqls",
   "html",
   "pyright",
-  -- "tailwindcss",
+  "tailwindcss",
+  "emmet_ls",
 }
 
 for _, server in ipairs(servers) do
   local opts = {
     on_attach = on_attach,
     capabilities = capabilities,
-    settings = lspsettings[server],
   }
+  opts = vim.tbl_deep_extend("keep", opts, lspsettings[server] or {})
   if server == "sumneko_lua" then
     opts = require("lua-dev").setup({
       lspconfig = opts,
