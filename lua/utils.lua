@@ -129,4 +129,17 @@ M.plugin_urls = function()
   io.close(file)
 end
 
+M.winbar = function()
+  if vim.api.nvim_eval_statusline("%f", {})["str"] == "[No Name]" then
+    return ""
+  end
+  return "%#WinBarSeparator#"
+    .. "%*"
+    .. "%#WinBarContent#"
+    .. "%f"
+    .. "%*"
+    .. "%#WinBarSeparator#"
+    .. "%*"
+end
+
 return M

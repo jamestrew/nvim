@@ -67,3 +67,5 @@ opt.joinspaces = false -- Two spaces and grade school, we're done
 
 -- set fillchars=eob:~
 opt.fillchars = { eob = "~" }
+
+opt.winbar = "%{%v:lua.require('utils').winbar()%}"
