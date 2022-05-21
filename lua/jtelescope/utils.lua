@@ -122,9 +122,15 @@ M.open_using = function(finder)
   end
 end
 
-M.toggle_files = function()
-  -- TODO: temporary hack... but kinda good enough?
-  require("telescope.builtin").find_files()
+M.toggle_files = function(prompt_bufnr)
+  local current_picker = action_state.get_current_picker(prompt_bufnr)
+  local prompt = current_picker.prompt_title
+  actions.close(prompt_bufnr)
+
+  vim.schedule(function()
+    require("jtelescope").project_files({}, prompt == "Git Files")
+  end)
+end
 end
 
 return M

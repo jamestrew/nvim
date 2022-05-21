@@ -17,9 +17,9 @@ M.search_dotfiles = function()
   })
 end
 
-M.project_files = function(opts)
+M.project_files = function(opts, find_files)
   opts = opts or {}
-  -- TODO: add toggle to switch between find_files and git_files
+  find_files = vim.F.if_nil(find_files, false)
   opts.attach_mappings = function(_, map)
     map("i", "<A-d>", tele_utils.delete_file)
     map("i", "<A-r>", tele_utils.rename_file)
@@ -30,9 +30,13 @@ M.project_files = function(opts)
     return true
   end
 
-  local ok, _ = pcall(require("telescope.builtin").git_files, opts)
-  if not ok then
+  if find_files then
     require("telescope.builtin").find_files(opts)
+  else
+    local ok, _ = pcall(require("telescope.builtin").git_files, opts)
+    if not ok then
+      require("telescope.builtin").find_files(opts)
+    end
   end
 end
 
