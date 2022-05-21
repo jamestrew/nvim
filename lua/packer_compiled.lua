@@ -403,7 +403,7 @@ vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-prev
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'undotree', 'vim-repeat', 'nvim-lsp-ts-utils', 'playground', 'nvim-ts-context-commentstring', 'emmet-vim', 'vim-surround'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'vim-surround', 'nvim-lsp-ts-utils', 'vim-repeat', 'playground', 'undotree', 'emmet-vim', 'nvim-ts-context-commentstring'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

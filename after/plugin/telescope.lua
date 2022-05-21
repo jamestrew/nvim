@@ -1,6 +1,7 @@
 local hijack_netrw = false
 local sorters = require("telescope.sorters")
 local actions = require("telescope.actions")
+local action_layout = require("telescope.actions.layout")
 local tele_utils = require("jtelescope.utils")
 local builtin = require("telescope.builtin")
 
@@ -62,10 +63,13 @@ require("telescope").setup({
         ["<C-n>"] = actions.move_selection_previous,
         ["<Esc>"] = actions.close,
         ["<C-c>"] = false,
+        ["<M-p>"] = action_layout.toggle_preview,
+        ["<M-l>"] = tele_utils.toggle_layout,
       },
       n = {
         ["<C-p>"] = actions.move_selection_next,
         ["<C-n>"] = actions.move_selection_previous,
+        ["<M-p>"] = action_layout.toggle_preview,
       },
     },
   },

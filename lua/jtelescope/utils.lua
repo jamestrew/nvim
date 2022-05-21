@@ -1,6 +1,8 @@
 local utils = require("utils")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
+local themes = require("telescope.themes")
+local resolver = require("telescope.config.resolve")
 local Path = require("plenary.path")
 
 local M = {}
@@ -131,6 +133,46 @@ M.toggle_files = function(prompt_bufnr)
     require("jtelescope").project_files({}, prompt == "Git Files")
   end)
 end
+
+M.toggle_layout = function(prompt_bufnr)
+  local opts = themes.get_dropdown({
+    previewer = false,
+  })
+  local picker = action_state.get_current_picker(prompt_bufnr)
+
+  if picker.hidden_layout == nil then
+    picker.hidden_layout = {
+      border = picker.border,
+      borderchars = picker.borderchars,
+      layout_config = picker.layout_config,
+      layout_strategy = picker.layout_strategy,
+      previewer = picker.previewer,
+      results_title = picker.results_title,
+      sorting_strategy = picker.sorting_strategy,
+      theme = picker.theme,
+    }
+
+    picker.border = opts.border
+    picker.borderchars = opts.borderchars
+    picker.layout_config = opts.layout_config
+    picker.layout_strategy = opts.layout_strategy
+    picker.previewer = opts.previewer
+    picker.results_title = opts.results_title
+    picker.sorting_strategy = opts.sorting_strategy
+    picker.theme = opts.theme
+  else
+    picker.border = picker.hidden_layout.border
+    picker.borderchars = picker.hidden_layout.borderchars
+    picker.layout_config = picker.hidden_layout.layout_config
+    picker.layout_strategy = picker.hidden_layout.layout_strategy
+    picker.previewer = picker.hidden_layout.previewer
+    picker.results_title = picker.hidden_layout.results_title
+    picker.sorting_strategy = picker.hidden_layout.sorting_strategy
+    picker.theme = picker.hidden_layout.theme
+    picker.hidden_layout = nil
+  end
+
+  picker:full_layout_update()
 end
 
 return M
