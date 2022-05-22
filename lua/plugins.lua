@@ -114,9 +114,6 @@ return packer.startup({
       cmd = "MarkdownPreview",
       disable = Work,
     })
-
-    -- experimental
-    use({ "kyazdani42/nvim-tree.lua", disable = Work })
   end,
   config = {
     compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
