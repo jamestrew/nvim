@@ -6,7 +6,6 @@ local configs = {
   ["neoclip"] = {},
   ["hop"] = { key = "tnhesoaiwfrudpclm" },
   ["scrollbar"] = {},
-  ["nvim-tree"] = (not Work and { hijack_netrw = false } or nil),
 }
 
 for plugin_name, config in pairs(configs) do

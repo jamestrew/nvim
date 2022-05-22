@@ -86,7 +86,8 @@ return packer.startup({
     use({ "petertriho/cmp-git", disable = Work })
 
     -- Looks
-    use({ "NTBBloodbath/galaxyline.nvim" })
+    use({ "feline-nvim/feline.nvim" })
+    use({ "SmiteshP/nvim-gps" })
     use({ "kyazdani42/nvim-web-devicons" })
     use({ "tjdevries/colorbuddy.vim" })
     use({ "onsails/lspkind-nvim" })
@@ -114,9 +115,6 @@ return packer.startup({
       cmd = "MarkdownPreview",
       disable = Work,
     })
-
-    -- experimental
-    use({ "kyazdani42/nvim-tree.lua", disable = Work })
   end,
   config = {
     compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
