@@ -86,7 +86,8 @@ return packer.startup({
     use({ "petertriho/cmp-git", disable = Work })
 
     -- Looks
-    use({ "NTBBloodbath/galaxyline.nvim" })
+    use({ "feline-nvim/feline.nvim" })
+    use({ "SmiteshP/nvim-gps" })
     use({ "kyazdani42/nvim-web-devicons" })
     use({ "tjdevries/colorbuddy.vim" })
     use({ "onsails/lspkind-nvim" })
