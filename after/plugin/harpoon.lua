@@ -1,12 +1,12 @@
 local utils = require("utils")
 
 local has_harpoon, harpoon = pcall(require, "harpoon")
-local has_galaxyline, _ = pcall(require, "galaxyline")
+local has_feline, git = pcall(require, "feline.providers.git")
 
 if has_harpoon then
-  if has_galaxyline then
+  if has_feline then
     require("harpoon.utils").branch_key = function()
-      local branch = require("galaxyline.providers.vcs").get_git_branch()
+      local branch = git.git_branch()
       if branch then
         return vim.loop.cwd() .. "-" .. branch
       else
