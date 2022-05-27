@@ -49,7 +49,6 @@ return packer.startup({
     use({ "hrsh7th/cmp-nvim-lsp-signature-help" })
     use({ "folke/lua-dev.nvim" })
     use({ "jose-elias-alvarez/nvim-lsp-ts-utils", event = "BufRead" })
-    use({ "romgrk/nvim-treesitter-context" })
     use({ "b0o/SchemaStore.nvim" })
     use({ "simrat39/symbols-outline.nvim" })
     use({ "jose-elias-alvarez/null-ls.nvim" })

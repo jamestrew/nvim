@@ -1,5 +1,4 @@
 local ts_config = require("nvim-treesitter.configs")
-local ts_context = require("treesitter-context")
 
 local ensure_installed = {
   "bash",
@@ -72,4 +71,3 @@ ts_config.setup({
   },
 })
 
-ts_context.setup()

@@ -44,7 +44,6 @@ https://github.com/onsails/lspkind-nvim
 https://github.com/petertriho/cmp-git
 https://github.com/petertriho/nvim-scrollbar
 https://github.com/phaazon/hop.nvim
-https://github.com/romgrk/nvim-treesitter-context
 https://github.com/saadparwaiz1/cmp_luasnip
 https://github.com/simrat39/symbols-outline.nvim
 https://github.com/sindrets/diffview.nvim
