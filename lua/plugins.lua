@@ -36,6 +36,7 @@ return packer.startup({
 
     -- LSP & Treeshitter
     use({ "nvim-treesitter/nvim-treesitter" })
+    use({ "nvim-treesitter/nvim-treesitter-textobjects" })
     use({ "williamboman/nvim-lsp-installer" })
     use({ "neovim/nvim-lspconfig" })
     use({ "L3MON4D3/LuaSnip" })
