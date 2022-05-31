@@ -102,13 +102,6 @@ return packer.startup({
     use({ "andweeb/presence.nvim", disable = Work })
     use({ "tpope/vim-scriptease", disable = Work })
     use({
-      "glacambre/firenvim",
-      run = function()
-        vim.fn["firenvim#install"](0)
-      end,
-      disable = Work,
-    })
-    use({
       "iamcco/markdown-preview.nvim",
       ft = { "markdown" },
       run = "cd app && yarn install",

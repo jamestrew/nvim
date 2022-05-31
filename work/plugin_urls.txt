@@ -10,7 +10,6 @@ https://github.com/booperlv/nvim-gomove
 https://github.com/editorconfig/editorconfig-vim
 https://github.com/feline-nvim/feline.nvim
 https://github.com/folke/lua-dev.nvim
-https://github.com/glacambre/firenvim
 https://github.com/hrsh7th/cmp-buffer
 https://github.com/hrsh7th/cmp-cmdline
 https://github.com/hrsh7th/cmp-nvim-lsp
