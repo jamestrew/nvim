@@ -1,17 +1,19 @@
 local utils = require("utils")
-
 local has_harpoon, harpoon = pcall(require, "harpoon")
-local has_feline, git = pcall(require, "feline.providers.git")
 
 if has_harpoon then
-  if has_feline then
-    require("harpoon.utils").branch_key = function()
-      local branch = git.git_branch()
-      if branch then
-        return vim.loop.cwd() .. "-" .. branch
-      else
-        return vim.loop.cwd()
-      end
+  local branch = utils.get_os_command_output({
+    "git",
+    "rev-parse",
+    "--abbrev-ref",
+    "HEAD",
+  })[1]
+
+  require("harpoon.utils").branch_key = function()
+    if not utils.os.in_bare and branch then
+      return vim.loop.cwd() .. "/" .. branch
+    else
+      return vim.loop.cwd()
     end
   end
 
@@ -19,7 +21,8 @@ if has_harpoon then
     global_settings = {
       save_on_toggle = true,
       save_on_change = true,
-      mark_branch = not utils.os.in_bare,
+      mark_branch = true,
+      excluded_filetypes = { "harpoon", "TelescopePrompt" },
     },
   })
 else

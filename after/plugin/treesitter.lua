@@ -21,6 +21,7 @@ local ensure_installed = {
   "rust",
   "tsx",
   "yaml",
+  "scheme",
 }
 
 ts_config.setup({
@@ -83,10 +84,10 @@ ts_config.setup({
     swap = {
       enable = true,
       swap_next = {
-        ["<leader>a"] = "@parameter.inner",
+        ["<leader>ps"] = "@parameter.inner",
       },
       swap_previous = {
-        ["<leader>A"] = "@parameter.inner",
+        ["<leader>pS"] = "@parameter.inner",
       },
     },
     move = {
