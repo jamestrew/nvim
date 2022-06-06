@@ -4,10 +4,10 @@ M.name = "onedark"
 M.colors = {
   white = "#abb2bf",
   darker_black = "#1b1f27",
-  black = "#1e222a", --  nvim bg 00
+  black = "#1e222a", --  nvim bg
   black2 = "#252931",
   one_bg = "#282c34", -- real bg of onedark
-  one_bg2 = "#353b45", -- 01
+  one_bg2 = "#353b45",
   one_bg3 = "#30343c",
   grey = "#42464e",
   grey_fg = "#565c64",
@@ -31,6 +31,8 @@ M.colors = {
   statusline_bg = "#22262e",
   lightbg = "#2d3139",
   lightbg2 = "#262a32",
+  pmenu_bg = "#98c379",
+  folder_bg = "#61afef",
 
   -- base16
   base00 = "#1e222a",
@@ -49,6 +51,24 @@ M.colors = {
   base0D = "#61afef",
   base0E = "#c678dd",
   base0F = "#be5046",
+}
+
+M.vi_mode_colors = {
+  ["NORMAL"] = M.colors.nord_blue,
+  ["OP"] = "green",
+  ["INSERT"] = M.colors.green,
+  ["VISUAL"] = M.colors.blue,
+  ["LINES"] = "skyblue",
+  ["BLOCK"] = M.colors.blue,
+  ["REPLACE"] = M.colors.teal,
+  ["V-REPLACE"] = M.colors.teal,
+  ["ENTER"] = "cyan",
+  ["MORE"] = "cyan",
+  ["SELECT"] = M.colors.dark_purple,
+  ["COMMAND"] = M.colors.white,
+  ["SHELL"] = "green",
+  ["TERM"] = M.colors.red,
+  ["NONE"] = "yellow",
 }
 
 return M
