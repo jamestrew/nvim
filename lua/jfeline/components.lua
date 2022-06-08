@@ -52,17 +52,17 @@ M.git_diffs = {
   add = {
     provider = "git_diff_added",
     icon = " +",
-    hl = { fg = colors.base0B, colors.statusline_bg },
+    hl = { fg = colors.base0B, bg = colors.statusline_bg },
   },
   mod = {
     provider = "git_diff_changed",
     icon = " ~",
-    hl = { fg = colors.sun, colors.statusline_bg },
+    hl = { fg = colors.sun, bg = colors.statusline_bg },
   },
   sub = {
     provider = "git_diff_removed",
     icon = " -",
-    hl = { fg = colors.red, colors.statusline_bg },
+    hl = { fg = colors.red, bg = colors.statusline_bg },
   },
 }
 

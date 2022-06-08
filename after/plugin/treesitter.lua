@@ -11,6 +11,7 @@ local ensure_installed = {
   "graphql",
   "html",
   "javascript",
+  "jsdoc",
   "json",
   "latex",
   "lua",
@@ -19,9 +20,12 @@ local ensure_installed = {
   "php",
   "python",
   "rust",
-  "tsx",
-  "yaml",
   "scheme",
+  "scss",
+  "tsx",
+  "typescript",
+  "vim",
+  "yaml",
 }
 
 ts_config.setup({
