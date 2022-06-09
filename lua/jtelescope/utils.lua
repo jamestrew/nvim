@@ -2,7 +2,6 @@ local utils = require("utils")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 local themes = require("telescope.themes")
-local resolver = require("telescope.config.resolve")
 local Path = require("plenary.path")
 
 local M = {}
@@ -102,6 +101,46 @@ M.git_hunks_entry = function(opts)
       head = entry.head,
       text = entry.text,
       type = entry.type,
+    }
+  end
+end
+
+M.lsp_ref_entry = function(opts)
+  opts = opts or {}
+
+  local displayer = require("telescope.pickers.entry_display").create({
+    separator = "▏",
+    items = {
+      { width = 8 },
+      { remaining = true },
+    },
+  })
+
+  local make_display = function(entry)
+    local filename = require("telescope.utils").transform_path(opts, entry.filename)
+    local line_info = { table.concat({ entry.lnum, entry.col }, ":"), "TelescopeResultsLineNr" }
+
+    return displayer({
+      line_info,
+      filename,
+    })
+  end
+
+  return function(entry)
+    local filename = entry.filename or vim.api.nvim_buf_get_name(entry.bufnr)
+
+    return {
+      valid = true,
+      value = entry,
+      ordinal = (not opts.ignore_filename and filename or "") .. " " .. entry.text,
+      display = make_display,
+      bufnr = entry.bufnr,
+      filename = filename,
+      lnum = entry.lnum,
+      col = entry.col,
+      text = entry.text,
+      start = entry.start,
+      finish = entry.finish,
     }
   end
 end

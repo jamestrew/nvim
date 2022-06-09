@@ -103,6 +103,7 @@ M.refactor = function()
     actions.close(prompt_bufnr)
     refactoring.refactor(content.value)
   end
+
   local opts = themes.get_cursor()
   opts.attach_mappings = function(_, map)
     return tele_utils.alt_scroll(map)
@@ -210,6 +211,12 @@ M.git_hunks = function(opts)
     previewer = config.values.qflist_previewer(opts),
     sorter = config.values.generic_sorter(opts),
   }):find()
+end
+
+M.lsp_reference = function(opts)
+  opts = opts or {}
+  opts.entry_maker = tele_utils.lsp_ref_entry(opts)
+  require("telescope.builtin").lsp_references(opts)
 end
 
 return M

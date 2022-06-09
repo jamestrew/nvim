@@ -70,7 +70,7 @@ M.lsp = function(bufnr)
 
   -- Lsp Tele
   nnoremap("gd", ":Telescope lsp_definitions<CR>", opts)
-  nnoremap("gr", ":Telescope lsp_references<CR>", opts)
+  nnoremap("gr", require("jtelescope").lsp_reference, opts)
   nnoremap("<leader>gi", ":Telescope lsp_implementations<CR>", opts)
   nnoremap("<leader>fs", require("jtelescope").get_symbols, opts)
   nnoremap("<leader>td", ":Telescope diagnostics bufnr=0<CR>", opts)
