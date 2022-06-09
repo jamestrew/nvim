@@ -29,21 +29,19 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.offsetEncoding = { "utf-16" }
 
 local servers = {
-  "jsonls",
-  "gopls",
-  "graphql",
-  "bashls",
-  "tsserver",
-  "sumneko_lua",
-  "clangd",
   "vimls",
-  "eslint",
   "cssls",
   "sqls",
-  "html",
   "pyright",
-  "tailwindcss",
+  "eslint",
   "emmet_ls",
+  "html",
+  "sumneko_lua",
+  "jsonls",
+  "gopls",
+  "bashls",
+  "tsserver",
+  "clangd",
 }
 
 for _, server in ipairs(servers) do
