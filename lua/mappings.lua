@@ -69,7 +69,7 @@ M.lsp = function(bufnr)
   vnoremap("<leader>fm", vim.lsp.buf.range_formatting, opts)
 
   -- Lsp Tele
-  nnoremap("gd", ":Telescope lsp_definitions<CR>", opts)
+  nnoremap("gd", require("jtelescope").lsp_definition, opts)
   nnoremap("gr", require("jtelescope").lsp_reference, opts)
   nnoremap("<leader>gi", ":Telescope lsp_implementations<CR>", opts)
   nnoremap("<leader>fs", require("jtelescope").get_symbols, opts)
