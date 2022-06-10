@@ -79,8 +79,9 @@ require("telescope").setup({
         width = 70,
         height = 20,
       },
+      ordinal_key = "path",
       items = {
-        { "branch", 57 },
+        { "path", 57 },
         { "sha", 7 },
       },
     },
