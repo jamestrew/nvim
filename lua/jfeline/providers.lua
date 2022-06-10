@@ -62,7 +62,7 @@ end
 
 M.git_branch = function()
   local max_len = 25
-  local branch = vim.g.gitsigns_head
+  local branch = vim.g.gitsigns_head or vim.b.gitsigns_head
   branch = utils.trim_TDAMPA(branch)
   if #branch > max_len then
     branch = branch:sub(1, max_len) .. ".."
