@@ -1,12 +1,12 @@
 local ok, dressing = pcall(require, "dressing")
 if not ok then
-  vim.notify("dressing.nvim messing")
+  vim.notify("dressing.nvim missing")
 end
 
 dressing.setup({
   input = {
     -- Set to false to disable the vim.ui.input implementation
-    enabled = true,
+    enabled = false,
 
     -- Default prompt string
     default_prompt = "Input:",
