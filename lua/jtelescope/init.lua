@@ -181,22 +181,24 @@ M.git_hunks = function(opts)
     return
   end
 
-  local function get_hunk_text(hunk_data)
-    local hunk_field
+  local function get_hunk_lnum_text(hunk_data)
+    local hunk_type_name
     if hunk_data.type == "delete" then
-      hunk_field = "removed"
+      hunk_type_name = "removed"
     else
-      hunk_field = "added"
+      hunk_type_name = "added"
     end
-    return string.gsub(hunk_data[hunk_field].lines[1] or "", "^%s+", "")
+    local hunk_specifics = hunk_data[hunk_type_name]
+    return string.gsub(hunk_specifics.lines[1] or "", "^%s+", ""), hunk_specifics.start
   end
 
   local hunks = {}
   for _, hunk_data in pairs(buf_cache.hunks) do
+    local text, lnum = get_hunk_lnum_text(hunk_data)
     local hunk = {
-      lnum = hunk_data.start,
+      lnum = lnum,
       head = hunk_data.head,
-      text = get_hunk_text(hunk_data),
+      text = text,
       type = hunk_data.type,
       bufnr = vim.api.nvim_get_current_buf(),
       filename = vim.api.nvim_buf_get_name(0),
