@@ -114,7 +114,7 @@ M.unsaved = {
 M.git_branch = {
   provider = providers.git_branch,
   enabled = function()
-    return vim.g.gitsigns_head
+    return vim.g.gitsigns_head or vim.b.gitsigns_head
   end,
   hl = { fg = colors.grey_fg2, bg = colors.statusline_bg },
 }
