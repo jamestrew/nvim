@@ -6,6 +6,7 @@ local configs = {
   ["neoclip"] = {},
   ["hop"] = { key = "tnhesoaiwfrudpclm" },
   ["scrollbar"] = {},
+  ["spellsitter"] = {},
 }
 
 for plugin_name, config in pairs(configs) do

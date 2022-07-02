@@ -320,6 +320,11 @@ _G.packer_plugins = {
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/presence.nvim",
     url = "https://github.com/andweeb/presence.nvim"
   },
+  ["spellsitter.nvim"] = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/spellsitter.nvim",
+    url = "https://github.com/lewis6991/spellsitter.nvim"
+  },
   ["symbols-outline.nvim"] = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",
