@@ -68,7 +68,7 @@ Group.new("TabLine", colors.base03, colors.base01, styles.NONE)
 Group.new("TabLineFill", colors.base03, colors.base01, styles.NONE)
 Group.new("TabLineSel", colors.base0B, colors.base01, styles.NONE)
 
--- Standard syntax Group.newing
+-- Standard syntax Group
 Group.new("Boolean", colors.base09, colors.none, styles.NONE)
 Group.new("Character", colors.base08, colors.none, styles.NONE)
 Group.new("Comment", colors.grey_fg2, colors.none, styles.NONE)
@@ -101,11 +101,11 @@ Group.new("Typedef", colors.base0A, colors.none, styles.NONE)
 -- Extra definitions
 ---
 
--- C Group.newing
+-- C Group
 Group.new("cOperator", colors.base0C, colors.none, styles.NONE)
 Group.new("cPreCondit", colors.base0E, colors.none, styles.NONE)
 
--- C# Group.newing
+-- C# Group
 Group.new("csClass", colors.base0A, colors.none, styles.NONE)
 Group.new("csAttribute", colors.base0A, colors.none, styles.NONE)
 Group.new("csModifier", colors.base0E, colors.none, styles.NONE)
@@ -114,12 +114,12 @@ Group.new("csUnspecifiedStatement", colors.base0D, colors.none, styles.NONE)
 Group.new("csContextualStatement", colors.base0E, colors.none, styles.NONE)
 Group.new("csNewDecleration", colors.base08, colors.none, styles.NONE)
 
--- CSS Group.newing
+-- CSS Group
 Group.new("cssBraces", colors.base05, colors.none, styles.NONE)
 Group.new("cssClassName", colors.base0E, colors.none, styles.NONE)
 Group.new("cssColor", colors.base0C, colors.none, styles.NONE)
 
--- Diff Group.newing
+-- Diff Group
 Group.new("DiffAdd", colors.base0B, colors.none, styles.NONE)
 Group.new("DiffChange", colors.sun, colors.none, styles.NONE)
 Group.new("DiffDelete", colors.base08, colors.none, styles.NONE)
@@ -143,7 +143,7 @@ Group.new("GitSignsCurrentLineBlame", colors.base03, colors.none, styles.NONE)
 Group.new("NeogitHunkHeader", groups.DiffText)
 Group.new("NeogitHunkHeaderHighlight", groups.DiffText)
 
--- Git Group.newing
+-- Git Group
 Group.new("gitcommitOverflow", colors.base08, colors.none, styles.NONE)
 Group.new("gitcommitSummary", colors.base0B, colors.none, styles.NONE)
 Group.new("gitcommitComment", colors.base03, colors.none, styles.NONE)
@@ -160,23 +160,23 @@ Group.new("gitcommitUnmergedFile", colors.base08, colors.none, styles.bold)
 Group.new("gitcommitDiscardedFile", colors.base08, colors.none, styles.bold)
 Group.new("gitcommitSelectedFile", colors.base0B, colors.none, styles.bold)
 
--- GitGutter Group.newing
+-- GitGutter Group
 Group.new("GitGutterAdd", colors.base0B, colors.base01, styles.NONE)
 Group.new("GitGutterChange", colors.base0D, colors.base01, styles.NONE)
 Group.new("GitGutterDelete", colors.base08, colors.base01, styles.NONE)
 Group.new("GitGutterChangeDelete", colors.base0E, colors.base01, styles.NONE)
 
--- HTML Group.newing
+-- HTML Group
 Group.new("htmlBold", colors.base0A, colors.none, styles.NONE)
 Group.new("htmlItalic", colors.base0E, colors.none, styles.NONE)
 Group.new("htmlEndTag", colors.base05, colors.none, styles.NONE)
 Group.new("htmlTag", colors.base05, colors.none, styles.NONE)
 
--- JavaScript Group.newing
+-- JavaScript Group
 Group.new("javaScript", colors.base05, colors.none, styles.NONE)
 Group.new("javaScriptBraces", colors.base05, colors.none, styles.NONE)
 Group.new("javaScriptNumber", colors.base09, colors.none, styles.NONE)
--- pangloss/vim-javascript Group.newing
+-- pangloss/vim-javascript Group
 Group.new("jsOperator", colors.base0D, colors.none, styles.NONE)
 Group.new("jsStatement", colors.base0E, colors.none, styles.NONE)
 Group.new("jsReturn", colors.base0E, colors.none, styles.NONE)
@@ -193,7 +193,7 @@ Group.new("jsGlobalNodeObjects", colors.base0A, colors.none, styles.NONE)
 Group.new("jsExceptions", colors.base0A, colors.none, styles.NONE)
 Group.new("jsBuiltins", colors.base0A, colors.none, styles.NONE)
 
--- Mail Group.newing
+-- Mail Group
 Group.new("mailQuoted1", colors.base0A, colors.none, styles.NONE)
 Group.new("mailQuoted2", colors.base0B, colors.none, styles.NONE)
 Group.new("mailQuoted3", colors.base0E, colors.none, styles.NONE)
@@ -203,25 +203,25 @@ Group.new("mailQuoted6", colors.base0A, colors.none, styles.NONE)
 Group.new("mailURL", colors.base0D, colors.none, styles.NONE)
 Group.new("mailEmail", colors.base0D, colors.none, styles.NONE)
 
--- Markdown Group.newing
+-- Markdown Group
 Group.new("markdownCode", colors.base0B, colors.none, styles.NONE)
 Group.new("markdownError", colors.base05, colors.base00, styles.NONE)
 Group.new("markdownCodeBlock", colors.base0B, colors.none, styles.NONE)
 Group.new("markdownHeadingDelimiter", colors.base0D, colors.none, styles.NONE)
 
--- PHP Group.newing
+-- PHP Group
 Group.new("phpMemberSelector", colors.base05, colors.none, styles.NONE)
 Group.new("phpComparison", colors.base05, colors.none, styles.NONE)
 Group.new("phpParent", colors.base05, colors.none, styles.NONE)
 Group.new("phpMethodsVar", colors.base0C, colors.none, styles.NONE)
 
--- Python Group.newing
+-- Python Group
 Group.new("pythonOperator", colors.base0E, colors.none, styles.NONE)
 Group.new("pythonRepeat", colors.base0E, colors.none, styles.NONE)
 Group.new("pythonInclude", colors.base0E, colors.none, styles.NONE)
 Group.new("pythonStatement", colors.base0E, colors.none, styles.NONE)
 
--- Ruby Group.newing
+-- Ruby Group
 Group.new("rubyAttribute", colors.base0D, colors.none, styles.NONE)
 Group.new("rubyConstant", colors.base0A, colors.none, styles.NONE)
 Group.new("rubyInterpolationDelimiter", colors.base0F, colors.none, styles.NONE)
@@ -229,25 +229,25 @@ Group.new("rubyRegexp", colors.base0C, colors.none, styles.NONE)
 Group.new("rubySymbol", colors.base0B, colors.none, styles.NONE)
 Group.new("rubyStringDelimiter", colors.base0B, colors.none, styles.NONE)
 
--- SASS Group.newing
+-- SASS Group
 Group.new("sassidChar", colors.base08, colors.none, styles.NONE)
 Group.new("sassClassChar", colors.base09, colors.none, styles.NONE)
 Group.new("sassInclude", colors.base0E, colors.none, styles.NONE)
 Group.new("sassMixing", colors.base0E, colors.none, styles.NONE)
 Group.new("sassMixinName", colors.base0D, colors.none, styles.NONE)
 
--- Signify Group.newing
+-- Signify Group
 Group.new("SignifySignAdd", colors.base0B, colors.base01, styles.NONE)
 Group.new("SignifySignChange", colors.base0D, colors.base01, styles.NONE)
 Group.new("SignifySignDelete", colors.base08, colors.base01, styles.NONE)
 
--- Spelling Group.newing
+-- Spelling Group
 Group.new("SpellBad", colors.none, colors.none, styles.undercurl)
 Group.new("SpellLocal", colors.none, colors.none, styles.undercurl)
 Group.new("SpellCap", colors.none, colors.none, styles.undercurl)
 Group.new("SpellRare", colors.none, colors.none, styles.undercurl)
 
--- Java Group.newing
+-- Java Group
 Group.new("javaOperator", colors.base0D, colors.none, styles.NONE)
 
 -- treesitter
