@@ -6,8 +6,9 @@ if not installer_ok and not lspconfig_ok then
 end
 
 local lspsettings = require("lsp.settings")
-
-lsp_installer.setup({})
+lsp_installer.setup({
+  ensure_installed = not Work and lspsettings.server_list or {}
+})
 
 local function on_attach(client, bufnr)
   require("mappings").lsp(bufnr)
@@ -28,23 +29,8 @@ capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.offsetEncoding = { "utf-16" }
 
-local servers = {
-  "vimls",
-  "cssls",
-  "sqls",
-  "pyright",
-  "eslint",
-  "emmet_ls",
-  "html",
-  "sumneko_lua",
-  "jsonls",
-  "gopls",
-  "bashls",
-  "tsserver",
-  "clangd",
-}
 
-for _, server in ipairs(servers) do
+for _, server in ipairs(lspsettings.server_list) do
   local opts = {
     on_attach = on_attach,
     capabilities = capabilities,

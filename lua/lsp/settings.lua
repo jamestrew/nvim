@@ -79,4 +79,19 @@ M.emmet_ls = {
   filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact" },
 }
 
+M.server_list = {
+  "vimls",
+  "cssls",
+  "sqls",
+  "pyright",
+  "eslint",
+  "emmet_ls",
+  "html",
+  "sumneko_lua",
+  "jsonls",
+  "gopls",
+  "bashls",
+  "tsserver",
+  "clangd",
+}
 return M
