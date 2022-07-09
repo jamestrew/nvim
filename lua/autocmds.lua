@@ -1,38 +1,38 @@
 local M = {}
 
-local my_group = vim.api.nvim_create_augroup("my_group", { clear = true })
+local my_augroup = vim.api.nvim_create_augroup("my_augroup", { clear = true })
 
 -- windows to close with "q"
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "help", "man", "lspinfo", "fugitive", "qf" },
   command = "nnoremap <buffer><silent> q :quit<CR>",
-  group = my_group,
+  group = my_augroup,
 })
 
 -- get rid of weird formatoptions
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*",
   command = "setlocal formatoptions-=r formatoptions-=o",
-  group = my_group,
+  group = my_augroup,
 })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   command = "silent! lua vim.highlight.on_yank()",
-  group = my_group,
+  group = my_augroup,
 })
 
--- autoformat on save
+-- remove whitespace on save
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
   command = ":%s/\\s\\+$//e",
-  group = my_group,
+  group = my_augroup,
 })
 
 vim.api.nvim_create_autocmd("User", {
   pattern = "PackerComplete",
   callback = require("utils").plugin_urls,
-  group = my_group,
+  group = my_augroup,
 })
 
 vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
