@@ -1,9 +1,7 @@
 local has_worktree, worktree = pcall(require, "git-worktree")
 local has_harpoon, _ = pcall(require, "harpoon")
 
-if not has_worktree and not has_harpoon then
-  return
-end
+if not has_worktree and not has_harpoon then return end
 
 -- local harpmark = require("harpoon.mark")
 -- local harpterm = require("harpoon.term")

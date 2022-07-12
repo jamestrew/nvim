@@ -10,9 +10,7 @@ M.delete_file = function(prompt_bufnr)
   local fpath = action_state.get_selected_entry().value
   local ans = vim.fn.input("Are you sure you want to remove " .. fpath .. "? y/[N] ")
   utils.clear_prompt()
-  if ans ~= "y" then
-    return
-  end
+  if ans ~= "y" then return end
 
   if utils.is_dir(fpath) then
     Path:new(fpath):rmdir()
@@ -168,9 +166,7 @@ M.toggle_files = function(prompt_bufnr)
   local prompt = current_picker.prompt_title
   actions.close(prompt_bufnr)
 
-  vim.schedule(function()
-    require("jtelescope").project_files({}, prompt == "Git Files")
-  end)
+  vim.schedule(function() require("jtelescope").project_files({}, prompt == "Git Files") end)
 end
 
 M.toggle_layout = function(prompt_bufnr)

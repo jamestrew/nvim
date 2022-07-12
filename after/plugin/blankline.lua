@@ -1,8 +1,6 @@
 local ok, indent = pcall(require, "indent_blankline")
 
-if not ok then
-  return
-end
+if not ok then return end
 
 vim.g.indentLine_enabled = 1
 vim.g.indent_blankline_char = "▏"

@@ -34,9 +34,7 @@ M.project_files = function(opts, find_files)
     require("telescope.builtin").find_files(opts)
   else
     local ok, _ = pcall(require("telescope.builtin").git_files, opts)
-    if not ok then
-      require("telescope.builtin").find_files(opts)
-    end
+    if not ok then require("telescope.builtin").find_files(opts) end
   end
 end
 
@@ -74,9 +72,7 @@ M.create_git_worktree = function()
     layout_strategy = "vertical",
   })
 
-  opts.attach_mappings = function(_, map)
-    return tele_utils.alt_scroll(map)
-  end
+  opts.attach_mappings = function(_, map) return tele_utils.alt_scroll(map) end
 
   if utils.os.in_bare and not utils.os.in_worktree then
     opts.prompt_title = "Create Worktree"
@@ -90,9 +86,7 @@ M.lsp_code_actions = function()
   local opts = themes.get_cursor({
     previewer = false,
   })
-  opts.attach_mappings = function(_, map)
-    return tele_utils.alt_scroll(map)
-  end
+  opts.attach_mappings = function(_, map) return tele_utils.alt_scroll(map) end
   require("telescope.builtin").lsp_code_actions(opts)
 end
 
@@ -105,38 +99,34 @@ M.refactor = function()
   end
 
   local opts = themes.get_cursor()
-  opts.attach_mappings = function(_, map)
-    return tele_utils.alt_scroll(map)
-  end
+  opts.attach_mappings = function(_, map) return tele_utils.alt_scroll(map) end
 
-  pickers.new(opts, {
-    prompt_title = "REFACTOR",
-    finder = finders.new_table({
-      results = refactoring.get_refactors(),
-    }),
-    sorter = config.values.generic_sorter(opts),
-    attach_mappings = function(_, map)
-      map("i", "<CR>", refactor)
-      map("n", "<CR>", refactor)
-      return true
-    end,
-  }):find()
+  pickers
+    .new(opts, {
+      prompt_title = "REFACTOR",
+      finder = finders.new_table({
+        results = refactoring.get_refactors(),
+      }),
+      sorter = config.values.generic_sorter(opts),
+      attach_mappings = function(_, map)
+        map("i", "<CR>", refactor)
+        map("n", "<CR>", refactor)
+        return true
+      end,
+    })
+    :find()
 end
 
 M.neoclip = function()
   local opts = themes.get_ivy()
-  opts.attach_mappings = function(_, map)
-    return tele_utils.alt_scroll(map)
-  end
+  opts.attach_mappings = function(_, map) return tele_utils.alt_scroll(map) end
   require("telescope").extensions.neoclip.default(opts)
 end
 
 M.get_symbols = function(opts)
   opts = opts or themes.get_ivy()
 
-  opts.attach_mappings = function(_, map)
-    return tele_utils.alt_scroll(map)
-  end
+  opts.attach_mappings = function(_, map) return tele_utils.alt_scroll(map) end
 
   if true then
     require("telescope.builtin").lsp_document_symbols(opts)
@@ -167,9 +157,7 @@ M.curbuf = function(opts)
     shorten_path = false,
     border = true,
   })
-  opts.attach_mappings = function(_, map)
-    return tele_utils.alt_scroll(map)
-  end
+  opts.attach_mappings = function(_, map) return tele_utils.alt_scroll(map) end
   require("telescope.builtin").current_buffer_fuzzy_find(opts)
 end
 
@@ -207,12 +195,14 @@ M.git_hunks = function(opts)
   end
 
   opts = opts or {}
-  pickers.new(opts, {
-    prompt_title = "Git Hunks",
-    finder = finders.new_table({ results = hunks, entry_maker = tele_utils.git_hunks_entry(opts) }),
-    previewer = config.values.qflist_previewer(opts),
-    sorter = config.values.generic_sorter(opts),
-  }):find()
+  pickers
+    .new(opts, {
+      prompt_title = "Git Hunks",
+      finder = finders.new_table({ results = hunks, entry_maker = tele_utils.git_hunks_entry(opts) }),
+      previewer = config.values.qflist_previewer(opts),
+      sorter = config.values.generic_sorter(opts),
+    })
+    :find()
 end
 
 M.lsp_reference = function(opts)

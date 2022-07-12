@@ -7,14 +7,12 @@ end
 
 local lspsettings = require("lsp.settings")
 lsp_installer.setup({
-  ensure_installed = not Work and lspsettings.server_list or {}
+  ensure_installed = not Work and lspsettings.server_list or {},
 })
 
 local function on_attach(client, bufnr)
   require("mappings").lsp(bufnr)
-  if client.server_capabilities.documentHighlightProvider then
-    require("autocmds").lsp(bufnr)
-  end
+  if client.server_capabilities.documentHighlightProvider then require("autocmds").lsp(bufnr) end
 
   if client.name == "typescript" then
     local ts_utils = require("nvim-lsp-ts-utils")
@@ -29,18 +27,15 @@ capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.offsetEncoding = { "utf-16" }
 
-
 for _, server in ipairs(lspsettings.server_list) do
   local opts = {
     on_attach = on_attach,
     capabilities = capabilities,
   }
   opts = vim.tbl_deep_extend("keep", opts, lspsettings[server] or {})
-  if server == "sumneko_lua" then
-    opts = require("lua-dev").setup({
-      lspconfig = opts,
-    })
-  end
+  if server == "sumneko_lua" then opts = require("lua-dev").setup({
+    lspconfig = opts,
+  }) end
   lspconfig[server].setup(opts)
 end
 

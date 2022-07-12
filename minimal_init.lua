@@ -33,17 +33,11 @@ end
 
 _G.load_config = function()
   vim.lsp.set_log_level("trace")
-  if vim.fn.has("nvim-0.5.1") == 1 then
-    require("vim.lsp.log").set_format_func(vim.inspect)
-  end
+  if vim.fn.has("nvim-0.5.1") == 1 then require("vim.lsp.log").set_format_func(vim.inspect) end
   local nvim_lsp = require("lspconfig")
   local on_attach = function(_, bufnr)
-    local function buf_set_keymap(...)
-      vim.api.nvim_buf_set_keymap(bufnr, ...)
-    end
-    local function buf_set_option(...)
-      vim.api.nvim_buf_set_option(bufnr, ...)
-    end
+    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -84,9 +78,7 @@ _G.load_config = function()
   -- Add the server that troubles you here
   local name = "pyright"
   local cmd = { "pyright-langserver", "--stdio" } -- needed for elixirls, omnisharp, sumneko_lua
-  if not name then
-    print("You have not defined a server name, please edit minimal_init.lua")
-  end
+  if not name then print("You have not defined a server name, please edit minimal_init.lua") end
   if not nvim_lsp[name].document_config.default_config.cmd and not cmd then
     print([[You have not defined a server default cmd for a server
       that requires it please edit minimal_init.lua]])

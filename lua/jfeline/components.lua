@@ -21,9 +21,7 @@ M.vi = {
   left_sep = {
     {
       str = "  ",
-      hl = function()
-        return { bg = vi_mode.get_mode_color() }
-      end,
+      hl = function() return { bg = vi_mode.get_mode_color() } end,
     },
   },
   right_sep = {
@@ -113,9 +111,7 @@ M.unsaved = {
 
 M.git_branch = {
   provider = providers.git_branch,
-  enabled = function()
-    return vim.g.gitsigns_head or vim.b.gitsigns_head
-  end,
+  enabled = function() return vim.g.gitsigns_head or vim.b.gitsigns_head end,
   hl = { fg = colors.grey_fg2, bg = colors.statusline_bg },
 }
 
@@ -141,12 +137,8 @@ M.my_pos = {
 -- [[ WINBAR ]]
 M.winbar_left = {
   {
-    provider = function()
-      return gps.get_location()
-    end,
-    enabled = function()
-      return gps.is_available()
-    end,
+    provider = function() return gps.get_location() end,
+    enabled = function() return gps.is_available() end,
     hl = { bg = "NONE" },
   },
 }

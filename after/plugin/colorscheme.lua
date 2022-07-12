@@ -1,9 +1,7 @@
 local theme = require("themes." .. vim.g.colors_name)
 
 local ok, _ = pcall(require, "colorbuddy")
-if not ok then
-  return
-end
+if not ok then return end
 
 local Color, colors, Group, groups, styles = require("colorbuddy").setup()
 local v = vim

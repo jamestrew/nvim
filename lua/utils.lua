@@ -2,9 +2,7 @@ local Path = require("plenary.path")
 local Job = require("plenary.job")
 
 -- for debuging
-_G.dump = function(...)
-  print(vim.inspect(...))
-end
+_G.dump = function(...) print(vim.inspect(...)) end
 
 if pcall(require, "plenary") then
   RELOAD = require("plenary.reload").reload_module
@@ -21,16 +19,12 @@ function M.get_os_command_output(cmd, cwd)
   cwd = cwd or vim.loop.cwd()
   local command = table.remove(cmd, 1)
   local stderr = {}
-  local stdout, ret = Job
-    :new({
-      command = command,
-      args = cmd,
-      cwd = cwd,
-      on_stderr = function(_, data)
-        table.insert(stderr, data)
-      end,
-    })
-    :sync()
+  local stdout, ret = Job:new({
+    command = command,
+    args = cmd,
+    cwd = cwd,
+    on_stderr = function(_, data) table.insert(stderr, data) end,
+  }):sync()
   return stdout, ret, stderr
 end
 
@@ -45,18 +39,10 @@ M.os = {
   in_bare = M.get_os_command_output({ "git", "rev-parse", "--is-bare-repository" })[1] == "true",
 }
 
-M.nnoremap = function(lhs, rhs, opts)
-  vim.keymap.set("n", lhs, rhs, opts)
-end
-M.inoremap = function(lhs, rhs, opts)
-  vim.keymap.set("i", lhs, rhs, opts)
-end
-M.vnoremap = function(lhs, rhs, opts)
-  vim.keymap.set("v", lhs, rhs, opts)
-end
-M.tnoremap = function(lhs, rhs, opts)
-  vim.keymap.set("t", lhs, rhs, opts)
-end
+M.nnoremap = function(lhs, rhs, opts) vim.keymap.set("n", lhs, rhs, opts) end
+M.inoremap = function(lhs, rhs, opts) vim.keymap.set("i", lhs, rhs, opts) end
+M.vnoremap = function(lhs, rhs, opts) vim.keymap.set("v", lhs, rhs, opts) end
+M.tnoremap = function(lhs, rhs, opts) vim.keymap.set("t", lhs, rhs, opts) end
 
 M.nmap = function(lhs, rhs, opts)
   opts = opts or {}
@@ -76,25 +62,17 @@ end
 
 M.modified_buf_count = function()
   local bufnrs = vim.tbl_filter(function(b)
-    if 1 ~= vim.fn.buflisted(b) then
-      return false
-    end
-    if vim.fn.getbufinfo(b)[1].changed ~= 1 then
-      return false
-    end
+    if 1 ~= vim.fn.buflisted(b) then return false end
+    if vim.fn.getbufinfo(b)[1].changed ~= 1 then return false end
     return true
   end, vim.api.nvim_list_bufs())
 
   return #bufnrs
 end
 
-M.is_dir = function(path)
-  return path:sub(-1, -1) == Path.path.sep
-end
+M.is_dir = function(path) return path:sub(-1, -1) == Path.path.sep end
 
-M.clear_prompt = function()
-  vim.api.nvim_command("normal :esc<CR>")
-end
+M.clear_prompt = function() vim.api.nvim_command("normal :esc<CR>") end
 
 M.save_and_source = function()
   print("savin' and sourcin'")
@@ -107,16 +85,12 @@ M.save_and_source = function()
   end
 end
 
-M.trim_TDAMPA = function(name)
-  return name:gsub("^.*TDAMPA--", "")
-end
+M.trim_TDAMPA = function(name) return name:gsub("^.*TDAMPA--", "") end
 
 M.plugin_urls = function()
   local plugins = {}
   for _, plug_data in pairs(_G.packer_plugins) do
-    if plug_data.url then
-      table.insert(plugins, plug_data.url)
-    end
+    if plug_data.url then table.insert(plugins, plug_data.url) end
   end
   table.sort(plugins)
 

@@ -113,9 +113,7 @@ return packer.startup({
   config = {
     compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
     display = {
-      open_fn = function()
-        return require("packer.util").float({ border = "single" })
-      end,
+      open_fn = function() return require("packer.util").float({ border = "single" }) end,
     },
   },
 })

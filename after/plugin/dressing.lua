@@ -1,7 +1,5 @@
 local ok, dressing = pcall(require, "dressing")
-if not ok then
-  vim.notify("dressing.nvim missing")
-end
+if not ok then vim.notify("dressing.nvim missing") end
 
 dressing.setup({
   input = {
