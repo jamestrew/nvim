@@ -7,6 +7,7 @@ local configs = {
   ["hop"] = { key = "tnhesoaiwfrudpclm" },
   ["scrollbar"] = {},
   ["spellsitter"] = {},
+  ["nvim-surround"] = {},
 }
 
 for plugin_name, config in pairs(configs) do

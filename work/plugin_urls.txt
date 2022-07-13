@@ -25,6 +25,7 @@ https://github.com/jamestrew/harpoon
 https://github.com/jose-elias-alvarez/null-ls.nvim
 https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils
 https://github.com/kyazdani42/nvim-web-devicons
+https://github.com/kylechui/nvim-surround
 https://github.com/lewis6991/gitsigns.nvim
 https://github.com/lewis6991/impatient.nvim
 https://github.com/lewis6991/spellsitter.nvim
@@ -52,9 +53,7 @@ https://github.com/sindrets/diffview.nvim
 https://github.com/stevearc/dressing.nvim
 https://github.com/tjdevries/colorbuddy.vim
 https://github.com/tpope/vim-fugitive
-https://github.com/tpope/vim-repeat
 https://github.com/tpope/vim-scriptease
-https://github.com/tpope/vim-surround
 https://github.com/wbthomason/packer.nvim
 https://github.com/wellle/targets.vim
 https://github.com/williamboman/nvim-lsp-installer
