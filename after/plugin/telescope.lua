@@ -101,6 +101,7 @@ require("telescope").setup({
     },
     file_browser = {
       theme = "ivy",
+      hijack_netrw = false,
       files = true,
       hidden = false,
       grouped = true,

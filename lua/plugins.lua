@@ -77,6 +77,7 @@ return packer.startup({
     use({ "andymass/vim-matchup" })
     use({ "editorconfig/editorconfig-vim", disable = Work })
     use({ "mattn/emmet-vim", event = "BufRead", disable = Work })
+    use({ "Vimjas/vim-python-pep8-indent" })
 
     -- Git
     use({ "lewis6991/gitsigns.nvim" })
