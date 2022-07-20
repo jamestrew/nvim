@@ -21,7 +21,7 @@ if has_harpoon then
     global_settings = {
       save_on_toggle = true,
       save_on_change = true,
-      mark_branch = true,
+      mark_branch = not Work,
       excluded_filetypes = { "harpoon", "TelescopePrompt" },
     },
   })
