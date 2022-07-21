@@ -94,4 +94,17 @@ M.server_list = {
   "tsserver",
   "clangd",
 }
+
+M.work_server_list = {
+  "cssls",
+  "pyright",
+  "eslint",
+  "emmet_ls",
+  "html",
+  "sumneko_lua",
+  "jsonls",
+  "bashls",
+  "tsserver",
+}
+
 return M

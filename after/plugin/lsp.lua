@@ -27,7 +27,7 @@ capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.offsetEncoding = { "utf-16" }
 
-for _, server in ipairs(lspsettings.server_list) do
+for _, server in ipairs(Work and lspsettings.work_server_list or lspsettings.server_list) do
   local opts = {
     on_attach = on_attach,
     capabilities = capabilities,
