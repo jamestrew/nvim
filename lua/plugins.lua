@@ -88,7 +88,7 @@ return packer.startup({
 
     -- Looks
     use({ "feline-nvim/feline.nvim" })
-    use({ "SmiteshP/nvim-gps" })
+    use({ "SmiteshP/nvim-navic" })
     use({ "kyazdani42/nvim-web-devicons" })
     use({ "tjdevries/colorbuddy.vim" })
     use({ "onsails/lspkind-nvim" })

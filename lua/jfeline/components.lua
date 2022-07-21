@@ -1,4 +1,4 @@
-local gps = require("nvim-gps")
+local navic = require("nvim-navic")
 local vi_mode = require("feline.providers.vi_mode")
 
 local providers = require("jfeline.providers")
@@ -137,8 +137,8 @@ M.my_pos = {
 -- [[ WINBAR ]]
 M.winbar_left = {
   {
-    provider = function() return gps.get_location() end,
-    enabled = function() return gps.is_available() end,
+    provider = function() return navic.get_location() end,
+    enabled = function() return navic.is_available() end,
     hl = { bg = "NONE" },
   },
 }

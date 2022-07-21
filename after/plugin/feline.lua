@@ -1,11 +1,7 @@
-local gps = require("nvim-gps")
-
 local theme = require("themes." .. vim.g.colors_name)
 local colors = theme.colors
 
 local mycomps = require("jfeline.components")
-
-gps.setup()
 
 local components = { active = {}, inactive = {} }
 

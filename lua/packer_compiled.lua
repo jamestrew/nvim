@@ -244,11 +244,6 @@ _G.packer_plugins = {
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/nvim-gomove",
     url = "https://github.com/booperlv/nvim-gomove"
   },
-  ["nvim-gps"] = {
-    loaded = true,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/start/nvim-gps",
-    url = "https://github.com/SmiteshP/nvim-gps"
-  },
   ["nvim-lsp-installer"] = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
@@ -265,6 +260,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-navic"] = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/nvim-navic",
+    url = "https://github.com/SmiteshP/nvim-navic"
   },
   ["nvim-neoclip.lua"] = {
     loaded = true,
@@ -399,7 +399,7 @@ vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-prev
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-ts-context-commentstring', 'emmet-vim', 'nvim-lsp-ts-utils', 'undotree', 'playground'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-lsp-ts-utils', 'undotree', 'playground', 'nvim-ts-context-commentstring', 'emmet-vim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
