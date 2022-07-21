@@ -88,10 +88,10 @@ ts_config.setup({
     swap = {
       enable = true,
       swap_next = {
-        ["<leader>ps"] = "@parameter.inner",
+        ["<leader>sa"] = "@parameter.inner",
       },
       swap_previous = {
-        ["<leader>pS"] = "@parameter.inner",
+        ["<leader>SA"] = "@parameter.inner",
       },
     },
     move = {
@@ -99,19 +99,19 @@ ts_config.setup({
       set_jumps = true,
       goto_next_start = {
         ["]]"] = "@function.outer",
-        ["])"] = "@class.outer",
+        ["))"] = "@class.outer",
       },
       goto_next_end = {
-        ["]}"] = "@function.outer",
-        ["]&"] = "@class.outer",
+        ["])"] = "@function.outer",
+        [")}"] = "@class.outer",
       },
       goto_previous_start = {
         ["[["] = "@function.outer",
-        ["[("] = "@class.outer",
+        ["(("] = "@class.outer",
       },
       goto_previous_end = {
-        ["[{"] = "@function.outer",
-        ["[@"] = "@class.outer",
+        ["[("] = "@function.outer",
+        ["({"] = "@class.outer",
       },
     },
   },
