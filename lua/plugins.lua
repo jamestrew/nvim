@@ -38,6 +38,7 @@ return packer.startup({
     use({ "nvim-treesitter/nvim-treesitter" })
     use({ "nvim-treesitter/nvim-treesitter-textobjects" })
     use({ "williamboman/nvim-lsp-installer" })
+    use({ "williamboman/mason.nvim", disable = Work })
     use({ "neovim/nvim-lspconfig" })
     use({ "L3MON4D3/LuaSnip" })
     use({ "hrsh7th/nvim-cmp" })

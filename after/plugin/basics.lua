@@ -8,6 +8,7 @@ local configs = {
   ["scrollbar"] = {},
   ["spellsitter"] = {},
   ["nvim-surround"] = {},
+  ["mason"] = {},
 }
 
 for plugin_name, config in pairs(configs) do

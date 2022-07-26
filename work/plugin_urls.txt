@@ -56,5 +56,6 @@ https://github.com/tpope/vim-fugitive
 https://github.com/tpope/vim-scriptease
 https://github.com/wbthomason/packer.nvim
 https://github.com/wellle/targets.vim
+https://github.com/williamboman/mason.nvim
 https://github.com/williamboman/nvim-lsp-installer
 https://github.com/windwp/nvim-autopairs
