@@ -53,6 +53,7 @@ nnoremap("<leader>fy", require("jtelescope").neoclip, silent)
 nnoremap("<leader>ff", require("jtelescope").curbuf, silent)
 nnoremap("<leader>fc", ":Telescope commands<CR>", silent)
 nnoremap("<leader>gh", require("jtelescope").git_hunks, silent)
+nnoremap("<leader>vrc", require("jtelescope").search_dotfiles, silent)
 
 M.lsp = function(bufnr)
   local opts = { silent = true, buffer = bufnr }
