@@ -1,5 +1,6 @@
 local packer = require("packer")
 local use
+local ts_update
 
 --[[
   Installing all plugins from a local directory for work
@@ -11,7 +12,6 @@ local use
   PackerInstall
   ```
 ]]
-
 if Work then
   use = function(opts)
     opts = opts or {}
@@ -23,8 +23,10 @@ if Work then
     end
     packer.use(opts)
   end
+  ts_update = nil
 else
   use = packer.use
+  ts_update = function() require("nvim-treesitter.install").update({ with_sync = true }) end
 end
 
 return packer.startup({
@@ -35,7 +37,7 @@ return packer.startup({
     use({ "nvim-lua/plenary.nvim" })
 
     -- LSP & Treeshitter
-    use({ "nvim-treesitter/nvim-treesitter" })
+    use({ "nvim-treesitter/nvim-treesitter", run = ts_update })
     use({ "nvim-treesitter/nvim-treesitter-textobjects" })
     use({ "williamboman/nvim-lsp-installer" })
     use({ "williamboman/mason.nvim", disable = Work })
@@ -50,7 +52,6 @@ return packer.startup({
     use({ "hrsh7th/cmp-cmdline" })
     use({ "hrsh7th/cmp-nvim-lsp-signature-help" })
     use({ "folke/lua-dev.nvim" })
-    use({ "jose-elias-alvarez/nvim-lsp-ts-utils", event = "BufRead" })
     use({ "b0o/SchemaStore.nvim" })
     use({ "simrat39/symbols-outline.nvim" })
     use({ "jose-elias-alvarez/null-ls.nvim" })

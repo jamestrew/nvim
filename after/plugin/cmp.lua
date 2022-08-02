@@ -28,12 +28,8 @@ if git_ok then
 end
 
 local function deprioritize_snippet(entry1, entry2)
-  if entry1:get_kind() == types.lsp.CompletionItemKind.Snippet then
-    return false
-  end
-  if entry2:get_kind() == types.lsp.CompletionItemKind.Snippet then
-    return true
-  end
+  if entry1:get_kind() == types.lsp.CompletionItemKind.Snippet then return false end
+  if entry2:get_kind() == types.lsp.CompletionItemKind.Snippet then return true end
 end
 
 cmp.setup({

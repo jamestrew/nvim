@@ -1,31 +1,22 @@
 local installer_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
 local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
 local navic_ok, navic = pcall(require, "nvim-navic")
+local lspsettings = require("lsp.settings")
 
 if not installer_ok and not lspconfig_ok then
   vim.notify("nvim-lsp-installer and nvim-lspconfig not installed", vim.log.levels.WARN)
 end
 
-if not navic_ok then
-  vim.notify("nvim-navic not installed", vim.log.levels.WARN)
-end
+if not navic_ok then vim.notify("nvim-navic not installed", vim.log.levels.WARN) end
 
-local lspsettings = require("lsp.settings")
 lsp_installer.setup({
   ensure_installed = not Work and lspsettings.server_list or {},
 })
 
 local function on_attach(client, bufnr)
   require("mappings").lsp(bufnr)
-  navic.attach(client, bufnr)
+  if not vim.tbl_contains(lspsettings.navic_ignore, client.name) then navic.attach(client, bufnr) end
   if client.server_capabilities.documentHighlightProvider then require("autocmds").lsp(bufnr) end
-
-  if client.name == "typescript" then
-    local ts_utils = require("nvim-lsp-ts-utils")
-    ts_utils.setup({ lspsettings.ts_utils_setup })
-    -- required to fix code action ranges and filter diagnostics
-    ts_utils.setup_client(client)
-  end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
