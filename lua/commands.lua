@@ -16,3 +16,8 @@ vim.api.nvim_create_user_command("GoTesting", function()
     print("\nGoTesting enabled")
   end
 end, {})
+
+
+vim.api.nvim_create_user_command("Time", function()
+  print(os.date("%a %b %d, %Y %H:%M:%S"))
+end, {})

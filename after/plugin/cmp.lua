@@ -80,8 +80,8 @@ cmp.setup.cmdline("/", {
 cmp.setup.cmdline(":", {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
-    { name = "path", keyword_length = 3 },
-    { name = "cmdline", keyword_length = 3 },
+    { name = "path", keyword_length = 2 },
+    { name = "cmdline", keyword_length = 2 },
   }),
 })
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
