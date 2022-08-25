@@ -217,4 +217,17 @@ M.lsp_definition = function(opts)
   require("telescope.builtin").lsp_definitions(opts)
 end
 
+M.live_grep_file = function(opts)
+  opts = opts
+    or themes.get_dropdown({
+      previewer = false,
+      shorten_path = false,
+      border = true,
+      prompt_title = "Grep File",
+      search_dirs = { vim.fn.expand("%:p") },
+    })
+  opts.attach_mappings = function(_, map) return tele_utils.alt_scroll(map) end
+  require("telescope.builtin").live_grep(opts)
+end
+
 return M
