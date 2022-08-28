@@ -45,7 +45,7 @@ M.git_worktrees = function()
     map("n", "c", actions.git_create_branch)
     map("i", "<A-d>", actions.git_delete_branch)
     map("n", "d", actions.git_delete_branch)
-    return tele_utils.alt_scroll(map)
+    return true
   end
 
   if utils.os.in_bare and not utils.os.in_worktree then
@@ -72,8 +72,6 @@ M.create_git_worktree = function()
     layout_strategy = "vertical",
   })
 
-  opts.attach_mappings = function(_, map) return tele_utils.alt_scroll(map) end
-
   if utils.os.in_bare and not utils.os.in_worktree then
     opts.prompt_title = "Create Worktree"
     require("telescope").extensions.git_worktree.create_git_worktree(opts)
@@ -86,7 +84,6 @@ M.lsp_code_actions = function()
   local opts = themes.get_cursor({
     previewer = false,
   })
-  opts.attach_mappings = function(_, map) return tele_utils.alt_scroll(map) end
   require("telescope.builtin").lsp_code_actions(opts)
 end
 
@@ -99,7 +96,6 @@ M.refactor = function()
   end
 
   local opts = themes.get_cursor()
-  opts.attach_mappings = function(_, map) return tele_utils.alt_scroll(map) end
 
   pickers
     .new(opts, {
@@ -119,14 +115,12 @@ end
 
 M.neoclip = function()
   local opts = themes.get_ivy()
-  opts.attach_mappings = function(_, map) return tele_utils.alt_scroll(map) end
   require("telescope").extensions.neoclip.default(opts)
 end
 
 M.get_symbols = function(opts)
   opts = opts or themes.get_ivy()
 
-  opts.attach_mappings = function(_, map) return tele_utils.alt_scroll(map) end
 
   if true then
     require("telescope.builtin").lsp_document_symbols(opts)
@@ -157,7 +151,6 @@ M.curbuf = function(opts)
     shorten_path = false,
     border = true,
   })
-  opts.attach_mappings = function(_, map) return tele_utils.alt_scroll(map) end
   require("telescope.builtin").current_buffer_fuzzy_find(opts)
 end
 
@@ -226,7 +219,6 @@ M.live_grep_file = function(opts)
       prompt_title = "Grep File",
       search_dirs = { vim.fn.expand("%:p") },
     })
-  opts.attach_mappings = function(_, map) return tele_utils.alt_scroll(map) end
   require("telescope.builtin").live_grep(opts)
 end
 

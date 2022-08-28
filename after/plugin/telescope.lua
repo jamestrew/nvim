@@ -58,16 +58,16 @@ require("telescope").setup({
     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
     mappings = {
       i = {
-        ["<C-p>"] = actions.move_selection_next,
-        ["<C-n>"] = actions.move_selection_previous,
+        ["<C-p>"] = actions.move_selection_better,
+        ["<C-n>"] = actions.move_selection_worse,
         ["<Esc>"] = actions.close,
         ["<C-c>"] = false,
         ["<M-p>"] = action_layout.toggle_preview,
         ["<M-l>"] = tele_utils.toggle_layout,
       },
       n = {
-        ["<C-p>"] = actions.move_selection_next,
-        ["<C-n>"] = actions.move_selection_previous,
+        ["<C-p>"] = actions.move_selection_better,
+        ["<C-n>"] = actions.move_selection_worse,
         ["<M-p>"] = action_layout.toggle_preview,
       },
     },
@@ -109,20 +109,17 @@ require("telescope").setup({
       quiet = true,
       mappings = {
         i = {
+          ["<C-b>"] = require("telescope._extensions.file_browser.actions").goto_parent_dir,
           ["<A-n>"] = require("telescope._extensions.file_browser.actions").select_all,
           ["<A-f>"] = tele_utils.open_using(builtin.find_files),
           ["<A-g>"] = tele_utils.open_using(builtin.live_grep),
           ["<A-a>"] = require("harpoon.browser").add_folder,
-          ["<C-p>"] = actions.move_selection_previous,
-          ["<C-n>"] = actions.move_selection_next,
         },
         n = {
           ["<A-f>"] = tele_utils.open_using(builtin.find_files),
           ["<A-g>"] = tele_utils.open_using(builtin.live_grep),
-          ["<C-u>"] = require("telescope._extensions.file_browser.actions").goto_parent_dir,
+          ["<C-b>"] = require("telescope._extensions.file_browser.actions").goto_parent_dir,
           ["<A-a>"] = require("harpoon.browser").add_folder,
-          ["<C-p>"] = actions.move_selection_previous,
-          ["<C-n>"] = actions.move_selection_next,
         },
       },
     },
