@@ -17,7 +17,4 @@ vim.api.nvim_create_user_command("GoTesting", function()
   end
 end, {})
 
-
-vim.api.nvim_create_user_command("Time", function()
-  print(os.date("%a %b %d, %Y %H:%M:%S"))
-end, {})
+vim.api.nvim_create_user_command("TIME", function() print(os.date("%a %b %d, %Y %H:%M:%S")) end, {})
