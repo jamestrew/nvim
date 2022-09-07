@@ -6,7 +6,6 @@ local configs = {
   ["neoclip"] = {},
   ["hop"] = { key = "tnhesoaiwfrudpclm" },
   ["scrollbar"] = {},
-  ["spellsitter"] = {},
   ["nvim-surround"] = {},
   ["mason"] = {},
 }

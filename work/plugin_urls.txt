@@ -27,7 +27,6 @@ https://github.com/kyazdani42/nvim-web-devicons
 https://github.com/kylechui/nvim-surround
 https://github.com/lewis6991/gitsigns.nvim
 https://github.com/lewis6991/impatient.nvim
-https://github.com/lewis6991/spellsitter.nvim
 https://github.com/lukas-reineke/indent-blankline.nvim
 https://github.com/mattn/emmet-vim
 https://github.com/mbbill/undotree

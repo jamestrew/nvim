@@ -56,7 +56,6 @@ return packer.startup({
     use({ "simrat39/symbols-outline.nvim" })
     use({ "jose-elias-alvarez/null-ls.nvim" })
     use({ "nvim-treesitter/playground", event = "BufRead", disable = Work })
-    use({ "lewis6991/spellsitter.nvim" })
 
     -- Telescope & File Management
     use({ "nvim-telescope/telescope.nvim" })
