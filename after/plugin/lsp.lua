@@ -1,6 +1,7 @@
 local installer_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
 local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
 local navic_ok, navic = pcall(require, "nvim-navic")
+local dev_ok, lua_dev = pcall(require, "lua-dev")
 local lspsettings = require("lsp.settings")
 
 if not installer_ok and not lspconfig_ok then
@@ -8,6 +9,12 @@ if not installer_ok and not lspconfig_ok then
 end
 
 if not navic_ok then vim.notify("nvim-navic not installed", vim.log.levels.WARN) end
+
+if not dev_ok then
+  vim.notify("lua-dev not installed", vim.log.levels.WARN)
+else
+  lua_dev.setup()
+end
 
 lsp_installer.setup({
   ensure_installed = not Work and lspsettings.server_list or {},
@@ -30,9 +37,6 @@ for _, server in ipairs(Work and lspsettings.work_server_list or lspsettings.ser
     capabilities = capabilities,
   }
   opts = vim.tbl_deep_extend("keep", opts, lspsettings[server] or {})
-  if server == "sumneko_lua" then opts = require("lua-dev").setup({
-    lspconfig = opts,
-  }) end
   lspconfig[server].setup(opts)
 end
 
