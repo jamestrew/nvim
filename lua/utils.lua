@@ -103,4 +103,17 @@ M.plugin_urls = function()
   io.close(file)
 end
 
+M.import = function(module, setup)
+  local ok, mod = pcall(require, module)
+
+  if not ok then
+    vim.notify(string.format("%s not installed", module), vim.log.levels.WARN)
+    return
+  end
+
+  if setup then mod.setup(setup) end
+
+  return mod
+end
+
 return M

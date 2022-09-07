@@ -1,24 +1,14 @@
-local installer_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
-local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
-local navic_ok, navic = pcall(require, "nvim-navic")
-local dev_ok, lua_dev = pcall(require, "lua-dev")
+local import = require("utils").import
 local lspsettings = require("lsp.settings")
 
-if not installer_ok and not lspconfig_ok then
-  vim.notify("nvim-lsp-installer and nvim-lspconfig not installed", vim.log.levels.WARN)
-end
-
-if not navic_ok then vim.notify("nvim-navic not installed", vim.log.levels.WARN) end
-
-if not dev_ok then
-  vim.notify("lua-dev not installed", vim.log.levels.WARN)
-else
-  lua_dev.setup()
-end
-
-lsp_installer.setup({
+local lspconfig = import("lspconfig")
+local navic = import("nvim-navic")
+import("lua-dev", {})
+import("nvim-lsp-installer", {
   ensure_installed = not Work and lspsettings.server_list or {},
 })
+
+if vim.tbl_contains({ lspconfig, navic }, nil) then return end
 
 local function on_attach(client, bufnr)
   require("mappings").lsp(bufnr)
