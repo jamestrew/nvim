@@ -34,9 +34,7 @@ else:
 
 
 import math
-
-from argparse import ONE_OR_MORE, _callable, Action
-
+from argparse import ONE_OR_MORE, Action, _callable
 
 print(math.sqrt(5))
 
@@ -62,3 +60,9 @@ if True:  # {{{
 
 
 test("foo", 2)
+
+from unittest.mock import Mock
+
+crs = Mock()
+
+crs.execute("""SELECT * FROM foobar""")
