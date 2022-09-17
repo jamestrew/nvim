@@ -59,7 +59,7 @@ M.git_branch = function()
 end
 
 M.file_name_simple = function()
-  local prefix, filename, suffix = "", vim.fn.expand("%"), ""
+  local prefix, filename, suffix = "", vim.fn.expand("%:p:t"), ""
 
   if vim.bo.modifiable then
     if vim.bo.modified then prefix = "[+]" end
