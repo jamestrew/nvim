@@ -369,4 +369,4 @@ Group.new("TeleDiffDelete", colors.base08, colors.none, styles.NONE)
 Group.new("FocusedSymbol", colors.base08, colors.line, styles.NONE)
 
 -- vim-matchup
-Group.new("MatchParen", colors.none, groups.CursorLine)
+Group.new("MatchParen", colors.none, colors.grey, styles.NONE)

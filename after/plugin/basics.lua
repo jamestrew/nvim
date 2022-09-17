@@ -10,7 +10,7 @@ local configs = {
   ["scrollbar"] = {},
   ["nvim-surround"] = {},
   ["mason"] = {},
-  ["tint"] = { tint = -50 },
+  -- ["tint"] = { tint = -50 },
 }
 
 for plugin_name, config in pairs(configs) do
