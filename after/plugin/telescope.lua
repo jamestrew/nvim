@@ -103,10 +103,11 @@ require("telescope").setup({
       theme = "ivy",
       hijack_netrw = false,
       files = true,
-      hidden = false,
+      hidden = true,
       grouped = true,
-      hide_parent_dir = false,
+      hide_parent_dir = true,
       quiet = true,
+      respect_gitignore = false,
       mappings = {
         i = {
           ["<C-b>"] = require("telescope._extensions.file_browser.actions").goto_parent_dir,

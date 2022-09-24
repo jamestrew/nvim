@@ -39,6 +39,7 @@ vnoremap("<leader>fr", ":s/") -- quick find & replace
 
 -- Telescope
 nnoremap("<C-p>", require("jtelescope").project_files)
+nnoremap("<leader><C-p>", function() require("jtelescope").project_files({}, true) end)
 nnoremap("<C-e>", ":Telescope file_browser<CR>", silent)
 nnoremap("<leader><C-e>", ":Telescope file_browser path=%:p:h<CR>", silent)
 nnoremap("<leader>fw", ":Telescope live_grep<CR>", silent)

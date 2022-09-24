@@ -9,6 +9,8 @@ symbols.setup({
   highlight_hovered_item = true,
   show_guides = true,
   auto_preview = false,
+  auto_close = false,
+  autofold_depth = 1,
   position = "left",
   relative_width = false,
   width = 40,
@@ -26,7 +28,7 @@ symbols.setup({
     code_actions = "a",
   },
   lsp_blacklist = {},
-  symbol_blacklist = { "Variable" },
+  symbol_blacklist = {},
   symbols = {
     File = { icon = "", hl = "TSURI" },
     Module = { icon = "", hl = "TSNamespace" },
@@ -56,3 +58,5 @@ symbols.setup({
     TypeParameter = { icon = "𝙏", hl = "TSParameter" },
   },
 })
+
+-- TODO: set up toggle fold binds?
