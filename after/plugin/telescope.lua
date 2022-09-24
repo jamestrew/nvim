@@ -56,6 +56,7 @@ require("telescope").setup({
     qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
     -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+    -- cycle_layout_list = tele_utils.cycle_layouts,
     mappings = {
       i = {
         ["<C-p>"] = actions.move_selection_better,
@@ -63,7 +64,7 @@ require("telescope").setup({
         ["<Esc>"] = actions.close,
         ["<C-c>"] = false,
         ["<M-p>"] = action_layout.toggle_preview,
-        ["<M-l>"] = tele_utils.toggle_layout,
+        ["<M-l>"] = action_layout.cycle_layout_next,
       },
       n = {
         ["<C-p>"] = actions.move_selection_better,

@@ -169,45 +169,18 @@ M.toggle_files = function(prompt_bufnr)
   vim.schedule(function() require("jtelescope").project_files({}, prompt == "Git Files") end)
 end
 
-M.toggle_layout = function(prompt_bufnr)
-  local opts = themes.get_dropdown({
-    previewer = false,
+local cycle_themes = {
+  themes.get_dropdown({ previewer = false }),
+  themes.get_ivy(),
+}
+
+M.cycle_layouts = {}
+for _, theme in ipairs(cycle_themes) do
+  table.insert(M.cycle_layouts, {
+    layout_strategy = theme.layout_strategy,
+    layout_config = theme.layout_config,
+    previewer = theme.previewer,
   })
-  local picker = action_state.get_current_picker(prompt_bufnr)
-
-  if picker.hidden_layout == nil then
-    picker.hidden_layout = {
-      border = picker.border,
-      borderchars = picker.borderchars,
-      layout_config = picker.layout_config,
-      layout_strategy = picker.layout_strategy,
-      previewer = picker.previewer,
-      results_title = picker.results_title,
-      sorting_strategy = picker.sorting_strategy,
-      theme = picker.theme,
-    }
-
-    picker.border = opts.border
-    picker.borderchars = opts.borderchars
-    picker.layout_config = opts.layout_config
-    picker.layout_strategy = opts.layout_strategy
-    picker.previewer = opts.previewer
-    picker.results_title = opts.results_title
-    picker.sorting_strategy = opts.sorting_strategy
-    picker.theme = opts.theme
-  else
-    picker.border = picker.hidden_layout.border
-    picker.borderchars = picker.hidden_layout.borderchars
-    picker.layout_config = picker.hidden_layout.layout_config
-    picker.layout_strategy = picker.hidden_layout.layout_strategy
-    picker.previewer = picker.hidden_layout.previewer
-    picker.results_title = picker.hidden_layout.results_title
-    picker.sorting_strategy = picker.hidden_layout.sorting_strategy
-    picker.theme = picker.hidden_layout.theme
-    picker.hidden_layout = nil
-  end
-
-  picker:full_layout_update()
 end
 
 return M
