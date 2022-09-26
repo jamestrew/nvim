@@ -4,9 +4,6 @@ local lspsettings = require("lsp.settings")
 local lspconfig = import("lspconfig")
 local navic = import("nvim-navic")
 import("lua-dev", {})
-import("nvim-lsp-installer", {
-  ensure_installed = not Work and lspsettings.server_list or {},
-})
 
 if vim.tbl_contains({ lspconfig, navic }, nil) then return end
 
