@@ -127,6 +127,19 @@ require("telescope").setup({
         },
       },
     },
+    live_grep_args = {
+      auto_quoting = false,
+      mappings = {
+        i = {
+          ["<C-k>"] = require("telescope-live-grep-args.actions").quote_prompt(),
+          ["<C-t>"] = require("telescope-live-grep-args.actions").quote_prompt({ postfix = ' -t'}),
+        },
+        n = {
+          ["k"] = require("telescope-live-grep-args.actions").quote_prompt(),
+          ["t"] = require("telescope-live-grep-args.actions").quote_prompt({ postfix = ' -t'}),
+        }
+      }
+    }
   },
 })
 
@@ -142,3 +155,4 @@ require("telescope").load_extension("fzf")
 require("telescope").load_extension("git_worktree")
 require("telescope").load_extension("neoclip")
 require("telescope").load_extension("file_browser")
+require("telescope").load_extension("live_grep_args")

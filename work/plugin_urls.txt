@@ -38,6 +38,7 @@ https://github.com/numToStr/Comment.nvim
 https://github.com/nvim-lua/plenary.nvim
 https://github.com/nvim-telescope/telescope-file-browser.nvim
 https://github.com/nvim-telescope/telescope-fzf-native.nvim
+https://github.com/nvim-telescope/telescope-live-grep-args.nvim
 https://github.com/nvim-telescope/telescope.nvim
 https://github.com/nvim-treesitter/nvim-treesitter
 https://github.com/nvim-treesitter/nvim-treesitter-textobjects
