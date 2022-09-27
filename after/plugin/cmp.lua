@@ -16,7 +16,6 @@ local sources = {
   { name = "nvim_lua" },
   { name = "buffer", keyword_length = 3 },
   { name = "luasnip" },
-  { name = "cmdline" },
   { name = "nvim_lsp_signature_help" },
 }
 
