@@ -31,10 +31,12 @@ M.project_files = function(opts, find_files)
   end
 
   if find_files then
+    opts.no_ignore = true
+    opts.prompt_title = "Find Files"
     require("telescope.builtin").find_files(opts)
   else
-    local ok, _ = pcall(require("telescope.builtin").git_files, opts)
-    if not ok then require("telescope.builtin").find_files(opts) end
+    opts.prompt_title = "Git Files"
+    require("telescope.builtin").find_files(opts)
   end
 end
 
