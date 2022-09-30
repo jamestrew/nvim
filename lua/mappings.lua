@@ -111,10 +111,11 @@ utils.nmap("<leader>pt", "<Plug>PlenaryTestFile")
 
 -- DAP
 nnoremap("<F5>", require("dap").continue, silent)
+nnoremap("<F6>", require("dap").terminate, silent)
 nnoremap("<F2>", require("dap").step_into, silent)
 nnoremap("<F3>", require("dap").step_over, silent)
 nnoremap("<F4>", require("dap").step_out, silent)
 nnoremap("<leader>db", require("dap").toggle_breakpoint, silent)
-nnoremap("<leader>dB", require("dap").toggle_breakpoint, silent)
+nnoremap("<leader>DB", function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end, silent)
 
 return M
