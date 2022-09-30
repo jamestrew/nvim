@@ -108,7 +108,7 @@ M.import = function(module, setup)
 
   if not ok then
     vim.notify(string.format("%s not installed", module), vim.log.levels.WARN)
-    return
+    return mod
   end
 
   if setup then mod.setup(setup) end

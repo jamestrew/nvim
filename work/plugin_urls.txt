@@ -25,6 +25,7 @@ https://github.com/jamestrew/harpoon
 https://github.com/jose-elias-alvarez/null-ls.nvim
 https://github.com/kyazdani42/nvim-web-devicons
 https://github.com/kylechui/nvim-surround
+https://github.com/leoluz/nvim-dap-go
 https://github.com/levouh/tint.nvim
 https://github.com/lewis6991/gitsigns.nvim
 https://github.com/lewis6991/impatient.nvim
@@ -48,10 +49,12 @@ https://github.com/onsails/lspkind-nvim
 https://github.com/petertriho/cmp-git
 https://github.com/petertriho/nvim-scrollbar
 https://github.com/phaazon/hop.nvim
+https://github.com/rcarriga/nvim-dap-ui
 https://github.com/saadparwaiz1/cmp_luasnip
 https://github.com/simrat39/symbols-outline.nvim
 https://github.com/sindrets/diffview.nvim
 https://github.com/stevearc/dressing.nvim
+https://github.com/theHamsta/nvim-dap-virtual-text
 https://github.com/tjdevries/colorbuddy.vim
 https://github.com/tpope/vim-fugitive
 https://github.com/tpope/vim-scriptease

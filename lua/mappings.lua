@@ -5,6 +5,7 @@ local silent = { silent = true }
 
 local M = {}
 
+vim.cmd([[nmap <F1> <nop>]])
 vim.cmd([[command W :w]])
 vim.cmd([[command Q :q]])
 vim.cmd([[command Wq :wq]])
@@ -14,6 +15,7 @@ nnoremap("<CR>", ":nohl<CR>")
 -- paste/delete and keep register clean
 vnoremap("<leader>p", '"_dP')
 vnoremap("<leader>d", '"_d')
+nnoremap("<leader>dd", '"_d')
 
 -- better indenting
 vnoremap("<", "<gv", silent)
@@ -106,5 +108,13 @@ nnoremap("<leader>so", ":SymbolsOutline<CR>", silent)
 
 -- plenary
 utils.nmap("<leader>pt", "<Plug>PlenaryTestFile")
+
+-- DAP
+nnoremap("<F5>", require("dap").continue, silent)
+nnoremap("<F2>", require("dap").step_into, silent)
+nnoremap("<F3>", require("dap").step_over, silent)
+nnoremap("<F4>", require("dap").step_out, silent)
+nnoremap("<leader>db", require("dap").toggle_breakpoint, silent)
+nnoremap("<leader>dB", require("dap").toggle_breakpoint, silent)
 
 return M

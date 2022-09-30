@@ -376,3 +376,6 @@ Group.new("FocusedSymbol", colors.base08, colors.line, styles.NONE)
 
 -- vim-matchup
 Group.new("MatchParen", colors.none, colors.grey, styles.NONE)
+
+-- DAP
+Group.new("DapBreakpoint", colors.base08, colors.none, styles.NONE)

@@ -36,7 +36,7 @@ return packer.startup({
 
     use({ "nvim-lua/plenary.nvim" })
 
-    -- LSP & Treeshitter & DAP
+    -- LSP & Treeshitter
     use({ "nvim-treesitter/nvim-treesitter", run = ts_update })
     use({ "nvim-treesitter/nvim-treesitter-textobjects" })
     use({ "williamboman/mason.nvim", disable = Work })
@@ -55,7 +55,12 @@ return packer.startup({
     use({ "simrat39/symbols-outline.nvim" })
     use({ "jose-elias-alvarez/null-ls.nvim" })
     use({ "nvim-treesitter/playground", event = "BufRead", disable = Work })
+
+    -- DAP
     use({ "mfussenegger/nvim-dap" })
+    use({ "leoluz/nvim-dap-go" })
+    use({ "rcarriga/nvim-dap-ui" })
+    use({ "theHamsta/nvim-dap-virtual-text" })
 
     -- Telescope & File Management
     use({ "nvim-telescope/telescope.nvim" })
