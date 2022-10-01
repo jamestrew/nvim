@@ -35,7 +35,8 @@ M.os = {
   config = vim.fn.stdpath("config"),
   name = vim.loop.os_uname().sysname,
   cwd = vim.loop.cwd(),
-  in_worktree = M.get_os_command_output({ "git", "rev-parse", "--is-inside-work-tree" })[1] == "true",
+  in_worktree = M.get_os_command_output({ "git", "rev-parse", "--is-inside-work-tree" })[1]
+    == "true",
   in_bare = M.get_os_command_output({ "git", "rev-parse", "--is-bare-repository" })[1] == "true",
 }
 

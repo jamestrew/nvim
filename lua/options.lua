@@ -33,7 +33,7 @@ opt.equalalways = true -- I don't like my windows changing all the time
 opt.splitright = true -- Prefer windows splitting to the right
 opt.splitbelow = true -- Prefer windows splitting to the bottom
 opt.updatetime = 200 -- Make updates happen faster
-opt.hlsearch = true -- Get rid of highlights once done with search
+opt.hlsearch = false -- Get rid of highlights once done with search
 opt.scrolloff = 15 -- Make it so there are always ten lines below my cursor
 opt.spell = false
 
@@ -45,7 +45,7 @@ opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
 opt.wrap = false
-opt.colorcolumn = "80"
+opt.colorcolumn = "90"
 
 opt.foldmethod = "marker"
 opt.foldlevel = 0
@@ -68,5 +68,3 @@ opt.joinspaces = false -- Two spaces and grade school, we're done
 
 -- set fillchars=eob:~
 opt.fillchars = { eob = "~" }
-
-opt.winbar = "%{%v:lua.require('utils').winbar()%}"

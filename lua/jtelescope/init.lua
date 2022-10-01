@@ -61,7 +61,10 @@ M.git_worktrees = function()
     opts.prompt_title = "Git Branches"
     require("telescope.builtin").git_branches(opts)
   else
-    vim.notify("[telescope] Not in a git repository. Unable to pull up any branches info.", vim.log.levels.WARN)
+    vim.notify(
+      "[telescope] Not in a git repository. Unable to pull up any branches info.",
+      vim.log.levels.WARN
+    )
   end
 end
 
@@ -123,7 +126,6 @@ end
 M.get_symbols = function(opts)
   opts = opts or themes.get_ivy()
 
-
   if true then
     require("telescope.builtin").lsp_document_symbols(opts)
     return
@@ -148,11 +150,12 @@ M.get_symbols = function(opts)
 end
 
 M.curbuf = function(opts)
-  opts = opts or themes.get_dropdown({
-    previewer = false,
-    shorten_path = false,
-    border = true,
-  })
+  opts = opts
+    or themes.get_dropdown({
+      previewer = false,
+      shorten_path = false,
+      border = true,
+    })
   require("telescope.builtin").current_buffer_fuzzy_find(opts)
 end
 
@@ -193,7 +196,10 @@ M.git_hunks = function(opts)
   pickers
     .new(opts, {
       prompt_title = "Git Hunks",
-      finder = finders.new_table({ results = hunks, entry_maker = tele_utils.git_hunks_entry(opts) }),
+      finder = finders.new_table({
+        results = hunks,
+        entry_maker = tele_utils.git_hunks_entry(opts),
+      }),
       previewer = config.values.qflist_previewer(opts),
       sorter = config.values.generic_sorter(opts),
     })

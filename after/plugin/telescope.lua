@@ -132,14 +132,14 @@ require("telescope").setup({
       mappings = {
         i = {
           ["<C-k>"] = require("telescope-live-grep-args.actions").quote_prompt(),
-          ["<C-t>"] = require("telescope-live-grep-args.actions").quote_prompt({ postfix = ' -t'}),
+          ["<C-t>"] = require("telescope-live-grep-args.actions").quote_prompt({ postfix = " -t" }),
         },
         n = {
           ["k"] = require("telescope-live-grep-args.actions").quote_prompt(),
-          ["t"] = require("telescope-live-grep-args.actions").quote_prompt({ postfix = ' -t'}),
-        }
-      }
-    }
+          ["t"] = require("telescope-live-grep-args.actions").quote_prompt({ postfix = " -t" }),
+        },
+      },
+    },
   },
 })
 

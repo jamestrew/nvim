@@ -66,6 +66,6 @@ M.work_server_list = {
   "tsserver",
 }
 
-M.navic_ignore = { "eslint", "emmet_ls", "html", "cssls"}
+M.navic_ignore = { "eslint", "emmet_ls", "html", "cssls" }
 
 return M

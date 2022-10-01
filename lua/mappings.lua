@@ -66,7 +66,7 @@ M.lsp = function(bufnr)
   nnoremap("<C-k>", vim.lsp.buf.signature_help, opts)
   nnoremap("<leader>D", vim.lsp.buf.type_definition, opts)
   nnoremap("<leader>rn", vim.lsp.buf.rename, opts)
-  nnoremap("<leader>d", vim.diagnostic.open_float, opts)
+  nnoremap("<leader>od", vim.diagnostic.open_float, opts)
   nnoremap("<leader>ca", vim.lsp.buf.code_action, opts)
   nnoremap("<leader>fm", function() vim.lsp.buf.format({ async = true }) end, opts)
   vnoremap("<leader>fm", vim.lsp.buf.range_formatting, opts)
@@ -82,8 +82,16 @@ end
 
 -- Harpoon
 nnoremap("<leader>a", require("harpoon.mark").add_file, silent)
-nnoremap("<leader>e", function() require("harpoon.ui").toggle_quick_menu({ mark = true }) end, silent)
-nnoremap("<leader>o", function() require("harpoon.ui").toggle_quick_menu({ mark = false }) end, silent)
+nnoremap(
+  "<leader>e",
+  function() require("harpoon.ui").toggle_quick_menu({ mark = true }) end,
+  silent
+)
+nnoremap(
+  "<leader>o",
+  function() require("harpoon.ui").toggle_quick_menu({ mark = false }) end,
+  silent
+)
 
 nnoremap("<leader>hn", function() require("harpoon.ui").nav_file(1) end)
 nnoremap("<leader>he", function() require("harpoon.ui").nav_file(2) end)
@@ -116,6 +124,10 @@ nnoremap("<F2>", require("dap").step_into, silent)
 nnoremap("<F3>", require("dap").step_over, silent)
 nnoremap("<F4>", require("dap").step_out, silent)
 nnoremap("<leader>db", require("dap").toggle_breakpoint, silent)
-nnoremap("<leader>DB", function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end, silent)
+nnoremap(
+  "<leader>DB",
+  function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
+  silent
+)
 
 return M

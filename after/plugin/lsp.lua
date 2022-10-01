@@ -9,7 +9,9 @@ if vim.tbl_contains({ lspconfig, navic }, nil) then return end
 
 local function on_attach(client, bufnr)
   require("mappings").lsp(bufnr)
-  if not vim.tbl_contains(lspsettings.navic_ignore, client.name) then navic.attach(client, bufnr) end
+  if not vim.tbl_contains(lspsettings.navic_ignore, client.name) then
+    navic.attach(client, bufnr)
+  end
   if client.server_capabilities.documentHighlightProvider then require("autocmds").lsp(bufnr) end
 end
 

@@ -18,3 +18,11 @@ vim.api.nvim_create_user_command("GoTesting", function()
 end, {})
 
 vim.api.nvim_create_user_command("TIME", function() print(os.date("%a %b %d, %Y %H:%M:%S")) end, {})
+
+vim.api.nvim_create_user_command(
+  "DapClearBreakpoints",
+  function() require("dap").clear_breakpoints() end,
+  {
+    desc = "Clear all DAP breakpoints",
+  }
+)
