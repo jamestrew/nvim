@@ -69,7 +69,6 @@ M.lsp = function(bufnr)
   nnoremap("<leader>od", vim.diagnostic.open_float, opts)
   nnoremap("<leader>ca", vim.lsp.buf.code_action, opts)
   nnoremap("<leader>fm", function() vim.lsp.buf.format({ async = true }) end, opts)
-  vnoremap("<leader>fm", vim.lsp.buf.range_formatting, opts)
 
   -- Lsp Tele
   nnoremap("gd", require("jtelescope").lsp_definition, opts)
