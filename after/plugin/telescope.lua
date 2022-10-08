@@ -145,6 +145,7 @@ require("telescope").setup({
 
 require("neoclip").setup({
   default_register = "+",
+  enable_persistent_history = not Work,
   keys = {
     telescope = {
       i = {
