@@ -90,6 +90,7 @@ return packer.startup({
     use({ "jamestrew/git-worktree.nvim" })
     use({ "tpope/vim-fugitive" })
     use({ "TimUntersberger/neogit" })
+    use({ "kkharji/sqlite.lua" })
     use({ "sindrets/diffview.nvim" })
     use({ "petertriho/cmp-git", disable = Work })
 
