@@ -4,17 +4,11 @@ local utils = require("utils")
 
 local M = {}
 
-local checkwidth = function()
-  local squeeze_width = vim.fn.winwidth(0) / 2
-  if squeeze_width > 60 then return true end
-  return false
-end
-
 M.file_name_custom = function()
   local prefix, filename, suffix = "", vim.fn.expand("%:p"), ""
 
   prefix = require("nvim-web-devicons").get_icon_by_filetype(vim.bo.filetype) or ""
-  local max_len = checkwidth() and 75 or 50
+  local max_len = 150
   filename = Path:new(filename):make_relative(vim.loop.cwd())
   if #filename > max_len then filename = Path:new(filename):shorten() end
 

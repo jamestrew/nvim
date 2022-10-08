@@ -31,6 +31,7 @@ ts_config.setup({
   highlight = {
     enable = true,
     use_languagetree = true,
+    disable = { "help" },
   },
   matchup = {
     enable = true,
