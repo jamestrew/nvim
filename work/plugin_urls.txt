@@ -8,9 +8,9 @@ https://github.com/andweeb/presence.nvim
 https://github.com/andymass/vim-matchup
 https://github.com/b0o/SchemaStore.nvim
 https://github.com/booperlv/nvim-gomove
-https://github.com/editorconfig/editorconfig-vim
 https://github.com/feline-nvim/feline.nvim
 https://github.com/folke/lua-dev.nvim
+https://github.com/gpanders/editorconfig.nvim
 https://github.com/hrsh7th/cmp-buffer
 https://github.com/hrsh7th/cmp-cmdline
 https://github.com/hrsh7th/cmp-nvim-lsp

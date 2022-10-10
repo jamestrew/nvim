@@ -81,7 +81,7 @@ return packer.startup({
     use({ "mbbill/undotree", event = "BufRead" })
     use({ "booperlv/nvim-gomove" })
     use({ "andymass/vim-matchup" })
-    use({ "editorconfig/editorconfig-vim", disable = Work })
+    use({ "gpanders/editorconfig.nvim", disable = Work })
     use({ "mattn/emmet-vim", event = "BufRead", disable = Work })
     use({ "Vimjas/vim-python-pep8-indent" })
 
