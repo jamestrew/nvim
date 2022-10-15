@@ -54,6 +54,7 @@ https://github.com/rcarriga/nvim-dap-ui
 https://github.com/saadparwaiz1/cmp_luasnip
 https://github.com/simrat39/symbols-outline.nvim
 https://github.com/sindrets/diffview.nvim
+https://github.com/smjonas/live-command.nvim
 https://github.com/stevearc/dressing.nvim
 https://github.com/theHamsta/nvim-dap-virtual-text
 https://github.com/tjdevries/colorbuddy.vim

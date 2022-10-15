@@ -84,6 +84,7 @@ return packer.startup({
     use({ "gpanders/editorconfig.nvim", disable = Work })
     use({ "mattn/emmet-vim", event = "BufRead", disable = Work })
     use({ "Vimjas/vim-python-pep8-indent" })
+    use({ "smjonas/live-command.nvim" })
 
     -- Git
     use({ "lewis6991/gitsigns.nvim" })

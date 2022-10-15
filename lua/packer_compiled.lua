@@ -201,6 +201,11 @@ _G.packer_plugins = {
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
+  ["live-command.nvim"] = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/live-command.nvim",
+    url = "https://github.com/smjonas/live-command.nvim"
+  },
   ["lspkind-nvim"] = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
