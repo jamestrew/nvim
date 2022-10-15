@@ -119,6 +119,7 @@ return packer.startup({
       cmd = "MarkdownPreview",
       disable = Work,
     })
+    use({ "mrjones2014/smart-splits.nvim" })
   end,
   config = {
     compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",

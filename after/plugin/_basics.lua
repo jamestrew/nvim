@@ -10,6 +10,7 @@ local configs = {
   ["scrollbar"] = {},
   ["nvim-surround"] = {},
   ["mason"] = {},
+  ["smart-splits"] = {},
 }
 
 for plugin_name, config in pairs(configs) do

@@ -137,4 +137,7 @@ M.gitsigns = function(bufnr)
   vnoremap(l("hr"), ":Gitsigns reset_hunk<CR>", opts)
 end
 
+-- smart split
+nnoremap(l("sp"), require("smart-splits").start_resize_mode, silent)
+
 return M

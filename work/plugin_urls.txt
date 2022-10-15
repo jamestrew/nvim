@@ -34,6 +34,7 @@ https://github.com/lukas-reineke/indent-blankline.nvim
 https://github.com/mattn/emmet-vim
 https://github.com/mbbill/undotree
 https://github.com/mfussenegger/nvim-dap
+https://github.com/mrjones2014/smart-splits.nvim
 https://github.com/nathom/filetype.nvim
 https://github.com/neovim/nvim-lspconfig
 https://github.com/norcalli/nvim-colorizer.lua
