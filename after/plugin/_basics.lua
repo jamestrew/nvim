@@ -6,7 +6,7 @@ local configs = {
   ["colorizer"] = { "*" },
   ["gomove"] = {},
   ["neoclip"] = {},
-  ["hop"] = { key = "tnhesoaiwfrudpclm" },
+  ["hop"] = { key = "tnhesoairucldp" },
   ["scrollbar"] = {},
   ["nvim-surround"] = {},
   ["mason"] = {},

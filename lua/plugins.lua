@@ -120,6 +120,7 @@ return packer.startup({
       disable = Work,
     })
     use({ "mrjones2014/smart-splits.nvim" })
+    use({ "nagy135/typebreak.nvim" })
   end,
   config = {
     compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",

@@ -140,4 +140,6 @@ end
 -- smart split
 nnoremap(l("sp"), require("smart-splits").start_resize_mode, silent)
 
+nnoremap(l("tb"), require("typebreak").start)
+
 return M
