@@ -24,6 +24,7 @@ local ensure_installed = {
   "typescript",
   "vim",
   "yaml",
+  "markdown",
 }
 
 ts_config.setup({

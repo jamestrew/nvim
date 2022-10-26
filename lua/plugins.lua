@@ -77,6 +77,7 @@ return packer.startup({
     use({ "lukas-reineke/indent-blankline.nvim" })
     use({ "norcalli/nvim-colorizer.lua" })
     use({ "phaazon/hop.nvim" })
+    use({ "ggandor/leap.nvim" })
     use({ "kylechui/nvim-surround" })
     use({ "mbbill/undotree", event = "BufRead" })
     use({ "booperlv/nvim-gomove" })

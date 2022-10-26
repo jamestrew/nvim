@@ -96,7 +96,7 @@ nnoremap(l("tn"), function() require("harpoon.term").gotoTerminal(1) end)
 nnoremap(l("te"), function() require("harpoon.term").gotoTerminal(2) end)
 
 -- git wrapper
-nnoremap(l("gs"), ":Neogit<CR>", silent)
+nnoremap(l("gs"), require("neogit").open, silent)
 
 -- Hop
 nnoremap(l(l("b")), ":HopWordBC<CR>")
@@ -141,5 +141,7 @@ end
 nnoremap(l("sp"), require("smart-splits").start_resize_mode, silent)
 
 nnoremap(l("tb"), require("typebreak").start)
+
+require("leap").add_default_mappings()
 
 return M
