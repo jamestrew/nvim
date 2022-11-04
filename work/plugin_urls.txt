@@ -1,6 +1,7 @@
 https://github.com/AckslD/nvim-neoclip.lua
 https://github.com/JoosepAlviste/nvim-ts-context-commentstring
 https://github.com/L3MON4D3/LuaSnip
+https://github.com/MunifTanjim/nui.nvim
 https://github.com/SmiteshP/nvim-navic
 https://github.com/TimUntersberger/neogit
 https://github.com/Vimjas/vim-python-pep8-indent
@@ -10,6 +11,7 @@ https://github.com/b0o/SchemaStore.nvim
 https://github.com/booperlv/nvim-gomove
 https://github.com/feline-nvim/feline.nvim
 https://github.com/folke/neodev.nvim
+https://github.com/folke/noice.nvim
 https://github.com/ggandor/leap.nvim
 https://github.com/gpanders/editorconfig.nvim
 https://github.com/hrsh7th/cmp-buffer

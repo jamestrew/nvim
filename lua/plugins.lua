@@ -92,7 +92,6 @@ return packer.startup({
     use({ "jamestrew/git-worktree.nvim" })
     use({ "tpope/vim-fugitive" })
     use({ "TimUntersberger/neogit" })
-    use({ "kkharji/sqlite.lua" })
     use({ "sindrets/diffview.nvim" })
     use({ "petertriho/cmp-git", disable = Work })
 
@@ -104,8 +103,12 @@ return packer.startup({
     use({ "onsails/lspkind-nvim" })
     use({ "stevearc/dressing.nvim" })
     use({ "levouh/tint.nvim" })
+    use({ "MunifTanjim/nui.nvim" })
+    use({ "folke/noice.nvim" })
+    -- use({ "rcarriga/nvim-notify" })
 
     -- Others
+    use({ "kkharji/sqlite.lua" })
     use({ "AckslD/nvim-neoclip.lua" })
     use({ "nathom/filetype.nvim" })
     use({ "lewis6991/impatient.nvim" })
