@@ -125,6 +125,10 @@ return packer.startup({
     })
     use({ "mrjones2014/smart-splits.nvim" })
     use({ "nagy135/typebreak.nvim" })
+    use({ "tpope/vim-dadbod" })
+    use({ "kristijanhusak/vim-dadbod-ui" })
+    use({ "kristijanhusak/vim-dadbod-completion" })
+
   end,
   config = {
     compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",

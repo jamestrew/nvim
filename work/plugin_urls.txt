@@ -27,6 +27,8 @@ https://github.com/jamestrew/git-worktree.nvim
 https://github.com/jamestrew/harpoon
 https://github.com/jose-elias-alvarez/null-ls.nvim
 https://github.com/kkharji/sqlite.lua
+https://github.com/kristijanhusak/vim-dadbod-completion
+https://github.com/kristijanhusak/vim-dadbod-ui
 https://github.com/kyazdani42/nvim-web-devicons
 https://github.com/kylechui/nvim-surround
 https://github.com/leoluz/nvim-dap-go
@@ -63,6 +65,7 @@ https://github.com/smjonas/live-command.nvim
 https://github.com/stevearc/dressing.nvim
 https://github.com/theHamsta/nvim-dap-virtual-text
 https://github.com/tjdevries/colorbuddy.vim
+https://github.com/tpope/vim-dadbod
 https://github.com/tpope/vim-fugitive
 https://github.com/tpope/vim-scriptease
 https://github.com/wbthomason/packer.nvim
