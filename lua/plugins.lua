@@ -128,7 +128,7 @@ return packer.startup({
     use({ "tpope/vim-dadbod" })
     use({ "kristijanhusak/vim-dadbod-ui" })
     use({ "kristijanhusak/vim-dadbod-completion" })
-
+    use({ "samjwill/nvim-unception" })
   end,
   config = {
     compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
