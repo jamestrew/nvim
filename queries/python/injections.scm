@@ -1,8 +1,3 @@
-; crs.execute('')
-(call
-  (attribute
-    object: (identifier) @_obj (#eq? @_obj "crs")
-    attribute: (identifier) @_attr (#eq? @_attr "execute"))
-  (argument_list
-    (string) @sql)
-)
+; sql
+((string) @sql (#contains? @sql "SELECT" "INSERT" "UPDATE" "DELETE" "CREATE" "ALTER") (#offset! @sql 1 0 -1 0))
+
