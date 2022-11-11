@@ -32,6 +32,7 @@ local function deprioritize_snippet(entry1, entry2)
 end
 
 cmp.setup({
+  preselect = cmp.PreselectMode.None,
   formatting = {
     format = lspkind.cmp_format(),
   },
@@ -39,7 +40,7 @@ cmp.setup({
     expand = function(args) require("luasnip").lsp_expand(args.body) end,
   },
   completion = {
-    completeopt = "menuone,noselect",
+    completeopt = "menu,menuone,noselect",
   },
   mapping = cmp.mapping.preset.insert({
     ["<C-d>"] = cmp.mapping.scroll_docs(4),
@@ -47,7 +48,7 @@ cmp.setup({
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.close(),
     ["<CR>"] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
+      -- behavior = cmp.ConfirmBehavior.Replace,
       select = false,
     }),
   }),

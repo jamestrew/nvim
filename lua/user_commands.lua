@@ -26,3 +26,10 @@ vim.api.nvim_create_user_command(
     desc = "Clear all DAP breakpoints",
   }
 )
+
+vim.api.nvim_create_user_command("SQL", function()
+  vim.cmd("tabnew")
+  vim.cmd("DBUI")
+end, {
+  desc = "Open Dadbod UI in a new tab",
+})

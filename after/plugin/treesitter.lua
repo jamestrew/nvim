@@ -41,7 +41,7 @@ ts_config.setup({
   },
   indent = {
     enable = true,
-    disable = { "python", "c", "lua", "cpp" },
+    disable = { "python", "c", "cpp" },
   },
   autotag = {
     enable = true,
