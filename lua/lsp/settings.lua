@@ -44,7 +44,7 @@ M.emmet_ls = {
 M.server_list = {
   "vimls",
   "cssls",
-  "sqls",
+  -- "sqls",
   "pyright",
   "eslint",
   "emmet_ls",
@@ -69,6 +69,6 @@ M.work_server_list = {
   "tsserver",
 }
 
-M.navic_ignore = { "eslint", "emmet_ls", "html", "cssls" }
+M.navic_ignore = { "eslint", "emmet_ls", "html", "cssls", "sqls"}
 
 return M

@@ -16,11 +16,6 @@ local function on_attach(client, bufnr)
 end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
--- below is deprecated but some users reporting issues with new method above
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
--- capabilities.textDocument.completion.completionItem.snippetSupport = true
--- capabilities.offsetEncoding = { "utf-16" }
 
 for _, server in ipairs(Work and lspsettings.work_server_list or lspsettings.server_list) do
   local opts = {
