@@ -1,7 +1,7 @@
 local import = require("utils").import
 
 local opts = {
-  tint = -50,
+  tint = -35,
   tint_background_colors = false,
   highlight_ignore_patterns = { "WinSeparator", "Telescope*", "LineNr" },
   window_ignore_function = function(winid)

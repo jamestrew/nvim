@@ -24,7 +24,6 @@ https://github.com/hrsh7th/nvim-cmp
 https://github.com/iamcco/markdown-preview.nvim
 https://github.com/j-hui/fidget.nvim
 https://github.com/jamestrew/git-worktree.nvim
-https://github.com/jamestrew/harpoon
 https://github.com/jose-elias-alvarez/null-ls.nvim
 https://github.com/kkharji/sqlite.lua
 https://github.com/kristijanhusak/vim-dadbod-completion
@@ -66,6 +65,7 @@ https://github.com/sindrets/diffview.nvim
 https://github.com/smjonas/live-command.nvim
 https://github.com/stevearc/dressing.nvim
 https://github.com/theHamsta/nvim-dap-virtual-text
+https://github.com/thePrimeagen/harpoon
 https://github.com/tjdevries/colorbuddy.vim
 https://github.com/tpope/vim-dadbod
 https://github.com/tpope/vim-fugitive

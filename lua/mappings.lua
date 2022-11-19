@@ -12,6 +12,8 @@ vim.cmd([[nmap <F1> <nop>]])
 vim.cmd([[command W :w]])
 vim.cmd([[command Q :q]])
 vim.cmd([[command Wq :wq]])
+vim.cmd([[command Wqa :wqa]])
+vim.cmd([[command Qa :qa]])
 
 nnoremap("<CR>", ":nohl<CR>")
 
@@ -85,8 +87,7 @@ end
 
 -- Harpoon
 nnoremap("<leader>a", require("harpoon.mark").add_file, silent)
-nnoremap(l("e"), function() require("harpoon.ui").toggle_quick_menu({ mark = true }) end, silent)
-nnoremap(l("o"), function() require("harpoon.ui").toggle_quick_menu({ mark = false }) end, silent)
+nnoremap(l("e"), function() require("harpoon.ui").toggle_quick_menu() end, silent)
 
 nnoremap(l("hn"), function() require("harpoon.ui").nav_file(1) end)
 nnoremap(l("he"), function() require("harpoon.ui").nav_file(2) end)

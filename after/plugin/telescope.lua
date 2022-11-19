@@ -61,6 +61,7 @@ require("telescope").setup({
       i = {
         ["<C-p>"] = actions.move_selection_better,
         ["<C-n>"] = actions.move_selection_worse,
+        ["<C-s>"] = actions.select_horizontal,
         ["<Esc>"] = actions.close,
         ["<C-c>"] = false,
         ["<M-p>"] = action_layout.toggle_preview,
@@ -115,14 +116,12 @@ require("telescope").setup({
           ["<A-n>"] = require("telescope._extensions.file_browser.actions").select_all,
           ["<A-f>"] = tele_utils.open_using(builtin.find_files),
           ["<A-g>"] = tele_utils.open_using(builtin.live_grep),
-          ["<A-a>"] = require("harpoon.browser").add_folder,
           ["<C-s>"] = require("telescope._extensions.file_browser.actions").sort_by_date,
         },
         n = {
           ["<A-f>"] = tele_utils.open_using(builtin.find_files),
           ["<A-g>"] = tele_utils.open_using(builtin.live_grep),
           ["<C-b>"] = require("telescope._extensions.file_browser.actions").goto_parent_dir,
-          ["<A-a>"] = require("harpoon.browser").add_folder,
           ["s"] = require("telescope._extensions.file_browser.actions").sort_by_date,
         },
       },

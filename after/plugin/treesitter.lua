@@ -1,5 +1,5 @@
 local ts_config = require("nvim-treesitter.configs")
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 
 local ensure_installed = {
   "bash",
@@ -26,7 +26,7 @@ local ensure_installed = {
   "vim",
   "yaml",
   "markdown",
-  "monkey"
+  "regex",
 }
 
 ts_config.setup({
@@ -123,7 +123,7 @@ ts_config.setup({
 parser_config.monkey = {
   install_info = {
     url = "~/projects/tree-sitter-monkey", -- local path or git repo
-    files = {"src/parser.c"},
+    files = { "src/parser.c" },
     -- optional entries:
     branch = "master", -- default branch in case of git repo if different from master
     generate_requires_npm = false, -- if stand-alone parser without npm dependencies

@@ -26,9 +26,9 @@ local opts = {
     -- NOTE: If you enable messages, then the cmdline is enabled automatically.
     -- This is a current Neovim limitation.
     enabled = true, -- enables the Noice messages UI
-    view = "notify", -- default view for messages
-    view_error = "notify", -- view for errors
-    view_warn = "notify", -- view for warnings
+    view = "mini", -- default view for messages
+    view_error = "mini", -- view for errors
+    view_warn = "mini", -- view for warnings
     view_history = "messages", -- view for :messages
     view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
   },
@@ -104,11 +104,11 @@ local opts = {
     },
     override = {
       -- override the default lsp markdown formatter with Noice
-      ["vim.lsp.util.convert_input_to_markdown_lines"] = false,
+      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
       -- override the lsp markdown formatter with Noice
-      ["vim.lsp.util.stylize_markdown"] = false,
+      ["vim.lsp.util.stylize_markdown"] = true,
       -- override cmp documentation with Noice (needs the other options to work)
-      ["cmp.entry.get_documentation"] = false,
+      ["cmp.entry.get_documentation"] = true,
     },
     hover = {
       enabled = true,
@@ -182,11 +182,17 @@ local opts = {
   },
   throttle = 1000 / 30, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
   ---@type NoiceConfigViews
-  views = {}, ---@see section on views
+  views = {
+    cmdline_popup = {
+      position = {
+        row = "10%",
+      },
+    },
+  }, ---@see section on views
   ---@type NoiceRouteConfig[]
   routes = {
     {
-      view = "notify",
+      view = "mini",
       filter = { event = "msg_showmode" },
     },
   }, --- @see section on routes

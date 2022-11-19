@@ -189,7 +189,7 @@ _G.packer_plugins = {
   harpoon = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/harpoon",
-    url = "https://github.com/jamestrew/harpoon"
+    url = "https://github.com/thePrimeagen/harpoon"
   },
   ["hop.nvim"] = {
     loaded = true,
@@ -482,7 +482,7 @@ vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-prev
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'undotree', 'playground', 'nvim-ts-context-commentstring', 'emmet-vim'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'undotree', 'emmet-vim', 'playground', 'nvim-ts-context-commentstring'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 
