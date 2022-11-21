@@ -29,6 +29,14 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   group = my_augroup,
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+		vim.lsp.buf.format()
+	end,
+  group = my_augroup,
+})
+
 vim.api.nvim_create_autocmd("User", {
   pattern = "PackerComplete",
   callback = require("utils").plugin_urls,
