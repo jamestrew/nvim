@@ -21,7 +21,12 @@ local function load_plugins()
   require("packer").startup({
     {
       "wbthomason/packer.nvim",
-      "levouh/tint.nvim",
+      "folke/noice.nvim",
+      "MunifTanjim/nui.nvim",
+      "TimUntersberger/neogit",
+      "nvim-lua/plenary.nvim",
+
+      "folke/tokyonight.nvim",
     },
     config = {
       package_root = package_root,
@@ -31,17 +36,9 @@ local function load_plugins()
 end
 
 _G.load_config = function()
-  vim.opt.termguicolors = true
-  vim.opt.relativenumber = true
-  vim.opt.number = true
-
-  vim.cmd([[hi LineNr guifg=red]])
-  vim.cmd([[hi VertSplit guifg=red]])
-
-  require("tint").setup({
-    tint = -200, -- exaggerated for effect
-    highlight_ignore_patterns = { "WinSeparator", "VertSplit", "LineNr" },
-  })
+  vim.cmd([[colorscheme tokyonight]])
+  require("neogit").setup()
+  require("noice").setup()
 end
 
 if vim.fn.isdirectory(install_path) == 0 then

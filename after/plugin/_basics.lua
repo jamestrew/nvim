@@ -1,7 +1,7 @@
 local import = require("utils").import
 
 local configs = {
-  ["fidget"] = { text = { spinner = { "🙈", "🙉", "🙊" } }, timer = { spinner_rate = 250 } },
+  ["fidget"] = { text = { spinner = "bouncing_ball" }, timer = { spinner_rate = 250 } },
   ["nvim-autopairs"] = {},
   ["colorizer"] = { "*" },
   ["gomove"] = {},

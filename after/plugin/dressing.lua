@@ -1,7 +1,6 @@
-local ok, dressing = pcall(require, "dressing")
-if not ok then vim.notify("dressing.nvim missing") end
+local import = require("utils").import
 
-dressing.setup({
+local setup = {
   input = {
     -- Set to false to disable the vim.ui.input implementation
     enabled = false,
@@ -119,4 +118,6 @@ dressing.setup({
     -- see :help dressing_get_config
     get_config = nil,
   },
-})
+}
+
+-- import("dressing", setup)
