@@ -122,7 +122,7 @@ ts_config.setup({
 -- monkey ts setup
 parser_config.monkey = {
   install_info = {
-    url = "~/projects/tree-sitter-monkey", -- local path or git repo
+    url = "~/projects/archive/tree-sitter-monkey", -- local path or git repo
     files = { "src/parser.c" },
     -- optional entries:
     branch = "master", -- default branch in case of git repo if different from master
