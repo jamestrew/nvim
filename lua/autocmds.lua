@@ -31,15 +31,18 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.go",
-  callback = function()
-		vim.lsp.buf.format()
-	end,
+  callback = function() vim.lsp.buf.format() end,
   group = my_augroup,
 })
 
 vim.api.nvim_create_autocmd("User", {
   pattern = "PackerComplete",
   callback = require("utils").plugin_urls,
+  group = my_augroup,
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args) vim.bo[args.buf].formatexpr = nil end,
   group = my_augroup,
 })
 
