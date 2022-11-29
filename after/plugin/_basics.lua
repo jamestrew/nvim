@@ -11,7 +11,6 @@ local configs = {
   ["nvim-surround"] = {},
   ["mason"] = {},
   ["smart-splits"] = {},
-  -- ["noice"] = {}
 }
 
 for plugin_name, config in pairs(configs) do
