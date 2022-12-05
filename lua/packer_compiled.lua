@@ -459,11 +459,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/vim-python-pep8-indent",
     url = "https://github.com/Vimjas/vim-python-pep8-indent"
-  },
-  ["vim-scriptease"] = {
-    loaded = true,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/start/vim-scriptease",
-    url = "https://github.com/tpope/vim-scriptease"
   }
 }
 
@@ -482,7 +477,7 @@ vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-prev
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'playground', 'undotree', 'emmet-vim', 'nvim-ts-context-commentstring'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-ts-context-commentstring', 'undotree', 'playground', 'emmet-vim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 

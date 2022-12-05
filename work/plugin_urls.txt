@@ -69,7 +69,6 @@ https://github.com/thePrimeagen/harpoon
 https://github.com/tjdevries/colorbuddy.vim
 https://github.com/tpope/vim-dadbod
 https://github.com/tpope/vim-fugitive
-https://github.com/tpope/vim-scriptease
 https://github.com/wbthomason/packer.nvim
 https://github.com/wellle/targets.vim
 https://github.com/williamboman/mason.nvim

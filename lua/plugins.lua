@@ -116,7 +116,6 @@ return packer.startup({
     use({ "j-hui/fidget.nvim" })
     use({ "petertriho/nvim-scrollbar" })
     use({ "andweeb/presence.nvim", disable = Work })
-    use({ "tpope/vim-scriptease", disable = Work })
     use({
       "iamcco/markdown-preview.nvim",
       ft = { "markdown" },

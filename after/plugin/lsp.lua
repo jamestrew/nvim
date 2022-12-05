@@ -38,7 +38,7 @@ vim.api.nvim_command([[ hi def link LspReferenceRead CursorLine ]])
 
 require 'lspconfig.configs'.monkeyls = {
   default_config = {
-    cmd = { "/home/jt/go/bin/golsp-sdk", "--logs", "/tmp/golsp.log"},
+    cmd = { "/home/jt/go/bin/golsp", "--logs", "/tmp/golsp.log"},
     filetypes = { "mon" },
     single_file_support = true,
     root_dir = lspconfig.util.root_pattern("test"),

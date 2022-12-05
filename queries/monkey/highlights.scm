@@ -1,1 +1,1 @@
-/home/jt/projects/tree-sitter-monkey/queries/highlights.scm
+/home/jt/projects/archive/tree-sitter-monkey/queries/highlights.scm
