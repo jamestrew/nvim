@@ -40,6 +40,8 @@ nnoremap(l("ss"), require("utils").save_and_source)
 nnoremap(l("fr"), ":norm! V<CR> :s/") -- quick find & replace
 vnoremap(l("fr"), ":s/") -- quick find & replace
 
+nnoremap(l("rs"), utils.rsync_work_files)
+
 ------------------------                  -------------------------
 ------------------------ Plugin Specifics -------------------------
 ------------------------                  -------------------------

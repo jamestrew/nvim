@@ -49,13 +49,12 @@ return packer.startup({
     use({ "hrsh7th/cmp-nvim-lsp" })
     use({ "saadparwaiz1/cmp_luasnip" })
     use({ "hrsh7th/cmp-cmdline" })
-    use({ "hrsh7th/cmp-nvim-lsp-signature-help" })
     use({ "rafamadriz/friendly-snippets" })
     use({ "folke/neodev.nvim" })
     use({ "b0o/SchemaStore.nvim" })
     use({ "simrat39/symbols-outline.nvim" })
     use({ "jose-elias-alvarez/null-ls.nvim" })
-    use({ "nvim-treesitter/playground", event = "BufRead", disable = Work })
+    use({ "nvim-treesitter/playground", event = "BufRead" })
 
     -- DAP
     use({ "mfussenegger/nvim-dap" })
