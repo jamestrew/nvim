@@ -122,11 +122,6 @@ nnoremap("<F2>", require("dap").step_into, silent)
 nnoremap("<F3>", require("dap").step_over, silent)
 nnoremap("<F4>", require("dap").step_out, silent)
 nnoremap(l("db"), require("dap").toggle_breakpoint, silent)
-nnoremap(
-  l("DB"),
-  function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
-  silent
-)
 
 M.gitsigns = function(bufnr)
   local opts = { silent = true, buffer = bufnr }
