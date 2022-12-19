@@ -11,6 +11,7 @@ local configs = {
   ["nvim-surround"] = {},
   ["mason"] = {},
   ["smart-splits"] = {},
+  ["no-neck-pain"] = { debug = false, buffers = { right = false } },
 }
 
 for plugin_name, config in pairs(configs) do
