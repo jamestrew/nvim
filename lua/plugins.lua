@@ -67,6 +67,7 @@ return packer.startup({
     use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
     use({ "nvim-telescope/telescope-file-browser.nvim" })
     use({ "nvim-telescope/telescope-live-grep-args.nvim" })
+    use({ "debugloop/telescope-undo.nvim" })
     use({ "thePrimeagen/harpoon" })
 
     -- Editing Support

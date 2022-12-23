@@ -35,3 +35,5 @@ vim.api.nvim_create_user_command(
   function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
   {}
 )
+
+vim.api.nvim_create_user_command("NNP", ":NoNeckPain", {})

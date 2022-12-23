@@ -9,6 +9,7 @@ https://github.com/andweeb/presence.nvim
 https://github.com/andymass/vim-matchup
 https://github.com/b0o/SchemaStore.nvim
 https://github.com/booperlv/nvim-gomove
+https://github.com/debugloop/telescope-undo.nvim
 https://github.com/feline-nvim/feline.nvim
 https://github.com/folke/neodev.nvim
 https://github.com/folke/noice.nvim

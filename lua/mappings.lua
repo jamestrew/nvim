@@ -66,6 +66,7 @@ nnoremap(l("ff"), require("jtelescope").curbuf, silent)
 nnoremap(l("fc"), ":Telescope commands<CR>", silent)
 nnoremap(l("gh"), require("jtelescope").git_hunks, silent)
 nnoremap(l("vrc"), require("jtelescope").search_dotfiles, silent)
+nnoremap(l(l("u")), ":Telescope undo")
 
 M.lsp = function(bufnr)
   local opts = { silent = true, buffer = bufnr }
@@ -113,9 +114,6 @@ nnoremap(l("gs"), require("neogit").open, silent)
 -- Hop
 nnoremap(l(l("b")), ":HopWordBC<CR>")
 nnoremap(l(l("w")), ":HopWordAC<CR>")
-
--- undotree
-nnoremap(l("u"), ":UndotreeShow<CR>", silent)
 
 -- symbols
 nnoremap(l("so"), ":SymbolsOutline<CR>", silent)

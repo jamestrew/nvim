@@ -408,6 +408,11 @@ _G.packer_plugins = {
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/telescope-live-grep-args.nvim",
     url = "https://github.com/nvim-telescope/telescope-live-grep-args.nvim"
   },
+  ["telescope-undo.nvim"] = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/telescope-undo.nvim",
+    url = "https://github.com/debugloop/telescope-undo.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -483,7 +488,7 @@ vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-prev
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'undotree', 'nvim-ts-context-commentstring', 'emmet-vim', 'playground'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'emmet-vim', 'undotree', 'playground', 'nvim-ts-context-commentstring'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 
