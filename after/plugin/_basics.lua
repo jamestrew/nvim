@@ -11,7 +11,7 @@ local configs = {
   ["nvim-surround"] = {},
   ["mason"] = {},
   ["smart-splits"] = {},
-  ["no-neck-pain"] = { debug = false, buffers = { right = false } },
+  ["no-neck-pain"] = { debug = false, buffers = { right = { enabled = false } } },
 }
 
 for plugin_name, config in pairs(configs) do
@@ -20,25 +20,28 @@ end
 
 --[[
   Mason installs:
+    ◍ typescript-language-server
+    ◍ sqlfluff
+    ◍ gopls
+    ◍ stylua
+    ◍ sql-formatter
+    ◍ pyright
+    ◍ delve
+    ◍ prettier
     ◍ bash-language-server
+    ◍ go-debug-adapter
     ◍ black
     ◍ clang-format
     ◍ clangd
     ◍ css-lsp
-    ◍ delve
     ◍ emmet-ls
     ◍ eslint-lsp
-    ◍ go-debug-adapter
+    ◍ goimports
     ◍ golines
-    ◍ gopls
     ◍ html-lsp
     ◍ json-lsp
     ◍ lua-language-server
     ◍ markdownlint
-    ◍ prettier
-    ◍ pyright
-    ◍ sqlls
-    ◍ stylua
-    ◍ typescript-language-server
+    ◍ sqls
     ◍ vim-language-server
 ]]

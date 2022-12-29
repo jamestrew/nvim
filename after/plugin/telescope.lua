@@ -16,7 +16,6 @@ require("telescope").setup({
       "--smart-case",
     },
     prompt_prefix = "  ",
-    selection_caret = " ",
     entry_prefix = "  ",
     initial_mode = "insert",
     selection_strategy = "reset",
@@ -110,6 +109,7 @@ require("telescope").setup({
       hide_parent_dir = true,
       quiet = true,
       respect_gitignore = false,
+      auto_depth = 2,
       mappings = {
         i = {
           ["<C-b>"] = require("telescope._extensions.file_browser.actions").goto_parent_dir,
