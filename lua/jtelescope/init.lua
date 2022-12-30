@@ -92,32 +92,6 @@ M.lsp_code_actions = function()
   require("telescope.builtin").lsp_code_actions(opts)
 end
 
-M.refactor = function()
-  local refactoring = require("refactoring")
-  local function refactor(prompt_bufnr)
-    local content = action_state.get_selected_entry()
-    actions.close(prompt_bufnr)
-    refactoring.refactor(content.value)
-  end
-
-  local opts = themes.get_cursor()
-
-  pickers
-    .new(opts, {
-      prompt_title = "REFACTOR",
-      finder = finders.new_table({
-        results = refactoring.get_refactors(),
-      }),
-      sorter = config.values.generic_sorter(opts),
-      attach_mappings = function(_, map)
-        map("i", "<CR>", refactor)
-        map("n", "<CR>", refactor)
-        return true
-      end,
-    })
-    :find()
-end
-
 M.neoclip = function()
   local opts = themes.get_ivy()
   require("telescope").extensions.neoclip.default(opts)
@@ -125,28 +99,7 @@ end
 
 M.get_symbols = function(opts)
   opts = opts or themes.get_ivy()
-
-  if true then
-    require("telescope.builtin").lsp_document_symbols(opts)
-    return
-  end
-
-  local ts_healthy = true
-  for _, definitions in ipairs(require("nvim-treesitter.locals").get_definitions()) do
-    if definitions["node"] ~= nil then
-      ts_healthy = false
-      break
-    end
-  end
-
-  -- if vim.bo.filetype == "lua" then
-  --   require("telescope.builtin").lsp_document_symbols(opts)
-  if ts_healthy then
-    require("telescope.builtin").treesitter(opts)
-  else
-    print("[jtelescope] error exists in treesitter nodes - using lsp instead")
-    require("telescope.builtin").lsp_document_symbols(opts)
-  end
+  require("telescope.builtin").lsp_document_symbols(opts)
 end
 
 M.curbuf = function(opts)
@@ -207,13 +160,13 @@ M.git_hunks = function(opts)
 end
 
 M.lsp_reference = function(opts)
-  opts = opts or {}
+  opts = themes.get_dropdown(opts)
   opts.entry_maker = tele_utils.lsp_ref_entry(opts)
   require("telescope.builtin").lsp_references(opts)
 end
 
 M.lsp_definition = function(opts)
-  opts = opts or {}
+  opts = themes.get_dropdown(opts)
   opts.entry_maker = tele_utils.lsp_ref_entry(opts)
   require("telescope.builtin").lsp_definitions(opts)
 end
