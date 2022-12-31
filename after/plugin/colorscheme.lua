@@ -18,6 +18,7 @@ Usage:
 ```
 ]]
 
+
 -- Vim editor colors
 Group.new("Normal", colors.base05, colors.black, styles.NONE)
 Group.new("Bold", colors.none, colors.none, styles.bold)
@@ -270,7 +271,7 @@ Group.new("@parameter", colors.base08, colors.none, styles.NONE)
 Group.new("@parameter.reference", colors.base08, colors.none, styles.NONE)
 Group.new("@method", colors.base0D, colors.none, styles.bold)
 Group.new("@field", colors.base0A, colors.none, styles.NONE)
-Group.new("@property", colors.base08, colors.none, styles.NONE)
+Group.new("@property", colors.base0A, colors.none, styles.NONE)
 Group.new("@constructor", colors.base0C, colors.none, styles.NONE)
 Group.new("@annotation", colors.base0A, colors.none, styles.NONE)
 Group.new("@attribute", colors.base0A, colors.none, styles.NONE)
@@ -301,7 +302,11 @@ Group.new("@definition", colors.base01, colors.base0A, styles.NONE)
 Group.new("@definition.usage", colors.none, colors.base02, styles.NONE)
 Group.new("@currentscope", colors.none, colors.base01, styles.NONE)
 
--- LSP
+-- LSP Semantic Highlighting
+Group.new("@defaultLibrary", colors.base0C, colors.none, styles.NONE)
+Group.new("@declaration", colors.base0A, colors.none, styles.NONE)
+
+-- LSP Diagnostics
 Group.new("DiagnosticError", colors.red, colors.none, styles.NONE)
 Group.new("DiagnosticWarn", colors.yellow, colors.none, styles.NONE)
 Group.new("DiagnosticInfo", colors.blue, colors.none, styles.NONE)
