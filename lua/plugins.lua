@@ -132,6 +132,7 @@ return packer.startup({
     use({ "samjwill/nvim-unception" })
     use({ "shortcuts/no-neck-pain.nvim" })
     use({ "jackMort/ChatGPT.nvim" })
+    use({ "AckslD/messages.nvim" })
   end,
   config = {
     compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",

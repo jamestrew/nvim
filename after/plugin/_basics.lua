@@ -14,6 +14,7 @@ local configs = {
   ["no-neck-pain"] = { debug = false, buffers = { right = { enabled = false } } },
   ["chatgpt"] = {},
   ["auto-hlsearch"] = {},
+  ["messages"] = {},
 }
 
 for plugin_name, config in pairs(configs) do

@@ -37,3 +37,4 @@ vim.api.nvim_create_user_command(
 )
 
 vim.api.nvim_create_user_command("NNP", ":NoNeckPain", {})
+vim.api.nvim_create_user_command("Mess", ":Messages messages", {})

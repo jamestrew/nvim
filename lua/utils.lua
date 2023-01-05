@@ -76,14 +76,9 @@ M.is_dir = function(path) return path:sub(-1, -1) == Path.path.sep end
 M.clear_prompt = function() vim.api.nvim_command("normal :esc<CR>") end
 
 M.save_and_source = function()
-  print("savin' and sourcin'")
-  local ft = vim.bo.filetype
   vim.cmd(":silent! w")
-  if ft == "vim" then
-    vim.cmd(":source %")
-  elseif ft == "lua" then
-    vim.cmd(":luafile %")
-  end
+  vim.cmd.source()
+  vim.cmd("Messages messages")
 end
 
 M.trim_TDAMPA = function(name) return name:gsub("^.*TDAMPA--", "") end

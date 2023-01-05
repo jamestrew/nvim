@@ -1,3 +1,4 @@
+https://github.com/AckslD/messages.nvim
 https://github.com/AckslD/nvim-neoclip.lua
 https://github.com/JoosepAlviste/nvim-ts-context-commentstring
 https://github.com/L3MON4D3/LuaSnip
