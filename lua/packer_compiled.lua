@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["ChatGPT.nvim"] = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/ChatGPT.nvim",
+    url = "https://github.com/jackMort/ChatGPT.nvim"
+  },
   ["Comment.nvim"] = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/Comment.nvim",
@@ -88,6 +93,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/SchemaStore.nvim",
     url = "https://github.com/b0o/SchemaStore.nvim"
+  },
+  ["auto-hlsearch.nvim"] = {
+    loaded = true,
+    path = "/home/jt/.local/share/nvim/site/pack/packer/start/auto-hlsearch.nvim",
+    url = "https://github.com/asiryk/auto-hlsearch.nvim"
   },
   ["cmp-buffer"] = {
     loaded = true,
@@ -488,7 +498,7 @@ vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-prev
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'undotree', 'emmet-vim', 'playground', 'nvim-ts-context-commentstring'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-ts-context-commentstring', 'emmet-vim', 'undotree', 'playground'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 

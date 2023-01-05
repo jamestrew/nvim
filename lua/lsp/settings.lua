@@ -4,7 +4,7 @@ M.sumneko_lua = {
   settings = {
     Lua = {
       completion = {
-        callSnippet = "Replace"
+        callSnippet = "Replace",
       },
       runtime = {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
@@ -41,6 +41,12 @@ M.emmet_ls = {
   filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact" },
 }
 
+M.clangd = {
+  capabilities = {
+    offsetEncoding = { "utf-16" },
+  },
+}
+
 M.server_list = {
   "vimls",
   "cssls",
@@ -69,6 +75,14 @@ M.work_server_list = {
   "tsserver",
 }
 
-M.navic_ignore = { "eslint", "emmet_ls", "html", "cssls", "sqls"}
+M._on_attach = {
+  ["clangd"] = function(client, _) client.server_capabilities.semanticTokensProvider = nil end,
+  ["sumneko_lua"] = function(client, _) client.server_capabilities.semanticTokensProvider = nil end,
+  ["eslint"] = function(client, bufnr) require("nvim-navic").attach(client, bufnr) end,
+  ["emmet_ls"] = function(client, bufnr) require("nvim-navic").attach(client, bufnr) end,
+  ["html"] = function(client, bufnr) require("nvim-navic").attach(client, bufnr) end,
+  ["cssls"] = function(client, bufnr) require("nvim-navic").attach(client, bufnr) end,
+  ["sqls"] = function(client, bufnr) require("nvim-navic").attach(client, bufnr) end,
+}
 
 return M

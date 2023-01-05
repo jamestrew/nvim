@@ -7,6 +7,7 @@ https://github.com/TimUntersberger/neogit
 https://github.com/Vimjas/vim-python-pep8-indent
 https://github.com/andweeb/presence.nvim
 https://github.com/andymass/vim-matchup
+https://github.com/asiryk/auto-hlsearch.nvim
 https://github.com/b0o/SchemaStore.nvim
 https://github.com/booperlv/nvim-gomove
 https://github.com/debugloop/telescope-undo.nvim
@@ -23,6 +24,7 @@ https://github.com/hrsh7th/cmp-path
 https://github.com/hrsh7th/nvim-cmp
 https://github.com/iamcco/markdown-preview.nvim
 https://github.com/j-hui/fidget.nvim
+https://github.com/jackMort/ChatGPT.nvim
 https://github.com/jamestrew/git-worktree.nvim
 https://github.com/jose-elias-alvarez/null-ls.nvim
 https://github.com/kkharji/sqlite.lua

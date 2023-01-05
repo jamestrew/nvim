@@ -87,6 +87,7 @@ return packer.startup({
     use({ "mattn/emmet-vim", event = "BufRead", disable = Work })
     use({ "Vimjas/vim-python-pep8-indent" })
     use({ "smjonas/live-command.nvim" })
+    use({ "asiryk/auto-hlsearch.nvim" })
 
     -- Git
     use({ "lewis6991/gitsigns.nvim" })
@@ -130,6 +131,7 @@ return packer.startup({
     use({ "kristijanhusak/vim-dadbod-completion" })
     use({ "samjwill/nvim-unception" })
     use({ "shortcuts/no-neck-pain.nvim" })
+    use({ "jackMort/ChatGPT.nvim" })
   end,
   config = {
     compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",

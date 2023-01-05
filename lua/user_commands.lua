@@ -9,7 +9,7 @@ vim.api.nvim_create_user_command("GoTesting", function()
     pane = "%" .. pane
     vim.api.nvim_create_autocmd("BufWritePost", {
       pattern = "*.go",
-      callback = function() require("harpoon.tmux").sendCommand(pane, "go test ./...\n") end,
+      callback = function() require("harpoon.tmux").sendCommand(pane, "go test ./... -cover\n") end,
       group = vim.api.nvim_create_augroup("gotesting", { clear = true }),
     })
     gotesting_on = true

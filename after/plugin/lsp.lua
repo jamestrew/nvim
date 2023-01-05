@@ -2,15 +2,14 @@ local import = require("utils").import
 local lspsettings = require("lsp.settings")
 
 local lspconfig = import("lspconfig")
-local navic = import("nvim-navic")
 import("neodev", {})
 
-if vim.tbl_contains({ lspconfig, navic }, nil) then return end
 
 local function on_attach(client, bufnr)
   require("mappings").lsp(bufnr)
-  if not vim.tbl_contains(lspsettings.navic_ignore, client.name) then
-    navic.attach(client, bufnr)
+  local _on_attach = lspsettings._on_attach[client.name]
+  if _on_attach then
+    _on_attach(client, bufnr)
   end
   if client.server_capabilities.documentHighlightProvider then require("autocmds").lsp(bufnr) end
 end

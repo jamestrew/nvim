@@ -3,7 +3,7 @@ local import = require("utils").import
 local configs = {
   ["fidget"] = { text = { spinner = "bouncing_ball" }, timer = { spinner_rate = 250 } },
   ["nvim-autopairs"] = {},
-  ["colorizer"] = { "*" },
+  ["colorizer"] = { "*", "!go" },
   ["gomove"] = {},
   ["neoclip"] = {},
   ["hop"] = { key = "tnhesoairucldp" },
@@ -12,6 +12,8 @@ local configs = {
   ["mason"] = {},
   ["smart-splits"] = {},
   ["no-neck-pain"] = { debug = false, buffers = { right = { enabled = false } } },
+  ["chatgpt"] = {},
+  ["auto-hlsearch"] = {},
 }
 
 for plugin_name, config in pairs(configs) do
