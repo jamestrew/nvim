@@ -15,6 +15,7 @@ M.sumneko_lua = {
       diagnostics = {
         -- Get the language server to recognize the `vim` global
         globals = { "vim" },
+        disable = { "assign-type-mismatch", "doc-field-no-class" },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
