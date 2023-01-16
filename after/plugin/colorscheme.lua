@@ -123,15 +123,18 @@ Group.new("DiffAdd", colors.base0B, colors.none, styles.NONE)
 Group.new("DiffChange", colors.sun, colors.none, styles.NONE)
 Group.new("DiffDelete", colors.base08, colors.none, styles.NONE)
 Group.new("DiffText", colors.base0D, colors.none, styles.NONE)
-Group.new("DiffAdded", colors.base0B, colors.base00, styles.NONE)
-Group.new("DiffFile", colors.base08, colors.base00, styles.NONE)
-Group.new("DiffNewFile", colors.base0B, colors.base00, styles.NONE)
-Group.new("DiffLine", colors.base0D, colors.base00, styles.NONE)
-Group.new("DiffRemoved", colors.base08, colors.base00, styles.NONE)
+Group.new("DiffAdded", colors.base0B, colors.none, styles.NONE)
+Group.new("DiffFile", colors.base08, colors.none, styles.NONE)
+Group.new("DiffNewFile", colors.base0B, colors.none, styles.NONE)
+Group.new("DiffLine", colors.base0D, colors.none, styles.NONE)
+Group.new("DiffRemoved", colors.base08, colors.none, styles.NONE)
 
 -- Gitsigns
+Group.new("GitSignsAdd", colors.base0B, colors.none, styles.NONE)
 Group.new("GitSignsAddNr", colors.base0B, colors.none, styles.NONE)
+Group.new("GitSignsChange", colors.sun, colors.none, styles.NONE)
 Group.new("GitSignsChangeNr", colors.sun, colors.none, styles.NONE)
+Group.new("GitSignsDelete", colors.base08, colors.none, styles.NONE)
 Group.new("GitSignsDeleteNr", colors.base08, colors.none, styles.NONE)
 Group.new("GitSignsCurrentLineBlame", colors.base03, colors.none, styles.NONE)
 
@@ -158,12 +161,6 @@ Group.new("gitcommitUntrackedFile", colors.base0A, colors.none, styles.NONE)
 Group.new("gitcommitUnmergedFile", colors.base08, colors.none, styles.bold)
 Group.new("gitcommitDiscardedFile", colors.base08, colors.none, styles.bold)
 Group.new("gitcommitSelectedFile", colors.base0B, colors.none, styles.bold)
-
--- GitGutter Group
-Group.new("GitGutterAdd", colors.base0B, colors.base01, styles.NONE)
-Group.new("GitGutterChange", colors.base0D, colors.base01, styles.NONE)
-Group.new("GitGutterDelete", colors.base08, colors.base01, styles.NONE)
-Group.new("GitGutterChangeDelete", colors.base0E, colors.base01, styles.NONE)
 
 -- HTML Group
 Group.new("htmlBold", colors.base0A, colors.none, styles.NONE)

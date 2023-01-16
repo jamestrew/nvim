@@ -77,13 +77,18 @@ M.work_server_list = {
 }
 
 M._on_attach = {
-  ["clangd"] = function(client, _) client.server_capabilities.semanticTokensProvider = nil end,
-  ["sumneko_lua"] = function(client, _) client.server_capabilities.semanticTokensProvider = nil end,
-  ["eslint"] = function(client, bufnr) require("nvim-navic").attach(client, bufnr) end,
-  ["emmet_ls"] = function(client, bufnr) require("nvim-navic").attach(client, bufnr) end,
-  ["html"] = function(client, bufnr) require("nvim-navic").attach(client, bufnr) end,
-  ["cssls"] = function(client, bufnr) require("nvim-navic").attach(client, bufnr) end,
-  ["sqls"] = function(client, bufnr) require("nvim-navic").attach(client, bufnr) end,
+  ["clangd"] = function(client, bufnr)
+    client.server_capabilities.semanticTokensProvider = nil
+    require("nvim-navic").attach(client, bufnr)
+  end,
+  ["sumneko_lua"] = function(client, bufnr)
+    client.server_capabilities.semanticTokensProvider = nil
+    require("nvim-navic").attach(client, bufnr)
+  end,
+  ["pyright"] = function(client, bufnr) require("nvim-navic").attach(client, bufnr) end,
+  ["tsserver"] = function(client, bufnr) require("nvim-navic").attach(client, bufnr) end,
+  ["gopls"] = function(client, bufnr) require("nvim-navic").attach(client, bufnr) end,
+  ["jsonls"] = function(client, bufnr) require("nvim-navic").attach(client, bufnr) end,
 }
 
 return M

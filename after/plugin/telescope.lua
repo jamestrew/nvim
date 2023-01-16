@@ -110,6 +110,7 @@ require("telescope").setup({
       quiet = true,
       respect_gitignore = false,
       auto_depth = 2,
+      git_status = true,
       mappings = {
         i = {
           ["<C-b>"] = require("telescope._extensions.file_browser.actions").goto_parent_dir,
