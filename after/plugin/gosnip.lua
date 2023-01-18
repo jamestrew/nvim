@@ -1,6 +1,6 @@
-require("luasnip.session.snippet_collection").clear_snippets "go"
+require("luasnip.session.snippet_collection").clear_snippets("go")
 
-local ls = require "luasnip"
+local ls = require("luasnip")
 
 local snippet_from_nodes = ls.sn
 
@@ -12,23 +12,17 @@ local c = ls.choice_node
 local fmta = require("luasnip.extras.fmt").fmta
 local rep = require("luasnip.extras").rep
 
-local ts_locals = require "nvim-treesitter.locals"
-local ts_utils = require "nvim-treesitter.ts_utils"
+local ts_locals = require("nvim-treesitter.locals")
+local ts_utils = require("nvim-treesitter.ts_utils")
 
 local get_node_text = vim.treesitter.get_node_text
 
 local transforms = {
-  int = function(_, _)
-    return t "0"
-  end,
+  int = function(_, _) return t("0") end,
 
-  bool = function(_, _)
-    return t "false"
-  end,
+  bool = function(_, _) return t("false") end,
 
-  string = function(_, _)
-    return t [[""]]
-  end,
+  string = function(_, _) return t([[""]]) end,
 
   error = function(_, info)
     if info then
@@ -39,15 +33,13 @@ local transforms = {
         t(string.format('errors.Wrap(%s, "%s")', info.err_name, info.func_name)),
       })
     else
-      return t "err"
+      return t("err")
     end
   end,
 
   -- Types with a "*" mean they are pointers, so return nil
-  [function(text)
-    return string.find(text, "*", 1, true) ~= nil
-  end] = function(_, _)
-    return t "nil"
+  [function(text) return string.find(text, "*", 1, true) ~= nil end] = function(_, _)
+    return t("nil")
   end,
 }
 
@@ -61,9 +53,7 @@ local transform = function(text, info)
   end
 
   for condition, result in pairs(transforms) do
-    if condition_matches(condition, text, info) then
-      return result(text, info)
-    end
+    if condition_matches(condition, text, info) then return result(text, info) end
   end
 
   return t(text)
@@ -78,9 +68,7 @@ local handlers = {
       local matching_node = node:named_child(idx)
       local type_node = matching_node:field("type")[1]
       table.insert(result, transform(get_node_text(type_node, 0), info))
-      if idx ~= count - 1 then
-        table.insert(result, t { ", " })
-      end
+      if idx ~= count - 1 then table.insert(result, t({ ", " })) end
     end
 
     return result
@@ -110,11 +98,11 @@ local function go_result_type(info)
     end
   end
 
-	-- TODO: handle not inside a function
-	-- TODO: handle function with no return values (no error return)
+  -- TODO: handle not inside a function
+  -- TODO: handle function with no return values (no error return)
   if not function_node then
-    print "Not inside of a function"
-    return t ""
+    print("Not inside of a function")
+    return t("")
   end
 
   local query = vim.treesitter.parse_query(
@@ -128,20 +116,18 @@ local function go_result_type(info)
     ]]
   )
   for _, node in query:iter_captures(function_node, 0) do
-    if handlers[node:type()] then
-      return handlers[node:type()](node, info)
-    end
+    if handlers[node:type()] then return handlers[node:type()](node, info) end
   end
 end
 
 local go_ret_vals = function(args)
   return snippet_from_nodes(
     nil,
-    go_result_type {
+    go_result_type({
       index = 0,
       err_name = args[1][1],
       func_name = args[2][1],
-    }
+    })
   )
 end
 
@@ -162,8 +148,8 @@ if <err_same> != nil {
         f = i(3),
         args = i(4),
         err_same = rep(2),
-				-- TODO: make the return line a choice node
-				-- don't always want to return values
+        -- TODO: make the return line a choice node
+        -- don't always want to return values
         result = d(5, go_ret_vals, { 2, 3 }),
         finish = i(0),
       }

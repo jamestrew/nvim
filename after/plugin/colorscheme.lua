@@ -18,7 +18,6 @@ Usage:
 ```
 ]]
 
-
 -- Vim editor colors
 Group.new("Normal", colors.base05, colors.black, styles.NONE)
 Group.new("Bold", colors.none, colors.none, styles.bold)

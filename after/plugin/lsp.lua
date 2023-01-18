@@ -4,13 +4,10 @@ local lspsettings = require("lsp.settings")
 local lspconfig = import("lspconfig")
 import("neodev", {})
 
-
 local function on_attach(client, bufnr)
   require("mappings").lsp(bufnr)
   local _on_attach = lspsettings._on_attach[client.name]
-  if _on_attach then
-    _on_attach(client, bufnr)
-  end
+  if _on_attach then _on_attach(client, bufnr) end
   if client.server_capabilities.documentHighlightProvider then require("autocmds").lsp(bufnr) end
 end
 
@@ -35,9 +32,9 @@ vim.api.nvim_command([[ hi def link LspReferenceText CursorLine ]])
 vim.api.nvim_command([[ hi def link LspReferenceWrite CursorLine ]])
 vim.api.nvim_command([[ hi def link LspReferenceRead CursorLine ]])
 
-require 'lspconfig.configs'.monkeyls = {
+require("lspconfig.configs").monkeyls = {
   default_config = {
-    cmd = { "/home/jt/go/bin/golsp", "--logs", "/tmp/golsp.log"},
+    cmd = { "/home/jt/go/bin/golsp", "--logs", "/tmp/golsp.log" },
     filetypes = { "mon" },
     single_file_support = true,
     root_dir = lspconfig.util.root_pattern("test"),
