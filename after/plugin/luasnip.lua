@@ -35,4 +35,3 @@ vim.keymap.set("i", "<C-l>", function()
 end)
 
 require("luasnip.loaders.from_vscode").lazy_load()
-

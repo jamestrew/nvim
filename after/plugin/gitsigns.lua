@@ -10,7 +10,7 @@ local setup = {
   sign_priority = 5,
   status_formatter = nil, -- Use default
 
-  on_attach = require("mappings").gitsigns
+  on_attach = require("mappings").gitsigns,
 }
 
 import("gitsigns", setup)
