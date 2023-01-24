@@ -57,10 +57,10 @@ return packer.startup({
     use({ "nvim-treesitter/playground", event = "BufRead" })
 
     -- DAP
-    use({ "mfussenegger/nvim-dap" })
-    use({ "leoluz/nvim-dap-go" })
-    use({ "rcarriga/nvim-dap-ui" })
-    use({ "theHamsta/nvim-dap-virtual-text" })
+    use({ "mfussenegger/nvim-dap", disable = Work })
+    use({ "leoluz/nvim-dap-go", disable = Work })
+    use({ "rcarriga/nvim-dap-ui", disable = Work })
+    use({ "theHamsta/nvim-dap-virtual-text", disable = Work })
 
     -- Telescope & File Management
     use({ "nvim-telescope/telescope.nvim" })
@@ -79,7 +79,6 @@ return packer.startup({
     use({ "norcalli/nvim-colorizer.lua" })
     use({ "ggandor/leap.nvim" })
     use({ "kylechui/nvim-surround" })
-    use({ "mbbill/undotree", event = "BufRead" })
     use({ "booperlv/nvim-gomove" })
     use({ "andymass/vim-matchup" })
     use({ "gpanders/editorconfig.nvim", disable = Work })
@@ -106,10 +105,9 @@ return packer.startup({
     use({ "levouh/tint.nvim" })
     use({ "MunifTanjim/nui.nvim" })
     use({ "folke/noice.nvim" })
-    -- use({ "rcarriga/nvim-notify" })
 
     -- Others
-    use({ "kkharji/sqlite.lua" })
+    use({ "kkharji/sqlite.lua", disable = Work })
     use({ "AckslD/nvim-neoclip.lua" })
     use({ "nathom/filetype.nvim" })
     use({ "lewis6991/impatient.nvim" })
@@ -124,7 +122,6 @@ return packer.startup({
       disable = Work,
     })
     use({ "mrjones2014/smart-splits.nvim" })
-    use({ "nagy135/typebreak.nvim" })
     use({ "tpope/vim-dadbod" })
     use({ "kristijanhusak/vim-dadbod-ui" })
     use({ "kristijanhusak/vim-dadbod-completion" })

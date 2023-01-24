@@ -423,18 +423,6 @@ _G.packer_plugins = {
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/tint.nvim",
     url = "https://github.com/levouh/tint.nvim"
   },
-  ["typebreak.nvim"] = {
-    loaded = true,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/start/typebreak.nvim",
-    url = "https://github.com/nagy135/typebreak.nvim"
-  },
-  undotree = {
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/jt/.local/share/nvim/site/pack/packer/opt/undotree",
-    url = "https://github.com/mbbill/undotree"
-  },
   ["vim-dadbod"] = {
     loaded = true,
     path = "/home/jt/.local/share/nvim/site/pack/packer/start/vim-dadbod",
@@ -488,7 +476,7 @@ vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-prev
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'undotree', 'playground', 'nvim-ts-context-commentstring', 'emmet-vim'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'playground', 'emmet-vim', 'nvim-ts-context-commentstring'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 
