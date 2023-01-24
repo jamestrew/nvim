@@ -77,7 +77,6 @@ return packer.startup({
     use({ "numToStr/Comment.nvim" })
     use({ "lukas-reineke/indent-blankline.nvim" })
     use({ "norcalli/nvim-colorizer.lua" })
-    use({ "phaazon/hop.nvim" })
     use({ "ggandor/leap.nvim" })
     use({ "kylechui/nvim-surround" })
     use({ "mbbill/undotree", event = "BufRead" })
@@ -130,8 +129,6 @@ return packer.startup({
     use({ "kristijanhusak/vim-dadbod-ui" })
     use({ "kristijanhusak/vim-dadbod-completion" })
     use({ "samjwill/nvim-unception" })
-    use({ "shortcuts/no-neck-pain.nvim" })
-    use({ "jackMort/ChatGPT.nvim" })
     use({ "AckslD/messages.nvim" })
   end,
   config = {

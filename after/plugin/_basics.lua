@@ -6,13 +6,10 @@ local configs = {
   ["colorizer"] = { "*", "!go" },
   ["gomove"] = {},
   ["neoclip"] = {},
-  ["hop"] = { key = "tnhesoairucldp" },
   ["scrollbar"] = {},
   ["nvim-surround"] = {},
   ["mason"] = {},
   ["smart-splits"] = {},
-  ["no-neck-pain"] = { debug = false, buffers = { right = { enabled = false } } },
-  ["chatgpt"] = {},
   ["auto-hlsearch"] = {},
   ["messages"] = {},
 }
@@ -24,27 +21,27 @@ end
 --[[
   Mason installs:
     ◍ typescript-language-server
-    ◍ sqlfluff
-    ◍ gopls
-    ◍ stylua
     ◍ sql-formatter
+    ◍ stylua
     ◍ pyright
-    ◍ delve
-    ◍ prettier
     ◍ bash-language-server
+    ◍ markdownlint
+    ◍ clang-format
+    ◍ prettier
+    ◍ lua-language-server
     ◍ go-debug-adapter
     ◍ black
-    ◍ clang-format
     ◍ clangd
     ◍ css-lsp
+    ◍ delve
     ◍ emmet-ls
     ◍ eslint-lsp
     ◍ goimports
     ◍ golines
+    ◍ gopls
     ◍ html-lsp
     ◍ json-lsp
-    ◍ lua-language-server
-    ◍ markdownlint
+    ◍ sqlfluff
     ◍ sqls
     ◍ vim-language-server
 ]]
