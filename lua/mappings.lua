@@ -120,12 +120,14 @@ nnoremap(l("so"), ":SymbolsOutline<CR>", silent)
 utils.nmap(l("pt"), "<Plug>PlenaryTestFile")
 
 -- DAP
-nnoremap("<F5>", require("dap").continue, silent)
-nnoremap("<F6>", require("dap").terminate, silent)
-nnoremap("<F2>", require("dap").step_into, silent)
-nnoremap("<F3>", require("dap").step_over, silent)
-nnoremap("<F4>", require("dap").step_out, silent)
-nnoremap(l("db"), require("dap").toggle_breakpoint, silent)
+if not Work then
+  nnoremap("<F5>", require("dap").continue, silent)
+  nnoremap("<F6>", require("dap").terminate, silent)
+  nnoremap("<F2>", require("dap").step_into, silent)
+  nnoremap("<F3>", require("dap").step_over, silent)
+  nnoremap("<F4>", require("dap").step_out, silent)
+  nnoremap(l("db"), require("dap").toggle_breakpoint, silent)
+end
 
 M.gitsigns = function(bufnr)
   local opts = { silent = true, buffer = bufnr }
@@ -143,7 +145,6 @@ end
 -- smart split
 nnoremap(l("sp"), require("smart-splits").start_resize_mode, silent)
 
-nnoremap(l("tb"), require("typebreak").start)
 
 require("leap").add_default_mappings()
 
