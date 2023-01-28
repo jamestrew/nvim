@@ -1,12 +1,6 @@
 return {
   { "nvim-lua/plenary.nvim" },
 
-  -- Telescope & File Management
-  { "nvim-telescope/telescope.nvim" },
-  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-  { "nvim-telescope/telescope-file-browser.nvim" },
-  { "nvim-telescope/telescope-live-grep-args.nvim" },
-  { "debugloop/telescope-undo.nvim" },
   { "thePrimeagen/harpoon" },
 
   -- Editing Support
@@ -31,6 +25,7 @@ return {
   { "tpope/vim-fugitive" },
   { "TimUntersberger/neogit" },
   { "sindrets/diffview.nvim" },
+
   -- Looks
   { "feline-nvim/feline.nvim" },
   { "SmiteshP/nvim-navic" },
@@ -44,7 +39,6 @@ return {
 
   -- Others
   { "kkharji/sqlite.lua", enable = not Work },
-  { "AckslD/nvim-neoclip.lua" },
   { "nathom/filetype.nvim" },
   { "lewis6991/impatient.nvim" },
   { "j-hui/fidget.nvim" },

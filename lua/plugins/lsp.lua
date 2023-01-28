@@ -1,7 +1,7 @@
-local utils = require("utils")
 local lspsettings = require("lsp.settings")
-local nnoremap = utils.nnoremap
 local l = require("mappings").l
+local utils = require("utils")
+local nnoremap = utils.nnoremap
 
 local function on_attach(client, bufnr)
   local opts = { silent = true, buffer = bufnr }
@@ -15,20 +15,23 @@ local function on_attach(client, bufnr)
   nnoremap(l("fm"), function() vim.lsp.buf.format({ async = true }) end, opts)
 
   -- Lsp Tele
-  nnoremap("gd", require("jtelescope").lsp_definition, opts)
+  local jtelescope = require("jtelescope")
+  nnoremap("gd", jtelescope.lsp_definition, opts)
   nnoremap(l("gdv"), function()
     vim.cmd.vsplit()
-    require("jtelescope").lsp_definition()
+    jtelescope.lsp_definition()
   end, opts)
   nnoremap(l("gds"), function()
     vim.cmd.split()
-    require("jtelescope").lsp_definition()
+    jtelescope.lsp_definition()
   end, opts)
-  nnoremap("gr", require("jtelescope").lsp_reference, opts)
-  nnoremap(l("gi"), ":Telescope lsp_implementations<CR>", opts)
-  nnoremap(l("fs"), require("jtelescope").get_symbols, opts)
-  nnoremap(l("td"), ":Telescope diagnostics bufnr=0<CR>", opts)
-  nnoremap(l("tw"), ":Telescope diagnostics<CR>", opts)
+
+  local telescope = require("telescope.builtin")
+  nnoremap("gr", jtelescope.lsp_reference, opts)
+  nnoremap(l("gi"), telescope.lsp_implementation, opts)
+  nnoremap(l("fs"), jtelescope.get_symbols, opts)
+  nnoremap(l("td"), function() telescope.diagnostics({ bufnr = 0 }) end, opts)
+  nnoremap(l("tw"), telescope.diagnostics, opts)
 
   local _on_attach = lspsettings._on_attach[client.name]
   if _on_attach then _on_attach(client, bufnr) end
@@ -97,7 +100,13 @@ end
 
 return {
   { "williamboman/mason.nvim", config = true },
-  { "neovim/nvim-lspconfig", config = lsp },
+  {
+    "neovim/nvim-lspconfig",
+    config = lsp,
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
+  },
   { "jose-elias-alvarez/null-ls.nvim", config = null_ls },
   { "folke/neodev.nvim", config = true },
   { "b0o/SchemaStore.nvim" },
