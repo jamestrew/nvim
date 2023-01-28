@@ -1,137 +1,107 @@
-local packer = require("packer")
-local use
-local ts_update
-
---[[
-  Installing all plugins from a local directory for work
-  Only exception is packer itself which I manually put into the packer path (why??)
-
-  bootstrap on work machine:
-  ```
-  lua require'plugins'
-  PackerInstall
-  ```
-]]
-if Work then
-  use = function(opts)
-    opts = opts or {}
-    local install_path = "~/neovim/plugins"
-    if type(opts) == "string" then
-      opts = install_path .. opts:match("%/.*")
-    else
-      opts[1] = install_path .. opts[1]:match("%/.*")
-    end
-    packer.use(opts)
-  end
-  ts_update = nil
-else
-  use = packer.use
-  ts_update = function() require("nvim-treesitter.install").update({ with_sync = true }) end
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-return packer.startup({
-  function()
-    -- packer itself
-    packer.use({ "wbthomason/packer.nvim", lock = Work })
+require("lazy").setup({
 
-    use({ "nvim-lua/plenary.nvim" })
+  { "nvim-lua/plenary.nvim" },
 
-    -- LSP & Treeshitter
-    use({ "nvim-treesitter/nvim-treesitter", run = ts_update })
-    use({ "nvim-treesitter/nvim-treesitter-textobjects" })
-    use({ "williamboman/mason.nvim", disable = Work })
-    use({ "neovim/nvim-lspconfig" })
-    use({ "L3MON4D3/LuaSnip" })
-    use({ "hrsh7th/nvim-cmp" })
-    use({ "hrsh7th/cmp-buffer" })
-    use({ "hrsh7th/cmp-path" })
-    use({ "hrsh7th/cmp-nvim-lua" })
-    use({ "hrsh7th/cmp-nvim-lsp" })
-    use({ "saadparwaiz1/cmp_luasnip" })
-    use({ "hrsh7th/cmp-cmdline" })
-    use({ "rafamadriz/friendly-snippets" })
-    use({ "folke/neodev.nvim" })
-    use({ "b0o/SchemaStore.nvim" })
-    use({ "simrat39/symbols-outline.nvim" })
-    use({ "jose-elias-alvarez/null-ls.nvim" })
-    use({ "nvim-treesitter/playground", event = "BufRead" })
+  -- LSP & Treeshitter
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  { "nvim-treesitter/nvim-treesitter-textobjects" },
+  { "williamboman/mason.nvim" },
+  { "neovim/nvim-lspconfig" },
+  { "L3MON4D3/LuaSnip" },
+  { "hrsh7th/nvim-cmp" },
+  { "hrsh7th/cmp-buffer" },
+  { "hrsh7th/cmp-path" },
+  { "hrsh7th/cmp-nvim-lua" },
+  { "hrsh7th/cmp-nvim-lsp" },
+  { "saadparwaiz1/cmp_luasnip" },
+  { "hrsh7th/cmp-cmdline" },
+  { "rafamadriz/friendly-snippets" },
+  { "folke/neodev.nvim" },
+  { "b0o/SchemaStore.nvim" },
+  { "simrat39/symbols-outline.nvim" },
+  { "jose-elias-alvarez/null-ls.nvim" },
+  { "nvim-treesitter/playground", event = "BufRead" },
 
-    -- DAP
-    use({ "mfussenegger/nvim-dap", disable = Work })
-    use({ "leoluz/nvim-dap-go", disable = Work })
-    use({ "rcarriga/nvim-dap-ui", disable = Work })
-    use({ "theHamsta/nvim-dap-virtual-text", disable = Work })
+  -- DAP
+  { "mfussenegger/nvim-dap" },
+  { "leoluz/nvim-dap-go" },
+  { "rcarriga/nvim-dap-ui" },
+  { "theHamsta/nvim-dap-virtual-text" },
 
-    -- Telescope & File Management
-    use({ "nvim-telescope/telescope.nvim" })
-    use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-    use({ "nvim-telescope/telescope-file-browser.nvim" })
-    use({ "nvim-telescope/telescope-live-grep-args.nvim" })
-    use({ "debugloop/telescope-undo.nvim" })
-    use({ "thePrimeagen/harpoon" })
+  -- Telescope & File Management
+  { "nvim-telescope/telescope.nvim" },
+  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+  { "nvim-telescope/telescope-file-browser.nvim" },
+  { "nvim-telescope/telescope-live-grep-args.nvim" },
+  { "debugloop/telescope-undo.nvim" },
+  { "thePrimeagen/harpoon" },
 
-    -- Editing Support
-    use({ "windwp/nvim-autopairs" })
-    use({ "wellle/targets.vim" })
-    use({ "JoosepAlviste/nvim-ts-context-commentstring", event = "BufRead" })
-    use({ "numToStr/Comment.nvim" })
-    use({ "lukas-reineke/indent-blankline.nvim" })
-    use({ "norcalli/nvim-colorizer.lua" })
-    use({ "ggandor/leap.nvim" })
-    use({ "kylechui/nvim-surround" })
-    use({ "booperlv/nvim-gomove" })
-    use({ "andymass/vim-matchup" })
-    use({ "gpanders/editorconfig.nvim", disable = Work })
-    use({ "mattn/emmet-vim", event = "BufRead", disable = Work })
-    use({ "Vimjas/vim-python-pep8-indent" })
-    use({ "smjonas/live-command.nvim" })
-    use({ "asiryk/auto-hlsearch.nvim" })
+  -- Editing Support
+  { "windwp/nvim-autopairs" },
+  { "wellle/targets.vim" },
+  { "JoosepAlviste/nvim-ts-context-commentstring", event = "BufRead" },
+  { "numToStr/Comment.nvim" },
+  { "lukas-reineke/indent-blankline.nvim" },
+  { "norcalli/nvim-colorizer.lua" },
+  { "ggandor/leap.nvim" },
+  { "kylechui/nvim-surround" },
+  { "booperlv/nvim-gomove" },
+  { "andymass/vim-matchup" },
+  { "gpanders/editorconfig.nvim" },
+  { "mattn/emmet-vim", event = "BufRead" },
+  { "Vimjas/vim-python-pep8-indent" },
+  { "smjonas/live-command.nvim" },
+  { "asiryk/auto-hlsearch.nvim" },
 
-    -- Git
-    use({ "lewis6991/gitsigns.nvim" })
-    use({ "jamestrew/git-worktree.nvim" })
-    use({ "tpope/vim-fugitive" })
-    use({ "TimUntersberger/neogit" })
-    use({ "sindrets/diffview.nvim" })
-    use({ "petertriho/cmp-git", disable = Work })
+  -- Git
+  { "lewis6991/gitsigns.nvim" },
+  { "jamestrew/git-worktree.nvim" },
+  { "tpope/vim-fugitive" },
+  { "TimUntersberger/neogit" },
+  { "sindrets/diffview.nvim" },
+  { "petertriho/cmp-git" },
 
-    -- Looks
-    use({ "feline-nvim/feline.nvim" })
-    use({ "SmiteshP/nvim-navic" })
-    use({ "kyazdani42/nvim-web-devicons" })
-    use({ "tjdevries/colorbuddy.vim" })
-    use({ "onsails/lspkind-nvim" })
-    use({ "stevearc/dressing.nvim" })
-    use({ "levouh/tint.nvim" })
-    use({ "MunifTanjim/nui.nvim" })
-    use({ "folke/noice.nvim" })
+  -- Looks
+  { "feline-nvim/feline.nvim" },
+  { "SmiteshP/nvim-navic" },
+  { "kyazdani42/nvim-web-devicons" },
+  { "tjdevries/colorbuddy.vim" },
+  { "onsails/lspkind-nvim" },
+  { "stevearc/dressing.nvim" },
+  { "levouh/tint.nvim" },
+  { "MunifTanjim/nui.nvim" },
+  { "folke/noice.nvim" },
 
-    -- Others
-    use({ "kkharji/sqlite.lua", disable = Work })
-    use({ "AckslD/nvim-neoclip.lua" })
-    use({ "nathom/filetype.nvim" })
-    use({ "lewis6991/impatient.nvim" })
-    use({ "j-hui/fidget.nvim" })
-    use({ "petertriho/nvim-scrollbar" })
-    use({ "andweeb/presence.nvim", disable = Work })
-    use({
-      "iamcco/markdown-preview.nvim",
-      ft = { "markdown" },
-      run = "cd app && yarn install",
-      cmd = "MarkdownPreview",
-      disable = Work,
-    })
-    use({ "mrjones2014/smart-splits.nvim" })
-    use({ "tpope/vim-dadbod" })
-    use({ "kristijanhusak/vim-dadbod-ui" })
-    use({ "kristijanhusak/vim-dadbod-completion" })
-    use({ "samjwill/nvim-unception" })
-    use({ "AckslD/messages.nvim" })
-  end,
-  config = {
-    compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
-    display = {
-      open_fn = function() return require("packer.util").float({ border = "single" }) end,
-    },
+  -- Others
+  { "kkharji/sqlite.lua" },
+  { "AckslD/nvim-neoclip.lua" },
+  { "nathom/filetype.nvim" },
+  { "j-hui/fidget.nvim" },
+  { "petertriho/nvim-scrollbar" },
+  { "andweeb/presence.nvim" },
+  {
+    "iamcco/markdown-preview.nvim",
+    ft = { "markdown" },
+    build = "cd app && yarn install",
+    cmd = "MarkdownPreview",
   },
+  { "mrjones2014/smart-splits.nvim" },
+  { "tpope/vim-dadbod" },
+  { "kristijanhusak/vim-dadbod-ui" },
+  { "kristijanhusak/vim-dadbod-completion" },
+  { "samjwill/nvim-unception" },
+  { "AckslD/messages.nvim" },
 })
