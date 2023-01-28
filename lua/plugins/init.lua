@@ -1,3 +1,4 @@
+
 return {
   { "nvim-lua/plenary.nvim" },
 
@@ -29,7 +30,6 @@ return {
   -- Looks
   { "feline-nvim/feline.nvim" },
   { "SmiteshP/nvim-navic" },
-  { "kyazdani42/nvim-web-devicons" },
   { "tjdevries/colorbuddy.vim" },
   { "onsails/lspkind-nvim" },
   { "stevearc/dressing.nvim" },
