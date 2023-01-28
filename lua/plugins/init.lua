@@ -1,14 +1,6 @@
 return {
   { "nvim-lua/plenary.nvim" },
 
-  -- LSP & Treeshitter
-
-  -- DAP
-  { "mfussenegger/nvim-dap", enable = not Work },
-  { "leoluz/nvim-dap-go", enable = not Work },
-  { "rcarriga/nvim-dap-ui", enable = not Work },
-  { "theHamsta/nvim-dap-virtual-text", enable = not Work },
-
   -- Telescope & File Management
   { "nvim-telescope/telescope.nvim" },
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
