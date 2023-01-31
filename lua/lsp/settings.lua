@@ -76,6 +76,9 @@ M.work_server_list = {
   "tsserver",
 }
 
+-- TODO: make above private
+if Work then M.server_list = M.work_server_list end
+
 M._on_attach = {
   ["clangd"] = function(client, bufnr)
     client.server_capabilities.semanticTokensProvider = nil
@@ -86,7 +89,10 @@ M._on_attach = {
     require("nvim-navic").attach(client, bufnr)
   end,
   ["pyright"] = function(client, bufnr) require("nvim-navic").attach(client, bufnr) end,
-  ["tsserver"] = function(client, bufnr) require("nvim-navic").attach(client, bufnr) end,
+  ["tsserver"] = function(client, bufnr)
+    client.server_capabilities.semanticTokensProvider = nil
+    require("nvim-navic").attach(client, bufnr)
+  end,
   ["gopls"] = function(client, bufnr) require("nvim-navic").attach(client, bufnr) end,
   ["jsonls"] = function(client, bufnr) require("nvim-navic").attach(client, bufnr) end,
 }
