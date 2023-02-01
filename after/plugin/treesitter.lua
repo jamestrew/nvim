@@ -57,6 +57,7 @@ ts_config.setup({
   },
   context_commentstring = {
     enable = true,
+    enable_autocmd = false,
   },
   playground = {
     enable = true,

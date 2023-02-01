@@ -1,4 +1,3 @@
-
 return {
   { "nvim-lua/plenary.nvim" },
 
@@ -7,7 +6,12 @@ return {
   -- Editing Support
   { "windwp/nvim-autopairs" },
   { "wellle/targets.vim" },
-  { "numToStr/Comment.nvim" },
+  {
+    "numToStr/Comment.nvim",
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+    },
+  },
   { "lukas-reineke/indent-blankline.nvim" },
   { "norcalli/nvim-colorizer.lua" },
   { "ggandor/leap.nvim" },
