@@ -61,6 +61,6 @@ table.insert(winbar_components.active, mycomps.winbar_right)
 table.insert(winbar_components.inactive, {})
 table.insert(winbar_components.inactive, mycomps.winbar_inactive)
 
-require("feline").winbar.setup({
-  components = winbar_components,
-})
+-- require("feline").winbar.setup({
+--   components = winbar_components,
+-- })

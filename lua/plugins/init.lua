@@ -23,6 +23,14 @@ return {
   { "Vimjas/vim-python-pep8-indent" },
   { "smjonas/live-command.nvim" },
   { "asiryk/auto-hlsearch.nvim" },
+  {
+    "utilyre/barbecue.nvim",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons", -- optional dependency
+    },
+    config = true,
+  },
 
   -- Git
   { "lewis6991/gitsigns.nvim" },
@@ -44,7 +52,6 @@ return {
   -- Others
   { "kkharji/sqlite.lua", enable = not Work },
   { "nathom/filetype.nvim" },
-  { "lewis6991/impatient.nvim" },
   { "j-hui/fidget.nvim" },
   { "petertriho/nvim-scrollbar" },
   { "andweeb/presence.nvim", enable = not Work },
