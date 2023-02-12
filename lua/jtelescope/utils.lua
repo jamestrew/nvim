@@ -156,7 +156,7 @@ M.open_using = function(finder)
     end
 
     local path = entry_path:is_dir() and entry_path:absolute() or entry_path:parent():absolute()
-    actions._close(prompt_bufnr, true)
+    actions.close(prompt_bufnr)
     finder({ cwd = path })
   end
 end

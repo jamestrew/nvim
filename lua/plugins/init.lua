@@ -19,7 +19,7 @@ return {
   { "booperlv/nvim-gomove" },
   { "andymass/vim-matchup" },
   { "gpanders/editorconfig.nvim", enable = not Work },
-  { "mattn/emmet-vim", event = "BufRead", enable = not Work },
+  -- { "mattn/emmet-vim", event = "BufRead", enable = not Work },
   { "Vimjas/vim-python-pep8-indent" },
   { "smjonas/live-command.nvim" },
   { "asiryk/auto-hlsearch.nvim" },
@@ -30,6 +30,13 @@ return {
       "nvim-tree/nvim-web-devicons", -- optional dependency
     },
     config = true,
+  },
+  {
+    "Wansmer/treesj",
+    keys = {
+      { "<leader>sj", "<cmd>TSJToggle<cr>", desc = "Join Toggle" },
+    },
+    opts = { use_default_keymaps = false, max_join_length = 150 },
   },
 
   -- Git
@@ -56,10 +63,9 @@ return {
   { "petertriho/nvim-scrollbar" },
   { "andweeb/presence.nvim", enable = not Work },
   {
-    "iamcco/markdown-preview.nvim",
-    ft = { "markdown" },
-    build = "cd app && yarn install",
-    cmd = "MarkdownPreview",
+    "toppair/peek.nvim",
+    build = "deno task --quiet build:fast",
+    opts = { app = "browser" },
     enable = not Work,
   },
   { "mrjones2014/smart-splits.nvim" },

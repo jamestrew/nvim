@@ -1,6 +1,6 @@
 local M = {}
 
-M.sumneko_lua = {
+M.lua_ls = {
   settings = {
     Lua = {
       completion = {
@@ -56,7 +56,7 @@ M.server_list = {
   "eslint",
   "emmet_ls",
   "html",
-  "sumneko_lua",
+  "lua_ls",
   "jsonls",
   "gopls",
   "bashls",
@@ -70,7 +70,7 @@ M.work_server_list = {
   "eslint",
   "emmet_ls",
   "html",
-  "sumneko_lua",
+  "lua_ns",
   "jsonls",
   "bashls",
   "tsserver",
@@ -84,7 +84,7 @@ M._on_attach = {
     client.server_capabilities.semanticTokensProvider = nil
     require("nvim-navic").attach(client, bufnr)
   end,
-  ["sumneko_lua"] = function(client, bufnr)
+  ["lua_ls"] = function(client, bufnr)
     client.server_capabilities.semanticTokensProvider = nil
     require("nvim-navic").attach(client, bufnr)
   end,
