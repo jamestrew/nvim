@@ -3,13 +3,6 @@ return {
 
   { "thePrimeagen/harpoon" },
 
-  -- Git
-  { "lewis6991/gitsigns.nvim" },
-  { "jamestrew/git-worktree.nvim" },
-  { "tpope/vim-fugitive" },
-  { "TimUntersberger/neogit" },
-  { "sindrets/diffview.nvim" },
-
   -- Looks
   { "feline-nvim/feline.nvim" },
   { "tjdevries/colorbuddy.vim" },
