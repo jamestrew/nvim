@@ -12,7 +12,6 @@ return {
 
   -- Looks
   { "feline-nvim/feline.nvim" },
-  { "SmiteshP/nvim-navic" },
   { "tjdevries/colorbuddy.vim" },
   { "onsails/lspkind-nvim" },
   { "stevearc/dressing.nvim" },

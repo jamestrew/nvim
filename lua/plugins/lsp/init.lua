@@ -17,6 +17,7 @@ return {
     dependencies = {
       "nvim-telescope/telescope.nvim",
       "hrsh7th/cmp-nvim-lsp",
+      "SmiteshP/nvim-navic",
     },
     config = function() require("plugins.lsp.setup")() end,
   },

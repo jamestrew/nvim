@@ -53,14 +53,3 @@ require("feline").setup({
   },
   vi_mode_colors = theme.vi_mode_colors,
 })
-
---[[ WINBAR ]]
-local winbar_components = { active = {}, inactive = {} }
-table.insert(winbar_components.active, mycomps.winbar_left)
-table.insert(winbar_components.active, mycomps.winbar_right)
-table.insert(winbar_components.inactive, {})
-table.insert(winbar_components.inactive, mycomps.winbar_inactive)
-
--- require("feline").winbar.setup({
---   components = winbar_components,
--- })

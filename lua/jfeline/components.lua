@@ -1,4 +1,3 @@
-local navic = require("nvim-navic")
 local vi_mode = require("feline.providers.vi_mode")
 
 local providers = require("jfeline.providers")
@@ -131,29 +130,6 @@ M.my_pos = {
   right_sep = {
     str = " ",
     hl = { fg = colors.statusline_bg, bg = colors.base0B },
-  },
-}
-
--- [[ WINBAR ]]
-M.winbar_left = {
-  {
-    provider = function() return navic.get_location() end,
-    enabled = function() return navic.is_available() end,
-    hl = { bg = "NONE" },
-  },
-}
-
-M.winbar_right = {
-  {
-    provider = providers.file_name_simple,
-    hl = { fg = colors.base00, bg = colors.base08 },
-  },
-}
-
-M.winbar_inactive = {
-  {
-    provider = providers.file_name_simple,
-    hl = { fg = colors.white, bg = "NONE" },
   },
 }
 
