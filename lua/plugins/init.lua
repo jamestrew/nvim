@@ -4,7 +4,7 @@ return {
   { "thePrimeagen/harpoon" },
 
   -- Looks
-  { "feline-nvim/feline.nvim" },
+  -- { "feline-nvim/feline.nvim" },
   { "tjdevries/colorbuddy.vim" },
   { "MunifTanjim/nui.nvim" },
   { "folke/noice.nvim" },
