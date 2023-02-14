@@ -5,8 +5,6 @@ if not ok then
   return
 end
 
-local function on_attach(_, bufnr) require("mappings").lsp(bufnr) end
-
 null_ls.setup({
   sources = {
     debug = true,
@@ -33,5 +31,5 @@ null_ls.setup({
     -- code_actions
     -- null_ls.builtins.code_actions.gitsigns,
   },
-  on_attach = on_attach,
+  on_attach = function(_, bufnr) require("plugins.lsp.mappings")(bufnr) end,
 })

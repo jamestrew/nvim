@@ -184,3 +184,4 @@ for _, theme in ipairs(cycle_themes) do
 end
 
 return M
+

@@ -2,13 +2,7 @@ local cmp = require("cmp")
 local types = require("cmp.types")
 local lspkind = require("lspkind")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-
 local git_ok, git = pcall(require, "cmp_git")
-
-if not git_ok and not Work then
-  vim.notify("cmp_git not installed", vim.log.levels.WARN)
-  return
-end
 
 local sources = {
   { name = "nvim_lsp" },
@@ -84,3 +78,25 @@ cmp.setup.cmdline(":", {
   }),
 })
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+-- luasnip
+local luasnip = require("luasnip")
+luasnip.config.set_config({
+  history = true,
+  updateevents = "TextChanged,TextChangedI",
+  enable_autosnippets = true,
+})
+
+vim.keymap.set({ "i", "s" }, "<C-k>", function()
+  if luasnip.expand_or_jumpable() then luasnip.expand_or_jump() end
+end)
+
+vim.keymap.set({ "i", "s" }, "<C-j>", function()
+  if luasnip.jumpable(-1) then luasnip.jump(-1) end
+end)
+
+vim.keymap.set("i", "<C-l>", function()
+  if luasnip.choice_active() then luasnip.change_choice(1) end
+end)
+
+require("luasnip.loaders.from_vscode").lazy_load()

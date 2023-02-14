@@ -1,26 +1,14 @@
-local import = require("utils").import
-local lspsettings = require("lsp.settings")
-
-local lspconfig = import("lspconfig")
-import("neodev", {})
+local lspsettings = require("plugins.lsp.settings")
+local lspconfig = require("lspconfig")
 
 local function on_attach(client, bufnr)
-  require("mappings").lsp(bufnr)
+  require("plugins.lsp.mappings")(bufnr)
   local _on_attach = lspsettings._on_attach[client.name]
   if _on_attach then _on_attach(client, bufnr) end
   if client.server_capabilities.documentHighlightProvider then require("autocmds").lsp(bufnr) end
 end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-for _, server in ipairs(Work and lspsettings.work_server_list or lspsettings.server_list) do
-  local opts = {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-  opts = vim.tbl_deep_extend("keep", opts, lspsettings[server] or {})
-  lspconfig[server].setup(opts)
-end
 
 -- replace the default lsp diagnostic letters with prettier symbols
 vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
@@ -32,16 +20,27 @@ vim.api.nvim_command([[ hi def link LspReferenceText CursorLine ]])
 vim.api.nvim_command([[ hi def link LspReferenceWrite CursorLine ]])
 vim.api.nvim_command([[ hi def link LspReferenceRead CursorLine ]])
 
-require("lspconfig.configs").monkeyls = {
-  default_config = {
-    cmd = { "/home/jt/go/bin/golsp", "--logs", "/tmp/golsp.log" },
-    filetypes = { "mon" },
-    single_file_support = true,
-    root_dir = lspconfig.util.root_pattern("test"),
-  },
-}
+return function()
+  for _, server in ipairs(lspsettings.server_list) do
+    local opts = {
+      on_attach = on_attach,
+      capabilities = capabilities,
+    }
+    opts = vim.tbl_deep_extend("keep", opts, lspsettings[server] or {})
+    lspconfig[server].setup(opts)
+  end
 
-lspconfig.monkeyls.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-})
+  -- require("lspconfig.configs").monkeyls = {
+  --   default_config = {
+  --     cmd = { "/home/jt/go/bin/golsp", "--logs", "/tmp/golsp.log" },
+  --     filetypes = { "mon" },
+  --     single_file_support = true,
+  --     root_dir = lspconfig.util.root_pattern("test"),
+  --   },
+  -- }
+  --
+  -- lspconfig.monkeyls.setup({
+  --   on_attach = on_attach,
+  --   capabilities = capabilities,
+  -- })
+end

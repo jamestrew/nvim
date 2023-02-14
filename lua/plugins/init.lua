@@ -55,6 +55,16 @@ return {
   { "levouh/tint.nvim" },
   { "MunifTanjim/nui.nvim" },
   { "folke/noice.nvim" },
+  {
+    "akinsho/bufferline.nvim",
+    opts = {
+      options = {
+        mode = "tabs",
+        indicator = { style = "underline" },
+        always_show_bufferline = false,
+      },
+    },
+  },
 
   -- Others
   { "kkharji/sqlite.lua", enable = not Work },

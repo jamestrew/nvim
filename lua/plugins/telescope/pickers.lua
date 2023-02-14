@@ -5,7 +5,7 @@ local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 local config = require("telescope.config")
 
-local tele_utils = require("jtelescope.utils")
+local tele_utils = require("plugins.telescope.utils")
 
 local M = {}
 
@@ -183,3 +183,4 @@ M.live_grep_file = function(opts)
 end
 
 return M
+
