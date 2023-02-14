@@ -9,7 +9,6 @@ local leaderkey = "<leader>"
 local l = function(after) return string.format("%s%s", leaderkey, after) end
 M.l = l
 
-
 vim.cmd([[nmap <F1> <nop>]])
 vim.cmd([[command W :w]])
 vim.cmd([[command Q :q]])
@@ -61,13 +60,6 @@ nnoremap(l("te"), function() require("harpoon.term").gotoTerminal(2) end)
 -- git wrapper
 nnoremap(l("gs"), require("neogit").open, silent)
 
--- Hop
-nnoremap(l(l("b")), ":HopWordBC<CR>")
-nnoremap(l(l("w")), ":HopWordAC<CR>")
-
--- symbols
-nnoremap(l("so"), ":SymbolsOutline<CR>", silent)
-
 -- plenary
 utils.nmap(l("pt"), "<Plug>PlenaryTestFile")
 
@@ -86,6 +78,5 @@ end
 
 -- smart split
 nnoremap(l("sp"), require("smart-splits").start_resize_mode, silent)
-
 
 return M

@@ -10,6 +10,7 @@ return {
       relative_width = false,
       width = 40,
     },
+    keys = { "<leader>so", ":SymbolsOutline<CR>", desc = "symbols-outline" },
   },
   {
     "neovim/nvim-lspconfig",
