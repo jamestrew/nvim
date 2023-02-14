@@ -1,6 +1,7 @@
+
 local vi_mode = require("feline.providers.vi_mode")
 
-local providers = require("jfeline.providers")
+local providers = require("plugins.feline.providers")
 local theme = require("themes." .. vim.g.colors_name)
 local colors = theme.colors
 
