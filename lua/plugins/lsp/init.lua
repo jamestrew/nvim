@@ -7,6 +7,7 @@ return {
     "simrat39/symbols-outline.nvim",
     opts = {
       position = "left",
+      relative_width = false,
       width = 40,
     },
   },
