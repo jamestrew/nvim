@@ -15,15 +15,6 @@ return {
   },
 
   {
-    "utilyre/barbecue.nvim",
-    dependencies = {
-      "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = true,
-  },
-
-  {
     "Wansmer/treesj",
     keys = {
       { "<leader>sj", "<cmd>TSJToggle<cr>", desc = "Join Toggle" },
@@ -60,17 +51,5 @@ return {
         pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
       })
     end,
-  },
-
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    opts = {
-      char = "▏",
-      filetype_exclude = { "help", "terminal", "dashboard", "man" },
-      buftype_exclude = { "terminal", "nofile", "quickfix", "prompt" },
-      show_trailing_blankline_indent = false,
-      show_current_context = true,
-      show_current_context_start = false,
-    },
   },
 }
