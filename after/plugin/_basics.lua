@@ -2,15 +2,10 @@ local import = require("utils").import
 
 local configs = {
   ["fidget"] = { text = { spinner = "bouncing_ball" }, timer = { spinner_rate = 250 } },
-  ["nvim-autopairs"] = {},
-  ["colorizer"] = { "*", "!go" },
-  ["gomove"] = {},
-  ["neoclip"] = {},
   ["scrollbar"] = {},
   ["nvim-surround"] = {},
   ["mason"] = {},
   ["smart-splits"] = {},
-  ["auto-hlsearch"] = {},
   ["messages"] = {},
 }
 

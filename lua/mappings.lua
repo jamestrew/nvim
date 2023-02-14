@@ -88,6 +88,4 @@ end
 nnoremap(l("sp"), require("smart-splits").start_resize_mode, silent)
 
 
-require("leap").add_default_mappings()
-
 return M
