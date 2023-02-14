@@ -18,7 +18,7 @@ return {
   { "kylechui/nvim-surround" },
   { "booperlv/nvim-gomove" },
   { "andymass/vim-matchup" },
-  { "gpanders/editorconfig.nvim", enable = not Work },
+  { "gpanders/editorconfig.nvim", enabled = not Work },
   -- { "mattn/emmet-vim", event = "BufRead", enable = not Work },
   { "Vimjas/vim-python-pep8-indent" },
   { "smjonas/live-command.nvim" },

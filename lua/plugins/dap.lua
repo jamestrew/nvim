@@ -9,7 +9,6 @@ local M = {
 }
 
 function M.init()
-  print("dap init")
   local utils = require("utils")
   local nnoremap = utils.nnoremap
   local silent = { silent = true }

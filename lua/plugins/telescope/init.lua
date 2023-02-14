@@ -8,7 +8,7 @@ return {
     "AckslD/nvim-neoclip.lua",
     config = true,
     dependencies = {
-      { "kkharji/sqlite.lua", enable = not Work },
+      { "kkharji/sqlite.lua", enabled = not Work },
     },
   },
   {
