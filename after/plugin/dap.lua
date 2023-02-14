@@ -1,3 +1,6 @@
+if true then
+  return
+end
 local import = require("utils").import
 
 local dap = import("dap")
