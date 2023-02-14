@@ -6,12 +6,10 @@ return {
   },
   {
     "stevearc/dressing.nvim",
-    config = function()
-      require("dressing").setup({
-        input = { enabled = false },
-        select = { telescope = require("telescope.themes").get_cursor() },
-      })
-    end,
+    opts = {
+      input = { enabled = false },
+      select = { telescope = require("telescope.themes").get_cursor() },
+    },
   },
 
   {
@@ -48,19 +46,17 @@ return {
 
   {
     "levouh/tint.nvim",
-    config = function()
-      require("tint").setup({
-        tint = -45,
-        tint_background_colors = false,
-        highlight_ignore_patterns = { "WinSeparator", "Telescope*", "LineNr" },
-        window_ignore_function = function(winid)
-          local bufid = vim.api.nvim_win_get_buf(winid)
-          local buftype = vim.api.nvim_buf_get_option(bufid, "buftype")
-          local floating = vim.api.nvim_win_get_config(winid).relative ~= ""
-          -- Do not tint `terminal` or floating windows, tint everything else
-          return buftype == "terminal" or floating
-        end,
-      })
-    end,
+    opts = {
+      tint = -45,
+      tint_background_colors = false,
+      highlight_ignore_patterns = { "WinSeparator", "Telescope*", "LineNr" },
+      window_ignore_function = function(winid)
+        local bufid = vim.api.nvim_win_get_buf(winid)
+        local buftype = vim.api.nvim_buf_get_option(bufid, "buftype")
+        local floating = vim.api.nvim_win_get_config(winid).relative ~= ""
+        -- Do not tint `terminal` or floating windows, tint everything else
+        return buftype == "terminal" or floating
+      end,
+    },
   },
 }

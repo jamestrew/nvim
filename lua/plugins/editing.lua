@@ -5,8 +5,8 @@ return {
   { "gpanders/editorconfig.nvim", enabled = not Work },
   { "windwp/nvim-autopairs", config = true },
   { "kylechui/nvim-surround", config = true },
-  { "booperlv/nvim-gomove", config = function() require("gomove").setup() end },
-  { "norcalli/nvim-colorizer.lua", config = function() require("colorizer").setup() end },
+  { "booperlv/nvim-gomove", name = "gomove", config = true },
+  { "norcalli/nvim-colorizer.lua", name = "colorizer", config = true },
   { "asiryk/auto-hlsearch.nvim", config = true },
 
   {
@@ -24,21 +24,18 @@ return {
 
   {
     "smjonas/live-command.nvim",
-    config = function()
-      require("live-command").setup({
-        commands = {
-          Norm = { cmd = "norm" },
-          S = { cmd = "g" },
-          Reg = {
-            cmd = "norm",
-            args = function(opts)
-              return (opts.count == -1 and "" or opts.count) .. "@" .. opts.args
-            end,
-            range = "",
-          },
+    name = "live-command",
+    opts = {
+      commands = {
+        Norm = { cmd = "norm" },
+        S = { cmd = "g" },
+        Reg = {
+          cmd = "norm",
+          args = function(opts) return (opts.count == -1 and "" or opts.count) .. "@" .. opts.args end,
+          range = "",
         },
-      })
-    end,
+      },
+    },
   },
 
   {
@@ -46,10 +43,8 @@ return {
     dependencies = {
       "JoosepAlviste/nvim-ts-context-commentstring",
     },
-    config = function()
-      require("Comment").setup({
-        pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-      })
-    end,
+    opts = {
+      pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+    },
   },
 }

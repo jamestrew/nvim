@@ -6,7 +6,6 @@ return {
   -- Looks
   { "feline-nvim/feline.nvim" },
   { "tjdevries/colorbuddy.vim" },
-  { "stevearc/dressing.nvim" },
   { "MunifTanjim/nui.nvim" },
   { "folke/noice.nvim" },
 

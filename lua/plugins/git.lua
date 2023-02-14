@@ -1,6 +1,7 @@
 return {
   { "tpope/vim-fugitive" },
   { "jamestrew/git-worktree.nvim", config = true },
+  { "sindrets/diffview.nvim", opts = { enhanced_diff_hl = true } },
   {
     "lewis6991/gitsigns.nvim",
     config = function()
