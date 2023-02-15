@@ -183,4 +183,3 @@ M.live_grep_file = function(opts)
 end
 
 return M
-

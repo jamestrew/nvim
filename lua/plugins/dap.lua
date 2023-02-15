@@ -19,6 +19,17 @@ function M.init()
   nnoremap("<F3>", require("dap").step_over, silent)
   nnoremap("<F4>", require("dap").step_out, silent)
   nnoremap("<leader>db", require("dap").toggle_breakpoint, silent)
+
+  vim.api.nvim_create_user_command(
+    "DapClearBreakpoints",
+    function() require("dap").clear_breakpoints() end,
+    { desc = "Clear all DAP breakpoints" }
+  )
+  vim.api.nvim_create_user_command(
+    "DapConditionalBreakpoints",
+    function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
+    {}
+  )
 end
 
 function M.config()

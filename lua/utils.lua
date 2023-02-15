@@ -113,6 +113,8 @@ M.import = function(module, setup)
 end
 
 M.rsync_work_files = function(opts)
+  if not Work then return end
+
   opts = opts or {}
   local worktree = require("git-worktree")
   local project_root = "/home/trewja2/projects/src"

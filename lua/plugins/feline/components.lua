@@ -1,4 +1,3 @@
-
 local vi_mode = require("feline.providers.vi_mode")
 
 local providers = require("plugins.feline.providers")

@@ -16,24 +16,3 @@ vim.api.nvim_create_user_command("GoTesting", function()
     print("\nGoTesting enabled")
   end
 end, {})
-
-vim.api.nvim_create_user_command("TIME", function() print(os.date("%a %b %d, %Y %H:%M:%S")) end, {})
-
-vim.api.nvim_create_user_command(
-  "DapClearBreakpoints",
-  function() require("dap").clear_breakpoints() end,
-  { desc = "Clear all DAP breakpoints" }
-)
-
-vim.api.nvim_create_user_command("SQL", function()
-  vim.cmd("tabnew")
-  vim.cmd("DBUI")
-end, { desc = "Open Dadbod UI in a new tab" })
-
-vim.api.nvim_create_user_command(
-  "DapConditionalBreakpoints",
-  function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
-  {}
-)
-
-vim.api.nvim_create_user_command("Peek", require("peek").open, {})

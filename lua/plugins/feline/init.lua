@@ -8,26 +8,26 @@ M.config = function()
   local components = { active = {}, inactive = {} }
 
   local left = {
-      mycomps.vi,
-      mycomps.current_dir,
-      mycomps.git_diffs.add,
-      mycomps.git_diffs.mod,
-      mycomps.git_diffs.sub,
-      mycomps.diagnostics.errors,
-      mycomps.diagnostics.warns,
-      mycomps.diagnostics.hints,
-      mycomps.diagnostics.info,
-      mycomps.lsp_client,
+    mycomps.vi,
+    mycomps.current_dir,
+    mycomps.git_diffs.add,
+    mycomps.git_diffs.mod,
+    mycomps.git_diffs.sub,
+    mycomps.diagnostics.errors,
+    mycomps.diagnostics.warns,
+    mycomps.diagnostics.hints,
+    mycomps.diagnostics.info,
+    mycomps.lsp_client,
   }
 
   local mid = {
-      mycomps.file_name,
+    mycomps.file_name,
   }
 
   local right = {
-      mycomps.unsaved,
-      mycomps.git_branch,
-      mycomps.my_pos,
+    mycomps.unsaved,
+    mycomps.git_branch,
+    mycomps.my_pos,
   }
 
   table.insert(components.active, left)
@@ -38,22 +38,22 @@ M.config = function()
 
   -- TODO: inactive stuff
   require("feline").setup({
-      components = components,
-      theme = colors,
-      force_inactive = {
-          filetypes = {
-              "^packer$",
-              "^fugitive$",
-              "^fugitiveblame$",
-              "^qf$",
-              "^help$",
-          },
-          buftypes = {
-              -- "^terminal$",
-              "^nofile$",
-          },
+    components = components,
+    theme = colors,
+    force_inactive = {
+      filetypes = {
+        "^packer$",
+        "^fugitive$",
+        "^fugitiveblame$",
+        "^qf$",
+        "^help$",
       },
-      vi_mode_colors = theme.vi_mode_colors,
+      buftypes = {
+        -- "^terminal$",
+        "^nofile$",
+      },
+    },
+    vi_mode_colors = theme.vi_mode_colors,
   })
 end
 

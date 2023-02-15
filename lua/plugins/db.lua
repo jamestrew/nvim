@@ -4,6 +4,13 @@ local M = {
   { "kristijanhusak/vim-dadbod-completion" },
 }
 
+M.init = function()
+  vim.api.nvim_create_user_command("SQL", function()
+    vim.cmd("tabnew")
+    vim.cmd("DBUI")
+  end, { desc = "Open Dadbod UI in a new tab" })
+end
+
 M.config = function()
   vim.g.db_ui_show_help = 0
   vim.g.db_ui_win_position = "right"

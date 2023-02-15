@@ -56,5 +56,8 @@ return {
         },
       },
     },
+    keys = {
+      { "<leader>gs", function() require("neogit").open() end, desc = "neogit" },
+    },
   },
 }
