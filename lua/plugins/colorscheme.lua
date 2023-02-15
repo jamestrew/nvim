@@ -120,15 +120,17 @@ Usage:
   Group.new("cssColor", colors.base0C, colors.none, styles.NONE)
 
   -- Diff Group
-  Group.new("DiffAdd", colors.base0B, colors.none, styles.NONE)
-  Group.new("DiffChange", colors.sun, colors.none, styles.NONE)
-  Group.new("DiffDelete", colors.base08, colors.none, styles.NONE)
-  Group.new("DiffText", colors.base0D, colors.none, styles.NONE)
-  Group.new("DiffAdded", colors.base0B, colors.none, styles.NONE)
-  Group.new("DiffFile", colors.base08, colors.none, styles.NONE)
-  Group.new("DiffNewFile", colors.base0B, colors.none, styles.NONE)
-  Group.new("DiffLine", colors.base0D, colors.none, styles.NONE)
-  Group.new("DiffRemoved", colors.base08, colors.none, styles.NONE)
+  local function diff_bg(color)
+    for _=0, 3 do
+      color = color:average(colors.black)
+    end
+    return color
+  end
+
+  Group.new("DiffAdd", colors.none, diff_bg(colors.base0B), styles.NONE)
+  Group.new("DiffChange", colors.none, diff_bg(colors.sun), styles.NONE)
+  Group.new("DiffDelete", colors.base08, diff_bg(colors.base08), styles.NONE)
+  Group.new("DiffText", colors.none, colors.lightbg, styles.NONE)
 
   -- Gitsigns
   Group.new("GitSignsAdd", colors.base0B, colors.none, styles.NONE)
@@ -138,13 +140,6 @@ Usage:
   Group.new("GitSignsDelete", colors.base08, colors.none, styles.NONE)
   Group.new("GitSignsDeleteNr", colors.base08, colors.none, styles.NONE)
   Group.new("GitSignsCurrentLineBlame", colors.base03, colors.none, styles.NONE)
-
-  -- Neogit
-  -- Group.new("NeogitDiffAddHighlight", groups.DiffAdd)
-  -- Group.new("NeogitDiffDeleteHighlight", groups.DiffDelete)
-  -- Group.new("NeogitDiffContextHighlight", colors.pink)
-  Group.new("NeogitHunkHeader", groups.DiffText)
-  Group.new("NeogitHunkHeaderHighlight", groups.DiffText)
 
   -- Git Group
   Group.new("gitcommitOverflow", colors.base08, colors.none, styles.NONE)

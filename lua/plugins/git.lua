@@ -1,17 +1,31 @@
 return {
   { "tpope/vim-fugitive" },
   { "jamestrew/git-worktree.nvim", config = true },
-  { "sindrets/diffview.nvim", opts = { enhanced_diff_hl = true } },
+  {
+    "sindrets/diffview.nvim",
+    opts = { enhanced_diff_hl = true },
+    config = function()
+      vim.api.nvim_create_user_command("DiffViewToggle", function()
+        local lib = require("diffview.lib")
+        local view = lib.get_current_view()
+        if view then
+          vim.cmd(":DiffviewClose")
+        else
+          vim.cmd(":DiffviewOpen")
+        end
+      end, {})
+    end,
+    keys = {
+      { "<leader>dv", "<cmd>DiffViewToggle<CR>", desc = "diffview" },
+    },
+  },
   {
     "lewis6991/gitsigns.nvim",
     config = function()
       require("gitsigns").setup({
         numhl = true,
         current_line_blame = true,
-        watch_gitdir = {
-          interval = 1000,
-          follow_files = true,
-        },
+        watch_gitdir = { interval = 1000, follow_files = true },
         sign_priority = 5,
         status_formatter = nil, -- Use default
         on_attach = function(bufnr)
@@ -35,29 +49,14 @@ return {
   },
   {
     "TimUntersberger/neogit",
-    dependencies = {
-      "sindrets/diffview.nvim",
-    },
+    dependencies = { "sindrets/diffview.nvim" },
     opts = {
       disable_commit_confirmation = true,
       kind = "tab",
-      integrations = {
-        diffview = true,
-      },
-      sections = {
-        recent = {
-          folded = false,
-        },
-      },
-      mappings = {
-        status = {
-
-          ["="] = "Toggle",
-        },
-      },
+      integrations = { diffview = true },
+      sections = { recent = { folded = false } },
+      mappings = { status = { ["="] = "Toggle" } },
     },
-    keys = {
-      { "<leader>gs", function() require("neogit").open() end, desc = "neogit" },
-    },
+    keys = { { "<leader>gs", function() require("neogit").open() end, desc = "neogit" } },
   },
 }
