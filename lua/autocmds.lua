@@ -1,5 +1,3 @@
-local M = {}
-
 local my_augroup = vim.api.nvim_create_augroup("my_augroup", { clear = true })
 
 -- windows to close with "q"
@@ -28,52 +26,3 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   command = ":%s/\\s\\+$//e",
   group = my_augroup,
 })
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.go",
-  callback = function() vim.lsp.buf.format() end,
-  group = my_augroup,
-})
-
-vim.api.nvim_create_autocmd("User", {
-  pattern = "PackerComplete",
-  callback = require("utils").plugin_urls,
-  group = my_augroup,
-})
-
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(args) vim.bo[args.buf].formatexpr = nil end,
-  group = my_augroup,
-})
-
-vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
-M.lsp = function(bufnr)
-  vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-    buffer = bufnr,
-    callback = vim.lsp.buf.document_highlight,
-    group = "lsp_document_highlight",
-  })
-
-  vim.api.nvim_create_autocmd("CursorMoved", {
-    buffer = bufnr,
-    callback = vim.lsp.buf.clear_references,
-    group = "lsp_document_highlight",
-  })
-end
-
-vim.api.nvim_create_augroup("dadbod", { clear = true })
-M.dadbod = function()
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "sql", "mysql", "plsql" },
-    callback = function()
-      require("cmp").setup.buffer({
-        sources = {
-          { name = "vim-dadbod-completion" },
-        },
-      })
-    end,
-    group = "dadbod",
-  })
-end
-
-return M
