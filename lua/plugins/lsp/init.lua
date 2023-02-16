@@ -24,34 +24,36 @@ M.config = function()
   local lspsettings = require("plugins.lsp.settings")
   local lspconfig = require("lspconfig")
 
-  vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+  vim.api.nvim_create_augroup("lsp_augroup", { clear = true })
   local function on_attach(client, bufnr)
-    local _on_attach = lspsettings._on_attach[client.name]
-    if _on_attach then _on_attach(client, bufnr) end
+    client.server_capabilities.semanticTokensProvider = nil
+    if client.server_capabilities.documentSymbolProvider then
+      require("nvim-navic").attach(client, bufnr)
+    end
 
-    require("plugins.lsp.mappings")(bufnr)
     if client.server_capabilities.documentHighlightProvider then
       vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
         buffer = bufnr,
         callback = vim.lsp.buf.document_highlight,
-        group = "lsp_document_highlight",
+        group = "lsp_augroup",
       })
-
       vim.api.nvim_create_autocmd("CursorMoved", {
         buffer = bufnr,
         callback = vim.lsp.buf.clear_references,
-        group = "lsp_document_highlight",
-      })
-      vim.api.nvim_create_autocmd("LspAttach", {
-        callback = function(args) vim.bo[args.buf].formatexpr = nil end,
-        group = "lsp_document_highlight",
-      })
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = "*.go",
-        callback = function() vim.lsp.buf.format() end,
-        group = "lsp_document_highlight",
+        group = "lsp_augroup",
       })
     end
+
+    vim.api.nvim_create_autocmd("LspAttach", {
+      callback = function(args) vim.bo[args.buf].formatexpr = nil end,
+      group = "lsp_augroup",
+    })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      pattern = "*.go",
+      callback = function() vim.lsp.buf.format() end,
+      group = "lsp_augroup",
+    })
+    require("plugins.lsp.mappings")(bufnr)
   end
 
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
