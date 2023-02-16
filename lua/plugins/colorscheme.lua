@@ -3,9 +3,6 @@ local M = { "tjdevries/colorbuddy.vim" }
 M.init = function()
   local theme = require("themes." .. vim.g.colors_name)
 
-  local ok, _ = pcall(require, "colorbuddy")
-  if not ok then return end
-
   local Color, colors, Group, groups, styles = require("colorbuddy").setup()
   local v = vim
 
@@ -121,7 +118,7 @@ Usage:
 
   -- Diff Group
   local function diff_bg(color)
-    for _=0, 3 do
+    for _ = 0, 3 do
       color = color:average(colors.black)
     end
     return color
@@ -134,11 +131,8 @@ Usage:
 
   -- Gitsigns
   Group.new("GitSignsAdd", colors.base0B, colors.none, styles.NONE)
-  Group.new("GitSignsAddNr", colors.base0B, colors.none, styles.NONE)
   Group.new("GitSignsChange", colors.sun, colors.none, styles.NONE)
-  Group.new("GitSignsChangeNr", colors.sun, colors.none, styles.NONE)
   Group.new("GitSignsDelete", colors.base08, colors.none, styles.NONE)
-  Group.new("GitSignsDeleteNr", colors.base08, colors.none, styles.NONE)
   Group.new("GitSignsCurrentLineBlame", colors.base03, colors.none, styles.NONE)
 
   -- Git Group
@@ -295,10 +289,6 @@ Usage:
   Group.new("@definition.usage", colors.none, colors.base02, styles.NONE)
   Group.new("@currentscope", colors.none, colors.base01, styles.NONE)
 
-  -- LSP Semantic Highlighting
-  Group.new("@defaultLibrary", colors.base0C, colors.none, styles.NONE)
-  Group.new("@declaration", colors.base0A, colors.none, styles.NONE)
-
   -- LSP Diagnostics
   Group.new("DiagnosticError", colors.red, colors.none, styles.NONE)
   Group.new("DiagnosticWarn", colors.yellow, colors.none, styles.NONE)
@@ -366,9 +356,9 @@ Usage:
   Group.new("TelescopePromptPrefix", colors.base08, colors.black, styles.NONE)
   Group.new("TelescopePromptCounter", colors.base08, colors.black, styles.NONE)
 
-  Group.new("TeleDiffAdd", colors.base0B, colors.none, styles.NONE)
-  Group.new("TeleDiffChange", colors.sun, colors.none, styles.NONE)
-  Group.new("TeleDiffDelete", colors.base08, colors.none, styles.NONE)
+  Group.new("TelescopeResultsDiffAdd", colors.base0B, colors.none, styles.NONE)
+  Group.new("TelescopeResultsDiffChange", colors.sun, colors.none, styles.NONE)
+  Group.new("TelescopeResultsDiffDelete", colors.base08, colors.none, styles.NONE)
 
   -- symbols-outline
   Group.new("FocusedSymbol", colors.base08, colors.line, styles.NONE)

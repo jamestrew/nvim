@@ -3,7 +3,7 @@ return {
   { "jamestrew/git-worktree.nvim", config = true },
   {
     "sindrets/diffview.nvim",
-    opts = { enhanced_diff_hl = true },
+    opts = { enhanced_diff_hl = false },
     config = function()
       vim.api.nvim_create_user_command("DiffViewToggle", function()
         local lib = require("diffview.lib")
