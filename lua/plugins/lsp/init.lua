@@ -18,6 +18,7 @@ local M = {
       keys = { "<leader>so", "<cmd>SymbolsOutline<CR>", desc = "symbols-outline" },
     },
   },
+  event = { "BufReadPre", "BufNewFile" },
 }
 
 M.config = function()

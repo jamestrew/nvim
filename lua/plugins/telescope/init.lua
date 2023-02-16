@@ -17,6 +17,7 @@ local M = {
       },
     },
   },
+  event = "VeryLazy",
 }
 
 M.config = function()
