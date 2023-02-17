@@ -2,6 +2,15 @@ return {
   { "tpope/vim-fugitive" },
   { "jamestrew/git-worktree.nvim", config = true },
   {
+    "pwntester/octo.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = true,
+  },
+  {
     "sindrets/diffview.nvim",
     opts = { enhanced_diff_hl = false },
     config = function()

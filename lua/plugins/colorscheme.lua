@@ -1,6 +1,10 @@
-local M = { "tjdevries/colorbuddy.vim" }
+local M = { "tjdevries/colorbuddy.vim", priority = 100 }
 
 M.init = function()
+  if false then
+    vim.cmd.colorscheme("habamax")
+    return
+  end
   local theme = require("themes." .. vim.g.colors_name)
 
   local Color, colors, Group, groups, styles = require("colorbuddy").setup()
@@ -343,13 +347,16 @@ Usage:
   Group.new("TelescopeBorder", colors.lightbg, colors.black, styles.NONE)
   Group.new("TelescopeSelection", colors.none, colors.line, styles.NONE)
   Group.new("TelescopeTitle", colors.base08, colors.none, styles.NONE)
+  Group.new("TelescopeMatching", colors.base0C, colors.none, styles.NONE)
 
   Group.new("TelescopePreviewBorder", colors.lightbg, colors.black, styles.NONE)
   Group.new("TelescopePreviewLine", colors.none, colors.line, styles.NONE)
   Group.new("TelescopePreviewTitle", colors.base08, colors.black, styles.NONE)
+  Group.new("TelescopePreviewLink", colors.base08, colors.black, styles.NONE)
 
   Group.new("TelescopeResultsBorder", colors.lightbg, colors.black, styles.NONE)
   Group.new("TelescopeResultsTitle", colors.base08, colors.black, styles.NONE)
+  Group.new("TelescopeResultsIdentifier", colors.base08, colors.black, styles.NONE)
 
   Group.new("TelescopePromptTitle", colors.base08, colors.black, styles.NONE)
   Group.new("TelescopePromptBorder", colors.lightbg, colors.black, styles.NONE)
