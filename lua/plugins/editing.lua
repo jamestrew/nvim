@@ -16,9 +16,7 @@ return {
 
   {
     "Wansmer/treesj",
-    keys = {
-      { "<leader>sj", "<cmd>TSJToggle<cr>", desc = "Join Toggle" },
-    },
+    keys = { { "<leader>sj", "<cmd>TSJToggle<cr>", desc = "Join Toggle" } },
     opts = { use_default_keymaps = false, max_join_length = 150 },
   },
 

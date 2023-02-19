@@ -9,6 +9,7 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     config = true,
+    cmd = { "Octo" },
   },
   {
     "sindrets/diffview.nvim",
@@ -20,13 +21,12 @@ return {
         if view then
           vim.cmd(":DiffviewClose")
         else
-          vim.cmd(":DiffviewOpen")
+          vim.cmd(":DiffviewOpen master")
         end
       end, {})
     end,
-    keys = {
-      { "<leader>dv", "<cmd>DiffViewToggle<CR>", desc = "diffview" },
-    },
+    cmd = { "DiffviewOpen" },
+    keys = { { "<leader>dv", "<cmd>DiffViewToggle<CR>", desc = "diffview" } },
   },
   {
     "lewis6991/gitsigns.nvim",
@@ -38,20 +38,31 @@ return {
         sign_priority = 5,
         status_formatter = nil, -- Use default
         on_attach = function(bufnr)
-          local opts = { silent = true, buffer = bufnr }
+          local gs = package.loaded.gitsigns
+          local map = function(mode, l, r, opts)
+            opts = vim.tbl_extend("force", { silent = true, buffer = bufnr }, opts or {})
+            vim.pretty_print(opts)
+            vim.keymap.set(mode, l, r, opts)
+          end
 
-          local gs = require("gitsigns")
-          local utils = require("utils")
-          local nnoremap = utils.nnoremap
-          local vnoremap = utils.vnoremap
-          nnoremap("<leader>hs", gs.stage_hunk, opts)
-          nnoremap("<leader>hu", gs.undo_stage_hunk, opts)
-          nnoremap("<leader>hp", gs.preview_hunk, opts)
-          nnoremap("<leader>hb", gs.blame_line, opts)
-          nnoremap("<leader>hr", gs.reset_hunk, opts)
+          map({ "n", "v" }, "<leader>hs", gs.stage_hunk)
+          map({ "n", "v" }, "<leader>hr", gs.reset_hunk)
+          map("n", "<leader>hu", gs.undo_stage_hunk)
+          map("n", "<leader>hp", gs.preview_hunk)
+          map("n", "<leader>hb", gs.blame_line)
+          map("n", "<leader>hu", gs.undo_stage_hunk)
 
-          vnoremap("<leader>hs", gs.stage_hunk, opts)
-          vnoremap("<leader>hr", gs.reset_hunk, opts)
+          map("n", "]x", function()
+            if vim.wo.diff then return "]x" end
+            vim.schedule(function() gs.next_hunk() end)
+            return "<Ignore>"
+          end, { expr = true })
+
+          map("n", "[x", function()
+            if vim.wo.diff then return "[x" end
+            vim.schedule(function() gs.prev_hunk() end)
+            return "<Ignore>"
+          end, { expr = true })
         end,
       })
     end,

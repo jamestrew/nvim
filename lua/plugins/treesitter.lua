@@ -3,6 +3,7 @@ local M = {
   dependencies = {
     { "nvim-treesitter/nvim-treesitter-textobjects" },
     { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
+    { "nvim-treesitter/nvim-treesitter-context", config = true },
   },
   build = not Work and ":TSUpdate" or nil,
 }

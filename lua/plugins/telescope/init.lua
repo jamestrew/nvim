@@ -4,7 +4,12 @@ local M = {
     { "nvim-treesitter/nvim-treesitter" },
     { "nvim-tree/nvim-web-devicons" },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    { "nvim-telescope/telescope-file-browser.nvim", dev = true },
+    {
+      "nvim-telescope/telescope-file-browser.nvim",
+      dir = "/home/jt/projects/telescope-file-browser.nvim/master",
+      name = "telescope-file-browser.nvim",
+      dev = true,
+    },
     { "nvim-telescope/telescope-live-grep-args.nvim" },
     { "tsakirist/telescope-lazy.nvim" },
     { "debugloop/telescope-undo.nvim" },
@@ -127,13 +132,12 @@ M.config = function()
       file_browser = {
         theme = "ivy",
         hijack_netrw = false,
-        files = true,
         hidden = true,
         grouped = true,
         hide_parent_dir = true,
         quiet = true,
         respect_gitignore = false,
-        auto_depth = 2,
+        -- auto_depth = 2,
         git_status = true,
         mappings = {
           i = {
@@ -228,6 +232,9 @@ M.config = function()
   nnoremap("<leader>gh", jtelescope.git_hunks, silent)
   nnoremap("<leader>vrc", jtelescope.search_dotfiles, silent)
   nnoremap("<leader><leader>u", ":Telescope undo")
+
+  -- temporary
+  nnoremap("<leader><leader><C-e>", ":Telescope file_browser type=tree<CR>", silent)
 end
 
 return M

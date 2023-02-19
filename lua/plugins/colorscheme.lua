@@ -122,7 +122,7 @@ Usage:
 
   -- Diff Group
   local function diff_bg(color)
-    for _ = 0, 3 do
+    for _ = 0, 4 do
       color = color:average(colors.black)
     end
     return color
@@ -132,6 +132,10 @@ Usage:
   Group.new("DiffChange", colors.none, diff_bg(colors.sun), styles.NONE)
   Group.new("DiffDelete", colors.base08, diff_bg(colors.base08), styles.NONE)
   Group.new("DiffText", colors.none, colors.lightbg, styles.NONE)
+
+  Group.new("DiffAdded", colors.base0B)
+  Group.new("DiffChanged", colors.sun)
+  Group.new("DiffRemoved", colors.base08)
 
   -- Gitsigns
   Group.new("GitSignsAdd", colors.base0B, colors.none, styles.NONE)
@@ -356,7 +360,7 @@ Usage:
 
   Group.new("TelescopeResultsBorder", colors.lightbg, colors.black, styles.NONE)
   Group.new("TelescopeResultsTitle", colors.base08, colors.black, styles.NONE)
-  Group.new("TelescopeResultsIdentifier", colors.base08, colors.black, styles.NONE)
+  Group.new("TelescopeResultsIdentifier", colors.base08, colors.none, styles.NONE)
 
   Group.new("TelescopePromptTitle", colors.base08, colors.black, styles.NONE)
   Group.new("TelescopePromptBorder", colors.lightbg, colors.black, styles.NONE)
@@ -375,6 +379,8 @@ Usage:
 
   -- DAP
   Group.new("DapBreakpoint", colors.base08, colors.none, styles.NONE)
+
+  Group.new("BufferLineFill", colors.none, colors.statusline_bg)
 end
 
 return M

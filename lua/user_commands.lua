@@ -17,6 +17,8 @@ vim.api.nvim_create_user_command("GoTesting", function()
   end
 end, {})
 
-vim.api.nvim_create_user_command("GetHighlight", function()
-  vim.cmd([[:echo synIDattr(synID(line("."), col("."), 1), "name")]])
-end, {})
+vim.api.nvim_create_user_command(
+  "GetHighlight",
+  function() vim.cmd([[:echo synIDattr(synID(line("."), col("."), 1), "name")]]) end,
+  {}
+)

@@ -8,7 +8,18 @@ return {
     },
   },
   { "andweeb/presence.nvim", config = true, enabled = not Work },
-  { "AckslD/messages.nvim", config = true },
+  {
+    "AckslD/messages.nvim",
+    config = function()
+      require("messages").setup({
+        prepar_buffer = function(opts)
+          local buf = vim.api.nvim_create_buf(false, true)
+          vim.keymap.set("n", "<esc>", "<cmd>close<CR>", { buffer = buf })
+          return vim.api.nvim_open_win(buf, true, opts)
+        end,
+      })
+    end,
+  },
   {
     "mrjones2014/smart-splits.nvim",
     config = true,
@@ -37,47 +48,16 @@ return {
         excluded_filetypes = { "harpoon", "TelescopePrompt" },
       },
     },
+    -- stylua: ignore
     keys = {
-      {
-        "<leader>a",
-        function() require("harpoon.mark").add_file() end,
-        desc = "harpoon add file",
-      },
-      {
-        "<leader>e",
-        function() require("harpoon.ui").toggle_quick_menu() end,
-        desc = "harpoon ui",
-      },
-      {
-        "<leader>hn",
-        function() require("harpoon.ui").nav_file(1) end,
-        desc = "harpoon file 1",
-      },
-      {
-        "<leader>he",
-        function() require("harpoon.ui").nav_file(2) end,
-        desc = "harpoon file 2",
-      },
-      {
-        "<leader>ho",
-        function() require("harpoon.ui").nav_file(3) end,
-        desc = "harpoon file 3",
-      },
-      {
-        "<leader>hi",
-        function() require("harpoon.ui").nav_file(4) end,
-        desc = "harpoon file 4",
-      },
-      {
-        "<leader>tn",
-        function() require("harpoon.term").gotoTerminal(1) end,
-        desc = "harpoon term 1",
-      },
-      {
-        "<leader>te",
-        function() require("harpoon.term").gotoTerminal(2) end,
-        desc = "harpoon term 2",
-      },
+      { "<leader>a",  function() require("harpoon.mark").add_file() end,        desc = "harpoon add file", },
+      { "<leader>e",  function() require("harpoon.ui").toggle_quick_menu() end, desc = "harpoon ui", },
+      { "<leader>hn", function() require("harpoon.ui").nav_file(1) end,         desc = "harpoon file 1", },
+      { "<leader>he", function() require("harpoon.ui").nav_file(2) end,         desc = "harpoon file 2", },
+      { "<leader>ho", function() require("harpoon.ui").nav_file(3) end,         desc = "harpoon file 3", },
+      { "<leader>hi", function() require("harpoon.ui").nav_file(4) end,         desc = "harpoon file 4", },
+      { "<leader>tn", function() require("harpoon.term").gotoTerminal(1) end,   desc = "harpoon term 1", },
+      { "<leader>te", function() require("harpoon.term").gotoTerminal(2) end,   desc = "harpoon term 2", },
     },
   },
 }

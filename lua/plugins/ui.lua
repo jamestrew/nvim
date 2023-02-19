@@ -1,5 +1,11 @@
 return {
-  { "petertriho/nvim-scrollbar", config = true },
+  {
+    "petertriho/nvim-scrollbar",
+    opts = {
+      excluded_filetypes = { "prompt", "TelescopePrompt", "TelescopeResults", "noice" },
+      handlers = { gitsigns = true },
+    },
+  },
   {
     "j-hui/fidget.nvim",
     opts = { text = { spinner = "bouncing_ball" }, timer = { spinner_rate = 250 } },
