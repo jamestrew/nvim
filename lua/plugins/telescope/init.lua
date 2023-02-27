@@ -231,10 +231,7 @@ M.config = function()
   nnoremap("<leader>fc", ":Telescope commands<CR>", silent)
   nnoremap("<leader>gh", jtelescope.git_hunks, silent)
   nnoremap("<leader>vrc", jtelescope.search_dotfiles, silent)
-  nnoremap("<leader><leader>u", ":Telescope undo")
-
-  -- temporary
-  nnoremap("<leader><leader><C-e>", ":Telescope file_browser type=tree<CR>", silent)
+  nnoremap("<leader><leader>u", ":Telescope undo<CR>", silent)
 end
 
 return M

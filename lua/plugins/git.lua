@@ -41,7 +41,6 @@ return {
           local gs = package.loaded.gitsigns
           local map = function(mode, l, r, opts)
             opts = vim.tbl_extend("force", { silent = true, buffer = bufnr }, opts or {})
-            vim.pretty_print(opts)
             vim.keymap.set(mode, l, r, opts)
           end
 
