@@ -6,8 +6,8 @@ return {
   { "windwp/nvim-autopairs", config = true },
   { "kylechui/nvim-surround", config = true },
   { "booperlv/nvim-gomove", config = true },
-  { "norcalli/nvim-colorizer.lua", config = function() require("colorizer").setup() end },
   { "asiryk/auto-hlsearch.nvim", config = true },
+  { "norcalli/nvim-colorizer.lua", config = function() require("colorizer").setup() end },
 
   {
     "ggandor/leap.nvim",

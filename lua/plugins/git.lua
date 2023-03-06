@@ -16,12 +16,10 @@ return {
     opts = { enhanced_diff_hl = false },
     config = function()
       vim.api.nvim_create_user_command("DiffViewToggle", function()
-        local lib = require("diffview.lib")
-        local view = lib.get_current_view()
-        if view then
+        if require("diffview.lib").get_current_view() then
           vim.cmd(":DiffviewClose")
         else
-          vim.cmd(":DiffviewOpen master")
+          vim.cmd(vim.fn.input("", ":DiffviewOpen "))
         end
       end, {})
     end,
