@@ -1,6 +1,6 @@
 return {
   { "wellle/targets.vim" },
-  { "andymass/vim-matchup" },
+  { "andymass/vim-matchup", event = "BufRead" },
   { "Vimjas/vim-python-pep8-indent" },
   { "gpanders/editorconfig.nvim", enabled = not Work },
   { "windwp/nvim-autopairs", config = true },
@@ -48,5 +48,6 @@ return {
       opts.pre_hook =
         require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook()
     end,
+    event = "VeryLazy",
   },
 }

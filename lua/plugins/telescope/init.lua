@@ -22,8 +22,35 @@ local M = {
       },
     },
   },
-  event = "VeryLazy",
+  cmd = "Telescope",
 }
+
+M.keys = function()
+  local jtelescope = require("plugins.telescope.pickers")
+  local tele_ext = require("telescope").extensions
+  return {
+    { "<C-p>", jtelescope.project_files },
+    { "<leader><C-p>", function() jtelescope.project_files({}, true) end },
+    { "<C-e>", ":Telescope file_browser<CR>" },
+    { "<leader><C-e>", ":Telescope file_browser path=%:p:h select_buffer=true<CR>" },
+    { "<leader>fw", ":Telescope live_grep<CR>" },
+    { "<leader><leader>fw", tele_ext.live_grep_args.live_grep_args },
+    { "<leader>gf", jtelescope.live_grep_file },
+    { "<leader>gc", ":Telescope git_commits<CR>" },
+    { "<leader>fb", ":Telescope buffers<CR>" },
+    { "<leader>fh", ":Telescope help_tags<CR>" },
+    { "<leader>gw", ":Telescope grep_string<CR>" },
+    { "<leader>rc", jtelescope.search_dotfiles },
+    { "<leader>fg", jtelescope.git_worktrees },
+    { "<leader>ct", jtelescope.create_git_worktree },
+    { "<leader>fy", jtelescope.neoclip },
+    { "<leader>ff", jtelescope.curbuf },
+    { "<leader>fc", ":Telescope commands<CR>" },
+    { "<leader>gh", jtelescope.git_hunks },
+    { "<leader>vrc", jtelescope.search_dotfiles },
+    { "<leader><leader>u", ":Telescope undo<CR>" },
+  }
+end
 
 M.config = function()
   local sorters = require("telescope.sorters")
@@ -205,33 +232,6 @@ M.config = function()
   require("telescope").load_extension("live_grep_args")
   require("telescope").load_extension("undo")
   require("telescope").load_extension("lazy")
-
-  local utils = require("utils")
-  local nnoremap = utils.nnoremap
-  local silent = { silent = true }
-
-  local jtelescope = require("plugins.telescope.pickers")
-  local tele_ext = require("telescope").extensions
-  nnoremap("<C-p>", jtelescope.project_files)
-  nnoremap("<leader><C-p>", function() jtelescope.project_files({}, true) end)
-  nnoremap("<C-e>", ":Telescope file_browser<CR>", silent)
-  nnoremap("<leader><C-e>", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", silent)
-  nnoremap("<leader>fw", ":Telescope live_grep<CR>", silent)
-  nnoremap("<leader><leader>fw", tele_ext.live_grep_args.live_grep_args, silent)
-  nnoremap("<leader>gf", jtelescope.live_grep_file, silent)
-  nnoremap("<leader>gc", ":Telescope git_commits<CR>", silent)
-  nnoremap("<leader>fb", ":Telescope buffers<CR>", silent)
-  nnoremap("<leader>fh", ":Telescope help_tags<CR>", silent)
-  nnoremap("<leader>gw", ":Telescope grep_string<CR>", silent)
-  nnoremap("<leader>rc", jtelescope.search_dotfiles, silent)
-  nnoremap("<leader>fg", jtelescope.git_worktrees, silent)
-  nnoremap("<leader>ct", jtelescope.create_git_worktree, silent)
-  nnoremap("<leader>fy", jtelescope.neoclip, silent)
-  nnoremap("<leader>ff", jtelescope.curbuf, silent)
-  nnoremap("<leader>fc", ":Telescope commands<CR>", silent)
-  nnoremap("<leader>gh", jtelescope.git_hunks, silent)
-  nnoremap("<leader>vrc", jtelescope.search_dotfiles, silent)
-  nnoremap("<leader><leader>u", ":Telescope undo<CR>", silent)
 end
 
 return M

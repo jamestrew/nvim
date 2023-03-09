@@ -6,6 +6,7 @@ local M = {
     { "nvim-treesitter/nvim-treesitter-context", config = true },
   },
   build = not Work and ":TSUpdate" or nil,
+  event = { "BufReadPost", "BufNewFile" },
 }
 
 local ensure_installed = {

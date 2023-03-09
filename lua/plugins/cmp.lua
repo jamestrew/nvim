@@ -12,6 +12,7 @@ local M = {
     { "rafamadriz/friendly-snippets" },
     { "petertriho/cmp-git", enabled = not Work },
   },
+  event = { "InsertEnter", "CmdlineEnter" },
 }
 
 M.config = function()

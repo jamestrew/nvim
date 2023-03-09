@@ -261,7 +261,7 @@ Usage:
   Group.new("@float", colors.base0B, colors.none, styles.NONE)
   Group.new("@function", colors.base0D, colors.none, styles.bold)
   Group.new("@function.builtin", colors.base0C, colors.none, styles.NONE)
-  Group.new("@function.macro", colors.base08, colors.none, styles.NONE)
+  Group.new("@function.macro", colors.base0D, colors.none, styles.NONE)
   Group.new("@parameter", colors.base08, colors.none, styles.NONE)
   Group.new("@parameter.reference", colors.base08, colors.none, styles.NONE)
   Group.new("@method", colors.base0D, colors.none, styles.bold)
