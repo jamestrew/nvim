@@ -80,6 +80,20 @@ M.config = function()
         cmp.config.compare.order,
       },
     },
+    -- window = {
+    --   completion = {
+    --     border = {
+    --       { "╭", "CmpBorder" },
+    --       { "─", "CmpBorder" },
+    --       { "╮", "CmpBorder" },
+    --       { "│", "CmpBorder" },
+    --       { "╯", "CmpBorder" },
+    --       { "─", "CmpBorder" },
+    --       { "╰", "CmpBorder" },
+    --       { "│", "CmpBorder" },
+    --     },
+    --   },
+    -- },
   })
 
   cmp.setup.cmdline({ "/", "?" }, {

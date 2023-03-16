@@ -381,6 +381,39 @@ Usage:
   Group.new("DapBreakpoint", colors.base08, colors.none, styles.NONE)
 
   Group.new("BufferLineFill", colors.none, colors.statusline_bg)
+
+
+  -- Cmp
+  Group.new("CmpItemAbbrDefault", colors.base05, colors.none, styles.NONE)
+  Group.new("CmpBorder", colors.red, colors.one_bg, styles.NONE)
+  Group.new("CmpItemAbbr", colors.white)
+  Group.new("CmpItemAbbrMatch", colors.blue, colors.none, styles.bold)
+  Group.new("CmpBorder", colors.grey)
+  Group.new("CmpDocBorder", colors.darker_black, colors.darker_black, styles.NONE)
+  Group.new("CmPmenu", colors.none, colors.darker_black, styles.NONE)
+  Group.new("CmpItemKindConstant", colors.base09)
+  Group.new("CmpItemKindFunction", colors.base0D)
+  Group.new("CmpItemKindIdentifier", colors.base08)
+  Group.new("CmpItemKindField", colors.base08)
+  Group.new("CmpItemKindVariable", colors.base0E)
+  Group.new("CmpItemKindSnippet", colors.red)
+  Group.new("CmpItemKindText", colors.base0B)
+  Group.new("CmpItemKindStructure", colors.base0E)
+  Group.new("CmpItemKindType", colors.base0A)
+  Group.new("CmpItemKindKeyword", colors.base07)
+  Group.new("CmpItemKindMethod", colors.base0D)
+  Group.new("CmpItemKindConstructor", colors.blue)
+  Group.new("CmpItemKindFolder", colors.base07)
+  Group.new("CmpItemKindModule", colors.base0A)
+  Group.new("CmpItemKindProperty", colors.base08)
+  Group.new("CmpItemKindUnit", colors.base0E)
+  Group.new("CmpItemKindFile", colors.base07)
+  Group.new("CmpItemKindColor", colors.red)
+  Group.new("CmpItemKindReference", colors.base05)
+  Group.new("CmpItemKindStruct", colors.base0E)
+  Group.new("CmpItemKindOperator", colors.base05)
+  Group.new("CmpItemKindTypeParameter", colors.base08)
+  Group.new("CmpItemKindCopilot", colors.green)
 end
 
 return M

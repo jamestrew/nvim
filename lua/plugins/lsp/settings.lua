@@ -55,10 +55,9 @@ M["rust_analyzer"] = {
   settings = {
     ["rust_analyzer"] = {
       -- checkOnSave = false
-    }
-  }
+    },
+  },
 }
-
 
 M.server_list = {
   "vimls",
@@ -74,7 +73,7 @@ M.server_list = {
   "bashls",
   "tsserver",
   "clangd",
-  "rust_analyzer"
+  "rust_analyzer",
 }
 
 local work_server_list = {

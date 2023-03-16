@@ -7,7 +7,7 @@ return {
   { "kylechui/nvim-surround", config = true },
   { "booperlv/nvim-gomove", config = true },
   { "asiryk/auto-hlsearch.nvim", config = true },
-  { "norcalli/nvim-colorizer.lua", config = function() require("colorizer").setup() end },
+  { "norcalli/nvim-colorizer.lua", cmd = { "ColorizerToggle" } },
 
   {
     "ggandor/leap.nvim",
