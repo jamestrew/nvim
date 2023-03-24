@@ -9,12 +9,25 @@ local M = {
     { "folke/neodev.nvim", config = true },
     { "b0o/SchemaStore.nvim" },
     {
+      "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+      config = function()
+        local lsp_lines = require("lsp_lines")
+        lsp_lines.setup()
+        lsp_lines.toggle()
+        vim.keymap.set("n", "<leader><leader>od", function()
+          local virt_lines = lsp_lines.toggle()
+          vim.diagnostic.config({ virtual_text = not virt_lines })
+        end)
+      end,
+    },
+    {
       "simrat39/symbols-outline.nvim",
       opts = {
         position = "left",
         relative_width = false,
         width = 40,
         autofold_depth = 1,
+        auto_close = true,
       },
       keys = { { "<leader>so", "<cmd>SymbolsOutline<CR>", desc = "symbols-outline" } },
     },

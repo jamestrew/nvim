@@ -2,7 +2,6 @@ return {
   { "wellle/targets.vim" },
   { "andymass/vim-matchup", event = "BufRead" },
   { "Vimjas/vim-python-pep8-indent" },
-  { "gpanders/editorconfig.nvim", enabled = not Work },
   { "windwp/nvim-autopairs", config = true },
   { "kylechui/nvim-surround", config = true },
   { "booperlv/nvim-gomove", config = true },

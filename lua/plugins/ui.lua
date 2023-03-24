@@ -3,7 +3,7 @@ return {
     "petertriho/nvim-scrollbar",
     opts = {
       excluded_filetypes = { "prompt", "TelescopePrompt", "TelescopeResults", "noice" },
-      handlers = { gitsigns = true },
+      -- handlers = { gitsigns = true },
     },
   },
   {
@@ -72,5 +72,15 @@ return {
     opts = {
       -- add options here if you want to overwrite defaults
     },
+    enabled = false,
+  },
+  {
+    "nvim-zh/colorful-winsep.nvim",
+    enabled = true,
+    opts = function()
+      local colors = require("themes." .. vim.g.colors_name).colors
+      return { highlight = { fg = colors.base0E } }
+    end,
+    event = { "WinNew" },
   },
 }
