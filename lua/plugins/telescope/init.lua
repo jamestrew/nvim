@@ -7,6 +7,9 @@ local M = {
     {
       "nvim-telescope/telescope-file-browser.nvim",
       dir = "/home/jt/projects/telescope-file-browser.nvim/master",
+      -- dir = "/home/jt/projects/telescope-file-browser.nvim/owner-group-stats",
+      -- dir = "/home/jt/projects/telescope-file-browser.nvim/create-action-selection-callback",
+      -- dir = "/home/jt/projects/telescope-file-browser.nvim/copy-selection-callback",
       name = "telescope-file-browser.nvim",
       dev = true,
     },

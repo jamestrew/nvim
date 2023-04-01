@@ -1,6 +1,10 @@
 return {
   { "wellle/targets.vim" },
-  { "andymass/vim-matchup", event = "BufRead" },
+  {
+    "andymass/vim-matchup",
+    event = "BufRead",
+    config = function() vim.g.matchup_matchparen_offscreen = { method = "popup" } end,
+  },
   { "Vimjas/vim-python-pep8-indent" },
   { "windwp/nvim-autopairs", config = true },
   { "kylechui/nvim-surround", config = true },

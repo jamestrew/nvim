@@ -33,7 +33,10 @@ nnoremap(l("J"), "mzJ`z")
 nnoremap(l("pp"), ":echo expand('%:p')<CR>")
 nnoremap(l("ss"), require("utils").save_and_source)
 
-nnoremap(l("fr"), ":norm! V<CR> :s/") -- quick find & replace
-vnoremap(l("fr"), ":s/") -- quick find & replace
+-- quick find & replace
+nnoremap(l("fr"), ":norm! V<CR> :s/")
+vnoremap(l("fr"), ":s/")
 
 nnoremap(l("rs"), utils.rsync_work_files)
+
+nnoremap("<esc>", ":nohl<CR>", silent)

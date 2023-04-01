@@ -4,6 +4,7 @@ local M = {
     { "nvim-treesitter/nvim-treesitter-textobjects" },
     { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
     { "nvim-treesitter/nvim-treesitter-context", config = true },
+    { "yioneko/nvim-yati" },
   },
   build = not Work and ":TSUpdate" or nil,
   event = { "BufReadPost", "BufNewFile" },
@@ -48,11 +49,16 @@ local opts = {
     enable = true,
   },
   indent = {
-    enable = true,
+    enable = false,
     disable = { "python", "c", "cpp", "ruby" },
   },
   autotag = {
     enable = true,
+  },
+  yati = {
+    enable = true,
+    default_lazy = true,
+    default_fallback = "auto",
   },
   incremental_selection = {
     enable = true,
