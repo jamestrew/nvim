@@ -5,7 +5,6 @@ return {
     event = "BufRead",
     config = function() vim.g.matchup_matchparen_offscreen = { method = "popup" } end,
   },
-  { "Vimjas/vim-python-pep8-indent" },
   { "windwp/nvim-autopairs", config = true },
   { "kylechui/nvim-surround", config = true },
   { "booperlv/nvim-gomove", config = true },
@@ -52,5 +51,39 @@ return {
         require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook()
     end,
     event = "VeryLazy",
+  },
+
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "rouge8/neotest-rust",
+      "nvim-neotest/neotest-go",
+      "nvim-neotest/neotest-plenary",
+    },
+    config = function()
+      local neotest_ns = vim.api.nvim_create_namespace("neotest")
+      vim.diagnostic.config({
+        virtual_text = {
+          format = function(diagnostic)
+            local message =
+              diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+            return message
+          end,
+        },
+      }, neotest_ns)
+
+      require("neotest").setup({
+        adapters = {
+          require("neotest-go"),
+          require("neotest-plenary"),
+          require("neotest-rust"),
+        },
+        diagnostic = { enabled = true, severity = vim.diagnostic.severity.ERROR },
+        quickfix = { enabled = false },
+      })
+    end,
+    keys = {
+      { "<leader>rt", function() require("neotest").run.run(vim.fn.expand("%")) end },
+    },
   },
 }

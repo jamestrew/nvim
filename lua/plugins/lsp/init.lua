@@ -8,6 +8,7 @@ local M = {
     { "jose-elias-alvarez/null-ls.nvim" },
     { "folke/neodev.nvim", config = true },
     { "b0o/SchemaStore.nvim" },
+    { "simrat39/rust-tools.nvim" },
     {
       "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
       config = function()
@@ -91,6 +92,13 @@ M.config = function()
     opts = vim.tbl_deep_extend("keep", opts, lspsettings[server] or {})
     lspconfig[server].setup(opts)
   end
+
+  require("rust-tools").setup({
+    server = {
+      on_attach = on_attach,
+      capabilities = capabilities,
+    },
+  })
 
   -- require("lspconfig.configs").monkeyls = {
   --   default_config = {

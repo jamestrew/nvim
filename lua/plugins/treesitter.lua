@@ -36,6 +36,7 @@ local ensure_installed = {
   "yaml",
   "markdown",
   "regex",
+  "vimdoc",
 }
 
 local opts = {
@@ -43,7 +44,6 @@ local opts = {
   highlight = {
     enable = true,
     use_languagetree = true,
-    -- disable = { "help" },
   },
   matchup = {
     enable = true,

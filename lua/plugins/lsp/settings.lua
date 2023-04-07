@@ -73,7 +73,7 @@ M.server_list = {
   "bashls",
   "tsserver",
   "clangd",
-  "rust_analyzer",
+  -- "rust_analyzer",
 }
 
 local work_server_list = {
