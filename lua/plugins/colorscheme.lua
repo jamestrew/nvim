@@ -98,28 +98,6 @@ Usage:
   Group.new("Type", colors.base0A, colors.none, styles.NONE)
   Group.new("Typedef", colors.base0A, colors.none, styles.NONE)
 
-  ---
-  -- Extra definitions
-  ---
-
-  -- C Group
-  Group.new("cOperator", colors.base0C, colors.none, styles.NONE)
-  Group.new("cPreCondit", colors.base0E, colors.none, styles.NONE)
-
-  -- C# Group
-  Group.new("csClass", colors.base0A, colors.none, styles.NONE)
-  Group.new("csAttribute", colors.base0A, colors.none, styles.NONE)
-  Group.new("csModifier", colors.base0E, colors.none, styles.NONE)
-  Group.new("csType", colors.base08, colors.none, styles.NONE)
-  Group.new("csUnspecifiedStatement", colors.base0D, colors.none, styles.NONE)
-  Group.new("csContextualStatement", colors.base0E, colors.none, styles.NONE)
-  Group.new("csNewDecleration", colors.base08, colors.none, styles.NONE)
-
-  -- CSS Group
-  Group.new("cssBraces", colors.base05, colors.none, styles.NONE)
-  Group.new("cssClassName", colors.base0E, colors.none, styles.NONE)
-  Group.new("cssColor", colors.base0C, colors.none, styles.NONE)
-
   -- Diff Group
   local function diff_bg(color)
     for _ = 0, 4 do
@@ -160,89 +138,11 @@ Usage:
   Group.new("gitcommitDiscardedFile", colors.base08, colors.none, styles.bold)
   Group.new("gitcommitSelectedFile", colors.base0B, colors.none, styles.bold)
 
-  -- HTML Group
-  Group.new("htmlBold", colors.base0A, colors.none, styles.NONE)
-  Group.new("htmlItalic", colors.base0E, colors.none, styles.NONE)
-  Group.new("htmlEndTag", colors.base05, colors.none, styles.NONE)
-  Group.new("htmlTag", colors.base05, colors.none, styles.NONE)
-
-  -- JavaScript Group
-  Group.new("javaScript", colors.base05, colors.none, styles.NONE)
-  Group.new("javaScriptBraces", colors.base05, colors.none, styles.NONE)
-  Group.new("javaScriptNumber", colors.base09, colors.none, styles.NONE)
-  -- pangloss/vim-javascript Group
-  Group.new("jsOperator", colors.base0D, colors.none, styles.NONE)
-  Group.new("jsStatement", colors.base0E, colors.none, styles.NONE)
-  Group.new("jsReturn", colors.base0E, colors.none, styles.NONE)
-  Group.new("jsThis", colors.base08, colors.none, styles.NONE)
-  Group.new("jsClassDefinition", colors.base0A, colors.none, styles.NONE)
-  Group.new("jsFunction", colors.base0E, colors.none, styles.NONE)
-  Group.new("jsFuncName", colors.base0D, colors.none, styles.NONE)
-  Group.new("jsFuncCall", colors.base0D, colors.none, styles.NONE)
-  Group.new("jsClassFuncName", colors.base0D, colors.none, styles.NONE)
-  Group.new("jsClassMethodType", colors.base0E, colors.none, styles.NONE)
-  Group.new("jsRegexpString", colors.base0C, colors.none, styles.NONE)
-  Group.new("jsGlobalObjects", colors.base0A, colors.none, styles.NONE)
-  Group.new("jsGlobalNodeObjects", colors.base0A, colors.none, styles.NONE)
-  Group.new("jsExceptions", colors.base0A, colors.none, styles.NONE)
-  Group.new("jsBuiltins", colors.base0A, colors.none, styles.NONE)
-
-  -- Mail Group
-  Group.new("mailQuoted1", colors.base0A, colors.none, styles.NONE)
-  Group.new("mailQuoted2", colors.base0B, colors.none, styles.NONE)
-  Group.new("mailQuoted3", colors.base0E, colors.none, styles.NONE)
-  Group.new("mailQuoted4", colors.base0C, colors.none, styles.NONE)
-  Group.new("mailQuoted5", colors.base0D, colors.none, styles.NONE)
-  Group.new("mailQuoted6", colors.base0A, colors.none, styles.NONE)
-  Group.new("mailURL", colors.base0D, colors.none, styles.NONE)
-  Group.new("mailEmail", colors.base0D, colors.none, styles.NONE)
-
-  -- Markdown Group
-  Group.new("markdownCode", colors.base0B, colors.none, styles.NONE)
-  Group.new("markdownError", colors.base05, colors.base00, styles.NONE)
-  Group.new("markdownCodeBlock", colors.base0B, colors.none, styles.NONE)
-  Group.new("markdownHeadingDelimiter", colors.base0D, colors.none, styles.NONE)
-
-  -- PHP Group
-  Group.new("phpMemberSelector", colors.base05, colors.none, styles.NONE)
-  Group.new("phpComparison", colors.base05, colors.none, styles.NONE)
-  Group.new("phpParent", colors.base05, colors.none, styles.NONE)
-  Group.new("phpMethodsVar", colors.base0C, colors.none, styles.NONE)
-
-  -- Python Group
-  Group.new("pythonOperator", colors.base0E, colors.none, styles.NONE)
-  Group.new("pythonRepeat", colors.base0E, colors.none, styles.NONE)
-  Group.new("pythonInclude", colors.base0E, colors.none, styles.NONE)
-  Group.new("pythonStatement", colors.base0E, colors.none, styles.NONE)
-
-  -- Ruby Group
-  Group.new("rubyAttribute", colors.base0D, colors.none, styles.NONE)
-  Group.new("rubyConstant", colors.base0A, colors.none, styles.NONE)
-  Group.new("rubyInterpolationDelimiter", colors.base0F, colors.none, styles.NONE)
-  Group.new("rubyRegexp", colors.base0C, colors.none, styles.NONE)
-  Group.new("rubySymbol", colors.base0B, colors.none, styles.NONE)
-  Group.new("rubyStringDelimiter", colors.base0B, colors.none, styles.NONE)
-
-  -- SASS Group
-  Group.new("sassidChar", colors.base08, colors.none, styles.NONE)
-  Group.new("sassClassChar", colors.base09, colors.none, styles.NONE)
-  Group.new("sassInclude", colors.base0E, colors.none, styles.NONE)
-  Group.new("sassMixing", colors.base0E, colors.none, styles.NONE)
-  Group.new("sassMixinName", colors.base0D, colors.none, styles.NONE)
-
-  -- Signify Group
-  Group.new("SignifySignAdd", colors.base0B, colors.base01, styles.NONE)
-  Group.new("SignifySignChange", colors.base0D, colors.base01, styles.NONE)
-  Group.new("SignifySignDelete", colors.base08, colors.base01, styles.NONE)
-
   -- Spelling Group
   Group.new("SpellBad", colors.none, colors.none, styles.undercurl)
   Group.new("SpellLocal", colors.none, colors.none, styles.undercurl)
   Group.new("SpellCap", colors.none, colors.none, styles.undercurl)
   Group.new("SpellRare", colors.none, colors.none, styles.undercurl)
-
-  -- Java Group
-  Group.new("javaOperator", colors.base0D, colors.none, styles.NONE)
 
   -- treesitter
   Group.new("@none", colors.base05, colors.none, styles.NONE)
@@ -262,6 +162,7 @@ Usage:
   Group.new("@function", colors.base0D, colors.none, styles.bold)
   Group.new("@function.builtin", colors.base0C, colors.none, styles.NONE)
   Group.new("@function.macro", colors.base0D, colors.none, styles.NONE)
+  Group.new("@macro", colors.base0D, colors.none, styles.bold)
   Group.new("@parameter", colors.base08, colors.none, styles.NONE)
   Group.new("@parameter.reference", colors.base08, colors.none, styles.NONE)
   Group.new("@method", colors.base0D, colors.none, styles.bold)
@@ -296,6 +197,21 @@ Usage:
   Group.new("@definition", colors.base01, colors.base0A, styles.NONE)
   Group.new("@definition.usage", colors.none, colors.base02, styles.NONE)
   Group.new("@currentscope", colors.none, colors.base01, styles.NONE)
+
+  -- Semantic Tokens
+  Group.new("@lsp.type.namespace", groups["@namespace"], groups["@namespace"], groups["@namespace"])
+  Group.new("@lsp.type.type", groups["@type"], groups["@type"], groups["@type"])
+  Group.new("@lsp.type.class", groups["@type"], groups["@type"], groups["@type"])
+  Group.new("@lsp.type.enum", groups["@type"], groups["@type"], groups["@type"])
+  Group.new("@lsp.type.interface", groups["@type"], groups["@type"], groups["@type"])
+  Group.new("@lsp.type.parameter", groups["@parameter"], groups["@parameter"], groups["@parameter"])
+  Group.new("@lsp.type.variable", groups["@variable"], groups["@variable"], groups["@variable"])
+  Group.new("@lsp.type.property", groups["@property"], groups["@property"], groups["@property"])
+  Group.new("@lsp.type.enumMember", groups["@constant"], groups["@constant"], groups["@constant"])
+  Group.new("@lsp.type.function", groups["@function"], groups["@function"], groups["@function"])
+  Group.new("@lsp.type.decorator", groups["@function"], groups["@function"], groups["@function"])
+  Group.new("@lsp.type.method", groups["@method"], groups["@method"], groups["@method"])
+  Group.new("@lsp.type.macro", groups["@macro"], groups["@macro"], groups["@macro"])
 
   -- LSP Diagnostics
   Group.new("DiagnosticError", colors.red, colors.none, styles.NONE)
@@ -381,7 +297,6 @@ Usage:
   Group.new("DapBreakpoint", colors.base08, colors.none, styles.NONE)
 
   Group.new("BufferLineFill", colors.none, colors.statusline_bg)
-
 
   -- Cmp
   Group.new("CmpItemAbbrDefault", colors.base05, colors.none, styles.NONE)
