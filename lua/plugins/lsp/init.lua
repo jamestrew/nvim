@@ -4,7 +4,7 @@ local M = {
     { "nvim-telescope/telescope.nvim" },
     { "hrsh7th/cmp-nvim-lsp" },
     { "SmiteshP/nvim-navic" },
-    { "williamboman/mason.nvim", config = true },
+    { "williamboman/mason.nvim", config = true, cmd = "Mason" },
     { "jose-elias-alvarez/null-ls.nvim" },
     { "folke/neodev.nvim", config = true },
     { "b0o/SchemaStore.nvim" },

@@ -131,6 +131,11 @@ M.config = function()
         },
       },
     },
+    pickers = {
+      find_files = {
+        find_command = { "rg", "--files", "--color", "never", "--no-require-git" },
+      },
+    },
     extensions = {
       git_worktree = {
         path_display = { "shorten" },

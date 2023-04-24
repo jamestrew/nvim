@@ -1,6 +1,5 @@
 local M = {
   "hrsh7th/nvim-cmp",
-  branch = "fix-treesitter",
   dependencies = {
     { "onsails/lspkind-nvim" },
     { "hrsh7th/cmp-buffer" },
