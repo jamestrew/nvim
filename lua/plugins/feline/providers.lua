@@ -26,7 +26,7 @@ M.current_dir = function()
   local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
   dir_name = utils.trim_TDAMPA(dir_name)
   if #dir_name > max_len then dir_name = dir_name:sub(0, max_len) .. "..." end
-  return "  " .. dir_name .. " "
+  return " 󰉖 " .. dir_name .. " "
 end
 
 M.lsp_client = function()
@@ -49,7 +49,7 @@ M.git_branch = function()
   local branch = vim.g.gitsigns_head or vim.b.gitsigns_head
   branch = utils.trim_TDAMPA(branch)
   if #branch > max_len then branch = branch:sub(1, max_len) .. ".." end
-  return " " .. branch .. " "
+  return "󰊢 " .. branch .. " "
 end
 
 M.file_name_simple = function()

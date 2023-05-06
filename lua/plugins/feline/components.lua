@@ -76,12 +76,12 @@ M.diagnostics = {
   },
   hints = {
     provider = "diagnostic_hints",
-    icon = "  ",
+    icon = " 󰋼 ",
     hl = { fg = colors.green, bg = colors.statusline_bg },
   },
   info = {
     provider = "diagnostic_info",
-    icon = "  ",
+    icon = " 󰌵 ",
     hl = { fg = colors.purple, bg = colors.statusline_bg },
   },
 }
