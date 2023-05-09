@@ -4,7 +4,7 @@ local M = {
     "tpope/vim-dadbod",
     "kristijanhusak/vim-dadbod-completion",
   },
-  cmd = "SQL",
+  cmd = { "SQL", "DBUI" },
 }
 
 M.init = function()

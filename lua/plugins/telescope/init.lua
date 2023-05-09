@@ -1,5 +1,7 @@
 local M = {
   "nvim-telescope/telescope.nvim",
+  dir = "/home/jt/projects/telescope.nvim",
+  dev = true,
   dependencies = {
     { "nvim-treesitter/nvim-treesitter" },
     { "nvim-tree/nvim-web-devicons" },
@@ -22,6 +24,10 @@ local M = {
       dependencies = {
         { "kkharji/sqlite.lua", enabled = not Work },
       },
+    },
+    {
+      "ibhagwan/fzf-lua",
+      cmd = "FzfLua",
     },
   },
   cmd = "Telescope",
@@ -68,11 +74,6 @@ M.config = function()
 
   require("telescope").setup({
     defaults = {
-      vimgrep_arguments = {
-        "rg",
-        "--vimgrep",
-        "--smart-case",
-      },
       prompt_prefix = "  ",
       entry_prefix = "  ",
       initial_mode = "insert",
@@ -151,7 +152,7 @@ M.config = function()
       },
       fzf = {
         fuzzy = true, -- false will only do exact matching
-        override_generic_sorter = false, -- override the generic sorter
+        override_generic_sorter = true, -- override the generic sorter
         override_file_sorter = true, -- override the file sorter
         case_mode = "smart_case", -- or "ignore_case" or "respect_case"
         -- the default case_mode is "smart_case"
@@ -166,13 +167,16 @@ M.config = function()
       file_browser = {
         theme = "ivy",
         hijack_netrw = false,
-        hidden = false,
+        hidden = { file_browser = true, folder_browser = false },
         grouped = true,
         hide_parent_dir = true,
         quiet = true,
         respect_gitignore = false,
         -- auto_depth = 2,
         git_status = true,
+        preview = {
+          ls_short = true,
+        },
         mappings = {
           i = {
             ["<C-b>"] = require("telescope._extensions.file_browser.actions").goto_parent_dir,
