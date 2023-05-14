@@ -11,6 +11,11 @@ local M = {
     { "L3MON4D3/LuaSnip" },
     { "rafamadriz/friendly-snippets" },
     { "petertriho/cmp-git", enabled = not Work },
+    {
+      "saecki/crates.nvim",
+      dependencies = { "jose-elias-alvarez/null-ls.nvim" },
+      enabled = not Work,
+    },
   },
   event = { "InsertEnter", "CmdlineEnter" },
 }
@@ -20,7 +25,6 @@ M.config = function()
   local types = require("cmp.types")
   local lspkind = require("lspkind")
   local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-  local git_ok, git = pcall(require, "cmp_git")
 
   local sources = {
     { name = "nvim_lsp" },
@@ -30,11 +34,18 @@ M.config = function()
     { name = "luasnip" },
   }
 
+  local git_ok, git = pcall(require, "cmp_git")
   if git_ok then
     table.insert(sources, { name = "git" })
     git.setup({
       filetypes = { "gitcommit", "NeogitCommitMessage" },
     })
+  end
+
+  local crates_ok, crates = pcall(require, "crates")
+  if crates_ok then
+    table.insert(sources, { name = "crates" })
+    crates.setup({ null_ls = { enabled = true } })
   end
 
   local function deprioritize_snippet(entry1, entry2)

@@ -85,5 +85,6 @@ return {
     keys = {
       { "<leader>rt", function() require("neotest").run.run(vim.fn.expand("%")) end },
     },
+    enabled = not Work,
   },
 }
