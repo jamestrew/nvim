@@ -146,18 +146,8 @@ end
 M.open_using = function(finder)
   return function(prompt_bufnr)
     local current_finder = action_state.get_current_picker(prompt_bufnr).finder
-    local entry = action_state.get_selected_entry()
-
-    local entry_path
-    if entry.ordinal == ".." then
-      entry_path = Path:new(current_finder.path)
-    else
-      entry_path = action_state.get_selected_entry().Path
-    end
-
-    local path = entry_path:is_dir() and entry_path:absolute() or entry_path:parent():absolute()
     actions.close(prompt_bufnr)
-    finder({ cwd = path })
+    finder({ cwd = current_finder.path })
   end
 end
 
