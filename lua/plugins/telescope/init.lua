@@ -71,6 +71,7 @@ M.config = function()
   local builtin = require("telescope.builtin")
 
   local tele_utils = require("plugins.telescope.utils")
+  local fb_actions = require("telescope._extensions.file_browser.actions")
 
   require("telescope").setup({
     defaults = {
@@ -124,6 +125,7 @@ M.config = function()
           ["<C-c>"] = false,
           ["<M-p>"] = action_layout.toggle_preview,
           ["<M-l>"] = action_layout.cycle_layout_next,
+          ["<C-t>"] = actions.toggle_all,
         },
         n = {
           ["<C-p>"] = actions.move_selection_better,
@@ -172,24 +174,21 @@ M.config = function()
         hide_parent_dir = true,
         quiet = true,
         respect_gitignore = false,
-        -- auto_depth = 2,
         git_status = true,
-        preview = {
-          ls_short = true,
-        },
         mappings = {
           i = {
-            ["<C-b>"] = require("telescope._extensions.file_browser.actions").goto_parent_dir,
-            ["<A-n>"] = require("telescope._extensions.file_browser.actions").select_all,
+            ["<C-b>"] = fb_actions.goto_parent_dir,
+            ["<A-n>"] = fb_actions.select_all,
             ["<A-f>"] = tele_utils.open_using(builtin.find_files),
             ["<A-g>"] = tele_utils.open_using(builtin.live_grep),
-            ["<C-s>"] = require("telescope._extensions.file_browser.actions").sort_by_date,
+            ["<C-s>"] = fb_actions.sort_by_date,
+            ["<C-e>"] = tele_utils.current_bufr_dir,
           },
           n = {
             ["<A-f>"] = tele_utils.open_using(builtin.find_files),
             ["<A-g>"] = tele_utils.open_using(builtin.live_grep),
-            ["<C-b>"] = require("telescope._extensions.file_browser.actions").goto_parent_dir,
-            ["s"] = require("telescope._extensions.file_browser.actions").sort_by_date,
+            ["<C-b>"] = fb_actions.goto_parent_dir,
+            ["s"] = fb_actions.sort_by_date,
           },
         },
       },

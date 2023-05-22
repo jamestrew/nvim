@@ -54,7 +54,10 @@ M.clangd = {
 M["rust_analyzer"] = {
   settings = {
     ["rust_analyzer"] = {
-      -- checkOnSave = false
+      checkOnSave = true,
+      cargo = {
+        features = "all",
+      },
     },
   },
 }
@@ -73,6 +76,7 @@ M.server_list = {
   "bashls",
   "tsserver",
   "clangd",
+  "taplo",
   -- "rust_analyzer",
 }
 

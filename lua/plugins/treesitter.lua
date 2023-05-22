@@ -34,6 +34,7 @@ local ensure_installed = {
   "typescript",
   "vim",
   "yaml",
+  "toml",
   "markdown",
   "regex",
   "vimdoc",

@@ -3,6 +3,7 @@ local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 local themes = require("telescope.themes")
 local Path = require("plenary.path")
+local fb_utils = require("telescope._extensions.file_browser.utils")
 
 local M = {}
 
@@ -170,6 +171,21 @@ for _, theme in ipairs(cycle_themes) do
     layout_strategy = theme.layout_strategy,
     layout_config = theme.layout_config,
     previewer = theme.previewer,
+  })
+end
+
+M.current_bufr_dir = function(prompt_bufnr)
+  local current_picker = action_state.get_current_picker(prompt_bufnr)
+  local finder = current_picker.finder
+  local bufr_path = Path:new(vim.fn.expand("#:p"))
+
+  finder.path = bufr_path:parent():absolute()
+  fb_utils.redraw_border_title(current_picker)
+  fb_utils.selection_callback(current_picker, bufr_path:absolute())
+  current_picker:refresh(finder, {
+    new_prefix = fb_utils.relative_path_prefix(finder),
+    reset_prompt = true,
+    multi = current_picker._multi,
   })
 end
 
