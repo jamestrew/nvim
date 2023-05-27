@@ -1,9 +1,6 @@
 local Path = require("plenary.path")
 local Job = require("plenary.job")
 
--- for debuging
-_G.dump = function(...) print(vim.inspect(...)) end
-
 if pcall(require, "plenary") then
   RELOAD = require("plenary.reload").reload_module
 

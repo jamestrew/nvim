@@ -178,10 +178,15 @@ M.current_bufr_dir = function(prompt_bufnr)
   local current_picker = action_state.get_current_picker(prompt_bufnr)
   local finder = current_picker.finder
   local bufr_path = Path:new(vim.fn.expand("#:p"))
+  local bufr_parent_path = bufr_path:parent():absolute()
 
-  finder.path = bufr_path:parent():absolute()
+  if finder.path ~= bufr_parent_path then
+    finder.path = bufr_parent_path
+    fb_utils.selection_callback(current_picker, bufr_path:absolute())
+  else
+    finder.path = vim.loop.cwd()
+  end
   fb_utils.redraw_border_title(current_picker)
-  fb_utils.selection_callback(current_picker, bufr_path:absolute())
   current_picker:refresh(finder, {
     new_prefix = fb_utils.relative_path_prefix(finder),
     reset_prompt = true,

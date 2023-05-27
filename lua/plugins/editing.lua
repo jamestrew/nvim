@@ -7,7 +7,7 @@ return {
   },
   { "windwp/nvim-autopairs", config = true },
   { "kylechui/nvim-surround", config = true },
-  { "booperlv/nvim-gomove", config = true },
+  { "echasnovski/mini.move", config = true },
   { "asiryk/auto-hlsearch.nvim", config = true },
   { "norcalli/nvim-colorizer.lua", cmd = { "ColorizerToggle" } },
 

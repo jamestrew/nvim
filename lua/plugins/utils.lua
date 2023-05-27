@@ -1,5 +1,4 @@
 return {
-  { "nathom/filetype.nvim" },
   { "samjwill/nvim-unception" },
   {
     "nvim-lua/plenary.nvim",

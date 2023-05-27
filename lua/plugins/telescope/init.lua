@@ -10,7 +10,6 @@ local M = {
       "nvim-telescope/telescope-file-browser.nvim",
       dir = "/home/jt/projects/telescope-file-browser.nvim/master",
       -- dir = "/home/jt/projects/telescope-file-browser.nvim/owner-group-stats",
-      -- dir = "/home/jt/projects/telescope-file-browser.nvim/copy-selection-callback",
       name = "telescope-file-browser.nvim",
       dev = true,
     },
@@ -101,7 +100,7 @@ M.config = function()
         preview_cutoff = 120,
       },
       file_sorter = sorters.get_fuzzy_file,
-      file_ignore_patterns = { "node_modules" },
+      file_ignore_patterns = { "node_modules", "%.lock", "package-lock.json" },
       generic_sorter = sorters.get_generic_fuzzy_sorter,
       -- path_display = { "smart" },
       winblend = 0,
@@ -110,11 +109,6 @@ M.config = function()
       color_devicons = true,
       use_less = true,
       set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-      file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-      grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-      qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-      -- Developer configurations: Not meant for general override
-      buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
       -- cycle_layout_list = tele_utils.cycle_layouts,
       mappings = {
         i = {
@@ -183,6 +177,7 @@ M.config = function()
             ["<A-g>"] = tele_utils.open_using(builtin.live_grep),
             ["<C-s>"] = fb_actions.sort_by_date,
             ["<C-e>"] = tele_utils.current_bufr_dir,
+            ["<C-w>"] = { "<c-s-w>", type = "command" },
           },
           n = {
             ["<A-f>"] = tele_utils.open_using(builtin.find_files),
@@ -242,6 +237,18 @@ M.config = function()
   require("telescope").load_extension("live_grep_args")
   require("telescope").load_extension("undo")
   require("telescope").load_extension("lazy")
+
+  vim.api.nvim_create_autocmd("WinLeave", {
+    callback = function()
+      if vim.bo.ft == "TelescopePrompt" and vim.fn.mode() == "i" then
+        vim.api.nvim_feedkeys(
+          vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
+          "i",
+          false
+        )
+      end
+    end,
+  })
 end
 
 return M
