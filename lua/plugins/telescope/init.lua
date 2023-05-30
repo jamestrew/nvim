@@ -14,8 +14,6 @@ local M = {
       dev = true,
     },
     { "nvim-telescope/telescope-live-grep-args.nvim" },
-    { "tsakirist/telescope-lazy.nvim" },
-    { "debugloop/telescope-undo.nvim" },
     { "stevearc/dressing.nvim" },
     {
       "AckslD/nvim-neoclip.lua",
@@ -33,33 +31,33 @@ local M = {
 }
 
 M.keys = function()
+  local builtin = require("telescope.builtin")
   local jtelescope = require("plugins.telescope.pickers")
   local tele_ext = require("telescope").extensions
   return {
-    { "<C-p>", jtelescope.project_files },
-    { "<leader><C-p>", function() jtelescope.project_files({}, true) end },
-    { "<C-e>", ":Telescope file_browser<CR>", silent = true },
-    {
-      "<leader><C-e>",
-      ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
-      silent = true,
-    },
-    { "<leader>fw", ":Telescope live_grep<CR>", silent = true },
-    { "<leader><leader>fw", tele_ext.live_grep_args.live_grep_args },
+    { "<leader>fw", builtin.live_grep, silent = true },
+    { "<leader>gc", builtin.git_commits, silent = true },
+    { "<leader>fb", builtin.buffers, silent = true },
+    { "<leader>fh", builtin.help_tags, silent = true },
+    { "<leader>gw", builtin.grep_string, silent = true, mode = { "n", "v" } },
+    { "<leader>fc", builtin.commands, silent = true },
     { "<leader>gf", jtelescope.live_grep_file },
-    { "<leader>gc", ":Telescope git_commits<CR>", silent = true },
-    { "<leader>fb", ":Telescope buffers<CR>", silent = true },
-    { "<leader>fh", ":Telescope help_tags<CR>", silent = true },
-    { "<leader>gw", ":Telescope grep_string<CR>", silent = true },
     { "<leader>rc", jtelescope.search_dotfiles },
     { "<leader>fg", jtelescope.git_worktrees },
     { "<leader>ct", jtelescope.create_git_worktree },
     { "<leader>fy", jtelescope.neoclip },
     { "<leader>ff", jtelescope.curbuf },
-    { "<leader>fc", ":Telescope commands<CR>", silent = true },
     { "<leader>gh", jtelescope.git_hunks },
     { "<leader>vrc", jtelescope.search_dotfiles },
-    { "<leader><leader>u", ":Telescope undo<CR>", silent = true },
+    { "<C-p>", jtelescope.project_files },
+    { "<leader><C-p>", function() jtelescope.project_files({}, true) end },
+    { "<C-e>", tele_ext.file_browser.file_browser, silent = true },
+    {
+      "<leader><C-e>",
+      function() tele_ext.file_browser.file_browser({ path = "%:p:h", select_buffer = true }) end,
+      silent = true,
+    },
+    { "<leader><leader>fw", tele_ext.live_grep_args.live_grep_args },
   }
 end
 
@@ -171,7 +169,7 @@ M.config = function()
         git_status = true,
         mappings = {
           i = {
-            ["<C-b>"] = fb_actions.goto_parent_dir,
+            -- ["<C-b>"] = fb_actions.goto_parent_dir,
             ["<A-n>"] = fb_actions.select_all,
             ["<A-f>"] = tele_utils.open_using(builtin.find_files),
             ["<A-g>"] = tele_utils.open_using(builtin.live_grep),
@@ -235,20 +233,6 @@ M.config = function()
   require("telescope").load_extension("neoclip")
   require("telescope").load_extension("file_browser")
   require("telescope").load_extension("live_grep_args")
-  require("telescope").load_extension("undo")
-  require("telescope").load_extension("lazy")
-
-  vim.api.nvim_create_autocmd("WinLeave", {
-    callback = function()
-      if vim.bo.ft == "TelescopePrompt" and vim.fn.mode() == "i" then
-        vim.api.nvim_feedkeys(
-          vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
-          "i",
-          false
-        )
-      end
-    end,
-  })
 end
 
 return M
