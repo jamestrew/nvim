@@ -3,6 +3,7 @@ local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 local themes = require("telescope.themes")
 local Path = require("plenary.path")
+local t_utils = require("telescope.utils")
 local fb_utils = require("telescope._extensions.file_browser.utils")
 
 local M = {}
@@ -192,6 +193,12 @@ M.current_bufr_dir = function(prompt_bufnr)
     reset_prompt = true,
     multi = current_picker._multi,
   })
+end
+
+M.diffsplit = function(prompt_bufnr)
+  local fpath = action_state.get_selected_entry().path
+  actions.close(prompt_bufnr)
+  vim.cmd.diffsplit(fpath)
 end
 
 return M

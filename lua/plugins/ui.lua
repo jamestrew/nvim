@@ -3,6 +3,7 @@ return {
   {
     "j-hui/fidget.nvim",
     opts = { text = { spinner = "bouncing_ball" }, timer = { spinner_rate = 250 } },
+    enabled = false,
   },
   {
     "stevearc/dressing.nvim",

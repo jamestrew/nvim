@@ -1,25 +1,33 @@
 local jtelescope = require("plugins.telescope.pickers")
-local utils = require("utils")
-local nnoremap = utils.nnoremap
 
 return function(bufnr)
   local opts = { silent = true, buffer = bufnr }
-  nnoremap("gD", vim.lsp.buf.declaration, opts)
-  nnoremap("K", vim.lsp.buf.hover, opts)
-  nnoremap("<C-k>", vim.lsp.buf.signature_help, opts)
-  nnoremap("<leader>D", vim.lsp.buf.type_definition, opts)
-  nnoremap("<leader>rn", vim.lsp.buf.rename, opts)
-  nnoremap("<leader>od", vim.diagnostic.open_float, opts)
-  nnoremap("<leader>ca", vim.lsp.buf.code_action, opts)
-  nnoremap("<leader>fm", function() vim.lsp.buf.format({ async = true }) end, opts)
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+  vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+  vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
+  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+  vim.keymap.set("n", "<leader>od", vim.diagnostic.open_float, opts)
+  vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+  vim.keymap.set("n", "<leader>fm", function() vim.lsp.buf.format({ async = true }) end, opts)
 
   -- Lsp Tele
-  nnoremap("gd", jtelescope.lsp_definition, opts)
-  nnoremap("<leader>gdv", function() jtelescope.lsp_definition({ jump_type = "vsplit" }) end, opts)
-  nnoremap("<leader>gds", function() jtelescope.lsp_definition({ jump_type = "split" }) end, opts)
-  nnoremap("gr", jtelescope.lsp_reference, opts)
-  nnoremap("<leader>gi", ":Telescope lsp_implementations<CR>", opts)
-  nnoremap("<leader>fs", jtelescope.get_symbols, opts)
-  nnoremap("<leader>td", ":Telescope diagnostics bufnr=0<CR>", opts)
-  nnoremap("<leader>tw", ":Telescope diagnostics<CR>", opts)
+  vim.keymap.set("n", "gd", jtelescope.lsp_definition, opts)
+  vim.keymap.set(
+    "n",
+    "<leader>gdv",
+    function() jtelescope.lsp_definition({ jump_type = "vsplit" }) end,
+    opts
+  )
+  vim.keymap.set(
+    "n",
+    "<leader>gds",
+    function() jtelescope.lsp_definition({ jump_type = "split" }) end,
+    opts
+  )
+  vim.keymap.set("n", "gr", jtelescope.lsp_reference, opts)
+  vim.keymap.set("n", "<leader>gi", ":Telescope lsp_implementations<CR>", opts)
+  vim.keymap.set("n", "<leader>fs", jtelescope.get_symbols, opts)
+  vim.keymap.set("n", "<leader>td", ":Telescope diagnostics bufnr=0<CR>", opts)
+  vim.keymap.set("n", "<leader>tw", ":Telescope diagnostics<CR>", opts)
 end

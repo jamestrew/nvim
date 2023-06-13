@@ -24,6 +24,7 @@ M.project_files = function(opts, find_files)
     map("i", "<A-r>", tele_utils.rename_file)
     map("i", "<A-y>", tele_utils.yank_fpath)
     map("i", "<C-f>", tele_utils.toggle_files)
+    map("i", "<A-s>", tele_utils.diffsplit)
     map("n", "yy", tele_utils.yank_fpath)
     map("n", "<C-f>", tele_utils.toggle_files)
     return true
