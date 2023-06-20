@@ -13,7 +13,7 @@ return {
         end
       end, {})
     end,
-    cmd = { "DiffviewOpen" },
+    cmd = { "DiffviewOpen", "DiffviewFileHistory" },
     keys = { { "<leader>dv", "<cmd>DiffViewToggle<CR>", desc = "diffview" } },
   },
   {

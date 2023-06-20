@@ -62,7 +62,6 @@ M.keys = function()
 end
 
 M.config = function()
-  local sorters = require("telescope.sorters")
   local actions = require("telescope.actions")
   local action_layout = require("telescope.actions.layout")
   local builtin = require("telescope.builtin")
@@ -97,9 +96,7 @@ M.config = function()
         height = 0.80,
         preview_cutoff = 120,
       },
-      file_sorter = sorters.get_fuzzy_file,
       file_ignore_patterns = { "node_modules", "%.lock", "package-lock.json" },
-      generic_sorter = sorters.get_generic_fuzzy_sorter,
       -- path_display = { "smart" },
       winblend = 0,
       border = {},
@@ -118,6 +115,7 @@ M.config = function()
           ["<M-p>"] = action_layout.toggle_preview,
           ["<M-l>"] = action_layout.cycle_layout_next,
           ["<C-t>"] = actions.toggle_all,
+          ["<M-s>"] = tele_utils.diffsplit,
         },
         n = {
           ["<C-p>"] = actions.move_selection_better,
@@ -169,18 +167,16 @@ M.config = function()
         git_status = true,
         mappings = {
           i = {
-            -- ["<C-b>"] = fb_actions.goto_parent_dir,
             ["<A-n>"] = fb_actions.select_all,
             ["<A-f>"] = tele_utils.open_using(builtin.find_files),
-            ["<A-g>"] = tele_utils.open_using(builtin.live_grep),
+            ["<A-g>"] = tele_utils.grep_selection,
             ["<C-s>"] = fb_actions.sort_by_date,
             ["<C-e>"] = tele_utils.current_bufr_dir,
             ["<C-w>"] = { "<c-s-w>", type = "command" },
           },
           n = {
             ["<A-f>"] = tele_utils.open_using(builtin.find_files),
-            ["<A-g>"] = tele_utils.open_using(builtin.live_grep),
-            ["<C-b>"] = fb_actions.goto_parent_dir,
+            ["<A-g>"] = tele_utils.grep_selection,
             ["s"] = fb_actions.sort_by_date,
           },
         },

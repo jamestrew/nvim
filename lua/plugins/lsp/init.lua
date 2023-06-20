@@ -94,6 +94,11 @@ M.config = function()
   end
 
   require("rust-tools").setup({
+    tools = {
+      inlay_hints = {
+        only_current_line = true,
+      },
+    },
     server = {
       on_attach = on_attach,
       capabilities = capabilities,

@@ -153,6 +153,13 @@ M.open_using = function(finder)
   end
 end
 
+M.grep_selection = function(prompt_bufnr)
+  local selections = fb_utils.get_selected_files(prompt_bufnr)
+  local search_dirs = vim.tbl_map(function(path) return path:absolute() end, selections)
+  actions.close(prompt_bufnr)
+  require("telescope.builtin").live_grep({ search_dirs = search_dirs })
+end
+
 M.toggle_files = function(prompt_bufnr)
   local current_picker = action_state.get_current_picker(prompt_bufnr)
   local prompt = current_picker.prompt_title
