@@ -11,6 +11,8 @@ return function(bufnr)
   vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
   vim.keymap.set("n", "<leader>fm", function() vim.lsp.buf.format({ async = true }) end, opts)
 
+  vim.keymap.set({ "i", "n" }, "<C-i>", function() vim.lsp.buf.inlay_hint(bufnr) end, opts)
+
   -- Lsp Tele
   vim.keymap.set("n", "gd", jtelescope.lsp_definition, opts)
   vim.keymap.set(

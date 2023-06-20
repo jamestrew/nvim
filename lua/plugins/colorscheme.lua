@@ -236,6 +236,8 @@ Usage:
   Group.new("DiagnosticSignInfo", colors.blue, colors.none, styles.NONE)
   Group.new("DiagnosticSignHint", colors.purple, colors.none, styles.NONE)
 
+  Group.new("LspInlayHint", colors.grey_fg2, colors.lightbg, styles.NONE)
+
   -- Terminal
   v.g.terminal_color_0 = theme.base00
   v.g.terminal_color_1 = theme.base08

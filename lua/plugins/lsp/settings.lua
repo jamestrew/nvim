@@ -9,6 +9,9 @@ M.lua_ls = {
       format = {
         enable = false,
       },
+      hint = {
+        enable = true,
+      },
       runtime = {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
         version = "LuaJIT",
@@ -58,6 +61,21 @@ M["rust_analyzer"] = {
       cargo = {
         features = "all",
       },
+    },
+  },
+}
+
+M.tsserver = {
+  init_options = {
+    preferences = {
+      includeInlayParameterNameHints = "all",
+      includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+      includeInlayFunctionParameterTypeHints = true,
+      includeInlayVariableTypeHints = true,
+      includeInlayPropertyDeclarationTypeHints = true,
+      includeInlayFunctionLikeReturnTypeHints = true,
+      includeInlayEnumMemberValueHints = true,
+      importModuleSpecifierPreference = "non-relative",
     },
   },
 }
