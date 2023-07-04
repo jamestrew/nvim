@@ -23,7 +23,7 @@ vnoremap("<", "<gv", silent)
 vnoremap(">", ">gv", silent)
 
 -- easier exit insert mode in the terminal
-utils.tnoremap("<Esc>", "<C-\\><C-n>")
+utils.tnoremap("<Esc><Esc>", "<C-\\><C-n>")
 
 -- keeps jumps centered
 nnoremap("n", "nzzzv")

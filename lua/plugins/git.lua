@@ -65,7 +65,7 @@ return {
     end,
   },
   {
-    "TimUntersberger/neogit",
+    "NeogitOrg/neogit",
     dependencies = { "sindrets/diffview.nvim" },
     opts = {
       disable_commit_confirmation = true,

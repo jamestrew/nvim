@@ -169,7 +169,7 @@ M.config = function()
           i = {
             ["<A-n>"] = fb_actions.select_all,
             ["<A-f>"] = tele_utils.open_using(builtin.find_files),
-            ["<A-g>"] = tele_utils.grep_selection,
+            ["<A-g>"] = tele_utils.open_using(builtin.live_grep),
             ["<C-s>"] = fb_actions.sort_by_date,
             ["<C-e>"] = tele_utils.current_bufr_dir,
             ["<C-w>"] = { "<c-s-w>", type = "command" },

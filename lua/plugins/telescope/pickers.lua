@@ -97,9 +97,14 @@ M.neoclip = function()
   require("telescope").extensions.neoclip.default(opts)
 end
 
-M.get_symbols = function(opts)
+M.lsp_document_symbols = function(opts)
   opts = opts or themes.get_ivy()
   require("telescope.builtin").lsp_document_symbols(opts)
+end
+
+M.lsp_workspace_symbols = function(opts)
+  opts = opts or themes.get_ivy()
+  require("telescope.builtin").lsp_workspace_symbols(opts)
 end
 
 M.curbuf = function(opts)

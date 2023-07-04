@@ -147,17 +147,15 @@ end
 
 M.open_using = function(finder)
   return function(prompt_bufnr)
-    local current_finder = action_state.get_current_picker(prompt_bufnr).finder
+    local selections = fb_utils.get_selected_files(prompt_bufnr, false)
+    local search_dirs = vim.tbl_map(function(path) return path:absolute() end, selections)
+    if vim.tbl_isempty(search_dirs) then
+      local current_finder = action_state.get_current_picker(prompt_bufnr).finder
+      search_dirs = { current_finder.path }
+    end
     actions.close(prompt_bufnr)
-    finder({ cwd = current_finder.path })
+    finder({ search_dirs = search_dirs })
   end
-end
-
-M.grep_selection = function(prompt_bufnr)
-  local selections = fb_utils.get_selected_files(prompt_bufnr)
-  local search_dirs = vim.tbl_map(function(path) return path:absolute() end, selections)
-  actions.close(prompt_bufnr)
-  require("telescope.builtin").live_grep({ search_dirs = search_dirs })
 end
 
 M.toggle_files = function(prompt_bufnr)
