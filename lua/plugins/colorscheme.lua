@@ -31,7 +31,6 @@ Usage:
   Group.new("Exception", colors.base08, colors.none, styles.NONE)
   Group.new("FoldColumn", colors.base0C, colors.base01, styles.NONE)
   Group.new("Folded", colors.base03, colors.base01, styles.NONE)
-  Group.new("IncSearch", colors.base01, colors.base09, styles.NONE)
   Group.new("Italic", colors.none, colors.none, styles.italic)
   Group.new("Macro", colors.base08, colors.none, styles.NONE)
   Group.new("MatchParen", colors.none, colors.base03, styles.NONE)
@@ -39,6 +38,8 @@ Usage:
   Group.new("MoreMsg", colors.base0B, colors.none, styles.NONE)
   Group.new("Question", colors.base0D, colors.none, styles.NONE)
   Group.new("Search", colors.base01, colors.base0A, styles.NONE)
+  Group.new("IncSearch", colors.base01, colors.base09, styles.NONE)
+  Group.new("CurSearch", colors.base01, colors.base0E, styles.NONE)
   Group.new("Substitute", colors.base01, colors.base0A, styles.NONE)
   Group.new("SpecialKey", colors.base03, colors.none, styles.NONE)
   Group.new("TooLong", colors.base08, colors.none, styles.NONE)
@@ -120,6 +121,14 @@ Usage:
   Group.new("GitSignsChange", colors.sun, colors.none, styles.NONE)
   Group.new("GitSignsDelete", colors.base08, colors.none, styles.NONE)
   Group.new("GitSignsCurrentLineBlame", colors.base03, colors.none, styles.NONE)
+
+  -- Neogit
+  Group.new("NeogitDiffAddHighlight", colors.base0B, diff_bg(colors.base0B), styles.NONE)
+  Group.new("NeogitDiffAdd", colors.base0B, diff_bg(colors.base0B), styles.NONE)
+  Group.new("NeogitDiffDeleteHighlight", colors.base08, diff_bg(colors.base08), styles.NONE)
+  Group.new("NeogitDiffDelete", colors.base08, diff_bg(colors.base08), styles.NONE)
+  Group.new("NeogitDiffContextHighlight", colors.none, colors.lightbg, styles.NONE)
+  Group.new("NeogitHunkHeaderHighlight", colors.base00, colors.nord_blue, styles.bold)
 
   -- Git Group
   Group.new("gitcommitOverflow", colors.base08, colors.none, styles.NONE)

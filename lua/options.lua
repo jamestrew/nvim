@@ -1,6 +1,5 @@
 local opt = vim.opt
 
--- opt.termguicolors = true -- totally borks the entire config without it
 opt.laststatus = 3 -- one global statusline as oppose to many during splits
 
 -- Ignore compiled files
