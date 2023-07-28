@@ -9,7 +9,7 @@ return {
         if require("diffview.lib").get_current_view() then
           vim.cmd(":DiffviewClose")
         else
-          vim.cmd(vim.fn.input("", ":DiffviewOpen "))
+          vim.cmd(vim.fn.input({ prompt = "", default = ":DiffviewOpen " }))
         end
       end, {})
     end,
@@ -74,6 +74,7 @@ return {
       sections = { recent = { folded = false } },
       mappings = { status = { ["="] = "Toggle" } },
     },
-    keys = { { "<leader>gs", function() require("neogit").open() end, desc = "neogit" } },
+    cmd = { "Neogit" },
+    keys = { { "<leader>gs", "<cmd>Neogit<CR>", desc = "neogit" } },
   },
 }

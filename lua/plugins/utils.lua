@@ -8,6 +8,16 @@ return {
   },
   { "andweeb/presence.nvim", config = true, enabled = not Work },
   {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    config = true,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      -- "nvim-telescope/telescope.nvim",
+    },
+  },
+  {
     "AckslD/messages.nvim",
     config = function()
       require("messages").setup({

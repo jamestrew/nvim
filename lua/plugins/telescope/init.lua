@@ -99,7 +99,6 @@ M.config = function()
       file_ignore_patterns = { "node_modules", "%.lock", "package-lock.json" },
       -- path_display = { "smart" },
       winblend = 0,
-      border = {},
       borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
       color_devicons = true,
       use_less = true,
@@ -124,11 +123,7 @@ M.config = function()
         },
       },
     },
-    pickers = {
-      find_files = {
-        find_command = { "rg", "--files", "--color", "never", "--no-require-git" },
-      },
-    },
+    pickers = {},
     extensions = {
       git_worktree = {
         path_display = { "shorten" },
@@ -173,10 +168,11 @@ M.config = function()
             ["<C-s>"] = fb_actions.sort_by_date,
             ["<C-e>"] = tele_utils.current_bufr_dir,
             ["<C-w>"] = { "<c-s-w>", type = "command" },
+            ["<C-r>"] = fb_actions.toggle_respect_gitignore,
           },
           n = {
             ["<A-f>"] = tele_utils.open_using(builtin.find_files),
-            ["<A-g>"] = tele_utils.grep_selection,
+            ["<A-g>"] = tele_utils.open_using(builtin.live_grep),
             ["s"] = fb_actions.sort_by_date,
           },
         },
