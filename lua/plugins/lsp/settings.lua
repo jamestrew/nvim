@@ -24,8 +24,7 @@ M.lua_ls = {
         disable = { "assign-type-mismatch", "doc-field-no-class" },
       },
       workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
+        library = { vim.env.VIMRUNTIME },
         checkThirdParty = false,
       },
       telemetry = {

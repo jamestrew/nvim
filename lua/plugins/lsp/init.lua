@@ -42,7 +42,6 @@ M.config = function()
 
   vim.api.nvim_create_augroup("lsp_augroup", { clear = true })
   local function on_attach(client, bufnr)
-    -- client.server_capabilities.semanticTokensProvider = nil
     if client.server_capabilities.documentSymbolProvider then
       require("nvim-navic").attach(client, bufnr)
     end

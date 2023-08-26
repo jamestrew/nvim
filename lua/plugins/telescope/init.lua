@@ -39,7 +39,7 @@ M.keys = function()
     { "<leader>gc", builtin.git_commits, silent = true },
     { "<leader>fb", builtin.buffers, silent = true },
     { "<leader>fh", builtin.help_tags, silent = true },
-    { "<leader>gw", builtin.grep_string, silent = true, mode = { "n", "v" } },
+    { "<leader>gw", builtin.grep_string, silent = true, mode = { "n", "v", "x" } },
     { "<leader>fc", builtin.commands, silent = true },
     { "<leader>gf", jtelescope.live_grep_file },
     { "<leader>rc", jtelescope.search_dotfiles },
