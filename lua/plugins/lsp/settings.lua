@@ -43,10 +43,6 @@ M.jsonls = {
   },
 }
 
-M.emmet_ls = {
-  filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact" },
-}
-
 M.clangd = {
   capabilities = {
     offsetEncoding = { "utf-16" },
@@ -85,7 +81,7 @@ M.server_list = {
   -- "sqls",
   "pyright",
   "eslint",
-  "emmet_ls",
+  "emmet_language_server",
   "html",
   "lua_ls",
   "jsonls",
@@ -101,7 +97,7 @@ local work_server_list = {
   "cssls",
   "pyright",
   "eslint",
-  "emmet_ls",
+  "emmet_language_server",
   "html",
   "lua_ns",
   "jsonls",
