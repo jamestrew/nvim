@@ -50,14 +50,14 @@ local opts = {
     enable = true,
   },
   indent = {
-    enable = false,
-    disable = { "python", "c", "cpp", "ruby" },
+    enable = true,
+    -- disable = { "python", "c", "cpp", "ruby" },
   },
   autotag = {
     enable = true,
   },
   yati = {
-    enable = true,
+    enable = false, -- should no longer be necessary
     default_lazy = true,
     default_fallback = "auto",
   },

@@ -1,11 +1,13 @@
 return {
   { "wellle/targets.vim" },
-  {
-    "andymass/vim-matchup",
-    event = "BufRead",
-    config = function() vim.g.matchup_matchparen_offscreen = { method = "popup" } end,
-  },
+  -- https://github.com/jamestrew/nvim/issues/83
+  -- {
+  --   "andymass/vim-matchup",
+  --   event = "BufRead",
+  --   config = function() vim.g.matchup_matchparen_offscreen = { method = "popup" } end,
+  -- },
   { "windwp/nvim-autopairs", config = true },
+  { "windwp/nvim-ts-autotag" },
   { "kylechui/nvim-surround", config = true },
   { "echasnovski/mini.move", config = true },
   { "asiryk/auto-hlsearch.nvim", config = true },

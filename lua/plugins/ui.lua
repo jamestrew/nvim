@@ -24,13 +24,10 @@ return {
 
   {
     "lukas-reineke/indent-blankline.nvim",
+    branch = "v3",
+    main = "ibl",
     opts = {
-      char = "▏",
-      filetype_exclude = { "help", "terminal", "dashboard", "man" },
-      buftype_exclude = { "terminal", "nofile", "quickfix", "prompt" },
-      show_trailing_blankline_indent = false,
-      show_current_context = true,
-      show_current_context_start = false,
+      indent = { char = "▏" },
     },
   },
 
