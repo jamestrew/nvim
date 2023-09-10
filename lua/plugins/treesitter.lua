@@ -52,6 +52,7 @@ local opts = {
   indent = {
     enable = true,
     -- disable = { "python", "c", "cpp", "ruby" },
+    disable = { "lua" },
   },
   autotag = {
     enable = true,
