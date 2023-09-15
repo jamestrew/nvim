@@ -22,10 +22,8 @@ local M = {
         { "kkharji/sqlite.lua", enabled = not Work },
       },
     },
-    {
-      "ibhagwan/fzf-lua",
-      cmd = "FzfLua",
-    },
+    { "ibhagwan/fzf-lua", cmd = "FzfLua" },
+    { "debugloop/telescope-undo.nvim" },
   },
   cmd = "Telescope",
 }
@@ -82,9 +80,13 @@ M.config = function()
           prompt_position = "bottom",
           preview_width = 0.55,
           results_width = 0.8,
+          preview_cutoff = 120,
         },
         vertical = {
           mirror = false,
+          height = 0.9,
+          preview_height = 0.8,
+          width = 120,
         },
         width = function(_, cols, _)
           if cols > 200 then
@@ -94,7 +96,6 @@ M.config = function()
           end
         end,
         height = 0.80,
-        preview_cutoff = 120,
       },
       file_ignore_patterns = { "node_modules", "%.lock", "package-lock.json" },
       -- path_display = { "smart" },
@@ -192,6 +193,20 @@ M.config = function()
           },
         },
       },
+      undo = {
+        side_by_side = true,
+        layout_strategy = "vertical",
+        layout_config = {
+          preview_height = 0.8,
+        },
+        mappings = {
+          i = {
+            ["<cr>"] = require("telescope-undo.actions").yank_additions,
+            ["<C-y>"] = require("telescope-undo.actions").yank_deletions,
+            ["<C-r>"] = require("telescope-undo.actions").restore,
+          },
+        },
+      },
     },
   })
 
@@ -225,6 +240,7 @@ M.config = function()
   require("telescope").load_extension("neoclip")
   require("telescope").load_extension("file_browser")
   require("telescope").load_extension("live_grep_args")
+  require("telescope").load_extension("undo")
 end
 
 return M
