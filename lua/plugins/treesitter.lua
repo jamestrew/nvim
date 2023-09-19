@@ -44,15 +44,13 @@ local opts = {
   ensure_installed = not Work and ensure_installed or nil,
   highlight = {
     enable = true,
-    use_languagetree = true,
   },
   matchup = {
     enable = true,
   },
   indent = {
     enable = true,
-    -- disable = { "python", "c", "cpp", "ruby" },
-    disable = { "lua" },
+    disable = { "lua", "c", "cpp" },
   },
   autotag = {
     enable = true,

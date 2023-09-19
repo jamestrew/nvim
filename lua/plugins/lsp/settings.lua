@@ -73,6 +73,11 @@ M.tsserver = {
       importModuleSpecifierPreference = "non-relative",
     },
   },
+  settings = {
+    implicitProjectConfiguration = {
+      checkJs = true,
+    },
+  },
 }
 
 M.server_list = {

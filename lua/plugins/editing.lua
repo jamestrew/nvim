@@ -12,6 +12,11 @@ return {
   { "echasnovski/mini.move", config = true },
   { "asiryk/auto-hlsearch.nvim", config = true },
   { "norcalli/nvim-colorizer.lua", cmd = { "ColorizerToggle" } },
+  {
+    "danymat/neogen",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = true,
+  },
 
   {
     "ggandor/leap.nvim",
