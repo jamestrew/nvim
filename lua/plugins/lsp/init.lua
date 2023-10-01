@@ -5,7 +5,7 @@ local M = {
     { "hrsh7th/cmp-nvim-lsp" },
     { "SmiteshP/nvim-navic" },
     { "williamboman/mason.nvim", config = true, cmd = "Mason" },
-    { "jose-elias-alvarez/null-ls.nvim" },
+    { "nvimtools/none-ls.nvim" },
     { "folke/neodev.nvim", config = true },
     { "b0o/SchemaStore.nvim" },
     { "simrat39/rust-tools.nvim" },
