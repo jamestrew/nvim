@@ -19,7 +19,7 @@ local M = {
       "AckslD/nvim-neoclip.lua",
       config = true,
       dependencies = {
-        { "kkharji/sqlite.lua", enabled = not Work },
+        { "kkharji/sqlite.lua" },
       },
     },
     { "ibhagwan/fzf-lua", cmd = "FzfLua" },
@@ -212,7 +212,7 @@ M.config = function()
 
   require("neoclip").setup({
     default_register = "+",
-    enable_persistent_history = not Work,
+    enable_persistent_history = true,
     keys = {
       telescope = {
         i = {

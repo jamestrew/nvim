@@ -98,18 +98,4 @@ M.server_list = {
   -- "rust_analyzer",
 }
 
-local work_server_list = {
-  "cssls",
-  "pyright",
-  "eslint",
-  "emmet_language_server",
-  "html",
-  "lua_ns",
-  "jsonls",
-  "bashls",
-  "tsserver",
-}
-
-if Work then M.server_list = work_server_list end
-
 return M

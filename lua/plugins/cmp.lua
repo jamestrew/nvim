@@ -11,11 +11,10 @@ local M = {
     { "hrsh7th/cmp-cmdline" },
     { "L3MON4D3/LuaSnip", version = "2.*", run = "make install_jsregexp" },
     { "rafamadriz/friendly-snippets" },
-    { "petertriho/cmp-git", enabled = not Work },
+    { "petertriho/cmp-git" },
     {
       "saecki/crates.nvim",
       dependencies = { "jose-elias-alvarez/null-ls.nvim" },
-      enabled = not Work,
     },
   },
   event = { "InsertEnter", "CmdlineEnter" },

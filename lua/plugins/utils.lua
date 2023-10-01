@@ -6,7 +6,7 @@ return {
       { "<leader>pt", "<Plug>PlenaryTestFile", desc = "plenary run test" },
     },
   },
-  { "andweeb/presence.nvim", config = true, enabled = not Work },
+  { "andweeb/presence.nvim", config = true },
   {
     "sourcegraph/sg.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -47,7 +47,6 @@ return {
     build = "deno task --quiet build:fast",
     opts = { app = "browser" },
     init = function() vim.api.nvim_create_user_command("Peek", require("peek").open, {}) end,
-    enabled = not Work,
   },
   {
     "thePrimeagen/harpoon",
@@ -55,7 +54,6 @@ return {
       global_settings = {
         save_on_toggle = true,
         save_on_change = true,
-        mark_branch = not Work,
         excluded_filetypes = { "harpoon", "TelescopePrompt" },
       },
     },

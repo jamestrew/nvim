@@ -37,6 +37,4 @@ nnoremap(l("ss"), require("utils").save_and_source)
 nnoremap(l("fr"), ":norm! V<CR> :s/")
 vnoremap(l("fr"), ":s/")
 
-nnoremap(l("rs"), utils.rsync_work_files)
-
 nnoremap("<esc>", ":nohl<CR>", silent)

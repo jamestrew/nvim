@@ -6,7 +6,7 @@ local M = {
     { "nvim-treesitter/nvim-treesitter-context", config = true },
     { "yioneko/nvim-yati" },
   },
-  build = not Work and ":TSUpdate" or nil,
+  build = ":TSUpdate",
   event = { "BufReadPost", "BufNewFile" },
 }
 
@@ -41,7 +41,7 @@ local ensure_installed = {
 }
 
 local opts = {
-  ensure_installed = not Work and ensure_installed or nil,
+  ensure_installed = ensure_installed,
   highlight = {
     enable = true,
   },

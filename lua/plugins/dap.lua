@@ -5,7 +5,6 @@ local M = {
     "rcarriga/nvim-dap-ui",
     "theHamsta/nvim-dap-virtual-text",
   },
-  enabled = not Work,
 }
 
 M.keys = function()

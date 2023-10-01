@@ -60,39 +60,4 @@ return {
     end,
     event = "VeryLazy",
   },
-
-  {
-    "nvim-neotest/neotest",
-    dependencies = {
-      "rouge8/neotest-rust",
-      "nvim-neotest/neotest-go",
-      "nvim-neotest/neotest-plenary",
-    },
-    config = function()
-      local neotest_ns = vim.api.nvim_create_namespace("neotest")
-      vim.diagnostic.config({
-        virtual_text = {
-          format = function(diagnostic)
-            local message =
-              diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
-            return message
-          end,
-        },
-      }, neotest_ns)
-
-      require("neotest").setup({
-        adapters = {
-          require("neotest-go"),
-          require("neotest-plenary"),
-          require("neotest-rust"),
-        },
-        diagnostic = { enabled = true, severity = vim.diagnostic.severity.ERROR },
-        quickfix = { enabled = false },
-      })
-    end,
-    keys = {
-      { "<leader>rt", function() require("neotest").run.run(vim.fn.expand("%")) end },
-    },
-    enabled = not Work,
-  },
 }

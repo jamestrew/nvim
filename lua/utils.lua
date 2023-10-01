@@ -109,37 +109,4 @@ M.import = function(module, setup)
   return mod
 end
 
-M.rsync_work_files = function(opts)
-  if not Work then return end
-
-  opts = opts or {}
-  local worktree = require("git-worktree")
-  local project_root = "/home/trewja2/projects/src"
-  local srv_root = "/srv/www/analytics/src"
-  if not Work or worktree.get_root() ~= project_root then
-    print("Rsync aborted - not in project root.")
-    return
-  end
-
-  local worktree_path = Path:new(worktree.get_current_worktree_path())
-
-  local cmd
-  if opts.single_file then
-    local filename = vim.api.nvim_buf_get_name(0)
-    local rel_filename = Path:new(filename):make_relative(worktree_path.filename)
-    local dest_path = Path:new(srv_root):joinpath(rel_filename)
-    cmd = { "rsync", filename, dest_path.filename }
-  else
-    cmd = {
-      "rsync",
-      "-O",
-      "-av",
-      "--exclude={'lib/c_lib/_c_lib.so','lib/c_lib/bin','node_modules','build','.idea'}",
-      worktree_path.filename .. "/",
-      srv_root,
-    }
-  end
-  M.get_os_command_output(cmd)
-end
-
 return M
