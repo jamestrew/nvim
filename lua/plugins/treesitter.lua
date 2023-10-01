@@ -61,7 +61,7 @@ local opts = {
     default_fallback = "auto",
   },
   incremental_selection = {
-    enable = true,
+    enable = false,
     keymaps = {
       init_selection = "<CR>",
       node_incremental = "<CR>",
@@ -134,21 +134,6 @@ local opts = {
   },
 }
 
-M.config = function()
-  require("nvim-treesitter.configs").setup(opts)
-
-  local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-  parser_config.monkey = {
-    install_info = {
-      url = "~/projects/archive/tree-sitter-monkey", -- local path or git repo
-      files = { "src/parser.c" },
-      -- optional entries:
-      branch = "master", -- default branch in case of git repo if different from master
-      generate_requires_npm = false, -- if stand-alone parser without npm dependencies
-      requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
-    },
-    filetype = "mon", -- if filetype does not match the parser name
-  }
-end
+M.config = function() require("nvim-treesitter.configs").setup(opts) end
 
 return M

@@ -22,3 +22,5 @@ require("options")
 require("autocmds")
 require("user_commands")
 require("mappings")
+
+require("monkey")

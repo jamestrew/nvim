@@ -24,7 +24,6 @@ return {
 
   {
     "lukas-reineke/indent-blankline.nvim",
-    branch = "v3",
     main = "ibl",
     opts = {
       indent = { char = "▏" },
