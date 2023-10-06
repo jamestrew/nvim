@@ -46,8 +46,11 @@ opt.smartindent = true
 opt.wrap = false
 opt.colorcolumn = "90"
 
-opt.foldmethod = "marker"
-opt.foldlevel = 0
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldtext = "v:lua.vim.treesitter.foldtext()"
+opt.foldmethod = "expr"
+opt.foldenable = true
+opt.foldlevel = 100
 opt.modelines = 1
 
 opt.belloff = "all" -- Just turn the dang bell off
