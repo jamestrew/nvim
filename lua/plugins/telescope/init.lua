@@ -1,19 +1,10 @@
 local M = {
   "nvim-telescope/telescope.nvim",
   dir = "/home/jt/projects/telescope.nvim",
-  dev = true,
   dependencies = {
     { "nvim-treesitter/nvim-treesitter" },
     { "nvim-tree/nvim-web-devicons" },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    {
-      "nvim-telescope/telescope-file-browser.nvim",
-      dir = "/home/jt/projects/telescope-file-browser.nvim/master",
-      -- dir = "/home/jt/projects/telescope-file-browser.nvim/owner-group-stats",
-      name = "telescope-file-browser.nvim",
-      dev = true,
-    },
-    { "nvim-telescope/telescope-live-grep-args.nvim" },
     { "stevearc/dressing.nvim" },
     {
       "AckslD/nvim-neoclip.lua",
@@ -24,6 +15,13 @@ local M = {
     },
     { "ibhagwan/fzf-lua", cmd = "FzfLua" },
     { "debugloop/telescope-undo.nvim" },
+    { "nvim-telescope/telescope-live-grep-args.nvim" },
+    {
+      "nvim-telescope/telescope-file-browser.nvim",
+      dir = "/home/jt/projects/telescope-file-browser.nvim/master",
+      -- dir = "/home/jt/projects/telescope-file-browser.nvim/owner-group-stats",
+      name = "telescope-file-browser.nvim",
+    },
   },
   cmd = "Telescope",
 }

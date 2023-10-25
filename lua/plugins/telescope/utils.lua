@@ -3,12 +3,11 @@ local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 local themes = require("telescope.themes")
 local Path = require("plenary.path")
-local t_utils = require("telescope.utils")
 local fb_utils = require("telescope._extensions.file_browser.utils")
 
 local M = {}
 
-M.delete_file = function(prompt_bufnr)
+M.delete_file = function(_)
   local fpath = action_state.get_selected_entry().value
   local ans = vim.fn.input("Are you sure you want to remove " .. fpath .. "? y/[N] ")
   utils.clear_prompt()

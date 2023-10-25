@@ -1,18 +1,19 @@
 return {
   { "samjwill/nvim-unception" },
-  { "codethread/qmk.nvim", opts = {
-    name = "LAYOUT",
-    layout = {
-      "x x x x x x _ _ _ _ _ x x x x x x",
-      "x x x x x x _ _ _ _ _ x x x x x x",
-      "x x x x x x _ _ _ _ _ x x x x x x",
-      "x x x x x x _ _ _ _ _ x x x x x x",
-      "x x x x _ _ _ _ _ _ _ _ _ x x x x",
-      "_ _ _ _ x x _ _ _ _ _ x x _ _ _ _",
-      "_ _ _ _ _ _ x x _ x x _ _ _ _ _ _",
-      "_ _ _ _ _ _ x x _ x x _ _ _ _ _ _",
-    }
-  }},
+  {
+    "codethread/qmk.nvim",
+    opts = {
+      name = "LAYOUT_manuform_num",
+      layout = {
+        "x x x x x x _ _ _ _ _ x x x x x x",
+        "x x x x x x _ _ _ _ _ x x x x x x",
+        "x x x x x x _ _ _ _ _ x x x x x x",
+        "x x x x x x _ _ _ _ _ x x x x x x",
+        "x x x x x x x _ _ _ x x x x x x x",
+        "_ _ _ _ x x x _ _ _ x x x _ _ _ _",
+      },
+    },
+  },
   {
     "nvim-lua/plenary.nvim",
     keys = {
@@ -23,6 +24,11 @@ return {
   {
     "sourcegraph/sg.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
+  --   config = function()
+  --     require("sg").setup({
+  --       on_attach = require("plugins.lsp").on_attach,
+  --     })
+  --   end,
   },
   {
     "AckslD/messages.nvim",
