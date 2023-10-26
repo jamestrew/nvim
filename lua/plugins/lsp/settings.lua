@@ -51,8 +51,11 @@ M.clangd = {
 
 M["rust_analyzer"] = {
   settings = {
-    ["rust_analyzer"] = {
+    ["rust-analyzer"] = {
       checkOnSave = true,
+      check = {
+        command = "clippy",
+      },
       cargo = {
         features = "all",
       },

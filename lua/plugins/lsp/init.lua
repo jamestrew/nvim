@@ -107,6 +107,7 @@ M.config = function()
     server = {
       on_attach = M.on_attach,
       capabilities = capabilities,
+      settings = lspsettings["rust_analyzer"].settings,
     },
     dap = {
       adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
