@@ -122,7 +122,44 @@ M.config = function()
         },
       },
     },
-    pickers = {},
+    pickers = {
+      find_files = {
+        layout_strategy = "flex",
+        layout_config = {
+          horizontal = {
+            size = {
+              width = "80%",
+              height = "80%",
+            },
+          },
+          vertical = {
+            size = {
+              width = "90%",
+              height = "90%",
+            },
+          },
+          flex = {
+            flip_columns = 120,
+          },
+        },
+        create_layout = tele_utils.fused_layout,
+      },
+      git_commits = {
+        previewer = require("telescope.previewers").new_termopen_previewer({
+          get_command = function(entry)
+            return {
+              "git",
+              "-c",
+              "core.pager=delta",
+              "-c",
+              "delta.side-by-side=false",
+              "diff",
+              entry.value .. "^!",
+            }
+          end,
+        }),
+      },
+    },
     extensions = {
       git_worktree = {
         path_display = { "shorten" },
