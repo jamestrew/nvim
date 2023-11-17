@@ -157,14 +157,6 @@ M.open_using = function(finder)
   end
 end
 
-M.toggle_files = function(prompt_bufnr)
-  local current_picker = action_state.get_current_picker(prompt_bufnr)
-  local prompt = current_picker.prompt_title
-  actions.close(prompt_bufnr)
-
-  require("plugins.telescope.pickers").project_files({}, prompt == "Git Files")
-end
-
 local cycle_themes = {
   themes.get_dropdown({ previewer = false }),
   themes.get_ivy(),

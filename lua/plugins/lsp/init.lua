@@ -114,20 +114,6 @@ M.config = function()
     },
   })
 
-  -- require("lspconfig.configs").monkeyls = {
-  --   default_config = {
-  --     cmd = { "/home/jt/go/bin/golsp", "--logs", "/tmp/golsp.log" },
-  --     filetypes = { "mon" },
-  --     single_file_support = true,
-  --     root_dir = lspconfig.util.root_pattern("test"),
-  --   },
-  -- }
-  --
-  -- lspconfig.monkeyls.setup({
-  --   on_attach = on_attach,
-  --   capabilities = capabilities,
-  -- })
-
   -- null_ls
   local _, null_ls = pcall(require, "null-ls")
   null_ls.setup({

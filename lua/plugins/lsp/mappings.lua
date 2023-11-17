@@ -1,5 +1,13 @@
 local jtelescope = require("plugins.telescope.pickers")
 
+local function toggle_inlay_hints()
+  if vim.lsp.inlay_hint.is_enabled() then
+    vim.lsp.inlay_hint.enable(0, false)
+  else
+    vim.lsp.inlay_hint.enable()
+  end
+end
+
 return function(bufnr)
   local opts = { silent = true, buffer = bufnr }
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
@@ -11,7 +19,7 @@ return function(bufnr)
   vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
   vim.keymap.set("n", "<leader>fm", function() vim.lsp.buf.format({ async = true }) end, opts)
 
-  vim.keymap.set({ "i", "n" }, "<C-h>", function() vim.lsp.inlay_hint(bufnr) end, opts)
+  vim.keymap.set({ "i", "n" }, "<C-h>", toggle_inlay_hints, opts)
 
   -- Lsp Tele
   vim.keymap.set("n", "gd", jtelescope.lsp_definition, opts)

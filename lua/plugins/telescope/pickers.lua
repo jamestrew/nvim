@@ -16,26 +16,31 @@ M.search_dotfiles = function()
   })
 end
 
-M.project_files = function(opts, find_files)
+local no_ignore_state = true
+M.project_files = function(opts, no_ignore)
   opts = opts or {}
-  find_files = vim.F.if_nil(find_files, false)
+  no_ignore = vim.F.if_nil(no_ignore, false)
   opts.attach_mappings = function(_, map)
     map("i", "<A-d>", tele_utils.delete_file)
     map("i", "<A-r>", tele_utils.rename_file)
     map("i", "<A-y>", tele_utils.yank_fpath)
-    map("i", "<C-f>", tele_utils.toggle_files)
     map("i", "<A-s>", tele_utils.diffsplit)
     map("n", "yy", tele_utils.yank_fpath)
-    map("n", "<C-f>", tele_utils.toggle_files)
+    map({ "n", "i" }, "<C-f>", function(prompt_bufnr)
+      actions.close(prompt_bufnr)
+      no_ignore_state = not no_ignore_state
+      M.project_files({}, no_ignore_state)
+    end)
     return true
   end
 
-  if find_files then
+  if no_ignore then
     opts.no_ignore = true
-    opts.prompt_title = "Find Files"
+    opts.hidden = true
+    opts.prompt_title = "Find Files <ALL>"
     require("telescope.builtin").find_files(opts)
   else
-    opts.prompt_title = "Git Files"
+    opts.prompt_title = "Find Files"
     require("telescope.builtin").find_files(opts)
   end
 end

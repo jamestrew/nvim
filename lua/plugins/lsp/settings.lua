@@ -88,6 +88,7 @@ M.server_list = {
   "cssls",
   -- "sqls",
   "pyright",
+  "ruff_lsp",
   "eslint",
   "emmet_language_server",
   "html",
@@ -99,6 +100,7 @@ M.server_list = {
   "clangd",
   "taplo",
   -- "rust_analyzer",
+  -- "denols",
 }
 
 return M
