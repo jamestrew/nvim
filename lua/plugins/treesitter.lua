@@ -2,7 +2,6 @@ local M = {
   "nvim-treesitter/nvim-treesitter",
   dependencies = {
     { "nvim-treesitter/nvim-treesitter-textobjects" },
-    { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
     { "nvim-treesitter/nvim-treesitter-context", config = true },
     { "yioneko/nvim-yati" },
   },
@@ -67,28 +66,6 @@ local opts = {
       node_incremental = "<CR>",
       scope_incremental = "<S-CR>",
       node_decremental = "<BS>",
-    },
-  },
-  context_commentstring = {
-    enable = true,
-    enable_autocmd = false,
-  },
-  playground = {
-    enable = true,
-    disable = {},
-    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-    persist_queries = false, -- Whether the query persists across vim sessions
-    keybindings = {
-      toggle_query_editor = "o",
-      toggle_hl_groups = "i",
-      toggle_injected_languages = "t",
-      toggle_anonymous_nodes = "a",
-      toggle_language_display = "I",
-      focus_language = "f",
-      unfocus_language = "F",
-      update = "R",
-      goto_node = "<cr>",
-      show_help = "?",
     },
   },
   textobjects = {
