@@ -303,7 +303,7 @@ Usage:
   Group.new("FocusedSymbol", colors.base08, colors.line, styles.NONE)
 
   -- vim-matchup
-  Group.new("MatchParen", colors.none, colors.grey, styles.NONE)
+  -- Group.new("MatchParen", colors.none, colors.grey, styles.NONE)
 
   -- DAP
   Group.new("DapBreakpoint", colors.base08, colors.none, styles.NONE)
@@ -341,6 +341,11 @@ Usage:
   Group.new("CmpItemKindOperator", colors.base05)
   Group.new("CmpItemKindTypeParameter", colors.base08)
   Group.new("CmpItemKindCopilot", colors.green)
+
+
+  Group.new("IlluminatedWordText", groups.CursorLine, groups.CursorLine, groups.CursorLine)
+  Group.new("IlluminatedWordRead", groups.CursorLine, groups.CursorLine, groups.CursorLine)
+  Group.new("IlluminatedWordWrite", groups.CursorLine, groups.CursorLine, groups.CursorLine)
 end
 
 return M

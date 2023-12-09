@@ -1,4 +1,5 @@
 local jtelescope = require("plugins.telescope.pickers")
+local illuminate = require("illuminate")
 
 local function toggle_inlay_hints()
   if vim.lsp.inlay_hint.is_enabled() then
@@ -6,6 +7,33 @@ local function toggle_inlay_hints()
   else
     vim.lsp.inlay_hint.enable()
   end
+end
+
+---@param key string
+---@param direction "next"|"prev"
+---@param bufnr number
+local function illuminate_goto(key, direction, bufnr)
+  vim.keymap.set(
+    "n",
+    key,
+    function() illuminate["goto_" .. direction .. "_references"](false) end,
+    { silent = true, buffer = bufnr }
+  )
+end
+
+---@param key string
+---@param direction "next"|"prev"
+---@param severity DiagnosticSeverity?
+---@param bufnr number
+local function diagnostic_goto(key, direction, severity, bufnr)
+  local go = direction == "next" and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+  severity = severity or nil
+  vim.keymap.set(
+    "n",
+    key,
+    function() go({ severity = severity }) end,
+    { silent = true, buffer = bufnr }
+  )
 end
 
 return function(bufnr)
@@ -41,4 +69,14 @@ return function(bufnr)
   vim.keymap.set("n", "<leader><leader>fs", jtelescope.lsp_workspace_symbols, opts)
   vim.keymap.set("n", "<leader>td", ":Telescope diagnostics bufnr=0<CR>", opts)
   vim.keymap.set("n", "<leader>tw", ":Telescope diagnostics<CR>", opts)
+
+  illuminate_goto("]r", "next", bufnr)
+  illuminate_goto("[r", "prev", bufnr)
+
+  diagnostic_goto("]d", "next", nil, bufnr)
+  diagnostic_goto("[d", "prev", nil, bufnr)
+  diagnostic_goto("]e", "next", vim.diagnostic.severity.ERROR, bufnr)
+  diagnostic_goto("[e", "prev", vim.diagnostic.severity.ERROR, bufnr)
+  diagnostic_goto("]w", "next", vim.diagnostic.severity.WARN, bufnr)
+  diagnostic_goto("[w", "prev", vim.diagnostic.severity.WARN, bufnr)
 end

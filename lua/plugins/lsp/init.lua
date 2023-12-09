@@ -4,7 +4,13 @@ local M = {
     { "nvim-telescope/telescope.nvim" },
     { "hrsh7th/cmp-nvim-lsp" },
     { "SmiteshP/nvim-navic" },
-    { "williamboman/mason.nvim", config = true, cmd = "Mason" },
+    {
+      "williamboman/mason.nvim",
+      opts = {
+        ui = { keymaps = { update_all_packages = "S" } },
+      },
+      cmd = "Mason",
+    },
     { "nvimtools/none-ls.nvim" },
     { "folke/neodev.nvim", config = true },
     { "b0o/SchemaStore.nvim" },
@@ -32,6 +38,10 @@ local M = {
       },
       keys = { { "<leader>so", "<cmd>SymbolsOutline<CR>", desc = "symbols-outline" } },
     },
+    {
+      "RRethy/vim-illuminate",
+      config = function() require("illuminate").configure({}) end,
+    },
   },
   event = { "BufReadPre", "BufNewFile" },
 }
@@ -39,19 +49,6 @@ local M = {
 M.on_attach = function(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
     require("nvim-navic").attach(client, bufnr)
-  end
-
-  if client.server_capabilities.documentHighlightProvider then
-    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-      buffer = bufnr,
-      callback = vim.lsp.buf.document_highlight,
-      group = "lsp_augroup",
-    })
-    vim.api.nvim_create_autocmd("CursorMoved", {
-      buffer = bufnr,
-      callback = vim.lsp.buf.clear_references,
-      group = "lsp_augroup",
-    })
   end
 
   vim.api.nvim_create_autocmd("LspAttach", {

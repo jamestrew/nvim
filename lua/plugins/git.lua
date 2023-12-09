@@ -49,14 +49,14 @@ return {
             function() gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") }) end
           )
 
-          map("n", "]x", function()
-            if vim.wo.diff then return "]x" end
+          map("n", "]g", function()
+            if vim.wo.diff then return "]g" end
             vim.schedule(function() gs.next_hunk() end)
             return "<Ignore>"
           end, { expr = true })
 
-          map("n", "[x", function()
-            if vim.wo.diff then return "[x" end
+          map("n", "[g", function()
+            if vim.wo.diff then return "[g" end
             vim.schedule(function() gs.prev_hunk() end)
             return "<Ignore>"
           end, { expr = true })
