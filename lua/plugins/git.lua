@@ -68,8 +68,8 @@ return {
     "NeogitOrg/neogit",
     dependencies = { "sindrets/diffview.nvim" },
     opts = {
-      disable_commit_confirmation = true,
       kind = "tab",
+      disable_insert_on_commit = true,
       integrations = { diffview = true },
       sections = { recent = { folded = false } },
       mappings = { status = { ["="] = "Toggle" } },
