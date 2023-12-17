@@ -294,7 +294,7 @@ M.fused_layout = function(picker)
       },
     },
     win_options = {
-      winhighlight = "Normal:Normal",
+      winhighlight = "NormalFloat:TelescopeNormal,FloatBorder:TelescopeBorder",
     },
   })
 
@@ -308,7 +308,7 @@ M.fused_layout = function(picker)
       },
     },
     win_options = {
-      winhighlight = "Normal:Normal",
+      winhighlight = "NormalFloat:TelescopeNormal,FloatBorder:TelescopeBorder",
     },
   })
 
@@ -320,6 +320,9 @@ M.fused_layout = function(picker)
         top = picker.preview_title,
         top_align = "center",
       },
+    },
+    win_options = {
+      winhighlight = "NormalFloat:TelescopeNormal,FloatBorder:TelescopeBorder",
     },
   })
 
