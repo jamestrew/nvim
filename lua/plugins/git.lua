@@ -1,5 +1,8 @@
 return {
-  { "tpope/vim-fugitive" },
+  {
+    "tpope/vim-fugitive",
+    keys = { { "<leader>gs", "<cmd>G<CR>", desc = "git" } },
+  },
   { "jamestrew/git-worktree.nvim", config = true },
   {
     "sindrets/diffview.nvim",
@@ -66,6 +69,7 @@ return {
   },
   {
     "NeogitOrg/neogit",
+    enabled = false,
     dependencies = { "sindrets/diffview.nvim" },
     opts = {
       kind = "tab",

@@ -24,23 +24,6 @@ return {
   {
     "sourcegraph/sg.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-  --   config = function()
-  --     require("sg").setup({
-  --       on_attach = require("plugins.lsp").on_attach,
-  --     })
-  --   end,
-  },
-  {
-    "AckslD/messages.nvim",
-    config = function()
-      require("messages").setup({
-        prepar_buffer = function(opts)
-          local buf = vim.api.nvim_create_buf(false, true)
-          vim.keymap.set("n", "<esc>", "<cmd>close<CR>", { buffer = buf })
-          return vim.api.nvim_open_win(buf, true, opts)
-        end,
-      })
-    end,
   },
   {
     "mrjones2014/smart-splits.nvim",
@@ -87,4 +70,5 @@ return {
       { "<leader>te", function() require("harpoon.term").gotoTerminal(2) end },
     },
   },
+  { "echasnovski/mini.doc", opts = {} },
 }

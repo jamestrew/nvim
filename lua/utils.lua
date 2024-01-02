@@ -72,41 +72,4 @@ M.is_dir = function(path) return path:sub(-1, -1) == Path.path.sep end
 
 M.clear_prompt = function() vim.api.nvim_command("normal :esc<CR>") end
 
-M.save_and_source = function()
-  vim.cmd(":silent! w")
-  vim.cmd.source()
-  vim.cmd("Messages messages")
-end
-
-M.trim_TDAMPA = function(name) return name:gsub("^.*TDAMPA--", "") end
-
-M.plugin_urls = function()
-  local plugins = {}
-  for _, plug_data in pairs(_G.packer_plugins) do
-    if plug_data.url then table.insert(plugins, plug_data.url) end
-  end
-  table.sort(plugins)
-
-  local file = io.open("work/plugin_urls.txt", "w")
-  io.output(file)
-
-  for _, url in pairs(plugins) do
-    io.write(string.format("%s\n", url))
-  end
-  io.close(file)
-end
-
-M.import = function(module, setup)
-  local ok, mod = pcall(require, module)
-
-  if not ok then
-    vim.notify(string.format("%s not installed", module), vim.log.levels.WARN)
-    return mod
-  end
-
-  if setup then mod.setup(setup) end
-
-  return mod
-end
-
 return M

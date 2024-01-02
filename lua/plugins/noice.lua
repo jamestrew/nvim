@@ -117,7 +117,7 @@ M.config = function()
         ["cmp.entry.get_documentation"] = true,
       },
       hover = {
-        enabled = true,
+        enabled = false,
         view = nil, -- when nil, use defaults from documentation
         ---@type NoiceViewOptions
         opts = {}, -- merged with defaults from documentation
@@ -136,7 +136,7 @@ M.config = function()
       },
       message = {
         -- Messages shown by lsp servers
-        enabled = true,
+        enabled = false,
         view = "notify",
         opts = {},
       },

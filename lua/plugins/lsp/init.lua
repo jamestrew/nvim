@@ -12,7 +12,7 @@ local M = {
       cmd = "Mason",
     },
     { "nvimtools/none-ls.nvim" },
-    { "folke/neodev.nvim", config = true },
+    { "folke/neodev.nvim" },
     { "b0o/SchemaStore.nvim" },
     { "simrat39/rust-tools.nvim" },
     {
@@ -65,6 +65,12 @@ end
 
 M.config = function()
   local lspsettings = require("plugins.lsp.settings")
+  require("neodev").setup({
+    override = function(_, library)
+      library.enabled = true
+      library.plugins = true
+    end,
+  })
   local lspconfig = require("lspconfig")
 
   vim.api.nvim_create_augroup("lsp_augroup", { clear = true })

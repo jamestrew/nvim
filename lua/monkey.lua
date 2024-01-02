@@ -20,7 +20,6 @@ parser_config.monkey = {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "monkey",
   callback = function()
-    print("starting lsp...?")
     vim.lsp.start({
       name = "monkey-language-server",
       cmd = { "/home/jt/projects/monkey-language-server/target/release/monkey-language-server" },

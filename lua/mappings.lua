@@ -31,7 +31,6 @@ nnoremap("N", "Nzzzv")
 nnoremap(l("J"), "mzJ`z")
 
 nnoremap(l("pp"), ":echo expand('%:p')<CR>")
-nnoremap(l("ss"), require("utils").save_and_source)
 
 -- quick find & replace
 nnoremap(l("fr"), ":norm! V<CR> :s/")
