@@ -7,22 +7,11 @@ return {
   --   config = function() vim.g.matchup_matchparen_offscreen = { method = "popup" } end,
   -- },
   { "windwp/nvim-autopairs", config = true },
-  { "windwp/nvim-ts-autotag" },
+  { "windwp/nvim-ts-autotag", ft = { "javascript", "jsx", "typescript", "tsx", "html", "markdown" } },
   { "kylechui/nvim-surround", config = true },
   { "echasnovski/mini.move", config = true },
   { "asiryk/auto-hlsearch.nvim", config = true },
   { "norcalli/nvim-colorizer.lua", cmd = { "ColorizerToggle" } },
-  {
-    "danymat/neogen",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    config = true,
-  },
-
-  {
-    "ggandor/leap.nvim",
-    config = function() require("leap").add_default_mappings() end,
-  },
-
   {
     "Wansmer/treesj",
     keys = { { "<leader>sj", "<cmd>TSJToggle<cr>", desc = "Join Toggle" } },

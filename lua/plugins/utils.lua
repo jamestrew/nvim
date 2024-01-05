@@ -13,6 +13,7 @@ return {
         "_ _ _ _ x x x _ _ _ x x x _ _ _ _",
       },
     },
+    cmd = "QMKFormat",
   },
   {
     "nvim-lua/plenary.nvim",
@@ -24,6 +25,7 @@ return {
   {
     "sourcegraph/sg.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
+    event = "VeryLazy",
   },
   {
     "mrjones2014/smart-splits.nvim",
@@ -49,6 +51,7 @@ return {
     build = "deno task --quiet build:fast",
     opts = { app = "browser" },
     init = function() vim.api.nvim_create_user_command("Peek", require("peek").open, {}) end,
+    cmd = "Peek",
   },
   {
     "thePrimeagen/harpoon",
@@ -70,5 +73,4 @@ return {
       { "<leader>te", function() require("harpoon.term").gotoTerminal(2) end },
     },
   },
-  { "echasnovski/mini.doc", opts = {} },
 }

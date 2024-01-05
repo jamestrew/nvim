@@ -67,18 +67,4 @@ return {
       })
     end,
   },
-  {
-    "NeogitOrg/neogit",
-    enabled = false,
-    dependencies = { "sindrets/diffview.nvim" },
-    opts = {
-      kind = "tab",
-      disable_insert_on_commit = true,
-      integrations = { diffview = true },
-      sections = { recent = { folded = false } },
-      mappings = { status = { ["="] = "Toggle" } },
-    },
-    cmd = { "Neogit" },
-    keys = { { "<leader>gs", "<cmd>Neogit<CR>", desc = "neogit" } },
-  },
 }

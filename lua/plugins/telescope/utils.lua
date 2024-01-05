@@ -29,23 +29,19 @@ M.rename_file = function()
 end
 
 M.create_file = function(prompt_bufnr)
-  local entry = action_state.get_selected_entry()
-  local fpath = ""
-  if entry == nil then
-    fpath = vim.loop.cwd()
+  local prompt = action_state.get_current_line()
+  ---@type Path
+  local prompt_path = Path:new(prompt)
+  local ok
+  if prompt:match("/$") then
+    ok = prompt_path:mkdir({ parents = true, exists_ok = false })
   else
-    fpath = entry.value
+    ok = prompt_path:touch({ parents = true })
   end
 
-  local new_file = vim.fn.input("Create file: ", fpath .. "/")
-  utils.clear_prompt()
-
-  if not utils.is_dir(new_file) then
+  if ok then
     actions.close(prompt_bufnr)
-    Path:new(new_file):touch({ parents = true })
-    vim.cmd(string.format(":e %s", new_file))
-  else
-    print("Given path not a valid file name")
+    vim.cmd.e(prompt_path:absolute())
   end
 end
 
