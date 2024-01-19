@@ -23,6 +23,7 @@ local ensure_installed = {
   "jsdoc",
   "json",
   "lua",
+  "luadoc",
   "make",
   "python",
   "query",
@@ -35,6 +36,7 @@ local ensure_installed = {
   "yaml",
   "toml",
   "markdown",
+  "markdown_inline",
   "regex",
   "vimdoc",
 }

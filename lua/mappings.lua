@@ -37,3 +37,8 @@ nnoremap(l("fr"), ":norm! V<CR> :s/")
 vnoremap(l("fr"), ":s/")
 
 nnoremap("<esc>", ":nohl<CR>", silent)
+
+nnoremap("<leader>asht", function()
+  print("reloading telescope...")
+  R("telescope")
+end)

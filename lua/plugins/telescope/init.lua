@@ -54,6 +54,7 @@ M.keys = function()
       silent = true,
     },
     { "<leader><leader>fw", tele_ext.live_grep_args.live_grep_args },
+    { "<leader>rl", builtin.reloader, silent = true },
   }
 end
 

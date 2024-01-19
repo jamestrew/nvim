@@ -16,18 +16,6 @@ local M = {
     { "b0o/SchemaStore.nvim" },
     { "simrat39/rust-tools.nvim" },
     {
-      "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-      config = function()
-        local lsp_lines = require("lsp_lines")
-        lsp_lines.setup()
-        lsp_lines.toggle()
-        vim.keymap.set("n", "<leader><leader>od", function()
-          local virt_lines = lsp_lines.toggle()
-          vim.diagnostic.config({ virtual_text = not virt_lines })
-        end)
-      end,
-    },
-    {
       "simrat39/symbols-outline.nvim",
       opts = {
         position = "left",

@@ -16,7 +16,6 @@ M.search_dotfiles = function()
   })
 end
 
-local no_ignore_state = true
 M.project_files = function(opts, no_ignore)
   opts = opts or {}
   no_ignore = vim.F.if_nil(no_ignore, false)
@@ -29,8 +28,8 @@ M.project_files = function(opts, no_ignore)
     map("n", "yy", tele_utils.yank_fpath)
     map({ "n", "i" }, "<C-f>", function(prompt_bufnr)
       actions.close(prompt_bufnr)
-      no_ignore_state = not no_ignore_state
-      M.project_files({}, no_ignore_state)
+      no_ignore = not no_ignore
+      M.project_files({}, no_ignore)
     end)
     return true
   end
