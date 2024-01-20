@@ -155,74 +155,128 @@ Usage:
   Group.new("SpellRare", colors.none, colors.none, styles.undercurl)
 
   -- treesitter
-  Group.new("@none", colors.base05, colors.none, styles.NONE)
-  Group.new("@punction.delimiter", colors.base08, colors.none, styles.NONE)
-  Group.new("@punction.bracket", colors.base08, colors.none, styles.NONE)
-  Group.new("@punction.special", colors.base0F, colors.none, styles.NONE)
+  Group.new("@variable", colors.none, colors.none, styles.NONE)
+  Group.new("@variable.builtin", colors.base0C, colors.none, styles.NONE)
+  Group.new("@variable.parameter", colors.base08, colors.none, styles.NONE)
+  Group.new("@variable.member", colors.base0A, colors.none, styles.NONE)
+
   Group.new("@constant", colors.base09, colors.none, styles.bold)
   Group.new("@constant.builtin", colors.base0C, colors.none, styles.NONE)
   Group.new("@constant.macro", colors.base0E, colors.none, styles.NONE)
-  Group.new("@string", colors.base0B, colors.none, styles.NONE)
-  Group.new("@string.regex", colors.base0B, colors.none, styles.NONE)
-  Group.new("@string.escape", colors.base0F, colors.none, styles.NONE)
-  Group.new("@character", colors.base08, colors.none, styles.NONE)
-  Group.new("@number", colors.base09, colors.none, styles.NONE)
-  Group.new("@boolean", colors.base0C, colors.none, styles.bold)
-  Group.new("@float", colors.base09, colors.none, styles.NONE)
-  Group.new("@function", colors.base0D, colors.none, styles.bold)
-  Group.new("@function.builtin", colors.base0C, colors.none, styles.NONE)
-  Group.new("@function.macro", colors.base0D, colors.none, styles.NONE)
-  Group.new("@macro", colors.base0D, colors.none, styles.bold)
-  Group.new("@parameter", colors.base08, colors.none, styles.NONE)
-  Group.new("@parameter.reference", colors.base08, colors.none, styles.NONE)
-  Group.new("@method", colors.base0D, colors.none, styles.bold)
-  Group.new("@field", colors.base0A, colors.none, styles.NONE)
-  Group.new("@property", colors.base0A, colors.none, styles.NONE)
-  Group.new("@constructor", colors.base0C, colors.none, styles.NONE)
-  Group.new("@annotation", colors.base0A, colors.none, styles.NONE)
-  Group.new("@attribute", colors.base0A, colors.none, styles.NONE)
-  Group.new("@namespace", colors.base0D, colors.none, styles.NONE)
-  Group.new("@conditional", colors.base0E, colors.none, styles.NONE)
-  Group.new("@repeat", colors.base0D, colors.none, styles.NONE)
+
+  Group.new("@module", colors.base0D, colors.none, styles.NONE)
+  -- Group.new("@module.builtin", colors.base0D, colors.none, styles.NONE)
   Group.new("@label", colors.base0A, colors.none, styles.NONE)
-  Group.new("@operator", colors.base07, colors.none, styles.NONE)
-  Group.new("@keyword", colors.base0E, colors.none, styles.NONE)
-  Group.new("@keyword.function", colors.base0E, colors.none, styles.bold)
-  Group.new("@keyword.operator", colors.base08, colors.none, styles.NONE)
-  Group.new("@exception", colors.base08, colors.none, styles.NONE)
+
+  Group.new("@string", colors.base0B, colors.none, styles.NONE)
+  -- Group.new("@string.documentation", colors.base0B, colors.none, styles.NONE)
+  Group.new("@string.regexp", colors.base0B, colors.none, styles.NONE)
+  Group.new("@string.escape", colors.base0F, colors.none, styles.NONE)
+  -- Group.new("@string.special", colors.base0F, colors.none, styles.NONE) -- other special strings (eg dates)
+  -- Group.new("@string.special.symbol", colors.base0F, colors.none, styles.NONE) -- symbols or atoms
+  -- Group.new("@string.special.url", colors.base0F, colors.none, styles.NONE)
+  -- Group.new("@string.special.path", colors.base0F, colors.none, styles.NONE)
+
+  Group.new("@character", colors.base08, colors.none, styles.NONE)
+  -- Group.new("@character.special", colors.base08, colors.none, styles.NONE) -- eg. wildcard
+
+  Group.new("@boolean", colors.base0C, colors.none, styles.bold)
+  Group.new("@number", colors.base09, colors.none, styles.NONE)
+  Group.new("@number.float", colors.base09, colors.none, styles.NONE)
+
   Group.new("@type", colors.base0A, colors.none, styles.bold)
   Group.new("@type.builtin", colors.base0A, colors.none, styles.bold)
-  Group.new("@include", colors.base0D, colors.none, styles.NONE)
-  Group.new("@variable", colors.none, colors.none, styles.NONE)
-  Group.new("@variable.builtin", colors.base0C, colors.none, styles.NONE)
-  Group.new("@text", colors.base05, colors.none, styles.NONE)
-  Group.new("@strong", colors.base07, colors.none, styles.bold)
-  Group.new("@emphasis", colors.base06, colors.none, styles.italic)
-  Group.new("@underline", colors.base05, colors.none, styles.underline)
-  Group.new("@title", colors.base0D, colors.none, styles.NONE)
-  Group.new("@literal", colors.base0B, colors.none, styles.NONE)
-  Group.new("@uri", colors.base08, colors.none, styles.NONE)
+  -- Group.new("@type.definition", colors.base0A, colors.none, styles.bold) -- identifiers in type defs
+  -- Group.new("@type.qualifier", colors.base0A, colors.none, styles.bold) -- eg `const`
+
+  Group.new("@attribute", colors.base0A, colors.none, styles.NONE)
+  Group.new("@property", colors.base0A, colors.none, styles.NONE)
+
+  Group.new("@function", colors.base0D, colors.none, styles.bold)
+  Group.new("@function.builtin", colors.base0C, colors.none, styles.NONE)
+  -- Group.new("@function.call", colors.base0C, colors.none, styles.NONE)
+  Group.new("@function.macro", colors.base0D, colors.none, styles.NONE)
+  Group.new("@function.method", colors.base0D, colors.none, styles.bold)
+  -- Group.new("@function.method.call", colors.base0D, colors.none, styles.bold)
+
+  Group.new("@constructor", colors.base0C, colors.none, styles.NONE)
+  Group.new("@operator", colors.base07, colors.none, styles.NONE)
+
+  Group.new("@keyword", colors.base0E, colors.none, styles.NONE)
+  -- Group.new("@keyword.coroutine", colors.base0E, colors.none, styles.NONE) -- eg. `go` in GO, `async/await`
+  Group.new("@keyword.function", colors.base0E, colors.none, styles.bold)
+  Group.new("@keyword.operator", colors.base08, colors.none, styles.NONE) -- operators in english `and`/`or`
+  Group.new("@keyword.import", colors.base0D, colors.none, styles.NONE)
+  Group.new("@keyword.storage", colors.base0E, colors.none, styles.NONE) -- modifiers that affect storage in memory or life-time
+  Group.new("@keyword.repeat", colors.base0D, colors.none, styles.NONE) -- loop stuff `for`/`while`
+  -- Group.new("@keyword.return", colors.base0E, colors.none, styles.NONE)
+  Group.new("@keyword.debug", colors.base0E, colors.none, styles.NONE)
+  Group.new("@keyword.exception", colors.base08, colors.none, styles.NONE) -- `throw`/`catch`
+
+  Group.new("@keyword.conditional", colors.base0E, colors.none, styles.NONE)
+  -- Group.new("@keyword.conditional.ternary", colors.base0E, colors.none, styles.NONE)
+
+  -- Group.new("@keyword.directive", colors.base0E, colors.none, styles.NONE)
+  -- Group.new("@keyword.directive.define", colors.base0E, colors.none, styles.NONE)
+
+  Group.new("@punctuation", colors.base0F, colors.none, styles.NONE)
+  -- Group.new("@punctuation.delimiter", colors.base08, colors.none, styles.NONE) -- eg `;`, `,`, `.`
+  -- Group.new("@punctuation.bracket", colors.base08, colors.none, styles.NONE) -- eg `()`, `{}`, `[]`
+  -- Group.new("@punctuation.special", colors.base08, colors.none, styles.NONE) -- eg `{}` in string interpolation
+
+  Group.new("@comment", colors.grey_fg2, colors.none, styles.NONE)
+  -- Group.new("@comment.documentation", colors.grey_fg2, colors.none, styles.NONE)
+  -- Group.new("@comment.error", colors.grey_fg2, colors.none, styles.NONE)
+  -- Group.new("@comment.warning", colors.grey_fg2, colors.none, styles.NONE)
+  -- Group.new("@comment.hint", colors.grey_fg2, colors.none, styles.NONE)
+  -- Group.new("@comment.info", colors.grey_fg2, colors.none, styles.NONE)
+  -- Group.new("@comment.todo", colors.grey_fg2, colors.none, styles.NONE)
+
+
+  Group.new("@markup", colors.base05, colors.none, styles.NONE)
+  Group.new("@markup.italic", colors.base06, colors.none, styles.italic)
+  Group.new("@markup.strikethrough", colors.base05, colors.none, styles.strikethrough)
+  Group.new("@markup.strong", colors.base07, colors.none, styles.bold)
+  Group.new("@markup.underline", colors.base05, colors.none, styles.underline)
+  Group.new("@markup.heading", colors.base0D, colors.none, styles.NONE)
+
+  -- Group.new("@markup.quote", colors.base05, colors.none, styles.NONE)
+  -- Group.new("@markup.math", colors.base05, colors.none, styles.NONE)
+  -- Group.new("@markup.environment", colors.base05, colors.none, styles.NONE)
+  -- Group.new("@markup.link", colors.base05, colors.none, styles.NONE)
+  -- Group.new("@markup.link.label", colors.base05, colors.none, styles.NONE)
+  -- Group.new("@markup.link.url", colors.base05, colors.none, styles.NONE)
+
+  -- Group.new("@markup.raw", colors.base05, colors.none, styles.NONE)
+  -- Group.new("@markup.raw.block", colors.base05, colors.none, styles.NONE)
+
+  Group.new("@markup.list", colors.base0F, colors.none, styles.NONE)
+  -- Group.new("@markup.list.checked", colors.base0F, colors.none, styles.NONE)
+  -- Group.new("@markup.list.unchecked", colors.base0F, colors.none, styles.NONE)
+
+  Group.new("@diff.plus", colors.none, groups["DiffAdd"], styles.NONE)
+  Group.new("@diff.minus", colors.none, groups["DiffDelete"], styles.NONE)
+  Group.new("@diff.delta", colors.none, groups["DiffChange"], styles.NONE)
+
   Group.new("@tag", colors.base0A, colors.none, styles.NONE)
+  -- Group.new("@tag.attribute", colors.base0A, colors.none, styles.NONE)
   Group.new("@tag.delimiter", colors.base0F, colors.none, styles.NONE)
-  Group.new("@definition", colors.base01, colors.base0A, styles.NONE)
-  Group.new("@definition.usage", colors.none, colors.base02, styles.NONE)
-  Group.new("@currentscope", colors.none, colors.base01, styles.NONE)
 
   -- Semantic Tokens
-  Group.new("@lsp.type.namespace", groups["@namespace"], groups["@namespace"], groups["@namespace"])
+  Group.new("@lsp.type.namespace", groups["@module"], groups["@module"], groups["@module"])
   Group.new("@lsp.type.type", groups["@type"], groups["@type"], groups["@type"])
   Group.new("@lsp.type.class", groups["@type"], groups["@type"], groups["@type"])
   Group.new("@lsp.type.struct", groups["@type"], groups["@type"], groups["@type"])
   Group.new("@lsp.type.enum", groups["@type"], groups["@type"], groups["@type"])
   Group.new("@lsp.type.interface", groups["@type"], groups["@type"], groups["@type"])
-  Group.new("@lsp.type.parameter", groups["@parameter"], groups["@parameter"], groups["@parameter"])
+  Group.new("@lsp.type.parameter", groups["@variable.parameter"], groups["@variable.parameter"], groups["@variable.parameter"])
   Group.new("@lsp.type.variable", groups["@variable"], groups["@variable"], groups["@variable"])
-  Group.new("@lsp.type.property", groups["@property"], groups["@property"], groups["@property"])
+  Group.new("@lsp.type.property", groups["@variable.member"], groups["@variable.member"], groups["@variable.member"])
   Group.new("@lsp.type.enumMember", groups["@constant"], groups["@constant"], groups["@constant"])
   Group.new("@lsp.type.function", groups["@function"], groups["@function"], groups["@function"])
   Group.new("@lsp.type.decorator", groups["@function"], groups["@function"], groups["@function"])
-  Group.new("@lsp.type.method", groups["@method"], groups["@method"], groups["@method"])
-  Group.new("@lsp.type.macro", groups["@macro"], groups["@macro"], groups["@macro"])
+  Group.new("@lsp.type.method", groups["@function.method"], groups["@function.method"], groups["@function.method"])
+  Group.new("@lsp.type.macro", groups["@function.macro"], groups["@function.macro"], groups["@function.macro"])
 
   -- LSP Diagnostics
   Group.new("DiagnosticError", colors.red, colors.none, styles.NONE)
@@ -342,7 +396,6 @@ Usage:
   Group.new("CmpItemKindOperator", colors.base05)
   Group.new("CmpItemKindTypeParameter", colors.base08)
   Group.new("CmpItemKindCopilot", colors.green)
-
 
   Group.new("IlluminatedWordText", groups.CursorLine, groups.CursorLine, groups.CursorLine)
   Group.new("IlluminatedWordRead", groups.CursorLine, groups.CursorLine, groups.CursorLine)

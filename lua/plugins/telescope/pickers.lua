@@ -1,5 +1,6 @@
 local utils = require("utils")
 local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
 local themes = require("telescope.themes")
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
@@ -27,9 +28,10 @@ M.project_files = function(opts, no_ignore)
     map("i", "<M-s>", tele_utils.diffsplit)
     map("n", "yy", tele_utils.yank_fpath)
     map({ "n", "i" }, "<C-f>", function(prompt_bufnr)
+      local prompt = action_state.get_current_line()
       actions.close(prompt_bufnr)
       no_ignore = not no_ignore
-      M.project_files({}, no_ignore)
+      M.project_files({ default_text = prompt }, no_ignore)
     end)
     return true
   end
