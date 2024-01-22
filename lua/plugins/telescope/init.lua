@@ -31,13 +31,12 @@ M.keys = function()
   local jtelescope = require("plugins.telescope.pickers")
   local tele_ext = require("telescope").extensions
   return {
-    { "<leader>fw", builtin.live_grep, silent = true },
+    { "<leader>fw", jtelescope.live_grep, silent = true },
     { "<leader>gc", builtin.git_commits, silent = true },
     { "<leader>fb", builtin.buffers, silent = true },
     { "<leader>fh", builtin.help_tags, silent = true },
     { "<leader>gw", builtin.grep_string, silent = true, mode = { "n", "v", "x" } },
     { "<leader>fc", builtin.commands, silent = true },
-    { "<leader>gf", jtelescope.live_grep_file },
     { "<leader>rc", jtelescope.search_dotfiles },
     { "<leader>fg", jtelescope.git_worktrees },
     { "<leader>ct", jtelescope.create_git_worktree },
@@ -46,14 +45,12 @@ M.keys = function()
     { "<leader>gh", jtelescope.git_hunks },
     { "<leader>vrc", jtelescope.search_dotfiles },
     { "<C-p>", jtelescope.project_files },
-    { "<leader><C-p>", function() jtelescope.project_files({}, true) end },
     { "<C-e>", tele_ext.file_browser.file_browser, silent = true },
     {
       "<leader><C-e>",
       function() tele_ext.file_browser.file_browser({ path = "%:p:h", select_buffer = true }) end,
       silent = true,
     },
-    { "<leader><leader>fw", tele_ext.live_grep_args.live_grep_args },
     { "<leader>rl", builtin.reloader, silent = true },
   }
 end
@@ -197,6 +194,7 @@ M.config = function()
         quiet = true,
         respect_gitignore = false,
         git_status = true,
+        follow_symlinks = true,
         mappings = {
           i = {
             ["<A-n>"] = fb_actions.select_all,

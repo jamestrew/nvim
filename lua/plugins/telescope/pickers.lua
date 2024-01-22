@@ -37,14 +37,30 @@ M.project_files = function(opts, no_ignore)
   end
 
   if no_ignore then
-    opts.no_ignore = true
-    opts.hidden = true
+    opts.find_command =
+      { "rg", "--files", "--color", "never", "--hidden", "--no-ignore", "--glob", "!.git" }
     opts.prompt_title = "Find Files <ALL>"
     require("telescope.builtin").find_files(opts)
   else
     opts.prompt_title = "Find Files"
     require("telescope.builtin").find_files(opts)
   end
+end
+
+M.live_grep = function(opts, use_args)
+  opts = opts or {}
+  use_args = vim.F.if_nil(use_args, false)
+  opts.attach_mappings = function(_, map)
+    map({ "n", "i" }, "<C-f>", function(prompt_bufnr)
+      local prompt = action_state.get_current_line()
+      actions.close(prompt_bufnr)
+      opts.default_text = string.format([["%s"]], prompt)
+      require("telescope").extensions.live_grep_args.live_grep_args(opts)
+    end)
+    return true
+  end
+
+  require("telescope.builtin").live_grep(opts)
 end
 
 M.git_worktrees = function()
@@ -183,18 +199,6 @@ M.lsp_definition = function(opts)
   opts.layout_strategy = "vertical"
   -- opts.entry_maker = tele_utils.lsp_ref_entry(opts)
   require("telescope.builtin").lsp_definitions(opts)
-end
-
-M.live_grep_file = function(opts)
-  opts = opts
-    or themes.get_dropdown({
-      previewer = false,
-      shorten_path = false,
-      border = true,
-      prompt_title = "Grep File",
-      search_dirs = { vim.fn.expand("%:p") },
-    })
-  require("telescope.builtin").live_grep(opts)
 end
 
 return M

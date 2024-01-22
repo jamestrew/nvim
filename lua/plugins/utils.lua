@@ -28,6 +28,17 @@ return {
     event = "VeryLazy",
   },
   {
+    "robitx/gp.nvim",
+    config = function()
+      require("gp").setup({
+        chat_user_prefix = "💬 ME:"
+      })
+    end,
+    keys = {
+      { "<leader>gp", ":GpChatToggle tabnew<CR>"}
+    }
+  },
+  {
     "mrjones2014/smart-splits.nvim",
     opts = {
       resize_mode = {
