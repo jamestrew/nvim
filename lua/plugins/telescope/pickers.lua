@@ -63,6 +63,18 @@ M.live_grep = function(opts, use_args)
   require("telescope.builtin").live_grep(opts)
 end
 
+M.buffers = function(opts)
+  opts = opts
+    or themes.get_dropdown({
+      previewer = false,
+      attach_mappings = function(_, map)
+        map({ "n", "i" }, "<M-d>", actions.delete_buffer)
+        return true
+      end,
+    })
+  require("telescope.builtin").buffers(opts)
+end
+
 M.git_worktrees = function()
   local opts = themes.get_dropdown()
   opts.attach_mappings = function(_, map)
@@ -120,8 +132,17 @@ M.neoclip = function()
   require("telescope").extensions.neoclip.default(opts)
 end
 
+M.symbols = function(opts)
+  opts = opts or themes.get_ivy({
+    -- symbols = { "function", "object", "constant" },
+  })
+  require("telescope.builtin").treesitter(opts)
+end
+
 M.lsp_document_symbols = function(opts)
-  opts = opts or themes.get_ivy()
+  opts = opts or themes.get_ivy({
+    symbols = { "function", "object", "constant" },
+  })
   require("telescope.builtin").lsp_document_symbols(opts)
 end
 

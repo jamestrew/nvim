@@ -1,4 +1,4 @@
--- DO NOT change the paths and don't remove the colorscheme
+vim.g.mapleader = " "
 local root = vim.fn.fnamemodify("./.repro", ":p")
 
 -- set stdpaths to use .repro
@@ -21,11 +21,34 @@ vim.opt.runtimepath:prepend(lazypath)
 
 -- install plugins
 local plugins = {
-  -- add any other plugins here
+  {
+    "nvim-telescope/telescope.nvim",
+    dir = "/home/jt/projects/telescope.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("telescope").setup({})
+      vim.keymap.set("n", "<C-p>", ":Telescope find_files<CR>")
+    end,
+  },
 }
+
 require("lazy").setup(plugins, {
   root = root .. "/plugins",
 })
 
-vim.cmd.colorscheme("habamax")
--- add anything else here
+if pcall(require, "plenary") then
+  RELOAD = require("plenary.reload").reload_module
+
+  R = function(name)
+    RELOAD(name)
+    return require(name)
+  end
+end
+
+vim.keymap.set("n", "<leader>asht", function()
+  print("reloading telescope...")
+  R("telescope")
+end)

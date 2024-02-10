@@ -2,6 +2,7 @@ return {
   {
     "tpope/vim-fugitive",
     keys = { { "<leader>gs", "<cmd>G<CR>", desc = "git" } },
+    cmd = { "G" },
   },
   { "jamestrew/git-worktree.nvim", config = true },
   {

@@ -33,17 +33,17 @@ M.keys = function()
   return {
     { "<leader>fw", jtelescope.live_grep, silent = true },
     { "<leader>gc", builtin.git_commits, silent = true },
-    { "<leader>fb", builtin.buffers, silent = true },
+    { "<leader>fb", jtelescope.buffers, silent = true },
     { "<leader>fh", builtin.help_tags, silent = true },
     { "<leader>gw", builtin.grep_string, silent = true, mode = { "n", "v", "x" } },
     { "<leader>fc", builtin.commands, silent = true },
+    { "<leader>fs", jtelescope.symbols, silent = true },
     { "<leader>rc", jtelescope.search_dotfiles },
     { "<leader>fg", jtelescope.git_worktrees },
     { "<leader>ct", jtelescope.create_git_worktree },
     { "<leader>fy", jtelescope.neoclip },
     { "<leader>ff", jtelescope.curbuf },
     { "<leader>gh", jtelescope.git_hunks },
-    { "<leader>vrc", jtelescope.search_dotfiles },
     { "<C-p>", jtelescope.project_files },
     { "<C-e>", tele_ext.file_browser.file_browser, silent = true },
     {
@@ -59,9 +59,18 @@ M.config = function()
   local actions = require("telescope.actions")
   local action_layout = require("telescope.actions.layout")
   local builtin = require("telescope.builtin")
+  local jtelescope = require("plugins.telescope.pickers")
 
   local tele_utils = require("plugins.telescope.utils")
   local fb_actions = require("telescope._extensions.file_browser.actions")
+
+  local set_width = function(_, cols, _)
+    if cols > 200 then
+      return 170
+    else
+      return math.floor(cols * 0.87)
+    end
+  end
 
   require("telescope").setup({
     defaults = {
@@ -77,6 +86,7 @@ M.config = function()
           preview_width = 0.55,
           results_width = 0.8,
           preview_cutoff = 120,
+          width = set_width,
         },
         vertical = {
           mirror = false,
@@ -84,13 +94,6 @@ M.config = function()
           preview_height = 0.8,
           width = 120,
         },
-        width = function(_, cols, _)
-          if cols > 200 then
-            return 170
-          else
-            return math.floor(cols * 0.87)
-          end
-        end,
         height = 0.80,
       },
       file_ignore_patterns = { "node_modules", "%.lock", "package-lock.json" },
@@ -182,9 +185,6 @@ M.config = function()
         filetypes = { "png", "webp", "jpg", "jpeg" },
         find_cmd = "rg", -- find command (defaults to `fd`)
       },
-      frecency = {
-        ignore_patterns = { "*.git/*", "*/tmp/*", "*/node_modules/*" },
-      },
       file_browser = {
         theme = "ivy",
         hijack_netrw = false,
@@ -198,8 +198,8 @@ M.config = function()
         mappings = {
           i = {
             ["<A-n>"] = fb_actions.select_all,
-            ["<A-f>"] = tele_utils.open_using(builtin.find_files),
-            ["<A-g>"] = tele_utils.open_using(builtin.live_grep),
+            ["<A-f>"] = tele_utils.open_using(jtelescope.project_files),
+            ["<A-g>"] = tele_utils.open_using(jtelescope.live_grep),
             ["<C-s>"] = fb_actions.sort_by_date,
             ["<C-e>"] = tele_utils.current_bufr_dir,
             ["<C-w>"] = { "<c-s-w>", type = "command" },
