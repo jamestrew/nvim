@@ -5,6 +5,9 @@ local themes = require("telescope.themes")
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 local config = require("telescope.config")
+local make_entry = require("telescope.make_entry")
+local conf = require("telescope.config").values
+local entry_display = require("telescope.pickers.entry_display")
 
 local tele_utils = require("plugins.telescope.utils")
 
@@ -132,7 +135,7 @@ M.neoclip = function()
   require("telescope").extensions.neoclip.default(opts)
 end
 
-M.symbols = function(opts)
+M.treesitter_symbols = function(opts)
   opts = opts or themes.get_ivy({
     -- symbols = { "function", "object", "constant" },
   })
@@ -220,6 +223,178 @@ M.lsp_definition = function(opts)
   opts.layout_strategy = "vertical"
   -- opts.entry_maker = tele_utils.lsp_ref_entry(opts)
   require("telescope.builtin").lsp_definitions(opts)
+end
+
+local treesitter_type_highlight = {
+  ["associated"] = "@constant",
+  ["constant"] = "@constant",
+  ["enum"] = "@type",
+  ["field"] = "@property",
+  ["function"] = "@function",
+  ["import"] = "@module",
+  ["label"] = "@label",
+  ["macro"] = "@function.macro",
+  ["method"] = "@function.method",
+  ["namespace"] = "@module",
+  ["parameter"] = "@variable.parameter",
+  ["property"] = "@property",
+  ["var"] = "@variable",
+  ["variable"] = "@variable",
+}
+
+local ts_kinds = {
+  ["associated"] = "",
+  ["constant"] = "",
+  ["enum"] = "",
+  ["field"] = "",
+  ["function"] = "",
+  ["import"] = "",
+  ["label"] = "",
+  ["macro"] = "",
+  ["method"] = "",
+  ["namespace"] = "",
+  ["parameter"] = "",
+  ["property"] = "",
+  ["var"] = "",
+  ["variable"] = "",
+}
+
+local ALLOWED_KINDS = {
+  "constant",
+  "enum",
+  "function",
+  "macro",
+  "var",
+  "variable",
+}
+
+local function prepare_match(entry)
+  local entries = {}
+
+  if entry.node then
+    if vim.tbl_contains(ALLOWED_KINDS, entry.kind) then table.insert(entries, entry) end
+  else
+    for _, item in pairs(entry) do
+      vim.list_extend(entries, prepare_match(item))
+    end
+  end
+
+  return entries
+end
+
+local function gen_from_treesitter(opts)
+  opts = opts or {}
+
+  local bufnr = opts.bufnr or vim.api.nvim_get_current_buf()
+  local filename = vim.api.nvim_buf_get_name(bufnr)
+
+  local display_items = {
+    { width = 2 },
+    { remaining = true },
+  }
+
+  local displayer = entry_display.create({
+    separator = " ",
+    items = display_items,
+  })
+
+  local make_display = function(entry)
+    local display_columns = {
+      {
+        ts_kinds[entry.kind],
+        treesitter_type_highlight[entry.kind],
+        treesitter_type_highlight[entry.kind],
+      },
+      entry.text,
+    }
+
+    return displayer(display_columns)
+  end
+
+  return function(entry)
+    local start_row, start_col, end_row, _ = vim.treesitter.get_node_range(entry.node)
+    local node_text = vim.treesitter.get_node_text(entry.node, bufnr)
+    return make_entry.set_default_entry_mt({
+      value = entry.node,
+      kind = entry.kind,
+      ordinal = node_text .. " " .. (entry.kind or "unknown"),
+      display = make_display,
+
+      node_text = node_text,
+
+      filename = filename,
+      -- need to add one since the previewer substacts one
+      lnum = start_row + 1,
+      col = start_col,
+      text = node_text,
+      start = start_row,
+      finish = end_row,
+    }, opts)
+  end
+end
+
+M.symbols = function(opts)
+  opts = opts or {}
+  opts.bufnr = vim.F.if_nil(opts.bufnr, vim.api.nvim_get_current_buf())
+  opts.winnr = vim.F.if_nil(opts.winnr, vim.api.nvim_get_current_win())
+  local original_pos = vim.api.nvim_win_get_cursor(opts.winnr)
+
+  local parsers = require("nvim-treesitter.parsers")
+  if not parsers.has_parser(parsers.get_buf_lang(opts.bufnr)) then
+    utils.notify("builtin.treesitter", {
+      msg = "No parser for the current buffer",
+      level = "ERROR",
+    })
+    return
+  end
+
+  local ts_locals = require("nvim-treesitter.locals")
+  local results = {}
+  for _, definition in ipairs(ts_locals.get_definitions(opts.bufnr)) do
+    local entries = prepare_match(ts_locals.get_local_nodes(definition))
+    for _, entry in ipairs(entries) do
+      entry.kind = vim.F.if_nil(entry.kind, "")
+      table.insert(results, entry)
+    end
+  end
+
+  if vim.tbl_isempty(results) then return end
+
+  opts.layout_config = {
+    anchor = "N",
+    height = 12,
+    width = 50,
+  }
+  opts = themes.get_dropdown(opts)
+
+  local function set_pos(original)
+    if original then
+      vim.api.nvim_win_set_cursor(opts.winnr, original_pos)
+    else
+      local entry = action_state.get_selected_entry()
+      vim.api.nvim_win_set_cursor(opts.winnr, { entry.lnum, entry.col })
+    end
+  end
+
+  pickers
+    .new(opts, {
+      prompt_title = "Treesitter Symbols",
+      finder = finders.new_table({
+        results = results,
+        entry_maker = gen_from_treesitter(opts),
+      }),
+      attach_mappings = function()
+        actions.move_selection_better:enhance({ post = function() set_pos(false) end })
+        actions.move_selection_worse:enhance({ post = function() set_pos(false) end })
+        actions.close:enhance({ post = function() set_pos(true) end })
+        return true
+      end,
+      on_complete = {
+        function() set_pos(false) end,
+      },
+      sorter = conf.generic_sorter(opts),
+    })
+    :find()
 end
 
 return M
