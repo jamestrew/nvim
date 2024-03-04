@@ -144,6 +144,9 @@ M.config = function()
           },
         },
         create_layout = tele_utils.fused_layout,
+        mappings = {
+          i = { ["<M-p>"] = tele_utils.toggle_tiny_layout },
+        },
       },
       git_commits = {
         previewer = require("telescope.previewers").new_termopen_previewer({

@@ -47,7 +47,7 @@ opt.wrap = false
 opt.colorcolumn = "90"
 
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-opt.foldtext = "v:lua.vim.treesitter.foldtext()"
+opt.foldtext = ""
 opt.foldmethod = "expr"
 opt.foldenable = true
 opt.foldlevel = 100

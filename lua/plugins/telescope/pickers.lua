@@ -263,6 +263,7 @@ local ALLOWED_KINDS = {
   "constant",
   "enum",
   "function",
+  "method",
   "macro",
   "var",
   "variable",
@@ -341,10 +342,7 @@ M.symbols = function(opts)
 
   local parsers = require("nvim-treesitter.parsers")
   if not parsers.has_parser(parsers.get_buf_lang(opts.bufnr)) then
-    utils.notify("builtin.treesitter", {
-      msg = "No parser for the current buffer",
-      level = "ERROR",
-    })
+    vim.notify("No parser for the current buffer", vim.log.levels.ERROR)
     return
   end
 

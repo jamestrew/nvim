@@ -204,6 +204,14 @@ local function make_popup(options)
   return TSLayout.Window(popup)
 end
 
+---@alias boxkind "vertical"|"horizontal"|"minimal"|"tiny"
+
+---@type {current: boxkind, last: boxkind?}
+local boxkind_state = {
+  current = "horizontal",
+  last = nil,
+}
+
 M.fused_layout = function(picker)
   local border = {
     results = {
@@ -322,6 +330,7 @@ M.fused_layout = function(picker)
     },
   })
 
+  ---@type table<boxkind, NuiLayout.Box>
   local box_by_kind = {
     vertical = Layout.Box({
       Layout.Box(preview, { grow = 1 }),
@@ -339,8 +348,14 @@ M.fused_layout = function(picker)
       Layout.Box(results, { grow = 1 }),
       Layout.Box(prompt, { size = 3 }),
     }, { dir = "col" }),
+    tiny = Layout.Box({
+      Layout.Box(results, { grow = 1 }),
+      Layout.Box(prompt, { size = 3 }),
+    }, { dir = "col" }),
   }
 
+  ---@return NuiLayout.Box
+  ---@return boxkind
   local function get_box()
     local strategy = picker.layout_strategy
     if strategy == "vertical" or strategy == "horizontal" then
@@ -356,43 +371,78 @@ M.fused_layout = function(picker)
     return box_by_kind[box_kind], box_kind
   end
 
-  local function prepare_layout_parts(layout, box_type)
+  local function prepare_layout_parts(picker, layout, boxkind)
     layout.results = results
-    results.border:set_style(border.results_patch[box_type])
+    results.border:set_style(border.results_patch[boxkind])
 
     layout.prompt = prompt
-    prompt.border:set_style(border.prompt_patch[box_type])
+    prompt.border:set_style(border.prompt_patch[boxkind])
 
-    if box_type == "minimal" then
+    if boxkind == "minimal" or boxkind == "tiny" then
       layout.preview = nil
     else
       layout.preview = preview
-      preview.border:set_style(border.preview_patch[box_type])
+      preview.border:set_style(border.preview_patch[boxkind])
     end
   end
 
-  local function get_layout_size(box_kind)
-    return picker.layout_config[box_kind == "minimal" and "vertical" or box_kind].size
+  local function get_layout_config(boxkind)
+    if boxkind == "tiny" then
+      return {
+        relative = "editor",
+        position = {
+          row = 2,
+          col = "50%",
+        },
+        size = {
+          width = "40%",
+          height = 10,
+        },
+      }
+    end
+    return {
+      relative = "editor",
+      position = "50%",
+      size = picker.layout_config[boxkind == "minimal" and "vertical" or boxkind].size,
+    }
   end
 
   local box, box_kind = get_box()
-  local layout = Layout({
-    relative = "editor",
-    position = "50%",
-    size = get_layout_size(box_kind),
-  }, box)
+  local layout = Layout(get_layout_config(box_kind), box)
 
+  ---@diagnostic disable-next-line: inject-field
   layout.picker = picker
-  prepare_layout_parts(layout, box_kind)
+  prepare_layout_parts(picker, layout, box_kind)
 
   local layout_update = layout.update
   function layout:update()
-    local box, box_kind = get_box()
-    prepare_layout_parts(layout, box_kind)
-    layout_update(self, { size = get_layout_size(box_kind) }, box)
+    local new_box, new_boxkind
+    if boxkind_state.current == "tiny" then
+      new_box = box_by_kind["tiny"]
+      new_boxkind = "tiny"
+    else
+      new_box, new_boxkind = get_box()
+      boxkind_state.current = new_boxkind
+    end
+    prepare_layout_parts(self, layout, box_kind)
+    layout_update(self, get_layout_config(new_boxkind), new_box)
   end
 
   return TSLayout(layout)
+end
+
+M.toggle_tiny_layout = function(prompt_bufnr)
+  local picker = action_state.get_current_picker(prompt_bufnr)
+
+  if boxkind_state.current == "tiny" then
+    boxkind_state.current = boxkind_state.last or "horizontal"
+    boxkind_state.last = "tiny"
+  else
+    boxkind_state.last = boxkind_state.current
+    boxkind_state.current = "tiny"
+  end
+
+  picker:full_layout_update()
 end
 
 return M

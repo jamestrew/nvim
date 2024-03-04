@@ -21,7 +21,7 @@ M.lua_ls = {
       diagnostics = {
         -- Get the language server to recognize the `vim` global
         globals = { "vim" },
-        disable = { "assign-type-mismatch", "doc-field-no-class" },
+        -- disable = { "assign-type-mismatch", "doc-field-no-class" },
       },
       workspace = {
         library = { vim.env.VIMRUNTIME },
@@ -84,7 +84,6 @@ M.tsserver = {
 }
 
 M.server_list = {
-  "vimls",
   "cssls",
   -- "sqls",
   "pyright",

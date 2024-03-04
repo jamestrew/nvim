@@ -43,11 +43,6 @@ M.on_attach = function(client, bufnr)
     callback = function(args) vim.bo[args.buf].formatexpr = nil end,
     group = "lsp_augroup",
   })
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*.go",
-    callback = function() vim.lsp.buf.format() end,
-    group = "lsp_augroup",
-  })
   require("plugins.lsp.mappings")(bufnr)
 end
 
@@ -111,10 +106,9 @@ M.config = function()
     sources = {
       debug = true,
       -- formatting
-      null_ls.builtins.formatting.prettier,
+      null_ls.builtins.formatting.biome,
       null_ls.builtins.formatting.isort,
       null_ls.builtins.formatting.black,
-      null_ls.builtins.formatting.clang_format,
       null_ls.builtins.formatting.gofmt,
       null_ls.builtins.formatting.golines,
       -- null_ls.builtins.formatting.sql_formatter,
