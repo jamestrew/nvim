@@ -1,6 +1,7 @@
 local utils = require("utils")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
+local action_set = require("telescope.actions.set")
 local themes = require("telescope.themes")
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
@@ -382,8 +383,7 @@ M.symbols = function(opts)
         entry_maker = gen_from_treesitter(opts),
       }),
       attach_mappings = function()
-        actions.move_selection_better:enhance({ post = function() set_pos(false) end })
-        actions.move_selection_worse:enhance({ post = function() set_pos(false) end })
+        action_set.shift_selection:enhance({ post = function() set_pos(false) end })
         actions.close:enhance({ post = function() set_pos(true) end })
         return true
       end,

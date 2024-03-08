@@ -26,17 +26,40 @@ return {
     "sourcegraph/sg.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     event = "VeryLazy",
+    enable = false,
   },
   {
     "robitx/gp.nvim",
     config = function()
       require("gp").setup({
-        chat_user_prefix = "💬 ME:"
+        chat_user_prefix = "💬 ME:",
       })
     end,
     keys = {
-      { "<leader>gp", ":GpChatToggle tabnew<CR>"}
-    }
+      { "<leader>gp", ":GpChatToggle tabnew<CR>" },
+    },
+  },
+  {
+    "kawre/leetcode.nvim",
+    build = ":TSUpdate html",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim", -- required by telescope
+      "MunifTanjim/nui.nvim",
+
+      -- optional
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    opts = {
+      lang = "python3",
+      injector = {
+        ["python3"] = {
+          before = "from typing import *",
+        },
+      },
+      storage = { home = "~/projects/leetcode" },
+    },
   },
   {
     "mrjones2014/smart-splits.nvim",
