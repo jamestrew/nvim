@@ -1,6 +1,3 @@
-local Path = require("plenary.path")
-local Job = require("plenary.job")
-
 if pcall(require, "plenary") then
   RELOAD = require("plenary.reload").reload_module
 
@@ -8,20 +5,24 @@ if pcall(require, "plenary") then
     RELOAD(name)
     return require(name)
   end
+else
+  return
 end
 
 local M = {}
 
 function M.get_os_command_output(cmd, cwd)
-  cwd = cwd or vim.loop.cwd()
+  cwd = cwd or vim.uv.cwd()
   local command = table.remove(cmd, 1)
   local stderr = {}
-  local stdout, ret = Job:new({
-    command = command,
-    args = cmd,
-    cwd = cwd,
-    on_stderr = function(_, data) table.insert(stderr, data) end,
-  }):sync()
+  local stdout, ret = require("plenary.job")
+    :new({
+      command = command,
+      args = cmd,
+      cwd = cwd,
+      on_stderr = function(_, data) table.insert(stderr, data) end,
+    })
+    :sync()
   return stdout, ret, stderr
 end
 
@@ -30,8 +31,8 @@ M.os = {
   data = vim.fn.stdpath("data"),
   cache = vim.fn.stdpath("cache"),
   config = vim.fn.stdpath("config"),
-  name = vim.loop.os_uname().sysname,
-  cwd = vim.loop.cwd(),
+  name = vim.uv.os_uname().sysname,
+  cwd = vim.uv.cwd(),
   in_worktree = M.get_os_command_output({ "git", "rev-parse", "--is-inside-work-tree" })[1]
     == "true",
   in_bare = M.get_os_command_output({ "git", "rev-parse", "--is-bare-repository" })[1] == "true",
@@ -67,8 +68,6 @@ M.modified_buf_count = function()
 
   return #bufnrs
 end
-
-M.is_dir = function(path) return path:sub(-1, -1) == Path.path.sep end
 
 M.clear_prompt = function() vim.api.nvim_command("normal :esc<CR>") end
 

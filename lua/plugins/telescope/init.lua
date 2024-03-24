@@ -72,6 +72,10 @@ M.config = function()
     end
   end
 
+  local ok, TSLayout = pcall(require, "telescope.pickers.layout")
+  local fused_layout = nil
+  if ok then fused_layout = tele_utils.create_fused_layout(TSLayout) end
+
   require("telescope").setup({
     defaults = {
       prompt_prefix = "  ",
@@ -143,7 +147,7 @@ M.config = function()
             flip_columns = 120,
           },
         },
-        create_layout = tele_utils.fused_layout,
+        create_layout = fused_layout,
         mappings = {
           i = { ["<M-p>"] = tele_utils.toggle_tiny_layout },
         },
@@ -197,6 +201,7 @@ M.config = function()
         quiet = true,
         respect_gitignore = false,
         git_status = true,
+        show_symlinks = true,
         follow_symlinks = true,
         mappings = {
           i = {

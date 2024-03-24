@@ -3,6 +3,7 @@ local M = {
   dependencies = {
     "MunifTanjim/nui.nvim",
   },
+  enabled = false,
 }
 
 M.config = function()

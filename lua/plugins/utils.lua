@@ -17,6 +17,7 @@ return {
   },
   {
     "nvim-lua/plenary.nvim",
+    dir = "~/projects/plenary.nvim",
     keys = {
       { "<leader>pt", "<Plug>PlenaryTestFile", desc = "plenary run test" },
     },
@@ -52,10 +53,15 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     opts = {
-      lang = "python3",
+      lang = "golang",
+      description = { position = "right" },
       injector = {
         ["python3"] = {
           before = "from typing import *",
+        },
+        ["golang"] = {
+          before = "package main",
+          after = "/*\n\n*/",
         },
       },
       storage = { home = "~/projects/leetcode" },

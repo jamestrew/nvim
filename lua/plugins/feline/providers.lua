@@ -9,7 +9,7 @@ M.file_name_custom = function()
 
   prefix = require("nvim-web-devicons").get_icon_by_filetype(vim.bo.filetype) or ""
   local max_len = 150
-  filename = Path:new(filename):make_relative(vim.loop.cwd())
+  filename = Path:new(filename):make_relative(vim.uv.cwd())
   if #filename > max_len then filename = Path:new(filename):shorten() end
 
   if vim.bo.modifiable then

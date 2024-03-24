@@ -1,4 +1,4 @@
-local M = { "tjdevries/colorbuddy.vim", priority = 100 }
+local M = { "tjdevries/colorbuddy.vim", priority = 100, tag = "v1.0.0"}
 
 M.init = function()
   if false then

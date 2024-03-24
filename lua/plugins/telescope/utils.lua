@@ -13,7 +13,7 @@ M.delete_file = function(_)
   utils.clear_prompt()
   if ans ~= "y" then return end
 
-  if utils.is_dir(fpath) then
+  if vim.fn.isdirectory(fpath) == 0 then
     Path:new(fpath):rmdir()
   else
     Path:new(fpath):rm()
@@ -177,7 +177,7 @@ M.current_bufr_dir = function(prompt_bufnr)
     finder.path = bufr_parent_path
     fb_utils.selection_callback(current_picker, bufr_path:absolute())
   else
-    finder.path = vim.loop.cwd()
+    finder.path = vim.uv.cwd()
   end
   fb_utils.redraw_border_title(current_picker)
   current_picker:refresh(finder, {
@@ -193,17 +193,6 @@ M.diffsplit = function(prompt_bufnr)
   vim.cmd.diffsplit(fpath)
 end
 
-local Layout = require("nui.layout")
-local Popup = require("nui.popup")
-
-local TSLayout = require("telescope.pickers.layout")
-
-local function make_popup(options)
-  local popup = Popup(options)
-  function popup.border:change_title(title) popup.border.set_text(popup.border, "top", title) end
-  return TSLayout.Window(popup)
-end
-
 ---@alias boxkind "vertical"|"horizontal"|"minimal"|"tiny"
 
 ---@type {current: boxkind, last: boxkind?}
@@ -212,223 +201,234 @@ local boxkind_state = {
   last = nil,
 }
 
-M.fused_layout = function(picker)
-  local border = {
-    results = {
-      top_left = "┌",
-      top = "─",
-      top_right = "┬",
-      right = "│",
-      bottom_right = "",
-      bottom = "",
-      bottom_left = "",
-      left = "│",
-    },
-    results_patch = {
-      minimal = {
+M.create_fused_layout = function(TSLayout)
+  local Layout = require("nui.layout")
+  local Popup = require("nui.popup")
+
+  local function make_popup(options)
+    local popup = Popup(options)
+    function popup.border:change_title(title) popup.border.set_text(popup.border, "top", title) end
+    return TSLayout.Window(popup)
+  end
+
+  return function(picker)
+    local border = {
+      results = {
         top_left = "┌",
-        top_right = "┐",
-      },
-      horizontal = {
-        top_left = "┌",
+        top = "─",
         top_right = "┬",
-      },
-      vertical = {
-        top_left = "├",
-        top_right = "┤",
-      },
-    },
-    prompt = {
-      top_left = "├",
-      top = "─",
-      top_right = "┤",
-      right = "│",
-      bottom_right = "┘",
-      bottom = "─",
-      bottom_left = "└",
-      left = "│",
-    },
-    prompt_patch = {
-      minimal = {
-        bottom_right = "┘",
-      },
-      horizontal = {
-        bottom_right = "┴",
-      },
-      vertical = {
-        bottom_right = "┘",
-      },
-    },
-    preview = {
-      top_left = "┌",
-      top = "─",
-      top_right = "┐",
-      right = "│",
-      bottom_right = "┘",
-      bottom = "─",
-      bottom_left = "└",
-      left = "│",
-    },
-    preview_patch = {
-      minimal = {},
-      horizontal = {
-        bottom = "─",
-        bottom_left = "",
-        bottom_right = "┘",
-        left = "",
-        top_left = "",
-      },
-      vertical = {
+        right = "│",
+        bottom_right = "",
         bottom = "",
         bottom_left = "",
-        bottom_right = "",
         left = "│",
+      },
+      results_patch = {
+        minimal = {
+          top_left = "┌",
+          top_right = "┐",
+        },
+        horizontal = {
+          top_left = "┌",
+          top_right = "┬",
+        },
+        vertical = {
+          top_left = "├",
+          top_right = "┤",
+        },
+      },
+      prompt = {
+        top_left = "├",
+        top = "─",
+        top_right = "┤",
+        right = "│",
+        bottom_right = "┘",
+        bottom = "─",
+        bottom_left = "└",
+        left = "│",
+      },
+      prompt_patch = {
+        minimal = {
+          bottom_right = "┘",
+        },
+        horizontal = {
+          bottom_right = "┴",
+        },
+        vertical = {
+          bottom_right = "┘",
+        },
+      },
+      preview = {
         top_left = "┌",
+        top = "─",
+        top_right = "┐",
+        right = "│",
+        bottom_right = "┘",
+        bottom = "─",
+        bottom_left = "└",
+        left = "│",
       },
-    },
-  }
-
-  local results = make_popup({
-    focusable = false,
-    border = {
-      style = border.results,
-      text = {
-        top = picker.results_title,
-        top_align = "center",
+      preview_patch = {
+        minimal = {},
+        horizontal = {
+          bottom = "─",
+          bottom_left = "",
+          bottom_right = "┘",
+          left = "",
+          top_left = "",
+        },
+        vertical = {
+          bottom = "",
+          bottom_left = "",
+          bottom_right = "",
+          left = "│",
+          top_left = "┌",
+        },
       },
-    },
-    win_options = {
-      winhighlight = "NormalFloat:TelescopeNormal,FloatBorder:TelescopeBorder",
-    },
-  })
+    }
 
-  local prompt = make_popup({
-    enter = true,
-    border = {
-      style = border.prompt,
-      text = {
-        top = picker.prompt_title,
-        top_align = "center",
+    local results = make_popup({
+      focusable = false,
+      border = {
+        style = border.results,
+        text = {
+          top = picker.results_title,
+          top_align = "center",
+        },
       },
-    },
-    win_options = {
-      winhighlight = "NormalFloat:TelescopeNormal,FloatBorder:TelescopeBorder",
-    },
-  })
-
-  local preview = make_popup({
-    focusable = false,
-    border = {
-      style = border.preview,
-      text = {
-        top = picker.preview_title,
-        top_align = "center",
+      win_options = {
+        winhighlight = "NormalFloat:TelescopeNormal,FloatBorder:TelescopeBorder",
       },
-    },
-    win_options = {
-      winhighlight = "NormalFloat:TelescopeNormal,FloatBorder:TelescopeBorder",
-    },
-  })
+    })
 
-  ---@type table<boxkind, NuiLayout.Box>
-  local box_by_kind = {
-    vertical = Layout.Box({
-      Layout.Box(preview, { grow = 1 }),
-      Layout.Box(results, { grow = 1 }),
-      Layout.Box(prompt, { size = 3 }),
-    }, { dir = "col" }),
-    horizontal = Layout.Box({
-      Layout.Box({
+    local prompt = make_popup({
+      enter = true,
+      border = {
+        style = border.prompt,
+        text = {
+          top = picker.prompt_title,
+          top_align = "center",
+        },
+      },
+      win_options = {
+        winhighlight = "NormalFloat:TelescopeNormal,FloatBorder:TelescopeBorder",
+      },
+    })
+
+    local preview = make_popup({
+      focusable = false,
+      border = {
+        style = border.preview,
+        text = {
+          top = picker.preview_title,
+          top_align = "center",
+        },
+      },
+      win_options = {
+        winhighlight = "NormalFloat:TelescopeNormal,FloatBorder:TelescopeBorder",
+      },
+    })
+
+    ---@type table<boxkind, NuiLayout.Box>
+    local box_by_kind = {
+      vertical = Layout.Box({
+        Layout.Box(preview, { grow = 1 }),
         Layout.Box(results, { grow = 1 }),
         Layout.Box(prompt, { size = 3 }),
-      }, { dir = "col", size = "50%" }),
-      Layout.Box(preview, { size = "50%" }),
-    }, { dir = "row" }),
-    minimal = Layout.Box({
-      Layout.Box(results, { grow = 1 }),
-      Layout.Box(prompt, { size = 3 }),
-    }, { dir = "col" }),
-    tiny = Layout.Box({
-      Layout.Box(results, { grow = 1 }),
-      Layout.Box(prompt, { size = 3 }),
-    }, { dir = "col" }),
-  }
+      }, { dir = "col" }),
+      horizontal = Layout.Box({
+        Layout.Box({
+          Layout.Box(results, { grow = 1 }),
+          Layout.Box(prompt, { size = 3 }),
+        }, { dir = "col", size = "50%" }),
+        Layout.Box(preview, { size = "50%" }),
+      }, { dir = "row" }),
+      minimal = Layout.Box({
+        Layout.Box(results, { grow = 1 }),
+        Layout.Box(prompt, { size = 3 }),
+      }, { dir = "col" }),
+      tiny = Layout.Box({
+        Layout.Box(results, { grow = 1 }),
+        Layout.Box(prompt, { size = 3 }),
+      }, { dir = "col" }),
+    }
 
-  ---@return NuiLayout.Box
-  ---@return boxkind
-  local function get_box()
-    local strategy = picker.layout_strategy
-    if strategy == "vertical" or strategy == "horizontal" then
-      return box_by_kind[strategy], strategy
+    ---@return NuiLayout.Box
+    ---@return boxkind
+    local function get_box()
+      local strategy = picker.layout_strategy
+      if strategy == "vertical" or strategy == "horizontal" then
+        return box_by_kind[strategy], strategy
+      end
+
+      local height, width = vim.o.lines, vim.o.columns
+      local box_kind = "horizontal"
+      if width < 150 then
+        box_kind = "vertical"
+        if height < 40 then box_kind = "minimal" end
+      end
+      return box_by_kind[box_kind], box_kind
     end
 
-    local height, width = vim.o.lines, vim.o.columns
-    local box_kind = "horizontal"
-    if width < 150 then
-      box_kind = "vertical"
-      if height < 40 then box_kind = "minimal" end
+    local function prepare_layout_parts(picker, layout, boxkind)
+      layout.results = results
+      results.border:set_style(border.results_patch[boxkind])
+
+      layout.prompt = prompt
+      prompt.border:set_style(border.prompt_patch[boxkind])
+
+      if boxkind == "minimal" or boxkind == "tiny" then
+        layout.preview = nil
+      else
+        layout.preview = preview
+        preview.border:set_style(border.preview_patch[boxkind])
+      end
     end
-    return box_by_kind[box_kind], box_kind
-  end
 
-  local function prepare_layout_parts(picker, layout, boxkind)
-    layout.results = results
-    results.border:set_style(border.results_patch[boxkind])
-
-    layout.prompt = prompt
-    prompt.border:set_style(border.prompt_patch[boxkind])
-
-    if boxkind == "minimal" or boxkind == "tiny" then
-      layout.preview = nil
-    else
-      layout.preview = preview
-      preview.border:set_style(border.preview_patch[boxkind])
-    end
-  end
-
-  local function get_layout_config(boxkind)
-    if boxkind == "tiny" then
+    local function get_layout_config(boxkind)
+      if boxkind == "tiny" then
+        return {
+          relative = "editor",
+          position = {
+            row = 2,
+            col = "50%",
+          },
+          size = {
+            width = "40%",
+            height = 10,
+          },
+        }
+      end
       return {
         relative = "editor",
-        position = {
-          row = 2,
-          col = "50%",
-        },
-        size = {
-          width = "40%",
-          height = 10,
-        },
+        position = "50%",
+        size = picker.layout_config[boxkind == "minimal" and "vertical" or boxkind].size,
       }
     end
-    return {
-      relative = "editor",
-      position = "50%",
-      size = picker.layout_config[boxkind == "minimal" and "vertical" or boxkind].size,
-    }
-  end
 
-  local box, box_kind = get_box()
-  local layout = Layout(get_layout_config(box_kind), box)
+    local box, box_kind = get_box()
+    local layout = Layout(get_layout_config(box_kind), box)
 
-  ---@diagnostic disable-next-line: inject-field
-  layout.picker = picker
-  prepare_layout_parts(picker, layout, box_kind)
+    ---@diagnostic disable-next-line: inject-field
+    layout.picker = picker
+    prepare_layout_parts(picker, layout, box_kind)
 
-  local layout_update = layout.update
-  function layout:update()
-    local new_box, new_boxkind
-    if boxkind_state.current == "tiny" then
-      new_box = box_by_kind["tiny"]
-      new_boxkind = "tiny"
-    else
-      new_box, new_boxkind = get_box()
-      boxkind_state.current = new_boxkind
+    local layout_update = layout.update
+    function layout:update()
+      local new_box, new_boxkind
+      if boxkind_state.current == "tiny" then
+        new_box = box_by_kind["tiny"]
+        new_boxkind = "tiny"
+      else
+        new_box, new_boxkind = get_box()
+        boxkind_state.current = new_boxkind
+      end
+      prepare_layout_parts(self, layout, box_kind)
+      layout_update(self, get_layout_config(new_boxkind), new_box)
     end
-    prepare_layout_parts(self, layout, box_kind)
-    layout_update(self, get_layout_config(new_boxkind), new_box)
-  end
 
-  return TSLayout(layout)
+    return TSLayout(layout)
+  end
 end
 
 M.toggle_tiny_layout = function(prompt_bufnr)
