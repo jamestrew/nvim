@@ -54,6 +54,7 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
     },
+    lazy = "leetcode.nvim" ~= vim.fn.argv()[1],
     opts = {
       lang = "python3",
       description = { position = "right" },
