@@ -36,8 +36,10 @@ return {
         chat_user_prefix = "💬 ME:",
       })
     end,
+    cmd = { "GpChatToggle", "GpChatNew" },
     keys = {
       { "<leader>gp", ":GpChatToggle tabnew<CR>" },
+      { "<leader>ngp", ":GpChatNew tabnew<CR>" },
     },
   },
   {
@@ -53,11 +55,12 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     opts = {
-      lang = "golang",
+      lang = "python3",
       description = { position = "right" },
       injector = {
         ["python3"] = {
           before = "from typing import *",
+          after = '"""\n\n"""',
         },
         ["golang"] = {
           before = "package main",

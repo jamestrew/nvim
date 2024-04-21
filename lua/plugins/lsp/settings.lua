@@ -83,10 +83,19 @@ M.tsserver = {
   },
 }
 
+M.basedpyright = {
+  settings = {
+    basedpyright = {
+      typeCheckingMode = "standard",
+    },
+  },
+}
+
 M.server_list = {
   "cssls",
   -- "sqls",
-  "pyright",
+  -- "pyright",
+  "basedpyright",
   "ruff_lsp",
   "eslint",
   "emmet_language_server",
