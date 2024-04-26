@@ -58,7 +58,7 @@ M.live_grep = function(opts, use_args)
     map({ "n", "i" }, "<C-f>", function(prompt_bufnr)
       local prompt = action_state.get_current_line()
       actions.close(prompt_bufnr)
-      opts.default_text = string.format([["%s"]], prompt)
+      if #prompt > 0 then opts.default_text = string.format([["%s"]], prompt) end
       require("telescope").extensions.live_grep_args.live_grep_args(opts)
     end)
     return true
@@ -393,6 +393,16 @@ M.symbols = function(opts)
       sorter = conf.generic_sorter(opts),
     })
     :find()
+end
+
+---@param current_path boolean?
+---@return fun() # telescope picker
+M.file_browser = function(current_path)
+  local opts = {}
+  if current_path then opts = { path = "%:p:h", select_buffer = true } end
+  return function()
+    require("telescope").extensions.file_browser.file_browser(opts)
+  end
 end
 
 return M

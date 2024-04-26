@@ -29,7 +29,6 @@ local M = {
 M.keys = function()
   local builtin = require("telescope.builtin")
   local jtelescope = require("plugins.telescope.pickers")
-  local tele_ext = require("telescope").extensions
   return {
     { "<leader>fw", jtelescope.live_grep, silent = true },
     { "<leader>gc", builtin.git_commits, silent = true },
@@ -45,12 +44,8 @@ M.keys = function()
     { "<leader>ff", jtelescope.curbuf },
     { "<leader>gh", jtelescope.git_hunks },
     { "<C-p>", jtelescope.project_files },
-    { "<C-e>", tele_ext.file_browser.file_browser, silent = true },
-    {
-      "<leader><C-e>",
-      function() tele_ext.file_browser.file_browser({ path = "%:p:h", select_buffer = true }) end,
-      silent = true,
-    },
+    { "<C-e>", jtelescope.file_browser() },
+    { "<leader><C-e>", jtelescope.file_browser(true) },
     { "<leader>rl", builtin.reloader, silent = true },
   }
 end
@@ -277,12 +272,6 @@ M.config = function()
     },
   })
 
-  require("telescope").load_extension("fzf")
-  require("telescope").load_extension("git_worktree")
-  require("telescope").load_extension("neoclip")
-  require("telescope").load_extension("file_browser")
-  require("telescope").load_extension("live_grep_args")
-  require("telescope").load_extension("undo")
 end
 
 return M

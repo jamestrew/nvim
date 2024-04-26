@@ -20,11 +20,6 @@ M.keys = function()
   }
 end
 
-M.cmd = {
-  "DapClearBreakpoints",
-  "DapConditionalBreakpoints",
-}
-
 function M.init()
   vim.api.nvim_create_user_command(
     "DapClearBreakpoints",
@@ -66,17 +61,17 @@ function M.config()
   local dapui = require("dapui")
   dapui.setup()
 
-  dap.listeners.after.event_initialized["dapui_config"] = function()
+  dap.listeners.after.event_initialized.dapui_config = function()
     vim.cmd("tabnew %")
     dapui.open()
   end
-  dap.listeners.before.event_terminated["dapui_config"] = function()
-    vim.cmd("tabclose")
+  dap.listeners.before.event_terminated.dapui_config = function()
     dapui.close()
+    vim.cmd("tabclose")
   end
-  dap.listeners.before.event_exited["dapui_config"] = function()
-    vim.cmd("tabclose")
+  dap.listeners.before.event_exited.dapui_config = function()
     dapui.close()
+    vim.cmd("tabclose")
   end
 end
 
