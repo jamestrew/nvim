@@ -3,7 +3,7 @@ local illuminate = require("illuminate")
 
 local function toggle_inlay_hints()
   if vim.lsp.inlay_hint.is_enabled() then
-    vim.lsp.inlay_hint.enable(0, false)
+    vim.lsp.inlay_hint.enable(false)
   else
     vim.lsp.inlay_hint.enable()
   end

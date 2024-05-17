@@ -1,4 +1,4 @@
-local M = { "tjdevries/colorbuddy.vim", priority = 100, tag = "v1.0.0"}
+local M = { "tjdevries/colorbuddy.vim", priority = 100, tag = "v1.0.0" }
 
 M.init = function()
   if false then
@@ -232,7 +232,6 @@ Usage:
   -- Group.new("@comment.info", colors.grey_fg2, colors.none, styles.NONE)
   -- Group.new("@comment.todo", colors.grey_fg2, colors.none, styles.NONE)
 
-
   Group.new("@markup", colors.base05, colors.none, styles.NONE)
   Group.new("@markup.italic", colors.base06, colors.none, styles.italic)
   Group.new("@markup.strikethrough", colors.base05, colors.none, styles.strikethrough)
@@ -247,7 +246,7 @@ Usage:
   -- Group.new("@markup.link.label", colors.base05, colors.none, styles.NONE)
   -- Group.new("@markup.link.url", colors.base05, colors.none, styles.NONE)
 
-  -- Group.new("@markup.raw", colors.base05, colors.none, styles.NONE)
+  Group.new("@markup.raw", colors.grey_fg2, colors.none, styles.NONE)
   -- Group.new("@markup.raw.block", colors.base05, colors.none, styles.NONE)
 
   Group.new("@markup.list", colors.base0F, colors.none, styles.NONE)
@@ -269,14 +268,34 @@ Usage:
   Group.new("@lsp.type.struct", groups["@type"], groups["@type"], groups["@type"])
   Group.new("@lsp.type.enum", groups["@type"], groups["@type"], groups["@type"])
   Group.new("@lsp.type.interface", groups["@type"], groups["@type"], groups["@type"])
-  Group.new("@lsp.type.parameter", groups["@variable.parameter"], groups["@variable.parameter"], groups["@variable.parameter"])
+  Group.new(
+    "@lsp.type.parameter",
+    groups["@variable.parameter"],
+    groups["@variable.parameter"],
+    groups["@variable.parameter"]
+  )
   Group.new("@lsp.type.variable", groups["@variable"], groups["@variable"], groups["@variable"])
-  Group.new("@lsp.type.property", groups["@variable.member"], groups["@variable.member"], groups["@variable.member"])
+  Group.new(
+    "@lsp.type.property",
+    groups["@variable.member"],
+    groups["@variable.member"],
+    groups["@variable.member"]
+  )
   Group.new("@lsp.type.enumMember", groups["@constant"], groups["@constant"], groups["@constant"])
   Group.new("@lsp.type.function", groups["@function"], groups["@function"], groups["@function"])
   Group.new("@lsp.type.decorator", groups["@function"], groups["@function"], groups["@function"])
-  Group.new("@lsp.type.method", groups["@function.method"], groups["@function.method"], groups["@function.method"])
-  Group.new("@lsp.type.macro", groups["@function.macro"], groups["@function.macro"], groups["@function.macro"])
+  Group.new(
+    "@lsp.type.method",
+    groups["@function.method"],
+    groups["@function.method"],
+    groups["@function.method"]
+  )
+  Group.new(
+    "@lsp.type.macro",
+    groups["@function.macro"],
+    groups["@function.macro"],
+    groups["@function.macro"]
+  )
 
   -- LSP Diagnostics
   Group.new("DiagnosticError", colors.red, colors.none, styles.NONE)

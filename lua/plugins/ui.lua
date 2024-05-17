@@ -28,6 +28,11 @@ return {
   },
 
   {
+    "j-hui/fidget.nvim",
+    config = true,
+  },
+
+  {
     "akinsho/bufferline.nvim",
     event = "TabNew",
     opts = {

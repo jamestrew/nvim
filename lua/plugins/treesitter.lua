@@ -5,7 +5,7 @@ local M = {
     { "nvim-treesitter/nvim-treesitter-context", config = true },
     { "yioneko/nvim-yati" },
   },
-  build = { "TSUpdate", "TSInstall" },
+  build = ":TSUpdate",
   event = { "VeryLazy" },
 }
 
@@ -56,7 +56,7 @@ local opts = {
   },
   indent = {
     enable = true,
-    disable = { "lua", "c", "cpp" },
+    -- disable = { "lua", "c", "cpp" },
   },
   autotag = {
     enable = true,

@@ -23,3 +23,4 @@ require("user_commands")
 require("mappings")
 
 require("monkey")
+require("ts_grammar")

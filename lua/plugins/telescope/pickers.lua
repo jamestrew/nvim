@@ -147,7 +147,7 @@ M.lsp_document_symbols = function(opts)
   opts = opts or themes.get_ivy({
     symbols = { "function", "object", "constant" },
   })
-  require("telescope.builtin").lsp_document_symbols(opts)
+  local ok = pcall(function() require("telescope.builtin").lsp_document_symbols(opts) end)
 end
 
 M.lsp_workspace_symbols = function(opts)
@@ -400,9 +400,7 @@ end
 M.file_browser = function(current_path)
   local opts = {}
   if current_path then opts = { path = "%:p:h", select_buffer = true } end
-  return function()
-    require("telescope").extensions.file_browser.file_browser(opts)
-  end
+  return function() require("telescope").extensions.file_browser.file_browser(opts) end
 end
 
 return M
