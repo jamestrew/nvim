@@ -13,8 +13,6 @@ return {
   },
   { "kylechui/nvim-surround", config = true },
   { "echasnovski/mini.move", config = true },
-  { "asiryk/auto-hlsearch.nvim", config = true },
-  { "norcalli/nvim-colorizer.lua", cmd = { "ColorizerToggle" } },
   {
     "Wansmer/treesj",
     keys = { { "<leader>sj", "<cmd>TSJToggle<cr>", desc = "Join Toggle" } },

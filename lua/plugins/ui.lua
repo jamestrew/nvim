@@ -1,4 +1,5 @@
 return {
+  { "brenoprata10/nvim-highlight-colors", opts = {}, cmd = { "HighlightColors" } },
   { "lewis6991/satellite.nvim", config = true },
   {
     "stevearc/dressing.nvim",

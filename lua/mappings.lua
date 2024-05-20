@@ -42,3 +42,5 @@ nnoremap("<leader>asht", function()
   print("reloading telescope...")
   R("telescope")
 end)
+
+nnoremap(l(l("x")), ":w | so %<CR>", silent)

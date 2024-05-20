@@ -29,7 +29,7 @@ M.current_dir = function()
 end
 
 M.lsp_client = function()
-  local clients = vim.lsp.get_active_clients()
+  local clients = vim.lsp.get_clients({ bufnr = 0 })
   if #clients == 0 then
     return " No LSP "
   else

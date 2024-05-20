@@ -8,7 +8,31 @@ local M = {
     { "stevearc/dressing.nvim" },
     {
       "AckslD/nvim-neoclip.lua",
-      config = true,
+      enabled = false,
+      opts = {
+        default_register = "+",
+        enable_persistent_history = true,
+        keys = {
+          telescope = {
+            i = {
+              select = "<cr>",
+              paste = "<c-y>p",
+              paste_behind = "<c-y>P",
+              replay = "<c-q>", -- replay a macro
+              delete = "<c-d>", -- delete an entry
+              custom = {},
+            },
+            n = {
+              select = "<cr>",
+              paste = "p",
+              paste_behind = "P",
+              replay = "q",
+              delete = "d",
+              custom = {},
+            },
+          },
+        },
+      },
       dependencies = {
         { "kkharji/sqlite.lua" },
       },
@@ -22,6 +46,7 @@ local M = {
       -- dir = "/home/jt/projects/telescope-file-browser.nvim/owner-group-stats",
       name = "telescope-file-browser.nvim",
     },
+    { "jonarrien/telescope-cmdline.nvim" },
   },
   cmd = "Telescope",
 }
@@ -35,7 +60,7 @@ M.keys = function()
     { "<leader>fb", jtelescope.buffers, silent = true },
     { "<leader>fh", builtin.help_tags, silent = true },
     { "<leader>gw", builtin.grep_string, silent = true, mode = { "n", "v", "x" } },
-    { "<leader>fc", builtin.commands, silent = true },
+    { "<leader>fc", ":Telescope cmdline<CR>", silent = true },
     { "<leader>fs", jtelescope.symbols, silent = true },
     { "<leader>rc", jtelescope.search_dotfiles },
     { "<leader>fg", jtelescope.git_worktrees },
@@ -246,32 +271,6 @@ M.config = function()
       },
     },
   })
-
-  require("neoclip").setup({
-    default_register = "+",
-    enable_persistent_history = true,
-    keys = {
-      telescope = {
-        i = {
-          select = "<cr>",
-          paste = "<c-y>p",
-          paste_behind = "<c-y>P",
-          replay = "<c-q>", -- replay a macro
-          delete = "<c-d>", -- delete an entry
-          custom = {},
-        },
-        n = {
-          select = "<cr>",
-          paste = "p",
-          paste_behind = "P",
-          replay = "q",
-          delete = "d",
-          custom = {},
-        },
-      },
-    },
-  })
-
 end
 
 return M
