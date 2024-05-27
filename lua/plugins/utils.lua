@@ -72,8 +72,39 @@ return {
             .. "Let's get started with the problem I'm working on. Here's the first LeetCode problem:",
         },
       },
+      hooks = {
+        -- example of adding command which explains the selected code
+        Explain = function(gp, params)
+          local template = "I have the following code from {{filename}}:\n\n"
+            .. "```{{filetype}}\n{{selection}}\n```\n\n"
+            .. "Please respond by explaining the code above."
+          local agent = gp.agents["ChatGPT4o"]
+          gp.Prompt(
+            params,
+            gp.Target.enew("markdown"),
+            nil,
+            agent.model,
+            template,
+            agent.system_prompt
+          )
+        end, -- example of usig enew as a function specifying type for the new buffer
+        CodeReview = function(gp, params)
+          local template = "I have the following code from {{filename}}:\n\n"
+            .. "```{{filetype}}\n{{selection}}\n```\n\n"
+            .. "Please analyze for code smells and suggest improvements."
+          local agent = gp.agents["ChatGPT4o"]
+          gp.Prompt(
+            params,
+            gp.Target.enew("markdown"),
+            nil,
+            agent.model,
+            template,
+            agent.system_prompt
+          )
+        end,
+      },
     },
-    cmd = { "GpChatToggle", "GpChatNew" },
+    cmd = { "GpChatToggle", "GpChatNew", "GpExplain", "GpChatFinder", "GpCodeReview" },
     keys = {
       { "<leader>gp", ":GpChatToggle tabnew<CR>" },
       { "<leader>ngp", ":GpChatNew tabnew<CR>" },

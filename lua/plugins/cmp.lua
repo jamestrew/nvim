@@ -13,6 +13,11 @@ local M = {
     { "rafamadriz/friendly-snippets" },
     { "petertriho/cmp-git" },
     {
+      "zbirenbaum/copilot-cmp",
+      dependencies = { "zbirenbaum/copilot.lua" },
+      opts = {},
+    },
+    {
       "saecki/crates.nvim",
       dependencies = { "nvimtools/none-ls.nvim" },
     },
@@ -27,6 +32,7 @@ M.config = function()
 
   local sources = {
     { name = "nvim_lsp" },
+    -- { name = "copilot" },
     { name = "path" },
     { name = "nvim_lua" },
     { name = "buffer", keyword_length = 3 },

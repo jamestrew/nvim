@@ -98,6 +98,7 @@ M.config = function()
 
   require("telescope").setup({
     defaults = {
+      -- path_display = { "filename_first" },
       prompt_prefix = "  ",
       entry_prefix = "  ",
       initial_mode = "insert",
