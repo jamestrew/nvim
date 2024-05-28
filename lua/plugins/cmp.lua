@@ -16,6 +16,7 @@ local M = {
       "zbirenbaum/copilot-cmp",
       dependencies = { "zbirenbaum/copilot.lua" },
       opts = {},
+      enabled = false,
     },
     {
       "saecki/crates.nvim",
