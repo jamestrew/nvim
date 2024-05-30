@@ -111,8 +111,8 @@ return {
       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
     },
     opts = {
-      question_head = " Me",
-      answer_head = " Copilot",
+      question_header = " Me ",
+      answer_header = " Copilot ",
     },
     -- See Commands section for default commands if you want to lazy load on them
   },

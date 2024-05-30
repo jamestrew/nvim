@@ -1,9 +1,24 @@
 return {
   {
     "tpope/vim-fugitive",
-    keys = { { "<leader>gs", "<cmd>G<CR>", desc = "git" } },
+    -- keys = { { "<leader>gs", "<cmd>G<CR>", desc = "git" } },
     cmd = { "G" },
   },
+
+  {
+    "NeogitOrg/neogit",
+    dependencies = { "sindrets/diffview.nvim" },
+    opts = {
+      kind = "tab",
+      disable_insert_on_commit = true,
+      integrations = { diffview = true },
+      sections = { recent = { folded = false } },
+      mappings = { status = { ["="] = "Toggle" } },
+    },
+    cmd = { "Neogit" },
+    keys = { { "<leader>gs", "<cmd>Neogit<CR>", desc = "neogit" } },
+  },
+
   { "jamestrew/git-worktree.nvim", config = true },
   {
     "sindrets/diffview.nvim",

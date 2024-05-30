@@ -8,7 +8,6 @@ local M = {
     { "stevearc/dressing.nvim" },
     {
       "AckslD/nvim-neoclip.lua",
-      enabled = false,
       opts = {
         default_register = "+",
         enable_persistent_history = true,
