@@ -42,10 +42,11 @@ M.project_files = function(opts, no_ignore)
 
   if no_ignore then
     opts.find_command =
-      { "rg", "--files", "--color", "never", "--hidden", "--no-ignore", "--glob", "!.git" }
+      { "fd", "--type", "f", "--color", "never", "--hidden", "--no-ignore", "--glob", "!.git" }
     opts.prompt_title = "Find Files <ALL>"
     require("telescope.builtin").find_files(opts)
   else
+    opts.find_command = { "fd", "--type", "f", "--color", "never" }
     opts.prompt_title = "Find Files"
     require("telescope.builtin").find_files(opts)
   end
@@ -71,10 +72,8 @@ M.buffers = function(opts)
   opts = opts
     or themes.get_dropdown({
       previewer = false,
-      attach_mappings = function(_, map)
-        map({ "n", "i" }, "<M-d>", actions.delete_buffer)
-        return true
-      end,
+      select_current = true,
+      sort_mru = true,
     })
   require("telescope.builtin").buffers(opts)
 end

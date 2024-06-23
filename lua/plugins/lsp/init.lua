@@ -16,16 +16,19 @@ local M = {
     { "b0o/SchemaStore.nvim" },
     { "simrat39/rust-tools.nvim" },
     {
-      "simrat39/symbols-outline.nvim",
+      "hedyhli/outline.nvim",
       opts = {
-        position = "left",
-        relative_width = false,
-        width = 40,
-        autofold_depth = 1,
-        auto_close = true,
+        outline_window = {
+          auto_close = true,
+          position = "left",
+          relative_width = false,
+          width = 40,
+        },
+        symbol_folding = {
+          autofold_depth = 1,
+        },
       },
-      keys = { { "<leader>so", "<cmd>SymbolsOutline<CR>", desc = "symbols-outline" } },
-      enabled = false,
+      keys = { { "<leader>so", "<cmd>Outline<CR>", desc = "symbols-outline" } },
     },
     {
       "RRethy/vim-illuminate",
@@ -68,8 +71,8 @@ M.config = function()
         [vim.diagnostic.severity.WARN] = "",
         [vim.diagnostic.severity.INFO] = "󰋼",
         [vim.diagnostic.severity.HINT] = "󰌵",
-      }
-    }
+      },
+    },
   })
 
   vim.api.nvim_command([[ hi def link LspReferenceText CursorLine ]])

@@ -3,7 +3,7 @@ local M = {
   dependencies = {
     { "nvim-treesitter/nvim-treesitter-textobjects" },
     { "nvim-treesitter/nvim-treesitter-context", config = true },
-    { "yioneko/nvim-yati" },
+    { "andymass/vim-matchup" },
   },
   build = ":TSUpdate",
   event = { "VeryLazy" },
@@ -61,18 +61,13 @@ local opts = {
   autotag = {
     enable = true,
   },
-  yati = {
-    enable = false, -- should no longer be necessary
-    default_lazy = true,
-    default_fallback = "auto",
-  },
   incremental_selection = {
-    enable = false,
+    enable = true,
     keymaps = {
-      init_selection = "<CR>",
-      node_incremental = "<CR>",
-      scope_incremental = "<S-CR>",
-      node_decremental = "<BS>",
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
     },
   },
   textobjects = {
