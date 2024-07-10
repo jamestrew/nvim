@@ -41,7 +41,8 @@ local M = {
     { "nvim-telescope/telescope-live-grep-args.nvim" },
     {
       "nvim-telescope/telescope-file-browser.nvim",
-      dir = "/home/jt/projects/telescope-file-browser.nvim/master",
+      -- dir = "/home/jt/projects/telescope-file-browser.nvim/master",
+      dir = "/home/jt/projects/telescope-file-browser.nvim/filename_first",
       -- dir = "/home/jt/projects/telescope-file-browser.nvim/owner-group-stats",
       name = "telescope-file-browser.nvim",
     },
@@ -97,7 +98,7 @@ M.config = function()
 
   require("telescope").setup({
     defaults = {
-      -- path_display = { "filename_first" },
+      path_display = { "filename_first" },
       prompt_prefix = "  ",
       entry_prefix = "  ",
       initial_mode = "insert",
@@ -120,8 +121,6 @@ M.config = function()
         },
         height = 0.80,
       },
-      file_ignore_patterns = { "node_modules", "%.lock", "package-lock.json" },
-      -- path_display = { "smart" },
       winblend = 0,
       borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
       color_devicons = true,

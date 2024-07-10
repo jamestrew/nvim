@@ -99,6 +99,7 @@ return {
           accept = "<C-y>",
           next = "<C-j>",
           prev = "<C-k>",
+          dismiss = "<C-z>",
         },
       },
     },

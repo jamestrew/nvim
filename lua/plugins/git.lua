@@ -23,7 +23,7 @@ return {
   {
     "sindrets/diffview.nvim",
     opts = { enhanced_diff_hl = false },
-    config = function()
+    init = function()
       vim.api.nvim_create_user_command("DiffViewToggle", function()
         if require("diffview.lib").get_current_view() then
           vim.cmd(":DiffviewClose")

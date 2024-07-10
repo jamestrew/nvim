@@ -72,11 +72,11 @@ return {
     },
   },
   {
-    "toppair/peek.nvim",
-    build = "deno task --quiet build:fast",
-    opts = { app = "browser" },
-    init = function() vim.api.nvim_create_user_command("Peek", require("peek").open, {}) end,
-    cmd = "Peek",
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function() vim.g.mkdp_filetypes = { "markdown" } end,
+    ft = { "markdown" },
   },
   {
     "thePrimeagen/harpoon",
@@ -96,6 +96,16 @@ return {
       { "<leader>hi", function() require("harpoon.ui").nav_file(4) end },
       { "<leader>tn", function() require("harpoon.term").gotoTerminal(1) end },
       { "<leader>te", function() require("harpoon.term").gotoTerminal(2) end },
+    },
+  },
+
+  -- Lua
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre",
+    opts = {},
+    keys = {
+      { "<leader>qa", function() require("persistence").load() end },
     },
   },
 
