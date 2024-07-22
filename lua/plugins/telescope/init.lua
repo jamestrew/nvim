@@ -42,8 +42,8 @@ local M = {
     {
       "nvim-telescope/telescope-file-browser.nvim",
       -- dir = "/home/jt/projects/telescope-file-browser.nvim/master",
-      dir = "/home/jt/projects/telescope-file-browser.nvim/filename_first",
-      -- dir = "/home/jt/projects/telescope-file-browser.nvim/owner-group-stats",
+      -- dir = "/home/jt/projects/telescope-file-browser.nvim/filename-first",
+      dir = "/home/jt/projects/telescope-file-browser.nvim/lsp-integration",
       name = "telescope-file-browser.nvim",
     },
     { "jonarrien/telescope-cmdline.nvim" },
@@ -98,7 +98,7 @@ M.config = function()
 
   require("telescope").setup({
     defaults = {
-      path_display = { "filename_first" },
+      -- path_display = { "filename_first" },
       prompt_prefix = "  ",
       entry_prefix = "  ",
       initial_mode = "insert",
@@ -138,6 +138,8 @@ M.config = function()
           ["<M-l>"] = action_layout.cycle_layout_next,
           ["<C-t>"] = actions.toggle_all,
           ["<M-s>"] = tele_utils.diffsplit,
+          ["<C-Down>"] = actions.cycle_history_next,
+          ["<C-Up>"] = actions.cycle_history_prev,
         },
         n = {
           ["<C-p>"] = actions.move_selection_better,
@@ -172,19 +174,25 @@ M.config = function()
         },
       },
       git_commits = {
-        previewer = require("telescope.previewers").new_termopen_previewer({
-          get_command = function(entry)
-            return {
-              "git",
-              "-c",
-              "core.pager=delta",
-              "-c",
-              "delta.side-by-side=false",
-              "diff",
-              entry.value .. "^!",
-            }
-          end,
-        }),
+        mappings = {
+          i = {
+            ["<C-h>"] = actions.cycle_previewers_next,
+            ["<C-l>"] = actions.cycle_previewers_prev,
+          },
+        },
+        -- previewer = require("telescope.previewers").new_termopen_previewer({
+        --   get_command = function(entry)
+        --     return {
+        --       "git",
+        --       "-c",
+        --       "core.pager=delta",
+        --       "-c",
+        --       "delta.side-by-side=false",
+        --       "diff",
+        --       entry.value .. "^!",
+        --     }
+        --   end,
+        -- }),
       },
     },
     extensions = {
