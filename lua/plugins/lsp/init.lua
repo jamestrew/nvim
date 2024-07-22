@@ -11,8 +11,25 @@ local M = {
       },
       cmd = "Mason",
     },
-    { "nvimtools/none-ls.nvim" },
-    { "folke/neodev.nvim" },
+    { "nvimtools/none-ls.nvim", opts = {} },
+    {
+      "folke/lazydev.nvim",
+      ft = "lua", -- only load on lua files
+      opts = {
+        library = {
+          -- See the configuration section for more details
+          -- Load luvit types when the `vim.uv` word is found
+          { path = "luvit-meta/library", words = { "vim%.uv", "vim%.loop" } },
+        },
+        enabled = function(root_dir)
+          print(root_dir)
+          return true
+        end,
+      },
+      dependencies = {
+        { "Bilal2453/luvit-meta", lazy = true },
+      },
+    },
     { "b0o/SchemaStore.nvim" },
     { "simrat39/rust-tools.nvim" },
     {
@@ -52,12 +69,6 @@ end
 
 M.config = function()
   local lspsettings = require("plugins.lsp.settings")
-  require("neodev").setup({
-    override = function(_, library)
-      library.enabled = true
-      library.plugins = true
-    end,
-  })
   local lspconfig = require("lspconfig")
 
   vim.api.nvim_create_augroup("lsp_augroup", { clear = true })

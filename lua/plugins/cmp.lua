@@ -38,6 +38,7 @@ M.config = function()
     { name = "nvim_lua" },
     { name = "buffer", keyword_length = 3 },
     { name = "luasnip" },
+    { name = "lazydev", group_index = 0}
   }
 
   local git_ok, git = pcall(require, "cmp_git")
