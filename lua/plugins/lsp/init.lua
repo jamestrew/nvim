@@ -11,7 +11,44 @@ local M = {
       },
       cmd = "Mason",
     },
-    { "nvimtools/none-ls.nvim", opts = {} },
+    {
+      "nvimtools/none-ls.nvim",
+      config = function()
+        local null_ls = require("null-ls")
+        null_ls.setup({
+          sources = {
+            debug = true,
+            -- formatting
+            null_ls.builtins.formatting.biome,
+            null_ls.builtins.formatting.isort,
+            null_ls.builtins.formatting.black,
+            null_ls.builtins.formatting.gofmt,
+            null_ls.builtins.formatting.golines,
+            -- null_ls.builtins.formatting.sql_formatter,
+            null_ls.builtins.formatting.sqlfluff.with({
+              extra_args = { "--dialect", "sqlite" }, -- change to your dialect
+            }),
+
+            null_ls.builtins.formatting.goimports,
+            null_ls.builtins.formatting.stylua,
+            null_ls.builtins.diagnostics.sqlfluff.with({
+              extra_args = { "--dialect", "sqlite" }, -- change to your dialect
+            }),
+
+            -- null_ls.builtins.formatting.sql_formatter,
+
+            -- diagnostic
+            -- null_ls.builtins.diagnostics.luacheck, too much
+            null_ls.builtins.diagnostics.zsh,
+
+            -- code_actions
+            -- null_ls.builtins.code_actions.gitsigns,
+          },
+          on_attach = function(_, bufnr) require("plugins.lsp.mappings")(bufnr) end,
+          debug = true,
+        })
+      end,
+    },
     {
       "folke/lazydev.nvim",
       ft = "lua", -- only load on lua files
@@ -21,10 +58,6 @@ local M = {
           -- Load luvit types when the `vim.uv` word is found
           { path = "luvit-meta/library", words = { "vim%.uv", "vim%.loop" } },
         },
-        enabled = function(root_dir)
-          print(root_dir)
-          return true
-        end,
       },
       dependencies = {
         { "Bilal2453/luvit-meta", lazy = true },
@@ -119,40 +152,6 @@ M.config = function()
     dap = {
       adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
     },
-  })
-
-  -- null_ls
-  local _, null_ls = pcall(require, "null-ls")
-  null_ls.setup({
-    sources = {
-      debug = true,
-      -- formatting
-      null_ls.builtins.formatting.biome,
-      null_ls.builtins.formatting.isort,
-      null_ls.builtins.formatting.black,
-      null_ls.builtins.formatting.gofmt,
-      null_ls.builtins.formatting.golines,
-      -- null_ls.builtins.formatting.sql_formatter,
-      null_ls.builtins.formatting.sqlfluff.with({
-        extra_args = { "--dialect", "sqlite" }, -- change to your dialect
-      }),
-
-      null_ls.builtins.formatting.goimports,
-      null_ls.builtins.formatting.stylua,
-      null_ls.builtins.diagnostics.sqlfluff.with({
-        extra_args = { "--dialect", "sqlite" }, -- change to your dialect
-      }),
-
-      -- null_ls.builtins.formatting.sql_formatter,
-
-      -- diagnostic
-      -- null_ls.builtins.diagnostics.luacheck, too much
-      null_ls.builtins.diagnostics.zsh,
-
-      -- code_actions
-      -- null_ls.builtins.code_actions.gitsigns,
-    },
-    on_attach = function(_, bufnr) require("plugins.lsp.mappings")(bufnr) end,
   })
 end
 

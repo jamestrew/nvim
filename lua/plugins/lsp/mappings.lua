@@ -23,7 +23,7 @@ end
 
 ---@param key string
 ---@param direction "next"|"prev"
----@param severity DiagnosticSeverity?
+---@param severity vim.diagnostic.Severity?
 ---@param bufnr number
 local function diagnostic_goto(key, direction, severity, bufnr)
   local go = direction == "next" and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
