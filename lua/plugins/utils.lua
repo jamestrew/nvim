@@ -113,4 +113,6 @@ return {
     "docgen.nvim",
     dir = "~/projects/docgen.nvim",
   },
+
+  { "MagicDuck/grug-far.nvim", opts = {} },
 }

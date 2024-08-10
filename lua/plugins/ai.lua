@@ -9,7 +9,7 @@ return {
       suggestion = {
         auto_trigger = vim.fn.argv()[1] ~= "leetcode.nvim",
         keymap = {
-          accept = "<C-c>",
+          accept = "<C-v>",
           next = "<C-x>",
           dismiss = "<C-z>",
         },
@@ -43,6 +43,16 @@ return {
       { "<leader>ce", ":CopilotChatExplain<CR>", mode = "v" },
       -- { "<leader>cr", ":CopilotCodeReview<CR>" },
     },
-    -- See Commands section for default commands if you want to lazy load on them
+    cmd = {
+      "CopilotChatExplain",
+      "CopilotChatReview",
+      "CopilotChatFix",
+      "CopilotChatOptimize",
+      "CopilotChatDocs",
+      "CopilotChatTests",
+      "CopilotChatFixDiagnostic",
+      "CopilotChatCommit",
+      "CopilotChatCommitStaged",
+    },
   },
 }

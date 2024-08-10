@@ -92,6 +92,8 @@ local M = {
   event = { "BufReadPre", "BufNewFile" },
 }
 
+M.init = function() vim.api.nvim_create_augroup("lsp_augroup", { clear = true }) end
+
 M.on_attach = function(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
     require("nvim-navic").attach(client, bufnr)
@@ -108,7 +110,6 @@ M.config = function()
   local lspsettings = require("plugins.lsp.settings")
   local lspconfig = require("lspconfig")
 
-  vim.api.nvim_create_augroup("lsp_augroup", { clear = true })
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
   -- replace the default lsp diagnostic letters with prettier symbols
