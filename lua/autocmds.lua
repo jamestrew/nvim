@@ -7,13 +7,6 @@ vim.api.nvim_create_autocmd("FileType", {
   group = my_augroup,
 })
 
--- get rid of weird formatoptions
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = "*",
-  command = "setlocal formatoptions-=r formatoptions-=o",
-  group = my_augroup,
-})
-
 vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   command = "silent! lua vim.highlight.on_yank()",
