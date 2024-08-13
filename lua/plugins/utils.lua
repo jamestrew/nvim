@@ -17,7 +17,7 @@ return {
   },
   {
     "nvim-lua/plenary.nvim",
-    dir = "~/projects/plenary.nvim",
+    dir = "C:\\Users\\jtrew\\neovim\\plenary.nvim",
     keys = {
       { "<leader>pt", "<Plug>PlenaryTestFile", desc = "plenary run test" },
     },

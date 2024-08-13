@@ -1,6 +1,6 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  dir = "/home/jt/projects/telescope.nvim",
+  dir = "C:\\Users\\jtrew\\neovim\\telescope.nvim",
   dependencies = {
     { "nvim-treesitter/nvim-treesitter" },
     { "nvim-tree/nvim-web-devicons" },
@@ -33,7 +33,9 @@ local M = {
         },
       },
       dependencies = {
-        { "kkharji/sqlite.lua" },
+        { "kkharji/sqlite.lua", init = function()
+          vim.cmd("let g:sqlite_clib_path = 'C:/sqlite/sqlite3.dll'")
+        end},
       },
     },
     { "ibhagwan/fzf-lua", cmd = "FzfLua" },
@@ -41,7 +43,7 @@ local M = {
     { "nvim-telescope/telescope-live-grep-args.nvim" },
     {
       "nvim-telescope/telescope-file-browser.nvim",
-      dir = "/home/jt/projects/telescope-file-browser.nvim/master",
+      dir = "C:\\Users\\jtrew\\neovim\\telescope-file-browser.nvim",
       -- dir = "/home/jt/projects/telescope-file-browser.nvim/filename-first",
       name = "telescope-file-browser.nvim",
     },
