@@ -1,5 +1,7 @@
 local opt = vim.opt
 
+opt.shellslash = true
+
 opt.laststatus = 3 -- one global statusline as oppose to many during splits
 
 -- Ignore compiled files
@@ -62,7 +64,7 @@ opt.inccommand = "split"
 opt.swapfile = false -- Living on the edge
 opt.shada = { "!", "'1000", "<50", "s10", "h" }
 
-opt.shell = "/bin/zsh"
+-- opt.shell = "/bin/zsh"
 opt.undofile = true
 
 -- set joinspaces
