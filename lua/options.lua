@@ -1,6 +1,8 @@
 local opt = vim.opt
 
 opt.shellslash = true
+opt.fileformat = "unix"
+opt.fileformats = { "dos", "unix" }
 
 opt.laststatus = 3 -- one global statusline as oppose to many during splits
 
@@ -37,7 +39,7 @@ opt.updatetime = 200 -- Make updates happen faster
 opt.hlsearch = false -- Get rid of highlights once done with search
 opt.scrolloff = 5
 opt.spell = false
-opt.formatoptions:remove({"r", "o"}) -- default "jtcroql"
+opt.formatoptions:remove({ "r", "o" }) -- default "jtcroql"
 
 -- Tabs
 opt.tabstop = 2

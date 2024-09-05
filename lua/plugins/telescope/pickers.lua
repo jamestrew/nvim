@@ -41,12 +41,23 @@ M.project_files = function(opts, no_ignore)
   end
 
   if no_ignore then
-    opts.find_command =
-      { "fd", "--type", "f", "--color", "never", "--hidden", "--no-ignore", "--exclude", ".git" }
+    opts.find_command = {
+      "fd",
+      "--type",
+      "f",
+      "--color",
+      "never",
+      "--hidden",
+      "--no-ignore",
+      "--exclude",
+      ".git",
+      "--path-separator",
+      "/",
+    }
     opts.prompt_title = "Find Files <ALL>"
     require("telescope.builtin").find_files(opts)
   else
-    opts.find_command = { "fd", "--type", "f", "--color", "never" }
+    opts.find_command = { "fd", "--type", "f", "--color", "never", "--path-separator", "/" }
     opts.prompt_title = "Find Files"
     require("telescope.builtin").find_files(opts)
   end
@@ -54,6 +65,7 @@ end
 
 M.live_grep = function(opts, use_args)
   opts = opts or {}
+  opts.additional_args = { "--path-separator", "/" }
   use_args = vim.F.if_nil(use_args, false)
   opts.attach_mappings = function(_, map)
     map({ "n", "i" }, "<C-f>", function(prompt_bufnr)

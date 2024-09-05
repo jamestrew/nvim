@@ -33,9 +33,10 @@ local M = {
         },
       },
       dependencies = {
-        { "kkharji/sqlite.lua", init = function()
-          vim.cmd("let g:sqlite_clib_path = 'C:/sqlite/sqlite3.dll'")
-        end},
+        {
+          "kkharji/sqlite.lua",
+          init = function() vim.cmd("let g:sqlite_clib_path = 'C:/sqlite/sqlite3.dll'") end,
+        },
       },
     },
     { "ibhagwan/fzf-lua", cmd = "FzfLua" },
@@ -152,6 +153,9 @@ M.config = function()
       },
     },
     pickers = {
+      grep_string = {
+        additional_args = { "--path-separator", "/" },
+      },
       find_files = {
         layout_strategy = "flex",
         layout_config = {
