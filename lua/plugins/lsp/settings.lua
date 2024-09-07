@@ -110,6 +110,8 @@ M.server_list = {
   "taplo",
   -- "rust_analyzer",
   -- "denols",
+
+  -- "jedi_language_server",
 }
 
 return M

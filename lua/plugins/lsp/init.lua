@@ -24,6 +24,7 @@ local M = {
             null_ls.builtins.formatting.black,
             null_ls.builtins.formatting.gofmt,
             null_ls.builtins.formatting.golines,
+            null_ls.builtins.formatting.markdownlint,
             -- null_ls.builtins.formatting.sql_formatter,
             null_ls.builtins.formatting.sqlfluff.with({
               extra_args = { "--dialect", "sqlite" }, -- change to your dialect

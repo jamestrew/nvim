@@ -54,4 +54,6 @@ return {
     end,
     event = { "WinNew" },
   },
+
+  { "OXY2DEV/markview.nvim", lazy = false },
 }

@@ -71,6 +71,8 @@ M.keys = function()
     { "<C-e>", jtelescope.file_browser() },
     { "<leader><C-e>", jtelescope.file_browser(true) },
     { "<leader>rl", builtin.reloader, silent = true },
+    { "<leader>fo", builtin.vim_options, silent = true },
+    { "<leader>gc",  builtin.git_bcommits_range, mode = { "v", "x" } },
   }
 end
 
