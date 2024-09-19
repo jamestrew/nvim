@@ -72,7 +72,7 @@ M.keys = function()
     { "<leader><C-e>", jtelescope.file_browser(true) },
     { "<leader>rl", builtin.reloader, silent = true },
     { "<leader>fo", builtin.vim_options, silent = true },
-    { "<leader>gc",  builtin.git_bcommits_range, mode = { "v", "x" } },
+    { "<leader>gc", builtin.git_bcommits_range, mode = { "v", "x" } },
   }
 end
 
@@ -281,6 +281,8 @@ M.config = function()
       },
     },
   })
+
+  require("telescope").load_extension("fzf")
 end
 
 return M

@@ -41,7 +41,7 @@ return {
     keys = {
       { "<leader>cp", ":CopilotChatToggle<CR>" },
       { "<leader>ce", ":CopilotChatExplain<CR>", mode = "v" },
-      -- { "<leader>cr", ":CopilotCodeReview<CR>" },
+      { "<leader>cr", ":CopilotChatReview<CR>", mode = "v" },
     },
     cmd = {
       "CopilotChatExplain",
