@@ -40,6 +40,16 @@ return {
     end,
     keys = {
       { "<leader>cp", ":CopilotChatToggle<CR>" },
+      {
+        "<leader><leader>cp",
+        function()
+          require("CopilotChat").toggle({
+            window = {
+              layout = "horizontal",
+            },
+          })
+        end,
+      },
       { "<leader>ce", ":CopilotChatExplain<CR>", mode = "v" },
       { "<leader>cr", ":CopilotChatReview<CR>", mode = "v" },
     },

@@ -69,7 +69,11 @@ local M = {
       },
     },
     { "b0o/SchemaStore.nvim" },
-    { "simrat39/rust-tools.nvim" },
+    {
+      "mrcjkb/rustaceanvim",
+      version = "^5",
+      lazy = false, -- This plugin is already lazy
+    },
     {
       "hedyhli/outline.nvim",
       opts = {
@@ -137,28 +141,6 @@ M.config = function()
     opts = vim.tbl_deep_extend("keep", opts, lspsettings[server] or {})
     lspconfig[server].setup(opts)
   end
-
-  -- rust
-  local extension_path = vim.fn.stdpath("data") .. "/mason/packages/codelldb/extension"
-  local codelldb_path = extension_path .. "/adapter/codelldb"
-  local liblldb_path = extension_path .. "/lldb/lib/liblldb.so"
-
-  require("rust-tools").setup({
-    tools = {
-      inlay_hints = {
-        auto = false,
-        only_current_line = true,
-      },
-    },
-    server = {
-      on_attach = M.on_attach,
-      capabilities = capabilities,
-      settings = lspsettings["rust_analyzer"].settings,
-    },
-    dap = {
-      adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
-    },
-  })
 end
 
 return M
