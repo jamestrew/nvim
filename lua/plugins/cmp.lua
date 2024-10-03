@@ -18,10 +18,6 @@ local M = {
       opts = {},
       enabled = false,
     },
-    {
-      "saecki/crates.nvim",
-      dependencies = { "nvimtools/none-ls.nvim" },
-    },
   },
   event = { "InsertEnter", "CmdlineEnter" },
 }
@@ -47,12 +43,6 @@ M.config = function()
     git.setup({
       filetypes = { "gitcommit", "NeogitCommitMessage" },
     })
-  end
-
-  local crates_ok, crates = pcall(require, "crates")
-  if crates_ok then
-    table.insert(sources, { name = "crates" })
-    crates.setup({ null_ls = { enabled = true } })
   end
 
   cmp.setup({

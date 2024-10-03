@@ -1,6 +1,3 @@
-local jtelescope = require("plugins.telescope.pickers")
-local illuminate = require("illuminate")
-
 local function toggle_inlay_hints()
   if vim.lsp.inlay_hint.is_enabled() then
     vim.lsp.inlay_hint.enable(false)
@@ -13,6 +10,7 @@ end
 ---@param direction "next"|"prev"
 ---@param bufnr number
 local function illuminate_goto(key, direction, bufnr)
+  local illuminate = require("illuminate")
   vim.keymap.set(
     "n",
     key,
@@ -21,22 +19,9 @@ local function illuminate_goto(key, direction, bufnr)
   )
 end
 
----@param key string
----@param direction "next"|"prev"
----@param severity vim.diagnostic.Severity?
----@param bufnr number
-local function diagnostic_goto(key, direction, severity, bufnr)
-  local go = direction == "next" and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
-  severity = severity or nil
-  vim.keymap.set(
-    "n",
-    key,
-    function() go({ severity = severity }) end,
-    { silent = true, buffer = bufnr }
-  )
-end
+local function attach_mappings(bufnr)
+  local jtelescope = require("plugins.telescope.pickers")
 
-return function(bufnr)
   local opts = { silent = true, buffer = bufnr }
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
@@ -71,11 +56,22 @@ return function(bufnr)
 
   illuminate_goto("]r", "next", bufnr)
   illuminate_goto("[r", "prev", bufnr)
-
-  diagnostic_goto("]d", "next", nil, bufnr)
-  diagnostic_goto("[d", "prev", nil, bufnr)
-  diagnostic_goto("]e", "next", vim.diagnostic.severity.ERROR, bufnr)
-  diagnostic_goto("[e", "prev", vim.diagnostic.severity.ERROR, bufnr)
-  diagnostic_goto("]w", "next", vim.diagnostic.severity.WARN, bufnr)
-  diagnostic_goto("[w", "prev", vim.diagnostic.severity.WARN, bufnr)
 end
+
+local function on_attach(client, bufnr)
+  if client.server_capabilities.documentSymbolProvider then
+    require("nvim-navic").attach(client, bufnr)
+  end
+
+  vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args) vim.bo[args.buf].formatexpr = nil end,
+    group = "lsp_augroup",
+  })
+
+  attach_mappings(bufnr)
+end
+
+return {
+  attach_mappings = attach_mappings,
+  on_attach = on_attach,
+}

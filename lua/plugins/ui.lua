@@ -45,15 +45,5 @@ return {
     },
   },
 
-  {
-    "nvim-zh/colorful-winsep.nvim",
-    enabled = true,
-    opts = function()
-      local colors = require("themes." .. vim.g.colors_name).colors
-      return { highlight = { fg = colors.base0E } }
-    end,
-    event = { "WinNew" },
-  },
-
   { "OXY2DEV/markview.nvim", lazy = false },
 }

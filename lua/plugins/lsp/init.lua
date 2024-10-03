@@ -45,7 +45,7 @@ local M = {
             -- code_actions
             -- null_ls.builtins.code_actions.gitsigns,
           },
-          on_attach = function(_, bufnr) require("plugins.lsp.mappings")(bufnr) end,
+          on_attach = function(_, bufnr) require("plugins.lsp.utils").attach_mappings(bufnr) end,
           debug = true,
         })
       end,
@@ -73,6 +73,19 @@ local M = {
       "mrcjkb/rustaceanvim",
       version = "^5",
       lazy = false, -- This plugin is already lazy
+    },
+    {
+      "saecki/crates.nvim",
+      tag = "stable",
+      opts = {
+        lsp = {
+          enabled = true,
+          on_attach = require("plugins.lsp.utils").on_attach,
+          actions = true,
+          completion = true,
+          hover = true,
+        },
+      },
     },
     {
       "hedyhli/outline.nvim",
@@ -108,11 +121,12 @@ M.on_attach = function(client, bufnr)
     callback = function(args) vim.bo[args.buf].formatexpr = nil end,
     group = "lsp_augroup",
   })
-  require("plugins.lsp.mappings")(bufnr)
+  require("plugins.lsp.utils").attach_mappings(bufnr)
 end
 
 M.config = function()
   local lspsettings = require("plugins.lsp.settings")
+  local lsputils = require("plugins.lsp.utils")
   local lspconfig = require("lspconfig")
 
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -135,7 +149,7 @@ M.config = function()
 
   for _, server in ipairs(lspsettings.server_list) do
     local opts = {
-      on_attach = M.on_attach,
+      on_attach = lsputils.on_attach,
       capabilities = capabilities,
     }
     opts = vim.tbl_deep_extend("keep", opts, lspsettings[server] or {})
