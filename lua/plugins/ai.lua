@@ -7,7 +7,8 @@ return {
       -- suggestion = { enabled = false },
       -- panel = { enabled = false },
       suggestion = {
-        auto_trigger = vim.fn.argv()[1] ~= "leetcode.nvim",
+        enabled = vim.fn.argv()[1] ~= "leetcode.nvim",
+        auto_trigger = false,
         keymap = {
           accept = "<C-v>",
           next = "<C-x>",
