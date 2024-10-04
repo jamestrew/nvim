@@ -30,6 +30,6 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    require("plugins.lsp").on_attach(client, ev.buf)
+    require("plugins.lsp.utils").on_attach(client, ev.buf)
   end,
 })

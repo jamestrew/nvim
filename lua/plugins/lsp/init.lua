@@ -112,18 +112,6 @@ local M = {
 
 M.init = function() vim.api.nvim_create_augroup("lsp_augroup", { clear = true }) end
 
-M.on_attach = function(client, bufnr)
-  if client.server_capabilities.documentSymbolProvider then
-    require("nvim-navic").attach(client, bufnr)
-  end
-
-  vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(args) vim.bo[args.buf].formatexpr = nil end,
-    group = "lsp_augroup",
-  })
-  require("plugins.lsp.utils").attach_mappings(bufnr)
-end
-
 M.config = function()
   local lspsettings = require("plugins.lsp.settings")
   local lsputils = require("plugins.lsp.utils")
