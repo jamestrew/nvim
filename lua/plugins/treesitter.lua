@@ -7,6 +7,7 @@ return {
   },
   build = ":TSUpdate",
   event = { "VeryLazy" },
+  opts_extend = { "ensure_installed" },
   opts = {
     ensure_installed = {
       "bash",
@@ -47,9 +48,9 @@ return {
         if ok and stats and stats.size > max_filesize then return true end
       end,
     },
-    matchup = {
-      enable = true,
-    },
+    -- matchup = {
+    --   enable = true,
+    -- },
     indent = {
       enable = true,
       -- disable = { "lua", "c", "cpp" },
@@ -108,4 +109,7 @@ return {
       },
     },
   },
+  config = function(_, opts)
+    require("nvim-treesitter.configs").setup(opts)
+  end
 }
