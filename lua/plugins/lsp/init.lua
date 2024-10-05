@@ -73,6 +73,32 @@ local M = {
       "mrcjkb/rustaceanvim",
       version = "^5",
       lazy = false, -- This plugin is already lazy
+      config = function()
+        vim.g.rustaceanvim = function()
+          return {
+            -- Plugin configuration
+            tools = {},
+            -- LSP configuration
+            server = {
+              on_attach = require("plugins.lsp.utils").on_attach,
+              default_settings = {
+                -- rust-analyzer language server configuration
+                ["rust-analyzer"] = {
+                  checkOnSave = true,
+                  check = {
+                    command = "clippy",
+                  },
+                  cargo = {
+                    features = "all",
+                  },
+                },
+              },
+            },
+            -- DAP configuration
+            dap = {},
+          }
+        end
+      end,
     },
     {
       "saecki/crates.nvim",
@@ -108,41 +134,39 @@ local M = {
     },
   },
   event = { "BufReadPre", "BufNewFile" },
-}
+  init = function() vim.api.nvim_create_augroup("lsp_augroup", { clear = true }) end,
+  config = function()
+    local lspsettings = require("plugins.lsp.settings")
+    local lsputils = require("plugins.lsp.utils")
+    local lspconfig = require("lspconfig")
 
-M.init = function() vim.api.nvim_create_augroup("lsp_augroup", { clear = true }) end
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-M.config = function()
-  local lspsettings = require("plugins.lsp.settings")
-  local lsputils = require("plugins.lsp.utils")
-  local lspconfig = require("lspconfig")
-
-  local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-  -- replace the default lsp diagnostic letters with prettier symbols
-  vim.diagnostic.config({
-    signs = {
-      text = {
-        [vim.diagnostic.severity.ERROR] = "󰅙",
-        [vim.diagnostic.severity.WARN] = "",
-        [vim.diagnostic.severity.INFO] = "󰋼",
-        [vim.diagnostic.severity.HINT] = "󰌵",
+    -- replace the default lsp diagnostic letters with prettier symbols
+    vim.diagnostic.config({
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = "󰅙",
+          [vim.diagnostic.severity.WARN] = "",
+          [vim.diagnostic.severity.INFO] = "󰋼",
+          [vim.diagnostic.severity.HINT] = "󰌵",
+        },
       },
-    },
-  })
+    })
 
-  vim.api.nvim_command([[ hi def link LspReferenceText CursorLine ]])
-  vim.api.nvim_command([[ hi def link LspReferenceWrite CursorLine ]])
-  vim.api.nvim_command([[ hi def link LspReferenceRead CursorLine ]])
+    vim.api.nvim_command([[ hi def link LspReferenceText CursorLine ]])
+    vim.api.nvim_command([[ hi def link LspReferenceWrite CursorLine ]])
+    vim.api.nvim_command([[ hi def link LspReferenceRead CursorLine ]])
 
-  for _, server in ipairs(lspsettings.server_list) do
-    local opts = {
-      on_attach = lsputils.on_attach,
-      capabilities = capabilities,
-    }
-    opts = vim.tbl_deep_extend("keep", opts, lspsettings[server] or {})
-    lspconfig[server].setup(opts)
-  end
-end
+    for _, server in ipairs(lspsettings.server_list) do
+      local opts = {
+        on_attach = lsputils.on_attach,
+        capabilities = capabilities,
+      }
+      opts = vim.tbl_deep_extend("keep", opts, lspsettings[server] or {})
+      lspconfig[server].setup(opts)
+    end
+  end,
+}
 
 return M
