@@ -1,8 +1,10 @@
 ---@diagnostic disable: missing-fields
 local M = {
-  "hrsh7th/nvim-cmp",
+  -- "hrsh7th/nvim-cmp",
+  "iguanacucumber/magazine.nvim", -- temp? fork
   dependencies = {
     { "hrsh7th/cmp-nvim-lsp" },
+    { "hrsh7th/cmp-nvim-lsp-signature-help" },
     { "onsails/lspkind-nvim" },
     { "hrsh7th/cmp-buffer" },
     { "hrsh7th/cmp-path" },
@@ -54,6 +56,7 @@ local M = {
 
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
+        { name = "nvim_lsp_signature_help" },
         -- { name = "copilot" },
         { name = "path" },
         { name = "nvim_lua" },
