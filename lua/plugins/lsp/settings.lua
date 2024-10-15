@@ -52,6 +52,10 @@ M.clangd = {
 M["rust_analyzer"] = {
   settings = {
     ["rust-analyzer"] = {
+      completion = {
+        callable = { snippets = "fill_arguments" },
+        fullFunctionSignatures = { enable = true },
+      },
       checkOnSave = true,
       check = {
         command = "clippy",

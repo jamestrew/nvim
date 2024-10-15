@@ -10,6 +10,7 @@ return {
     dependencies = { "sindrets/diffview.nvim" },
     opts = {
       kind = "tab",
+      disable_line_numbers = false,
       disable_insert_on_commit = true,
       integrations = { diffview = true },
       sections = { recent = { folded = false } },
@@ -17,6 +18,15 @@ return {
     },
     cmd = { "Neogit" },
     keys = { { "<leader>gs", "<cmd>Neogit<CR>", desc = "neogit" } },
+    config = function(_, opts)
+      require("neogit").setup(opts)
+      vim.api.nvim_create_autocmd("BufWinEnter", {
+        pattern = "NeogitStatus",
+        callback = function()
+          vim.schedule(function() vim.wo.rnu = true end)
+        end,
+      })
+    end,
   },
 
   { "jamestrew/git-worktree.nvim", config = true },

@@ -81,18 +81,7 @@ local M = {
             -- LSP configuration
             server = {
               on_attach = require("plugins.lsp.utils").on_attach,
-              default_settings = {
-                -- rust-analyzer language server configuration
-                ["rust-analyzer"] = {
-                  checkOnSave = true,
-                  check = {
-                    command = "clippy",
-                  },
-                  cargo = {
-                    features = "all",
-                  },
-                },
-              },
+              default_settings = require("plugins.lsp.settings")["rust_analyzer"].settings,
             },
             -- DAP configuration
             dap = {},

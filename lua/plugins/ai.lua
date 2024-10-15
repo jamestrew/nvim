@@ -27,6 +27,11 @@ return {
     opts = {
       question_header = " Me ",
       answer_header = " Copilot ",
+      prompts = {
+        Review = {
+          callback = function(_, _) end,
+        },
+      },
     },
     config = function(_, opts)
       local ft = "copilot-chat"
