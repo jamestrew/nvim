@@ -113,7 +113,7 @@ M.server_list = {
   "clangd",
   "taplo",
   -- "rust_analyzer",
-  -- "denols",
+  "denols",
 
   -- "jedi_language_server",
 }

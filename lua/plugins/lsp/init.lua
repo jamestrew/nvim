@@ -17,7 +17,6 @@ local M = {
         local null_ls = require("null-ls")
         null_ls.setup({
           sources = {
-            debug = true,
             -- formatting
             null_ls.builtins.formatting.biome,
             null_ls.builtins.formatting.isort,
@@ -46,7 +45,6 @@ local M = {
             -- null_ls.builtins.code_actions.gitsigns,
           },
           on_attach = function(_, bufnr) require("plugins.lsp.utils").attach_mappings(bufnr) end,
-          debug = true,
         })
       end,
     },

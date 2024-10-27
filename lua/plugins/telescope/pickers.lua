@@ -214,14 +214,12 @@ end
 M.lsp_reference = function(opts)
   opts = opts or {}
   opts.layout_strategy = "vertical"
-  -- opts.entry_maker = tele_utils.lsp_ref_entry(opts)
   require("telescope.builtin").lsp_references(opts)
 end
 
 M.lsp_definition = function(opts)
   opts = opts or {}
   opts.layout_strategy = "vertical"
-  -- opts.entry_maker = tele_utils.lsp_ref_entry(opts)
   require("telescope.builtin").lsp_definitions(opts)
 end
 
