@@ -41,8 +41,17 @@ M.project_files = function(opts, no_ignore)
   end
 
   if no_ignore then
-    opts.find_command =
-      { "fd", "--type", "f", "--color", "never", "--hidden", "--no-ignore", "--exclude", ".git" }
+    opts.find_command = {
+      "fd",
+      "--type",
+      "f",
+      "--color",
+      "never",
+      "--hidden",
+      "--no-ignore-vcs",
+      "--exclude",
+      ".git",
+    }
     opts.prompt_title = "Find Files <ALL>"
     require("telescope.builtin").find_files(opts)
   else

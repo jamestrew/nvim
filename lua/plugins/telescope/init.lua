@@ -282,8 +282,8 @@ M.config = function()
       cmdline = {
         mappings = {
           run_selection = "<CR>",
-        }
-      }
+        },
+      },
     },
   })
 
