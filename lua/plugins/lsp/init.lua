@@ -73,6 +73,14 @@ local M = {
       lazy = false, -- This plugin is already lazy
       config = function()
         vim.g.rustaceanvim = function()
+          ---@diagnostic disable-next-line: param-type-mismatch
+          local mason_path = vim.fs.joinpath(vim.fn.stdpath("data"), "/mason")
+          local ext_path = vim.fs.joinpath(mason_path, "packages", "codelldb", "extension")
+          local codelldb_path = vim.fs.joinpath(ext_path, "adapter", "codelldb")
+          local liblldb_path = vim.fs.joinpath(ext_path, "lldb", "lib", "liblldb.so")
+
+          local cfg = require("rustaceanvim.config")
+
           return {
             -- Plugin configuration
             tools = {},
@@ -82,7 +90,9 @@ local M = {
               default_settings = require("plugins.lsp.settings")["rust_analyzer"].settings,
             },
             -- DAP configuration
-            dap = {},
+            dap = {
+              adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
+            },
           }
         end
       end,
