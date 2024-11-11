@@ -56,7 +56,7 @@ M["rust_analyzer"] = {
         callable = { snippets = "fill_arguments" },
         fullFunctionSignatures = { enable = true },
       },
-      checkOnSave = true,
+      procMacro = { enable = true },
       check = {
         command = "clippy",
       },
@@ -100,7 +100,7 @@ M.server_list = {
   -- "sqls",
   -- "pyright",
   "basedpyright",
-  "ruff_lsp",
+  "ruff",
   "eslint",
   "emmet_language_server",
   "html",
@@ -111,11 +111,10 @@ M.server_list = {
   -- "tsserver",
   "biome",
   "clangd",
-  "taplo",
+  "taplo", -- toml
   -- "rust_analyzer",
   "denols",
 
-  -- "jedi_language_server",
 }
 
 return M
