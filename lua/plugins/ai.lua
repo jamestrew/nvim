@@ -33,7 +33,7 @@ return {
           callback = function(_, _) end,
         },
       },
-      auto_follow_cursor = false,
+      auto_follow_cursor = true,
     },
     config = function(_, opts)
       local ft = "copilot-chat"

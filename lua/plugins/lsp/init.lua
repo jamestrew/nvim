@@ -86,7 +86,10 @@ local M = {
             tools = {},
             -- LSP configuration
             server = {
-              on_attach = require("plugins.lsp.utils").on_attach,
+              on_attach = function(client, bufnr)
+                require("plugins.lsp.utils").on_attach(client, bufnr)
+                vim.keymap.set("n", "<leader>K", ":RustLsp openDocs<CR>")
+              end,
               default_settings = require("plugins.lsp.settings")["rust_analyzer"].settings,
             },
             -- DAP configuration
