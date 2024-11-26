@@ -90,6 +90,21 @@ local M = {
                 require("plugins.lsp.utils").on_attach(client, bufnr)
                 vim.keymap.set("n", "<leader>K", ":RustLsp openDocs<CR>")
               end,
+              -- https://github.com/hrsh7th/cmp-nvim-lsp/issues/72
+              capabilities = require("cmp_nvim_lsp").default_capabilities({
+                resolveSupport = {
+                  properties = {
+                    "documentation",
+                    "detail",
+                    "additionalTextEdits",
+                    "sortText",
+                    "filterText",
+                    "insertText",
+                    "insertTextFormat",
+                    "insertTextMode",
+                  },
+                },
+              }),
               default_settings = require("plugins.lsp.settings")["rust_analyzer"].settings,
             },
             -- DAP configuration

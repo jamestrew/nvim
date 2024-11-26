@@ -2,7 +2,11 @@ return {
   "nvim-treesitter/nvim-treesitter",
   dependencies = {
     { "nvim-treesitter/nvim-treesitter-textobjects" },
-    { "nvim-treesitter/nvim-treesitter-context", opts = {} },
+    {
+      "nvim-treesitter/nvim-treesitter-context",
+      opts = {},
+      enabled = false, -- useful but sometimes the context is huge and takes up a ton of space
+    },
     { "andymass/vim-matchup" },
   },
   build = ":TSUpdate",

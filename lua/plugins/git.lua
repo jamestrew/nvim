@@ -8,7 +8,6 @@ return {
   {
     "NeogitOrg/neogit",
     dependencies = { "sindrets/diffview.nvim" },
-    commit = "9fb8a93",
     opts = {
       kind = "tab",
       disable_line_numbers = false,
