@@ -6,19 +6,6 @@ local function toggle_inlay_hints()
   end
 end
 
----@param key string
----@param direction "next"|"prev"
----@param bufnr number
-local function illuminate_goto(key, direction, bufnr)
-  local illuminate = require("illuminate")
-  vim.keymap.set(
-    "n",
-    key,
-    function() illuminate["goto_" .. direction .. "_references"](false) end,
-    { silent = true, buffer = bufnr }
-  )
-end
-
 local function attach_mappings(bufnr)
   local jtelescope = require("plugins.telescope.pickers")
 
@@ -53,9 +40,6 @@ local function attach_mappings(bufnr)
   vim.keymap.set("n", "<leader><leader>fs", jtelescope.lsp_document_symbols, opts)
   vim.keymap.set("n", "<leader>td", ":Telescope diagnostics bufnr=0<CR>", opts)
   vim.keymap.set("n", "<leader>tw", ":Telescope diagnostics<CR>", opts)
-
-  illuminate_goto("]r", "next", bufnr)
-  illuminate_goto("[r", "prev", bufnr)
 end
 
 local function on_attach(client, bufnr)

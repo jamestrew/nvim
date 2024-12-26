@@ -114,7 +114,6 @@ M.server_list = {
   "taplo", -- toml
   -- "rust_analyzer",
   "denols",
-
 }
 
 return M
