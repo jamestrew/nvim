@@ -8,7 +8,7 @@ return {
       -- panel = { enabled = false },
       suggestion = {
         enabled = vim.fn.argv()[1] ~= "leetcode.nvim",
-        auto_trigger = false,
+        auto_trigger = true,
         keymap = {
           accept = "<C-v>",
           next = "<C-x>",
@@ -19,13 +19,13 @@ return {
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    -- version = false,
+    branch = "main",
     dependencies = {
       { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
     },
     opts = {
-      model = "o1-mini",
+      model = "gpt-4o",
       question_header = " Me ",
       answer_header = " Copilot ",
       prompts = {

@@ -61,18 +61,31 @@ function M.config()
   local dapui = require("dapui")
   dapui.setup()
 
-  dap.listeners.after.event_initialized.dapui_config = function()
+  local debug_tab = nil
+
+  local function open_debug_tab()
+    if debug_tab and vim.api.nvim_tabpage_is_valid(debug_tab) then
+      vim.api.nvim_set_current_tabpage(debug_tab)
+      return
+    end
+
     vim.cmd("tabnew %")
+    debug_tab = vim.api.nvim_get_current_tabpage()
     dapui.open()
   end
-  dap.listeners.before.event_terminated.dapui_config = function()
+
+  local function close_debug_tab()
     dapui.close()
-    vim.cmd("tabclose")
+    if debug_tab and vim.api.nvim_tabpage_is_valid(debug_tab) then
+      vim.api.nvim_exec2("tabclose " .. vim.api.nvim_tabpage_get_number(debug_tab), {})
+    end
+    debug_tab = nil
   end
-  dap.listeners.before.event_exited.dapui_config = function()
-    dapui.close()
-    vim.cmd("tabclose")
-  end
+
+  dap.listeners.before.attach.dapui_config = function() open_debug_tab() end
+  dap.listeners.before.launch.dapui_config = function() open_debug_tab() end
+  dap.listeners.before.event_terminated.dapui_config = function() close_debug_tab() end
+  dap.listeners.before.event_exited.dapui_config = function() close_debug_tab() end
 end
 
 return M
