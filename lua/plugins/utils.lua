@@ -1,4 +1,5 @@
 return {
+  { "mbbill/undotree" },
   { "samjwill/nvim-unception" },
   {
     "codethread/qmk.nvim",

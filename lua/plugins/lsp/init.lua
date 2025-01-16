@@ -130,7 +130,8 @@ local M = {
     },
     {
       "RRethy/vim-illuminate", -- seems unmaintained, lots of to-be-deprecated function use
-      enabled = false, -- https://github.com/RRethy/vim-illuminate/issues/219
+      "jamestrew/vim-illuminate", -- merged in some PRs
+      -- enabled = false, -- https://github.com/RRethy/vim-illuminate/issues/219
       config = function() require("illuminate").configure({}) end,
     },
   },
