@@ -55,18 +55,17 @@ return {
         sign_priority = 5,
         status_formatter = nil, -- Use default
         on_attach = function(bufnr)
-          local gs = package.loaded.gitsigns
+          local gs = require("gitsigns")
+
           local map = function(mode, l, r, opts)
-            opts = vim.tbl_extend("force", { silent = true, buffer = bufnr }, opts or {})
+            opts = opts or { silent = true, buffer = bufnr }
             vim.keymap.set(mode, l, r, opts)
           end
 
           map("n", "<leader>hs", gs.stage_hunk)
           map("n", "<leader>hr", gs.reset_hunk)
-          map("n", "<leader>hu", gs.undo_stage_hunk)
           map("n", "<leader>hp", gs.preview_hunk)
           map("n", "<leader>hb", gs.blame_line)
-          map("n", "<leader>hu", gs.undo_stage_hunk)
           map(
             "v",
             "<leader>hs",
@@ -78,17 +77,22 @@ return {
             function() gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") }) end
           )
 
+          -- Navigation
           map("n", "]g", function()
-            if vim.wo.diff then return "]g" end
-            vim.schedule(function() gs.next_hunk() end)
-            return "<Ignore>"
-          end, { expr = true })
+            if vim.wo.diff then
+              vim.cmd.normal({ "]g", bang = true })
+            else
+              gs.nav_hunk("next")
+            end
+          end)
 
           map("n", "[g", function()
-            if vim.wo.diff then return "[g" end
-            vim.schedule(function() gs.prev_hunk() end)
-            return "<Ignore>"
-          end, { expr = true })
+            if vim.wo.diff then
+              vim.cmd.normal({ "[g", bang = true })
+            else
+              gs.nav_hunk("prev")
+            end
+          end)
         end,
       })
     end,
