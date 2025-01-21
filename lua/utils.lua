@@ -11,6 +11,13 @@ end
 
 local M = {}
 
+function M.dev_dir(dir)
+  local hostname = vim.uv.os_gethostname()
+  if hostname == "archlinux" then
+    return dir
+  end
+end
+
 function M.get_os_command_output(cmd, cwd)
   cwd = cwd or vim.uv.cwd()
   local command = table.remove(cmd, 1)

@@ -1,6 +1,6 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  dir = "/home/jt/projects/telescope.nvim",
+  dir = require("utils").dev_dir("~/projects/telescope.nvim"),
   dependencies = {
     { "nvim-treesitter/nvim-treesitter" },
     { "nvim-tree/nvim-web-devicons" },
@@ -41,7 +41,7 @@ local M = {
     { "nvim-telescope/telescope-live-grep-args.nvim" },
     {
       "nvim-telescope/telescope-file-browser.nvim",
-      dir = "/home/jt/projects/telescope-file-browser.nvim/master",
+      dir = require("utils").dev_dir("~/projects/telescope-file-browser.nvim/master"),
       -- dir = "/home/jt/projects/telescope-file-browser.nvim/filename-first",
       name = "telescope-file-browser.nvim",
     },
