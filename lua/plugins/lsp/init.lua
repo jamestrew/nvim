@@ -129,9 +129,9 @@ local M = {
       keys = { { "<leader>so", "<cmd>Outline<CR>", desc = "symbols-outline" } },
     },
     {
-      "RRethy/vim-illuminate", -- seems unmaintained, lots of to-be-deprecated function use
+      -- "RRethy/vim-illuminate", -- seems unmaintained, lots of to-be-deprecated function use
       "jamestrew/vim-illuminate", -- merged in some PRs
-      -- enabled = false, -- https://github.com/RRethy/vim-illuminate/issues/219
+      enabled = false, -- https://github.com/RRethy/vim-illuminate/issues/219
       config = function() require("illuminate").configure({}) end,
     },
   },
