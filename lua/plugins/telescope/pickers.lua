@@ -40,22 +40,26 @@ M.project_files = function(opts, no_ignore)
     return true
   end
 
-  if no_ignore then
-    opts.find_command = {
+  local find_command = {
       "fd",
       "--type",
       "f",
+      "--follow",
       "--color",
       "never",
+  }
+
+  if no_ignore then
+    opts.find_command = vim.list_extend(find_command, {
       "--hidden",
       "--no-ignore-vcs",
       "--exclude",
       ".git",
-    }
+    })
     opts.prompt_title = "Find Files <ALL>"
     require("telescope.builtin").find_files(opts)
   else
-    opts.find_command = { "fd", "--type", "f", "--color", "never" }
+    opts.find_command = find_command
     opts.prompt_title = "Find Files"
     require("telescope.builtin").find_files(opts)
   end
