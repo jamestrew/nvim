@@ -5,6 +5,16 @@ local M = {
     { "hrsh7th/cmp-nvim-lsp" },
     { "SmiteshP/nvim-navic" },
     {
+      "lewis6991/hover.nvim",
+      config = function()
+        require("hover").setup({
+          init = function() require("hover.providers.lsp") end,
+        })
+
+        vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
+      end,
+    },
+    {
       "williamboman/mason.nvim",
       opts = {
         ui = { keymaps = { update_all_packages = "S" } },
