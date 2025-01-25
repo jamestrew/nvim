@@ -18,7 +18,7 @@ return {
   },
   {
     "nvim-lua/plenary.nvim",
-    dir = require("utils").dev_dir("~/projects/plenary.nvim"),
+    dir = require("utils").dev_dir("plenary.nvim"),
     keys = {
       { "<leader>pt", "<Plug>PlenaryTestFile", desc = "plenary run test" },
     },
@@ -112,7 +112,7 @@ return {
 
   {
     "docgen.nvim",
-    dir = require("utils").dev_dir("~/projects/docgen.nvim"),
+    dir = require("utils").dev_dir("docgen.nvim"),
     enabled = false,
   },
 

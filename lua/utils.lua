@@ -13,9 +13,7 @@ local M = {}
 
 function M.dev_dir(dir)
   local hostname = vim.uv.os_gethostname()
-  if hostname == "archlinux" then
-    return dir
-  end
+  if hostname == "archlinux" then return vim.fs.joinpath(vim.uv.os_homedir(), "projects", dir) end
 end
 
 function M.get_os_command_output(cmd, cwd)

@@ -41,12 +41,12 @@ M.project_files = function(opts, no_ignore)
   end
 
   local find_command = {
-      "fd",
-      "--type",
-      "f",
-      "--follow",
-      "--color",
-      "never",
+    "fd",
+    "--type",
+    "f",
+    "--follow",
+    "--color",
+    "never",
   }
 
   if no_ignore then
