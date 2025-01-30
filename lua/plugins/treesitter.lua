@@ -43,6 +43,7 @@ return {
       "markdown_inline",
       "regex",
       "vimdoc",
+      "nix",
     },
     highlight = {
       enable = true,
