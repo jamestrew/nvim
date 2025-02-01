@@ -6,6 +6,11 @@ local function toggle_inlay_hints()
   end
 end
 
+local function toggle_virt_diagnostic()
+  local virt_lines = vim.diagnostic.config().virtual_lines or false
+  vim.diagnostic.config({ virtual_lines = not virt_lines })
+end
+
 local function attach_mappings(bufnr)
   local jtelescope = require("plugins.telescope.pickers")
 
@@ -17,9 +22,9 @@ local function attach_mappings(bufnr)
   vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
   vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
   vim.keymap.set("n", "<leader>od", vim.diagnostic.open_float, opts)
+  vim.keymap.set("n", "<leader><leader>od", toggle_virt_diagnostic, opts)
   vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
   vim.keymap.set("n", "<leader>fm", function() vim.lsp.buf.format({ async = true }) end, opts)
-
   vim.keymap.set({ "i", "n" }, "<C-h>", toggle_inlay_hints, opts)
 
   -- Lsp Tele
