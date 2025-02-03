@@ -39,7 +39,6 @@ local M = {
 
             null_ls.builtins.formatting.goimports,
             null_ls.builtins.formatting.stylua,
-            null_ls.builtins.formatting.nixpkgs_fmt,
             null_ls.builtins.diagnostics.sqlfluff.with({
               extra_args = { "--dialect", "sqlite" }, -- change to your dialect
             }),
@@ -140,7 +139,7 @@ local M = {
     {
       -- "RRethy/vim-illuminate", -- seems unmaintained, lots of to-be-deprecated function use
       "jamestrew/vim-illuminate", -- merged in some PRs
-      enabled = false, -- https://github.com/RRethy/vim-illuminate/issues/219
+      enabled = true, -- https://github.com/RRethy/vim-illuminate/issues/219
       config = function() require("illuminate").configure({}) end,
     },
   },

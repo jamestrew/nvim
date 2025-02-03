@@ -95,6 +95,14 @@ M.basedpyright = {
   },
 }
 
+M.nil_ls = {
+  settings = {
+    ["nil"] = {
+      formatting = { command = { "nixfmt" } },
+    },
+  },
+}
+
 M.server_list = {
   "cssls",
   -- "sqls",
