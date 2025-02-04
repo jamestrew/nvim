@@ -103,6 +103,10 @@ M.nil_ls = {
   },
 }
 
+M.bashls = {
+  filetypes = { "bash", "sh", "zsh" },
+}
+
 M.server_list = {
   "cssls",
   -- "sqls",
