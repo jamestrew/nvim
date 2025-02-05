@@ -225,6 +225,7 @@ M.config = function()
         theme = "ivy",
         hijack_netrw = false,
         hidden = { file_browser = true, folder_browser = false },
+        no_ignore = true,
         grouped = true,
         hide_parent_dir = true,
         quiet = false,

@@ -23,7 +23,6 @@ return {
       { "<leader>pt", "<Plug>PlenaryTestFile", desc = "plenary run test" },
     },
   },
-  { "andweeb/presence.nvim", config = true },
   {
     "kawre/leetcode.nvim",
     build = ":TSUpdate html",
