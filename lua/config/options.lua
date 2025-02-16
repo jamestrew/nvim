@@ -61,7 +61,7 @@ opt.inccommand = "split"
 opt.swapfile = false -- Living on the edge
 opt.shada = { "!", "'1000", "<50", "s10", "h" }
 
--- opt.shell = "/bin/zsh"
+-- opt.shell = "zsh"
 opt.undofile = true
 
 -- set joinspaces
