@@ -15,13 +15,6 @@ local M = {
       end,
     },
     {
-      "williamboman/mason.nvim",
-      opts = {
-        ui = { keymaps = { update_all_packages = "S" } },
-      },
-      cmd = "Mason",
-    },
-    {
       "nvimtools/none-ls.nvim",
       config = function()
         local null_ls = require("null-ls")
@@ -138,7 +131,6 @@ local M = {
     },
     {
       "RRethy/vim-illuminate",
-      -- "jamestrew/vim-illuminate", -- merged in some PRs
       config = function() require("illuminate").configure({}) end,
     },
   },
