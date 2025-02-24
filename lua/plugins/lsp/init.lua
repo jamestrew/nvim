@@ -155,9 +155,10 @@ local M = {
       },
     })
 
-    vim.api.nvim_command([[ hi def link LspReferenceText CursorLine ]])
-    vim.api.nvim_command([[ hi def link LspReferenceWrite CursorLine ]])
-    vim.api.nvim_command([[ hi def link LspReferenceRead CursorLine ]])
+    local lsp_ns = vim.api.nvim_create_namespace("lsp_ns")
+    vim.api.nvim_set_hl(lsp_ns, "LspReferenceText", { link = "CursorLine" })
+    vim.api.nvim_set_hl(lsp_ns, "LspReferenceWrite", { link = "CursorLine" })
+    vim.api.nvim_set_hl(lsp_ns, "LspReferenceRead", { link = "CursorLine" })
 
     for _, server in ipairs(lspsettings.server_list) do
       local opts = {
