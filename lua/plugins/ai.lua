@@ -25,7 +25,7 @@ return {
       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
     },
     opts = {
-      model = "o3-mini",
+      model = "claude-3.5-sonnet",
       question_header = " Me ",
       answer_header = " Copilot ",
       prompts = {
