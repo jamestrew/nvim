@@ -44,7 +44,7 @@ return {
       "regex",
       "vimdoc",
       "nix",
-      -- "fish",
+      "fish",
     },
     highlight = {
       enable = true,
