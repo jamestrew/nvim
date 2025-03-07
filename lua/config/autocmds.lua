@@ -1,26 +1,5 @@
 local my_augroup = vim.api.nvim_create_augroup("my_augroup", { clear = true })
 
--- show cursor line only in active window
--- NAH: this conflicts with telescope and prolly other plugins
--- vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
---   callback = function()
---     if vim.w.auto_cursorline then
---       vim.wo.cursorline = true
---       vim.w.auto_cursorline = nil
---     end
---   end,
---   group = my_augroup,
--- })
--- vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
---   callback = function()
---     if vim.wo.cursorline then
---       vim.w.auto_cursorline = true
---       vim.wo.cursorline = false
---     end
---   end,
---   group = my_augroup,
--- })
-
 -- windows to close with "q"
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "help", "man", "lspinfo", "fugitive", "qf" },
@@ -39,4 +18,23 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
   command = ":%s/\\s\\+$//e",
   group = my_augroup,
+})
+
+local ns = vim.api.nvim_create_namespace("terminal_prompt_markers")
+vim.api.nvim_create_autocmd("TermRequest", {
+  callback = function(args)
+    if string.match(args.data.sequence, "^\027]133;A") then
+      local lnum = args.data.cursor[1]
+      vim.api.nvim_buf_set_extmark(args.buf, ns, lnum - 1, 0, {
+        -- Replace with sign text and highlight group of choice
+        sign_text = "▶",
+        sign_hl_group = "SpecialChar",
+      })
+    end
+  end,
+})
+
+-- Enable signcolumn in terminal buffers
+vim.api.nvim_create_autocmd("TermOpen", {
+  command = "setlocal signcolumn=auto",
 })
