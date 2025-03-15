@@ -1,4 +1,4 @@
-local utils = require("utils")
+local utils = require("config.utils")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 local themes = require("telescope.themes")

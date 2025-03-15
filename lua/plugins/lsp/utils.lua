@@ -1,9 +1,5 @@
 local function inlay_hints_toggle()
-  if vim.lsp.inlay_hint.is_enabled() then
-    vim.lsp.inlay_hint.enable(false)
-  else
-    vim.lsp.inlay_hint.enable()
-  end
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end
 
 local function diag_toggle_virt_lines()
@@ -29,18 +25,6 @@ local function attach_mappings(bufnr)
 
   -- Lsp Tele
   vim.keymap.set("n", "gd", jtelescope.lsp_definition, opts)
-  vim.keymap.set(
-    "n",
-    "<leader>gdv",
-    function() jtelescope.lsp_definition({ jump_type = "vsplit" }) end,
-    opts
-  )
-  vim.keymap.set(
-    "n",
-    "<leader>gds",
-    function() jtelescope.lsp_definition({ jump_type = "split" }) end,
-    opts
-  )
   vim.keymap.set("n", "gr", jtelescope.lsp_reference, opts)
   vim.keymap.set("n", "<leader>gi", ":Telescope lsp_implementations<CR>", opts)
   vim.keymap.set("n", "<leader><leader>fs", jtelescope.lsp_document_symbols, opts)

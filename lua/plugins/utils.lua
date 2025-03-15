@@ -18,10 +18,18 @@ return {
   },
   {
     "nvim-lua/plenary.nvim",
-    dir = require("utils").dev_dir("plenary.nvim"),
+    dir = require("config.utils").dev_dir("plenary.nvim"),
     keys = {
       { "<leader>pt", "<Plug>PlenaryTestFile", desc = "plenary run test" },
     },
+    init = function()
+      RELOAD = require("plenary.reload").reload_module
+
+      R = function(name)
+        RELOAD(name)
+        return require(name)
+      end
+    end,
   },
   {
     "kawre/leetcode.nvim",
@@ -111,7 +119,7 @@ return {
 
   {
     "docgen.nvim",
-    dir = require("utils").dev_dir("docgen.nvim"),
+    dir = require("config.utils").dev_dir("docgen.nvim"),
     enabled = false,
   },
 

@@ -67,7 +67,7 @@ M["rust_analyzer"] = {
   },
 }
 
-M.tsserver = {
+M.ts_ls = {
   init_options = {
     preferences = {
       includeInlayParameterNameHints = "all",
@@ -120,13 +120,15 @@ M.server_list = {
   "jsonls",
   "gopls",
   "bashls",
-  -- "tsserver",
+  "ts_ls",
   "biome",
   "clangd",
   "taplo", -- toml
   -- "rust_analyzer",
-  "denols",
+  -- "denols",
   "nil_ls",
+
+  -- "ts_query_ls"
 }
 
 return M

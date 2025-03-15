@@ -1,6 +1,6 @@
 local Path = require("plenary.path")
 
-local utils = require("utils")
+local utils = require("config.utils")
 
 local M = {}
 
