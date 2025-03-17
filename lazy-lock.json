@@ -1,6 +1,6 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
-  "CopilotChat.nvim": { "branch": "main", "commit": "eb68cb8d80d1d38626de021ed86a2a824d647357" },
+  "CopilotChat.nvim": { "branch": "main", "commit": "6ee29363d6989de5ee688539bc46d893b1d52067" },
   "LuaSnip": { "branch": "master", "commit": "03c8e67eb7293c404845b3982db895d59c0d1538" },
   "SchemaStore.nvim": { "branch": "main", "commit": "56d8ed0fa1516242085ba5e95d7f49fad50d5754" },
   "barbecue.nvim": { "branch": "main", "commit": "3e31404f0b93a2c30d151abf0648650ac811c664" },
@@ -52,7 +52,7 @@
   "nvim-navic": { "branch": "master", "commit": "8649f694d3e76ee10c19255dece6411c29206a54" },
   "nvim-neoclip.lua": { "branch": "main", "commit": "831a97c7697736411a05ff8b91e8798ea4c2d6fb" },
   "nvim-nio": { "branch": "master", "commit": "21f5324bfac14e22ba26553caf69ec76ae8a7662" },
-  "nvim-surround": { "branch": "main", "commit": "f70d56275710e202af59148f52100d34b786aecb" },
+  "nvim-surround": { "branch": "main", "commit": "3531de0c5a360fbfa00a8a736b93407fb937c6fb" },
   "nvim-treesitter": { "branch": "master", "commit": "99ea6c5d4389a3278769eb6abb7b3ebefb7d9f2a" },
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "143856b1cee509a190cc8c17ddb0638002171235" },
   "nvim-ts-autotag": { "branch": "main", "commit": "a1d526af391f6aebb25a8795cbc05351ed3620b5" },
