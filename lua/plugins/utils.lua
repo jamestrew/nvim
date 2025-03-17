@@ -32,35 +32,6 @@ return {
     end,
   },
   {
-    "kawre/leetcode.nvim",
-    build = ":TSUpdate html",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-      "nvim-lua/plenary.nvim", -- required by telescope
-      "MunifTanjim/nui.nvim",
-
-      -- optional
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons",
-    },
-    lazy = "leetcode.nvim" ~= vim.fn.argv()[1],
-    opts = {
-      lang = "python3",
-      description = { position = "right" },
-      injector = {
-        ["python3"] = {
-          before = "from typing import *",
-          after = '"""\n\n"""',
-        },
-        ["golang"] = {
-          before = "package main",
-          after = "/*\n\n*/",
-        },
-      },
-      storage = { home = "~/projects/leetcode" },
-    },
-  },
-  {
     "mrjones2014/smart-splits.nvim",
     opts = {
       resize_mode = {

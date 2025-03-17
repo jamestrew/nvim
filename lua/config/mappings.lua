@@ -3,12 +3,6 @@ local silent = { silent = true }
 local leaderkey = "<leader>"
 local l = function(after) return string.format("%s%s", leaderkey, after) end
 
-vim.cmd([[nmap <F1> <nop>]])
-vim.cmd([[command W :w]])
-vim.cmd([[command Q :q]])
-vim.cmd([[command Wq :wq]])
-vim.cmd([[command Wqa :wqa]])
-vim.cmd([[command Qa :qa]])
 
 -- paste/delete and keep register clean
 vim.keymap.set("v", l("p"), '"_dP')
