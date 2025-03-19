@@ -128,6 +128,18 @@ local M = {
         },
       },
       keys = { { "<leader>so", "<cmd>Outline<CR>", desc = "symbols-outline" } },
+      enabled = false,
+    },
+    {
+      "oskarrrrrrr/symbols.nvim",
+      config = function()
+        local r = require("symbols.recipes")
+        require("symbols").setup(r.DefaultFilters, r.AsciiSymbols, {
+          -- custom settings here
+          -- e.g. hide_cursor = false
+        })
+      end,
+      keys = { { "<leader>so", "<cmd>Symbols<CR>", desc = "symbols-outline" } },
     },
     {
       "RRethy/vim-illuminate",

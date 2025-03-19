@@ -17,7 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-vim.g.auto_save = false
+vim.g.auto_save = false -- wtf is this?
 vim.g.colors_name = "onedark" -- hack
 vim.opt.termguicolors = true
 

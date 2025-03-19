@@ -25,7 +25,7 @@ local function attach_mappings(bufnr)
 
   -- Lsp Tele
   vim.keymap.set("n", "gd", jtelescope.lsp_definition, opts)
-  vim.keymap.set("n", "gr", jtelescope.lsp_reference, opts)
+  vim.keymap.set("n", "grr", jtelescope.lsp_reference, opts)
   vim.keymap.set("n", "<leader>gi", ":Telescope lsp_implementations<CR>", opts)
   vim.keymap.set("n", "<leader><leader>fs", jtelescope.lsp_document_symbols, opts)
   vim.keymap.set("n", "<leader>td", ":Telescope diagnostics bufnr=0<CR>", opts)
