@@ -74,11 +74,13 @@ local M = {
       lazy = false, -- This plugin is already lazy
       config = function()
         vim.g.rustaceanvim = function()
+          local os = vim.uv.os_uname().sysname
+          local ext = os == "Linux" and "so" or "dylib"
           ---@diagnostic disable-next-line: param-type-mismatch
           local mason_path = vim.fs.joinpath(vim.fn.stdpath("data"), "/mason")
           local ext_path = vim.fs.joinpath(mason_path, "packages", "codelldb", "extension")
           local codelldb_path = vim.fs.joinpath(ext_path, "adapter", "codelldb")
-          local liblldb_path = vim.fs.joinpath(ext_path, "lldb", "lib", "liblldb.so")
+          local liblldb_path = vim.fs.joinpath(ext_path, "lldb", "lib", "liblldb." .. ext)
 
           local cfg = require("rustaceanvim.config")
 
