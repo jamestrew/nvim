@@ -6,6 +6,7 @@ return {
     opts = {
       -- suggestion = { enabled = false },
       -- panel = { enabled = false },
+      lsp_binary = vim.fn.exepath("copilot-language-server"),
       suggestion = {
         enabled = vim.fn.argv()[1] ~= "leetcode.nvim",
         auto_trigger = true,

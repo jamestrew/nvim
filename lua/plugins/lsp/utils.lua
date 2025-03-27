@@ -1,6 +1,4 @@
-local function inlay_hints_toggle()
-  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-end
+local function inlay_hints_toggle() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end
 
 local function diag_toggle_virt_lines()
   local virt_lines = vim.diagnostic.config().virtual_lines or false

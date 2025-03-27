@@ -32,7 +32,6 @@ _G.dd = function(...)
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(vim.inspect(...), "\n"))
 end
 
-
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
