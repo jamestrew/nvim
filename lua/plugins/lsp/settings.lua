@@ -129,6 +129,7 @@ M.server_list = {
   "nil_ls",
 
   -- "ts_query_ls"
+  "tailwindcss",
 }
 
 return M
