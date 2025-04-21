@@ -2,14 +2,6 @@ return {
   { "brenoprata10/nvim-highlight-colors", opts = {}, cmd = { "HighlightColors" } },
   { "lewis6991/satellite.nvim", config = true },
   {
-    "stevearc/dressing.nvim",
-    opts = {
-      input = { enabled = false },
-      select = { telescope = require("telescope.themes").get_cursor() },
-    },
-  },
-
-  {
     "utilyre/barbecue.nvim",
     dependencies = {
       "SmiteshP/nvim-navic",
@@ -45,6 +37,4 @@ return {
       },
     },
   },
-
-  { "OXY2DEV/markview.nvim", lazy = false },
 }
