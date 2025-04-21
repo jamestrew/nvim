@@ -120,7 +120,7 @@ M.server_list = {
   "jsonls",
   "gopls",
   "bashls",
-  "ts_ls",
+  -- "ts_ls",
   "biome",
   "clangd",
   "taplo", -- toml
