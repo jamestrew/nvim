@@ -93,7 +93,21 @@ local M = {
                 require("plugins.lsp.utils").on_attach(client, bufnr)
                 vim.keymap.set("n", "<leader>K", ":RustLsp openDocs<CR>")
               end,
-              default_settings = require("plugins.lsp.settings")["rust_analyzer"].settings,
+              default_settings = {
+                ["rust-analyzer"] = {
+                  completion = {
+                    callable = { snippets = "fill_arguments" },
+                    fullFunctionSignatures = { enable = true },
+                  },
+                  procMacro = { enable = true },
+                  check = {
+                    command = "clippy",
+                  },
+                  cargo = {
+                    features = "all",
+                  },
+                },
+              },
             },
             -- DAP configuration
             dap = {
@@ -156,11 +170,22 @@ local M = {
   event = { "BufReadPre", "BufNewFile" },
   init = function() vim.api.nvim_create_augroup("lsp_augroup", { clear = true }) end,
   config = function()
-    local lspsettings = require("plugins.lsp.settings")
     local lsputils = require("plugins.lsp.utils")
-    local lspconfig = require("lspconfig")
 
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    vim.lsp.config("*", {
+      capabilities = capabilities,
+    })
+
+    vim.api.nvim_create_autocmd("LspAttach", {
+      callback = function(args)
+        local bufnr = args.buf
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+        lsputils.on_attach(client, bufnr)
+      end,
+      group = "lsp_augroup",
+    })
 
     -- replace the default lsp diagnostic letters with prettier symbols
     vim.diagnostic.config({
@@ -179,13 +204,33 @@ local M = {
     vim.api.nvim_set_hl(lsp_ns, "LspReferenceWrite", { link = "CursorLine" })
     vim.api.nvim_set_hl(lsp_ns, "LspReferenceRead", { link = "CursorLine" })
 
-    for _, server in ipairs(lspsettings.server_list) do
-      local opts = {
-        on_attach = lsputils.on_attach,
-        capabilities = capabilities,
-      }
-      opts = vim.tbl_deep_extend("keep", opts, lspsettings[server] or {})
-      lspconfig[server].setup(opts)
+    local server_list = {
+      "cssls",
+      -- "sqls",
+      -- "pyright",
+      "basedpyright",
+      "ruff",
+      -- "eslint",
+      "emmet_language_server",
+      "html",
+      "lua_ls",
+      "jsonls",
+      "gopls",
+      "bashls",
+      -- "ts_ls",
+      "biome",
+      "clangd",
+      "taplo", -- toml
+      -- "rust_analyzer",
+      -- "denols",
+      "nil_ls",
+
+      -- "ts_query_ls"
+      "tailwindcss",
+    }
+
+    for _, server in ipairs(server_list) do
+      vim.lsp.enable(server, true)
     end
   end,
 }
