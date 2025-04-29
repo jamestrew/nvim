@@ -98,10 +98,10 @@ return {
     keys = {
       { "<leader>a", function() require("harpoon.mark").add_file() end },
       { "<leader>e", function() require("harpoon.ui").toggle_quick_menu() end },
-      { "<leader>hn", function() require("harpoon.ui").nav_file(1) end },
+      { "<leader>ho", function() require("harpoon.ui").nav_file(1) end },
       { "<leader>he", function() require("harpoon.ui").nav_file(2) end },
-      { "<leader>ho", function() require("harpoon.ui").nav_file(3) end },
-      { "<leader>hi", function() require("harpoon.ui").nav_file(4) end },
+      { "<leader>ht", function() require("harpoon.ui").nav_file(3) end },
+      { "<leader>hn", function() require("harpoon.ui").nav_file(4) end },
       { "<leader>tn", function() require("harpoon.term").gotoTerminal(1) end },
       { "<leader>te", function() require("harpoon.term").gotoTerminal(2) end },
     },
