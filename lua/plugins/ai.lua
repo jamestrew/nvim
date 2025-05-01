@@ -95,6 +95,10 @@ return {
       -- add any opts here
       -- for example
       provider = "copilot",
+      copilot = {
+
+        model = "claude-3.5-sonnet",
+      },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",

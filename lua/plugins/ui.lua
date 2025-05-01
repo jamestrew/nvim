@@ -2,13 +2,8 @@ return {
   { "brenoprata10/nvim-highlight-colors", opts = {}, cmd = { "HighlightColors" } },
   { "lewis6991/satellite.nvim", config = true },
   {
-    "utilyre/barbecue.nvim",
-    dependencies = {
-      "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons",
-    },
-    event = { "BufReadPost", "BufNewFile" },
-    config = true,
+    "Bekaboo/dropbar.nvim",
+    opts = {},
   },
 
   {
