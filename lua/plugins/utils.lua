@@ -61,25 +61,6 @@ return {
     },
   },
   {
-    "mrjones2014/smart-splits.nvim",
-    opts = {
-      resize_mode = {
-        silent = true,
-        hooks = {
-          on_enter = function() vim.notify("Entering resize mode") end,
-          on_leave = function() vim.notify("Exiting resize mode, bye") end,
-        },
-      },
-    },
-    keys = {
-      {
-        "<leader>sp",
-        function() require("smart-splits").start_resize_mode() end,
-        desc = "smart split",
-      },
-    },
-  },
-  {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     build = "cd app && yarn install",
