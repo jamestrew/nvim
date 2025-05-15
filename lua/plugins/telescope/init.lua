@@ -66,7 +66,7 @@ M.keys = function()
     { "<leader>fy", jtelescope.neoclip },
     { "<leader>ff", jtelescope.curbuf },
     { "<leader>gh", jtelescope.git_hunks },
-    { "<C-p>", jtelescope.project_files },
+    -- { "<C-p>", jtelescope.project_files },
     { "<C-e>", jtelescope.file_browser() },
     { "<leader><C-e>", jtelescope.file_browser(true) },
     { "<leader>rl", builtin.reloader, silent = true },
