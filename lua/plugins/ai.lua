@@ -19,75 +19,6 @@ return {
     },
   },
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "main",
-    dependencies = {
-      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-    },
-    opts = {
-      model = "claude-3.5-sonnet",
-      question_header = " Me ",
-      answer_header = " Copilot ",
-      prompts = {
-        Review = {
-          callback = function(_, _) end,
-        },
-      },
-      auto_follow_cursor = true,
-    },
-    config = function(_, opts)
-      local ft = "copilot-chat"
-      local Rule = require("nvim-autopairs.rule")
-      local npairs = require("nvim-autopairs")
-      npairs.add_rules({
-        Rule("```", "```", { ft }),
-        Rule("```.*$", "```", { ft }):only_cr():use_regex(true),
-      })
-
-      require("CopilotChat").setup(opts)
-    end,
-    -- keys = {
-    --   { "<leader>cp", ":CopilotChatToggle<CR>" },
-    --   {
-    --     "<leader><leader>cp",
-    --     function()
-    --       require("CopilotChat").toggle({
-    --         window = {
-    --           layout = "horizontal",
-    --         },
-    --       })
-    --     end,
-    --   },
-    --   { "<leader>ce", ":CopilotChatExplain<CR>", mode = "v" },
-    --   { "<leader>cr", ":CopilotChatReview<CR>", mode = "v" },
-    -- },
-    cmd = {
-      "CopilotChatExplain",
-      "CopilotChatReview",
-      "CopilotChatFix",
-      "CopilotChatOptimize",
-      "CopilotChatDocs",
-      "CopilotChatTests",
-      "CopilotChatFixDiagnostic",
-      "CopilotChatCommit",
-      "CopilotChatCommitStaged",
-    },
-  },
-  {
-    "olimorris/codecompanion.nvim",
-    opts = {},
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    keys = {
-      { "<leader>cp", ":CodeCompanionChat Toggle<CR>", mode = { "n", "v" } },
-      { "<leader>ca", ":CodeCompanionActions<CR>" },
-      { "ga", "<cmd>CodeCompanionChat Add<CR>", mode = "v" },
-    },
-  },
-  {
     "yetone/avante.nvim",
     event = "VeryLazy",
     version = false, -- Never set this value to "*"! Never!
@@ -97,9 +28,19 @@ return {
       provider = "copilot",
       copilot = {
 
-        model = "claude-3.5-sonnet",
+        model = "claude-3.7-sonnet",
       },
     },
+    config = function(_, opts)
+      local ft = "AvanteInput"
+      local Rule = require("nvim-autopairs.rule")
+      local npairs = require("nvim-autopairs")
+      npairs.add_rules({
+        Rule("```", "```", { ft }),
+        Rule("```.*$", "```", { ft }):only_cr():use_regex(true),
+      })
+      require("avante").setup(opts)
+    end,
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
