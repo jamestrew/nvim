@@ -6,7 +6,7 @@ local function diag_toggle_virt_lines()
 end
 
 local function attach_mappings(bufnr)
-  local jtelescope = require("plugins.telescope.pickers")
+  local pickers = require("plugins.snacks.pickers")
 
   local opts = { silent = true, buffer = bufnr }
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
@@ -18,12 +18,12 @@ local function attach_mappings(bufnr)
   vim.keymap.set({ "i", "n" }, "<C-h>", inlay_hints_toggle, opts)
 
   -- Lsp Tele
-  vim.keymap.set("n", "gd", jtelescope.lsp_definition, opts)
-  vim.keymap.set("n", "grr", jtelescope.lsp_reference, opts)
-  vim.keymap.set("n", "gri", ":Telescope lsp_implementations<CR>", opts)
-  vim.keymap.set("n", "gO", jtelescope.lsp_document_symbols, opts)
-  vim.keymap.set("n", "<leader>td", ":Telescope diagnostics bufnr=0<CR>", opts)
-  vim.keymap.set("n", "<leader>tw", ":Telescope diagnostics<CR>", opts)
+  vim.keymap.set("n", "gd", pickers.lsp_definitions, opts)
+  vim.keymap.set("n", "grr", pickers.lsp_references, opts)
+  vim.keymap.set("n", "gri", Snacks.picker.lsp_implementations, opts)
+  vim.keymap.set("n", "gO", pickers.lsp_document_symbols, opts)
+  vim.keymap.set("n", "<leader>td", Snacks.picker.diagnostics_buffer, opts)
+  vim.keymap.set("n", "<leader>tw", Snacks.picker.diagnostics, opts)
 end
 
 local function on_attach(client, bufnr)

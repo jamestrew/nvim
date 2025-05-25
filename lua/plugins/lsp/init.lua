@@ -59,6 +59,7 @@ local M = {
           { path = "luvit-meta/library", words = { "vim%.uv", "vim%.loop" } },
           { path = "luassert-types/library", words = { "assert" } },
           { path = "busted-types/library", words = { "describe" } },
+          { path = "snacks.nvim", words = { "Snacks" } },
         },
       },
       dependencies = {

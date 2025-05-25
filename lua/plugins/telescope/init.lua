@@ -53,16 +53,8 @@ M.keys = function()
   local builtin = require("telescope.builtin")
   local jtelescope = require("plugins.telescope.pickers")
   return {
-    { "<leader>fw", jtelescope.live_grep, silent = true },
-    { "<leader>gc", builtin.git_commits, silent = true },
-    { "<leader>fb", jtelescope.buffers, silent = true },
-    { "<leader>fh", builtin.help_tags, silent = true },
-    { "<leader>gw", builtin.grep_string, silent = true, mode = { "n", "v", "x" } },
     { "<leader>fc", ":Telescope cmdline<CR>", silent = true },
     { "<leader>fs", jtelescope.symbols, silent = true },
-    { "<leader>rc", jtelescope.search_dotfiles },
-    { "<leader>fg", jtelescope.git_worktrees },
-    { "<leader>ct", jtelescope.create_git_worktree },
     { "<leader>fy", jtelescope.neoclip },
     { "<leader>ff", jtelescope.curbuf },
     { "<leader>gh", jtelescope.git_hunks },
