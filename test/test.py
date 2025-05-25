@@ -60,6 +60,8 @@ if True:  # {{{
 
 
 test("foo", 2)
+test("foo", 2)
+test("foo", 2)
 
 from unittest.mock import Mock
 
