@@ -25,10 +25,14 @@ return {
     opts = {
       -- add any opts here
       -- for example
-      provider = "copilot",
+      provider = "claude",
       copilot = {
-
         model = "claude-3.7-sonnet",
+      },
+      mappings = {
+        toggle = {
+          suggestion = "<leader><leader><leader>eontsont", -- lol
+        },
       },
     },
     config = function(_, opts)
