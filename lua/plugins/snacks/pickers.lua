@@ -35,6 +35,86 @@ local select_layout_small = {
   },
 }
 
+---@type snacks.picker.Config
+M.defaults = {
+  win = {
+    -- input window
+    input = {
+      keys = {
+        -- to close the picker on ESC instead of going to normal mode,
+        -- add the following keymap to your config
+        -- ["<Esc>"] = { "close", mode = { "n", "i" } },
+        ["<Down>"] = { "history_forward", mode = { "i", "n" } },
+        ["<Up>"] = { "history_back", mode = { "i", "n" } },
+        ["<C-c>"] = { "cancel", mode = "i" },
+        ["<C-w>"] = { "<c-s-w>", mode = { "i" }, expr = true, desc = "delete word" },
+        ["<CR>"] = { "confirm", mode = { "n", "i" } },
+        ["<Esc>"] = "cancel",
+        ["<S-CR>"] = { { "pick_win", "jump" }, mode = { "n", "i" } },
+        ["<S-Tab>"] = { "select_and_prev", mode = { "i", "n" } },
+        ["<Tab>"] = { "select_and_next", mode = { "i", "n" } },
+        ["<a-d>"] = { "inspect", mode = { "n", "i" } },
+        ["<a-m>"] = { "toggle_maximize", mode = { "i", "n" } },
+        ["<a-p>"] = { "toggle_preview", mode = { "i", "n" } },
+        ["<a-w>"] = { "cycle_win", mode = { "i", "n" } },
+        ["<c-a>"] = { "select_all", mode = { "n", "i" } },
+        ["<c-u>"] = { "preview_scroll_up", mode = { "i", "n" } },
+        ["<c-d>"] = { "preview_scroll_down", mode = { "i", "n" } },
+        ["<c-g>"] = { "toggle_live", mode = { "i", "n" } },
+        ["<c-n>"] = { "list_down", mode = { "i", "n" } },
+        ["<c-p>"] = { "list_up", mode = { "i", "n" } },
+        ["<c-q>"] = { "qflist", mode = { "i", "n" } },
+        ["<c-s>"] = { "edit_split", mode = { "i", "n" } },
+        ["<c-t>"] = { "tab", mode = { "n", "i" } },
+        ["<c-v>"] = { "edit_vsplit", mode = { "i", "n" } },
+
+        -- these actions crashes neovim?!?!
+        ["<c-Left>"] = "layout_left",
+        ["<c-Down>"] = "layout_bottom",
+        ["<c-Up>"] = "layout_top",
+        ["<c-Right>"] = "layout_right",
+
+        ["?"] = "toggle_help_input",
+        ["G"] = "list_bottom",
+        ["gg"] = "list_top",
+        ["j"] = "list_down",
+        ["k"] = "list_up",
+        ["q"] = "close",
+      },
+      b = {
+        minipairs_disable = true,
+      },
+    },
+  },
+
+  enabled = true,
+  db = {
+    sqlite3_path = vim.fn.getenv("LIBSQLITE"),
+  },
+
+  sources = {
+    treesitter = {
+      filter = {
+        default = {
+          "Class",
+          "Enum",
+          "Field",
+          "Function",
+          "Method",
+          "Module",
+          "Namespace",
+          "Struct",
+          "Trait",
+          "Constant",
+          "Macro",
+          "Var",
+          "Variable",
+        },
+      },
+    },
+  },
+}
+
 M.file_browser = function(opts)
   opts = opts or {}
   opts = vim.tbl_deep_extend("force", opts, {
@@ -94,6 +174,12 @@ M.lsp_document_symbols = function(opts)
       },
     }
   Snacks.picker.lsp_symbols(opts)
+end
+
+M.testing = function()
+  ---@type snacks.picker.Config
+  local opts = {}
+  return require("snacks.picker.core.picker").new(opts)
 end
 
 return M

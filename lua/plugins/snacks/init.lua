@@ -8,34 +8,7 @@ return {
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
 
-    picker = {
-      enabled = true,
-      db = {
-        sqlite3_path = vim.fn.getenv("LIBSQLITE"),
-      },
-
-      sources = {
-        treesitter = {
-          filter = {
-            default = {
-              "Class",
-              "Enum",
-              "Field",
-              "Function",
-              "Method",
-              "Module",
-              "Namespace",
-              "Struct",
-              "Trait",
-              "Constant",
-              "Macro",
-              "Var",
-              "Variable",
-            },
-          },
-        },
-      },
-    },
+    picker = require("plugins.snacks.pickers").defaults,
     image = { enabled = true },
     bigfile = { enabled = false },
     dashboard = { enabled = false },
