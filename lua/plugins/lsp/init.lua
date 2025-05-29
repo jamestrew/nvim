@@ -2,7 +2,6 @@ local M = {
   "neovim/nvim-lspconfig",
   dependencies = {
     { "nvim-telescope/telescope.nvim" },
-    { "hrsh7th/cmp-nvim-lsp" },
     { "SmiteshP/nvim-navic" },
     {
       "lewis6991/hover.nvim",
@@ -173,7 +172,7 @@ local M = {
   config = function()
     local lsputils = require("plugins.lsp.utils")
 
-    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
     vim.lsp.config("*", {
       capabilities = capabilities,
     })
