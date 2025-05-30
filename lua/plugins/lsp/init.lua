@@ -172,10 +172,10 @@ local M = {
   config = function()
     local lsputils = require("plugins.lsp.utils")
 
-    local capabilities = require("blink.cmp").get_lsp_capabilities()
-    vim.lsp.config("*", {
-      capabilities = capabilities,
-    })
+    -- local capabilities = require("blink.cmp").get_lsp_capabilities()
+    -- vim.lsp.config("*", {
+    --   capabilities = capabilities,
+    -- })
 
     vim.api.nvim_create_autocmd("LspAttach", {
       callback = function(args)
