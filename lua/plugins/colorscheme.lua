@@ -67,7 +67,7 @@ Usage:
   Group.new("PMenuSel", colors.base01, colors.green, styles.NONE)
   Group.new("PmenuSbar", colors.none, colors.one_bg2, styles.NONE)
   Group.new("PmenuThumb", colors.none, colors.nord_blue, styles.NONE)
-  -- Group.new("PmenuExtra", colors.teal, colors.nord_blue, styles.NONE)
+  Group.new("PmenuExtra", colors.grey_fg2)
   Group.new("TabLineFill", colors.base03, colors.base01, styles.NONE)
   Group.new("TabLineSel", colors.base0B, colors.base01, styles.NONE)
   Group.new("WinBar", colors.base05, colors.lightbg, styles.NONE)
@@ -386,14 +386,7 @@ Usage:
 
   Group.new("BufferLineFill", colors.none, colors.statusline_bg)
 
-  -- Cmp
-  Group.new("CmpItemAbbrDefault", colors.base05, colors.none, styles.NONE)
-  Group.new("CmpBorder", colors.red, colors.one_bg, styles.NONE)
-  Group.new("CmpItemAbbr", colors.white)
-  Group.new("CmpItemAbbrMatch", colors.blue, colors.none, styles.bold)
-  Group.new("CmpBorder", colors.grey)
-  Group.new("CmpDocBorder", colors.darker_black, colors.darker_black, styles.NONE)
-  Group.new("CmPmenu", colors.none, colors.darker_black, styles.NONE)
+  -- Blink
   Group.new("BlinkCmpKindConstant", colors.base09)
   Group.new("BlinkCmpKindFunction", colors.base0D)
   Group.new("BlinkCmpKindIdentifier", colors.base08)
@@ -417,6 +410,7 @@ Usage:
   Group.new("BlinkCmpKindOperator", colors.base05)
   Group.new("BlinkCmpKindTypeParameter", colors.base08)
   Group.new("BlinkCmpKindCopilot", colors.green)
+  Group.new("BlinkCmpKindClass", colors.base0A)
 
   Group.new("IlluminatedWordText", groups.CursorLine, groups.CursorLine, groups.CursorLine)
   Group.new("IlluminatedWordRead", groups.CursorLine, groups.CursorLine, groups.CursorLine)

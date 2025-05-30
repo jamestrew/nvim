@@ -1,7 +1,10 @@
 return {
   "saghen/blink.cmp",
   -- optional: provides snippets for the snippet source
-  dependencies = { "rafamadriz/friendly-snippets" },
+  dependencies = {
+    "rafamadriz/friendly-snippets",
+    { "L3MON4D3/LuaSnip", version = "v2.*" },
+  },
 
   -- use a release tag to download pre-built binaries
   version = "1.*",
@@ -25,7 +28,13 @@ return {
     -- C-k: Toggle signature help (if signature.enabled = true)
     --
     -- See :h blink-cmp-config-keymap for defining your own keymap
-    keymap = { preset = "default" },
+    keymap = {
+      preset = "default",
+      ["<c-d>"] = { "scroll_documentation_down" },
+      ["<c-u>"] = { "scroll_documentation_up" },
+      ["<c-k>"] = { "snippet_forward", "fallback" },
+      ["<c-j>"] = { "snippet_backward", "fallback" },
+    },
 
     appearance = {
       -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -34,13 +43,50 @@ return {
     },
 
     -- (Default) Only show the documentation popup when manually triggered
-    completion = { documentation = { auto_show = true } },
-    cmdline = { enabled = true },
+    completion = {
+      documentation = { auto_show = true },
+      menu = {
+        draw = {
+          columns = {
+            { "label", "label_description", gap = 1 },
+            { "kind_icon", "kind", gap = 1 },
+            { "source_name" },
+          },
+        },
+      },
+    },
+    cmdline = {
+      enabled = true,
+      completion = { menu = { auto_show = true } },
+      sources = function()
+        local type = vim.fn.getcmdtype()
+        -- Search forward and backward
+        if type == "/" or type == "?" then return { "buffer" } end
+        -- Commands
+        if type == ":" or type == "@" then return { "cmdline" } end
+        return {}
+      end,
+    },
 
-    -- Default list of enabled providers defined so that you can extend it
-    -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
+      default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+      per_filetype = {
+        sql = { "dadbod" },
+      },
+      providers = {
+        lazydev = {
+          name = "LazyDev",
+          module = "lazydev.integrations.blink",
+          score_offset = 100,
+        },
+        dadbob = {
+          name = "Dadbod",
+          module = "vim_dadbod_completion.blink",
+          score_offset = 100,
+        },
+        buffer = { min_keyword_length = 3 },
+        cmdline = { min_keyword_length = 2 },
+      },
     },
     signature = { enabled = true },
 
