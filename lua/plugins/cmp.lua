@@ -1,7 +1,7 @@
 ---@diagnostic disable: missing-fields
 local M = {
   "hrsh7th/nvim-cmp",
-  -- "iguanacucumber/magazine.nvim", -- temp? fork
+  enabled = false,
   dependencies = {
     { "hrsh7th/cmp-nvim-lsp" },
     { "hrsh7th/cmp-nvim-lsp-signature-help" },
