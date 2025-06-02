@@ -9,9 +9,7 @@ return {
     { "andymass/vim-matchup" },
   },
   branch = "main",
-  build = ":TSUpdate",
-  lazy = false,
-  config = function()
+  build = function()
     require("nvim-treesitter").install({
       "bash",
       "c",
@@ -46,7 +44,10 @@ return {
       "fish",
       "gitcommit",
     })
-
+    vim.cmd(":TSUpdate")
+  end,
+  lazy = false,
+  config = function()
     vim.api.nvim_create_autocmd("FileType", {
       pattern = "*",
       callback = function(ev)

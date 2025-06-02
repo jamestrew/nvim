@@ -225,6 +225,7 @@ M.config = function()
         git_status = true,
         show_symlinks = true,
         follow_symlinks = true,
+        use_ui_input = false,
         mappings = {
           i = {
             ["<A-n>"] = fb_actions.select_all,

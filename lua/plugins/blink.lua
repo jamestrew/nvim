@@ -85,7 +85,8 @@ return {
           score_offset = 100,
         },
         buffer = { min_keyword_length = 3 },
-        cmdline = { min_keyword_length = 2 },
+        cmdline = { min_keyword_length = 3 },
+        snippets = { min_keyword_length = 3}
       },
     },
     signature = { enabled = true },
