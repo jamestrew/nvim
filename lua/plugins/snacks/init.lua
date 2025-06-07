@@ -32,7 +32,10 @@ return {
       { "<leader>fb", pickers.buffers, silent = true },
       { "<leader>fh", Snacks.picker.help, silent = true },
       { "<leader>gw", Snacks.picker.grep_word, silent = true, mode = { "n", "v", "x" } },
-      -- { "<C-e>", function() pickers.file_browser() end },
+      {
+        "<leader><leader><C-e>",
+        function() require("plugins.snacks.file_browser").file_browser() end,
+      },
       -- { "<leader><C-e>", function() pickers.file_browser({ follow_file = true }) end },
     }
   end,

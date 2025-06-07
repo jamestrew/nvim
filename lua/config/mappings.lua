@@ -34,3 +34,4 @@ vim.keymap.set("n", "<leader>asht", function()
 end)
 
 vim.keymap.set("n", l(l("x")), ":w | so %<CR>", silent)
+vim.keymap.set("n", l(l("r")), ":restart<CR>", silent)
