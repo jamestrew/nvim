@@ -36,7 +36,6 @@ local M = {
         { "kkharji/sqlite.lua" },
       },
     },
-    { "ibhagwan/fzf-lua", cmd = "FzfLua" },
     { "debugloop/telescope-undo.nvim" },
     { "nvim-telescope/telescope-live-grep-args.nvim" },
     {

@@ -26,8 +26,10 @@ return {
       -- add any opts here
       -- for example
       provider = "claude",
-      copilot = {
-        model = "claude-3.7-sonnet",
+      providers = {
+        copilot = {
+          model = "claude-3.7-sonnet",
+        },
       },
       mappings = {
         toggle = {

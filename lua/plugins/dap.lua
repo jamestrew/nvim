@@ -16,7 +16,7 @@ M.keys = function()
     { "<F2>", require("dap").step_into },
     { "<F3>", require("dap").step_over },
     { "<F4>", require("dap").step_out },
-    { "<leader>db", require("dap").toggle_breakpoint },
+    { "<leader>bp", require("dap").toggle_breakpoint },
   }
 end
 
