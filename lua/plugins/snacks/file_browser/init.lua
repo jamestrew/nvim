@@ -1,5 +1,6 @@
 ---@diagnostic disable: await-in-sync
 local Actions = require("snacks.explorer.actions")
+local jtActions = require("plugins.snacks.file_browser.actions")
 local Tree = require("plugins.snacks.file_browser.tree")
 
 local M = {}
@@ -29,7 +30,7 @@ function State.new(picker)
 
   local buf = vim.api.nvim_win_get_buf(picker.main)
   local buf_file = svim.fs.normalize(vim.api.nvim_buf_get_name(buf))
-  if uv.fs_stat(buf_file) then Tree:open(buf_file) end
+  -- if uv.fs_stat(buf_file) then Tree:open(buf_file) end
 
   if opts.watch then
     local on_close = picker.opts.on_close
@@ -109,7 +110,7 @@ function M.setup(opts)
   local ref ---@type snacks.Picker.ref
   return Snacks.config.merge(opts, {
     actions = {
-      confirm = Actions.actions.confirm,
+      confirm = jtActions.actions.confirm,
     },
     filter = {
       --- Trigger finder when pattern toggles between empty / non-empty
@@ -347,14 +348,26 @@ function M.search(opts, ctx)
   end
 end
 
-function M.file_browser()
+--[[
+TODO:
+- tweak mapping - better support for insert mode, navigation
+- can we put the cwd somewhere else? not in the first item?
+- sorting seems to prioritize files over directories
+
+
+- remove all the tree code, since that's super overkill for what I want
+]]
+
+function M.file_browser(cwd)
   Snacks.picker({
     finder = M.explorer,
     tree = true,
     focus = "input",
     layout = "ivy",
-    -- follow_file = false,
+    follow_file = false,
     auto_close = true,
+    config = function(opts) M.setup(opts) end,
+    cwd = cwd,
   })
 end
 
