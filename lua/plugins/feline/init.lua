@@ -1,6 +1,6 @@
 local M = { "feline-nvim/feline.nvim" }
 M.config = function()
-  local theme = require("themes." .. vim.g.colors_name)
+  local theme = require("themes.onedark")
   local colors = theme.colors
 
   local mycomps = require("plugins.feline.components")
