@@ -1,7 +1,7 @@
 return {
   {
     "tjdevries/colorbuddy.vim",
-    priority = 100,
+    priority = 1555,
     tag = "v1.0.0",
     config = function()
       vim.cmd.colorscheme("onedarkish")

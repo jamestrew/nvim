@@ -1,5 +1,6 @@
 return {
   "folke/snacks.nvim",
+  dir = require("config.utils").dev_dir("snacks.nvim"),
   priority = 1000,
   lazy = false,
   ---@type snacks.Config
@@ -34,15 +35,11 @@ return {
       { "<leader>gw", Snacks.picker.grep_word, silent = true, mode = { "n", "v", "x" } },
       {
         "<leader><leader><C-e>",
-        function()
-          require("plugins.snacks.file_browser").file_browser()
-        end,
+        function() Snacks.picker.explorer() end,
       },
       {
         "<leader><leader><leader><C-e>",
-        function()
-          require("plugins.snacks.file_browser").file_browser(vim.fn.expand("%:p:h"))
-        end,
+        function() Snacks.picker.explorer({ cwd = vim.fn.expand("%:p:h") }) end,
       },
       -- { "<leader><C-e>", function() pickers.file_browser({ follow_file = true }) end },
     }

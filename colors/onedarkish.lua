@@ -64,8 +64,8 @@ Group.new("PmenuThumb", colors.none, colors.nord_blue, styles.NONE)
 Group.new("PmenuExtra", colors.grey_fg2)
 Group.new("TabLineFill", colors.base03, colors.base01, styles.NONE)
 Group.new("TabLineSel", colors.base0B, colors.base01, styles.NONE)
-Group.new("WinBar", colors.base05, colors.lightbg, styles.NONE)
-Group.new("WinBarNC", colors.base04, colors.black, styles.NONE)
+Group.new("WinBar", nil, colors.lightbg, styles.NONE)
+Group.new("WinBarNC", nil, colors.black, styles.NONE)
 
 -- Standard syntax Group
 Group.new("Boolean", colors.base09, colors.none, styles.NONE)

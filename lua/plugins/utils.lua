@@ -83,8 +83,6 @@ return {
       { "<leader>he", function() require("harpoon.ui").nav_file(2) end },
       { "<leader>ht", function() require("harpoon.ui").nav_file(3) end },
       { "<leader>hn", function() require("harpoon.ui").nav_file(4) end },
-      { "<leader>tn", function() require("harpoon.term").gotoTerminal(1) end },
-      { "<leader>te", function() require("harpoon.term").gotoTerminal(2) end },
     },
   },
 
@@ -121,6 +119,15 @@ return {
           desc = "Collapse quickfix context",
         },
       },
+    },
+  },
+  {
+    "nvzone/floaterm",
+    dependencies = "nvzone/volt",
+    opts = {},
+    cmd = "FloatermToggle",
+    keys = {
+      { "<leader>tn", "<cmd>FloatermToggle<cr>" },
     },
   },
 }

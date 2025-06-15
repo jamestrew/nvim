@@ -93,6 +93,50 @@ M.defaults = {
   },
 
   sources = {
+    explorer = {
+      focus = "input",
+      layout = "ivy",
+      follow_file = false,
+      auto_close = true,
+      tree = false,
+      hidden = true,
+      on_close = function(picker)
+        local Tree = require("snacks.explorer.tree")
+        Tree:close_all(picker:cwd())
+      end,
+      win = {
+        input = {
+          keys = {
+            ["<BS>"] = "explorer_up",
+            -- ["h"] = "explorer_close", -- close directory
+            ["<a-c>"] = "explorer_add",
+            ["<a-d>"] = "explorer_del",
+            ["<a-r>"] = "explorer_rename",
+            -- ["c"] = "explorer_copy",
+            ["<a-m>"] = "explorer_move",
+            ["<a-o>"] = "explorer_open", -- open with system application
+            ["<a-y>"] = { "explorer_yank", mode = { "n", "x" } },
+            ["<a-p>"] = "explorer_paste",
+            -- ["u"] = "explorer_update",
+            ["<c-c>"] = "lcd",
+            ["<a-g>"] = "picker_grep",
+            ["<c-t>"] = "terminal",
+            -- ["."] = "explorer_focus",
+            -- ["I"] = "toggle_ignored",
+            -- ["H"] = "toggle_hidden",
+            -- ["Z"] = "explorer_close_all",
+            -- ["]g"] = "explorer_git_next",
+            -- ["[g"] = "explorer_git_prev",
+            -- ["]d"] = "explorer_diagnostic_next",
+            -- ["[d"] = "explorer_diagnostic_prev",
+            -- ["]w"] = "explorer_warn_next",
+            -- ["[w"] = "explorer_warn_prev",
+            -- ["]e"] = "explorer_error_next",
+            -- ["[e"] = "explorer_error_prev",
+          },
+        },
+      },
+    },
     treesitter = {
       filter = {
         default = {

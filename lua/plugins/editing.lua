@@ -4,7 +4,7 @@ return {
     "andymass/vim-matchup",
     event = "BufRead",
     config = function() vim.g.matchup_matchparen_pumvisible = 0 end,
-    -- https://github.com/andymass/vim-matchup/issues/328
+    -- subscribed to https://github.com/andymass/vim-matchup/issues/328
     enabled = false,
   },
   { "windwp/nvim-autopairs", config = true },
