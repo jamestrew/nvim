@@ -37,6 +37,24 @@ local select_layout_small = {
 
 ---@type snacks.picker.Config
 M.defaults = {
+  ---@type snacks.picker.icons
+  icons = {
+    git = {
+      added = "+",
+      modified = "~",
+      copied = ">",
+      deleted = "-",
+      renamed = "➡",
+      unmerged = "‡",
+      untracked = "?",
+    },
+    diagnostics = {
+      Error = "󰅙",
+      Warn = "",
+      Info = "󰋼",
+      Hint = "󰌵",
+    },
+  },
   win = {
     -- input window
     input = {

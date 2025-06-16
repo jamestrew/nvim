@@ -59,6 +59,7 @@ return {
       },
       storage = { home = "~/projects/leetcode" },
     },
+    enabled = false,
   },
   {
     "iamcco/markdown-preview.nvim",
@@ -73,7 +74,7 @@ return {
       global_settings = {
         save_on_toggle = true,
         save_on_change = true,
-        excluded_filetypes = { "harpoon", "TelescopePrompt" },
+        excluded_filetypes = { "harpoon", },
       },
     },
     keys = {

@@ -1,7 +1,6 @@
 local M = {
   "neovim/nvim-lspconfig",
   dependencies = {
-    { "nvim-telescope/telescope.nvim" },
     { "SmiteshP/nvim-navic" },
     {
       "lewis6991/hover.nvim",

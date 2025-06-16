@@ -28,11 +28,6 @@ vim.keymap.set("v", l("fr"), ":s/")
 
 vim.keymap.set("n", "<esc>", ":nohl<CR>", silent)
 
-vim.keymap.set("n", "<leader>asht", function()
-  print("reloading telescope...")
-  R("telescope")
-end)
-
 vim.keymap.set("n", l(l("x")), ":w | so %<CR>", silent)
 vim.keymap.set("n", l(l("r")), function()
   -- Try to save, but ignore E32 errors for buffers with no name

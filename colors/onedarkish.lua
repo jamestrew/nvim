@@ -2,8 +2,6 @@ local onedark = require("themes.onedark")
 local Color, colors, Group, groups, styles = require("colorbuddy").setup()
 local v = vim
 
-
-
 for name, hex in pairs(onedark.colors) do
   Color.new(name, hex)
 end
@@ -343,31 +341,6 @@ Group.new("IndentBlanklineContextStart", colors.none, colors.none, styles.NONE)
 -- misc
 Group.new("NvimInternalError", colors.red, colors.none, styles.NONE)
 Group.new("EndOfBuffer", colors.black, colors.none, styles.NONE)
-
--- telescope
-Group.new("TelescopeNormal", colors.none, colors.black, styles.NONE)
-Group.new("TelescopeBorder", colors.lightbg, colors.black, styles.NONE)
-Group.new("TelescopeSelection", colors.none, colors.line, styles.NONE)
-Group.new("TelescopeTitle", colors.base08, colors.none, styles.NONE)
-Group.new("TelescopeMatching", colors.base0C, colors.none, styles.NONE)
-
-Group.new("TelescopePreviewBorder", colors.lightbg, colors.black, styles.NONE)
-Group.new("TelescopePreviewLine", colors.none, colors.line, styles.NONE)
-Group.new("TelescopePreviewTitle", colors.base08, colors.black, styles.NONE)
-Group.new("TelescopePreviewLink", colors.base08, colors.black, styles.NONE)
-
-Group.new("TelescopeResultsBorder", colors.lightbg, colors.black, styles.NONE)
-Group.new("TelescopeResultsTitle", colors.base08, colors.black, styles.NONE)
-Group.new("TelescopeResultsIdentifier", colors.base08, colors.none, styles.NONE)
-
-Group.new("TelescopePromptTitle", colors.base08, colors.black, styles.NONE)
-Group.new("TelescopePromptBorder", colors.lightbg, colors.black, styles.NONE)
-Group.new("TelescopePromptPrefix", colors.base08, colors.black, styles.NONE)
-Group.new("TelescopePromptCounter", colors.base08, colors.black, styles.NONE)
-
-Group.new("TelescopeResultsDiffAdd", colors.base0B, colors.none, styles.NONE)
-Group.new("TelescopeResultsDiffChange", colors.sun, colors.none, styles.NONE)
-Group.new("TelescopeResultsDiffDelete", colors.base08, colors.none, styles.NONE)
 
 -- symbols-outline
 Group.new("FocusedSymbol", colors.base08, colors.line, styles.NONE)
