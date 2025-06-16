@@ -100,27 +100,24 @@ M.defaults = {
       auto_close = true,
       tree = false,
       hidden = true,
-      on_close = function(picker)
+      on_close = function()
         local Tree = require("snacks.explorer.tree")
-        Tree:close_all(picker:cwd())
+        Tree:close_all(assert(vim.uv.cwd()))
       end,
       win = {
         input = {
           keys = {
-            ["<BS>"] = "explorer_up",
-            -- ["h"] = "explorer_close", -- close directory
-            ["<a-c>"] = "explorer_add",
-            ["<a-d>"] = "explorer_del",
-            ["<a-r>"] = "explorer_rename",
+            ["<BS>"] = { "explorer_up", mode = { "n", "i" } }, -- TODO: smart backspace in insert mode
+            ["<a-c>"] = { "explorer_add", mode = { "n", "i" } },
+            ["<a-d>"] = { "explorer_del", mode = { "n", "i" } },
+            ["<a-r>"] = { "explorer_rename", mode = { "n", "i" } },
             -- ["c"] = "explorer_copy",
-            ["<a-m>"] = "explorer_move",
-            ["<a-o>"] = "explorer_open", -- open with system application
-            ["<a-y>"] = { "explorer_yank", mode = { "n", "x" } },
-            ["<a-p>"] = "explorer_paste",
+            ["<a-m>"] = { "explorer_move", mode = { "n", "i" } },
+            ["<a-o>"] = { "explorer_open", mode = { "n", "i" } }, -- open with system application
+            ["<a-y>"] = { "explorer_yank", mode = { "n", "x", "i" } },
+            ["<a-p>"] = { "explorer_paste", mode = { "n", "i" } },
             -- ["u"] = "explorer_update",
-            ["<c-c>"] = "lcd",
-            ["<a-g>"] = "picker_grep",
-            ["<c-t>"] = "terminal",
+            ["<a-g>"] = { "picker_grep", mode = { "n", "i" } },
             -- ["."] = "explorer_focus",
             -- ["I"] = "toggle_ignored",
             -- ["H"] = "toggle_hidden",
