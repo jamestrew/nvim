@@ -39,7 +39,7 @@ return {
       },
       {
         "<leader><C-e>",
-        function() Snacks.picker.explorer({ cwd = vim.fn.expand("%:p:h") }) end,
+        function() Snacks.picker.explorer({ cwd = vim.fn.expand("%:p:h"), follow_buffer = true }) end,
       },
       -- { "<leader><C-e>", function() pickers.file_browser({ follow_file = true }) end },
     }

@@ -25,10 +25,10 @@ return {
     opts = {
       -- add any opts here
       -- for example
-      provider = "claude",
+      provider = "copilot",
       providers = {
         copilot = {
-          model = "claude-3.7-sonnet",
+          model = "o4-mini-2025-04-16",
         },
       },
       mappings = {
@@ -81,9 +81,9 @@ return {
         -- Make sure to set this up properly if you have lazy=true
         "MeanderingProgrammer/render-markdown.nvim",
         opts = {
-          file_types = { "markdown", "Avante" },
+          file_types = { "Avante" },
         },
-        ft = { "markdown", "Avante" },
+        ft = { "Avante" },
       },
     },
   },

@@ -118,6 +118,7 @@ M.defaults = {
       auto_close = true,
       tree = false,
       hidden = true,
+      ignored = true,
       on_close = function()
         local Tree = require("snacks.explorer.tree")
         Tree:close_all(assert(vim.uv.cwd()))
