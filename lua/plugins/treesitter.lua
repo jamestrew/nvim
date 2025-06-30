@@ -1,3 +1,44 @@
+local parsers = {
+  "bash",
+  "c",
+  "cmake",
+  "cpp",
+  "css",
+  "dockerfile",
+  "go",
+  "graphql",
+  "html",
+  "javascript",
+  "jsdoc",
+  "json",
+  "jsonc",
+  "lua",
+  "luadoc",
+  "make",
+  "python",
+  "query",
+  "rust",
+  "scss",
+  "sql",
+  "tsx",
+  "typescript",
+  "vim",
+  "yaml",
+  "toml",
+  "markdown",
+  "markdown_inline",
+  "regex",
+  "vimdoc",
+  "nix",
+  "fish",
+  "gitcommit",
+  "git_rebase",
+  "git_config",
+  "gitignore",
+  "gitattributes",
+  "diff"
+}
+
 return {
   "nvim-treesitter/nvim-treesitter",
   dependencies = {
@@ -10,41 +51,7 @@ return {
   },
   branch = "main",
   build = function()
-    require("nvim-treesitter").install({
-      "bash",
-      "c",
-      "cmake",
-      "cpp",
-      "css",
-      "dockerfile",
-      "go",
-      "graphql",
-      "html",
-      "javascript",
-      "jsdoc",
-      "json",
-      "jsonc",
-      "lua",
-      "luadoc",
-      "make",
-      "python",
-      "query",
-      "rust",
-      "scss",
-      "sql",
-      "tsx",
-      "typescript",
-      "vim",
-      "yaml",
-      "toml",
-      "markdown",
-      "markdown_inline",
-      "regex",
-      "vimdoc",
-      "nix",
-      "fish",
-      "gitcommit",
-    })
+    require("nvim-treesitter").install(parsers)
     vim.cmd(":TSUpdate")
   end,
   lazy = false,
@@ -54,7 +61,14 @@ return {
       callback = function(ev)
         local max_filesize = 100 * 1024 -- 100 KB
         local ok, stats = pcall(vim.uv.fs_stat, vim.fs.normalize(ev.file))
-        if ok and stats and stats.size < max_filesize then vim.treesitter.start() end
+        if ok and stats and stats.size < max_filesize then
+          pcall(vim.treesitter.start, ev.buf)
+          vim.bo[ev.buf].syntax = "on" -- Use regex based syntax-highlighting as fallback as some plugins might need it
+          vim.wo.foldlevel = 99
+          vim.wo.foldmethod = "expr"
+          vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- Use treesitter for folds
+          vim.bo[ev.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()" -- Use treesitter for indentation
+        end
       end,
     })
 
