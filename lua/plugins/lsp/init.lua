@@ -58,6 +58,7 @@ local M = {
           { path = "luassert-types/library", words = { "assert" } },
           { path = "busted-types/library", words = { "describe" } },
           { path = "snacks.nvim", words = { "Snacks" } },
+          { path = "avante.nvim", words = { "Avante" } },
         },
       },
       dependencies = {
