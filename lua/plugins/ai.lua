@@ -144,9 +144,9 @@ Each time you are going to create a file, use a single concise sentence inform t
         },
       },
       windows = {
-        position = "bottom",
+        position = "right",
         input = {
-          -- height = 15,
+          height = 15,
         },
       },
     },
