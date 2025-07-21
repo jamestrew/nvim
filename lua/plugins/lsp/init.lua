@@ -197,6 +197,7 @@ local M = {
           [vim.diagnostic.severity.HINT] = "󰌵",
         },
       },
+      virtual_text = true,
     })
 
     local lsp_ns = vim.api.nvim_create_namespace("lsp_ns")

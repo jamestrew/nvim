@@ -1,5 +1,10 @@
 local function inlay_hints_toggle() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end
 
+local function diag_toggle_virt_text()
+  local virt_text = vim.diagnostic.config().virtual_text or false
+  vim.diagnostic.config({ virtual_text = not virt_text })
+end
+
 local function diag_toggle_virt_lines()
   local virt_lines = vim.diagnostic.config().virtual_lines or false
   vim.diagnostic.config({ virtual_lines = not virt_lines })
@@ -13,6 +18,7 @@ local function attach_mappings(bufnr)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
   vim.keymap.set({ "n", "i" }, "<C-s>", vim.lsp.buf.signature_help, opts)
   vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
+  vim.keymap.set("n", "<leader>od", diag_toggle_virt_text, opts)
   vim.keymap.set("n", "<leader><leader>od", diag_toggle_virt_lines, opts)
   vim.keymap.set("n", "<leader>fm", function() vim.lsp.buf.format({ async = true }) end, opts)
   vim.keymap.set({ "i", "n" }, "<C-h>", inlay_hints_toggle, opts)
