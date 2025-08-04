@@ -1,4 +1,21 @@
 return {
+  {
+    "dmtrKovalenko/fff.nvim",
+    build = "nix run .#release",
+    opts = {
+      keymaps = {
+        move_up = { "<Up>", "<C-n>" },
+        move_down = { "<Down>", "<C-p>" },
+      },
+    },
+    keys = {
+      {
+        "<C-p>", -- try it if you didn't it is a banger keybinding for a picker
+        function() require("fff").find_files() end,
+        desc = "Toggle FFF",
+      },
+    },
+  },
   { "mbbill/undotree" },
   { "samjwill/nvim-unception" },
   {
@@ -74,7 +91,7 @@ return {
       global_settings = {
         save_on_toggle = true,
         save_on_change = true,
-        excluded_filetypes = { "harpoon", },
+        excluded_filetypes = { "harpoon" },
       },
     },
     keys = {

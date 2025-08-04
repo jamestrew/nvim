@@ -27,7 +27,7 @@ return {
     local Snacks = require("snacks")
     local pickers = require("plugins.snacks.pickers")
     return {
-      { "<C-p>", function() Snacks.picker.files() end },
+      -- { "<C-p>", function() Snacks.picker.files() end },
       { "<leader>fw", Snacks.picker.grep, silent = true },
       { "<leader>gc", Snacks.picker.git_log, silent = true },
       { "<leader>fb", pickers.buffers, silent = true },
