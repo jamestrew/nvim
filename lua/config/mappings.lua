@@ -32,5 +32,5 @@ vim.keymap.set("n", l(l("x")), ":w | so %<CR>", silent)
 vim.keymap.set("n", l(l("r")), function()
   -- Try to save, but ignore E32 errors for buffers with no name
   pcall(vim.cmd, "w")
-  vim.cmd("restart")
+  vim.cmd("restart +qall! lua require('persistence').load()")
 end, { silent = true, desc = "Save and restart Neovim" })
