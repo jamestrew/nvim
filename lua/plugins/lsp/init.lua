@@ -24,21 +24,21 @@ local M = {
             null_ls.builtins.formatting.golines,
             null_ls.builtins.formatting.markdownlint,
             -- null_ls.builtins.formatting.sql_formatter,
-            null_ls.builtins.formatting.sqlfluff.with({
-              extra_args = { "--dialect", "sqlite" }, -- change to your dialect
-            }),
+            -- null_ls.builtins.formatting.sqlfluff.with({
+            --   extra_args = { "--dialect", "sqlite" }, -- change to your dialect
+            -- }),
 
             null_ls.builtins.formatting.goimports,
             null_ls.builtins.formatting.stylua,
-            null_ls.builtins.diagnostics.sqlfluff.with({
-              extra_args = { "--dialect", "sqlite" }, -- change to your dialect
-            }),
+            -- null_ls.builtins.diagnostics.sqlfluff.with({
+            --   extra_args = { "--dialect", "sqlite" }, -- change to your dialect
+            -- }),
 
             -- null_ls.builtins.formatting.sql_formatter,
 
             -- diagnostic
             -- null_ls.builtins.diagnostics.luacheck, too much
-            null_ls.builtins.diagnostics.zsh,
+            -- null_ls.builtins.diagnostics.zsh,
 
             -- code_actions
             -- null_ls.builtins.code_actions.gitsigns,
