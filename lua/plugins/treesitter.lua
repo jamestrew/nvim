@@ -36,8 +36,14 @@ local parsers = {
   "git_config",
   "gitignore",
   "gitattributes",
-  "diff"
+  "diff",
 }
+
+local patterns = vim.tbl_extend("force", parsers, {
+  "javascriptreact",
+  "typescriptreact",
+  "zsh",
+})
 
 return {
   "nvim-treesitter/nvim-treesitter",
@@ -57,7 +63,7 @@ return {
   lazy = false,
   config = function()
     vim.api.nvim_create_autocmd("FileType", {
-      pattern = "*",
+      pattern = patterns,
       callback = function(ev)
         local max_filesize = 500 * 1024 -- 500 KB
         local ok, stats = pcall(vim.uv.fs_stat, vim.fs.normalize(ev.file))
