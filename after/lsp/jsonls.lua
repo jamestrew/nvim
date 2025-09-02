@@ -3,6 +3,7 @@ return {
     json = {
       -- Schemas https://www.schemastore.org
       schemas = require("schemastore").json.schemas(),
+      validate = { enable = true },
     },
   },
 }

@@ -7,9 +7,17 @@ local M = {
       config = function()
         require("hover").setup({
           init = function() require("hover.providers.lsp") end,
+          mouse_providers = { "LSP" },
         })
 
         vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
+        vim.keymap.set(
+          "n",
+          "<MouseMove>",
+          require("hover").hover_mouse,
+          { desc = "hover.nvim (mouse)" }
+        )
+        vim.o.mousemoveevent = true
       end,
     },
     {
@@ -28,7 +36,7 @@ local M = {
             --   extra_args = { "--dialect", "sqlite" }, -- change to your dialect
             -- }),
 
-            null_ls.builtins.formatting.goimports,
+            -- null_ls.builtins.formatting.goimports,
             null_ls.builtins.formatting.stylua,
             -- null_ls.builtins.diagnostics.sqlfluff.with({
             --   extra_args = { "--dialect", "sqlite" }, -- change to your dialect

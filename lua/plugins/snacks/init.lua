@@ -20,7 +20,7 @@ return {
     quickfile = { enabled = false },
     scope = { enabled = false },
     scroll = { enabled = false },
-    statuscolumn = { enabled = false },
+    statuscolumn = { enabled = true, folds = { open = true } },
     words = { enabled = false },
   },
   keys = function()

@@ -7,6 +7,10 @@ return {
         move_up = { "<Up>", "<C-n>" },
         move_down = { "<Down>", "<C-p>" },
       },
+      hl = {
+        matched = "",
+      },
+      prompt = "➤ ",
     },
     keys = {
       {

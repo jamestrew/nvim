@@ -13,13 +13,12 @@ return {
     ft = { "javascript", "jsx", "typescript", "tsx", "html", "markdown" },
   },
   { "kylechui/nvim-surround", config = true },
-  { "echasnovski/mini.move", config = true },
+  { "nvim-mini/mini.move", config = true },
   {
     "Wansmer/treesj",
     keys = { { "<leader>sj", "<cmd>TSJToggle<cr>", desc = "Join Toggle" } },
     opts = { use_default_keymaps = false, max_join_length = 150 },
   },
-
   {
     "numToStr/Comment.nvim",
     dependencies = {
