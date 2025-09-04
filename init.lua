@@ -17,7 +17,6 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-vim.g.colors_name = "onedark" -- hack
 vim.opt.termguicolors = true
 
 -- Setup lazy.nvim
