@@ -5,18 +5,26 @@ local M = {
     {
       "lewis6991/hover.nvim",
       config = function()
-        require("hover").setup({
-          init = function() require("hover.providers.lsp") end,
-          mouse_providers = { "LSP" },
+        require("hover").config({
+          providers = {
+            "hover.providers.diagnostic",
+            "hover.providers.lsp",
+            "hover.providers.dap",
+            "hover.providers.man",
+            "hover.providers.dictionary",
+
+            -- Optional, disabled by default:
+            "hover.providers.gh",
+            "hover.providers.gh_user",
+            -- 'hover.providers.jira',
+            "hover.providers.fold_preview",
+            "hover.providers.highlight",
+          },
+          mouse_providers = { "hover.providers.lsp" },
         })
 
-        vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
-        vim.keymap.set(
-          "n",
-          "<MouseMove>",
-          require("hover").hover_mouse,
-          { desc = "hover.nvim (mouse)" }
-        )
+        vim.keymap.set("n", "K", require("hover").open, { desc = "hover.nvim" })
+        vim.keymap.set("n", "<MouseMove>", require("hover").mouse, { desc = "hover.nvim (mouse)" })
         vim.o.mousemoveevent = true
       end,
     },
