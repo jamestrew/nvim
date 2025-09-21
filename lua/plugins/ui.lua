@@ -3,9 +3,7 @@ return {
     "tjdevries/colorbuddy.vim",
     priority = 1555,
     tag = "v1.0.0",
-    config = function()
-      vim.cmd.colorscheme("onedarkish")
-    end,
+    config = function() vim.cmd.colorscheme("onedarkish") end,
   },
   { "brenoprata10/nvim-highlight-colors", opts = {}, cmd = { "HighlightColors" } },
   { "lewis6991/satellite.nvim", config = true },

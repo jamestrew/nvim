@@ -86,7 +86,7 @@ return {
         },
         buffer = { min_keyword_length = 3 },
         cmdline = { min_keyword_length = 2 },
-        snippets = { min_keyword_length = 3}
+        snippets = { min_keyword_length = 3 },
       },
     },
     signature = { enabled = true },
