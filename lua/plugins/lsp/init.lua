@@ -24,8 +24,6 @@ local M = {
         })
 
         vim.keymap.set("n", "K", require("hover").open, { desc = "hover.nvim" })
-        vim.keymap.set("n", "<MouseMove>", require("hover").mouse, { desc = "hover.nvim (mouse)" })
-        vim.o.mousemoveevent = true
       end,
     },
     {
@@ -86,7 +84,6 @@ local M = {
     { "b0o/SchemaStore.nvim" },
     {
       "mrcjkb/rustaceanvim",
-      version = "^5",
       lazy = false, -- This plugin is already lazy
       config = function()
         vim.g.rustaceanvim = function()
@@ -188,10 +185,6 @@ local M = {
   config = function()
     local lsputils = require("plugins.lsp.utils")
 
-    -- local capabilities = require("blink.cmp").get_lsp_capabilities()
-    -- vim.lsp.config("*", {
-    --   capabilities = capabilities,
-    -- })
 
     vim.api.nvim_create_autocmd("LspAttach", {
       callback = function(args)

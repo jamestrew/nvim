@@ -21,6 +21,7 @@ local parsers = {
   "scss",
   "sql",
   "tsx",
+  "svelte",
   "typescript",
   "vim",
   "yaml",
