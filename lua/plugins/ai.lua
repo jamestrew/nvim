@@ -26,9 +26,9 @@ return {
         enabled = vim.fn.argv()[1] ~= "leetcode.nvim",
         auto_trigger = true,
         keymap = {
-          accept = "<C-v>",
-          next = "<C-x>",
-          dismiss = "<C-z>",
+          accept = "<M-l>",
+          next = "<M-n>",
+          dismiss = "<M-x>",
         },
       },
     },
