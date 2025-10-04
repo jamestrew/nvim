@@ -185,7 +185,6 @@ local M = {
   config = function()
     local lsputils = require("plugins.lsp.utils")
 
-
     vim.api.nvim_create_autocmd("LspAttach", {
       callback = function(args)
         local bufnr = args.buf
@@ -237,6 +236,7 @@ local M = {
 
       -- "ts_query_ls"
       "tailwindcss",
+      "copilot-language-server",
     }
 
     for _, server in ipairs(server_list) do

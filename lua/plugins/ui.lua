@@ -1,4 +1,5 @@
 return {
+  { "nvim-tree/nvim-web-devicons" },
   {
     "tjdevries/colorbuddy.vim",
     priority = 1555,

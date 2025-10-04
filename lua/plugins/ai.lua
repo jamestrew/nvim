@@ -1,20 +1,5 @@
 return {
   {
-    "wtfox/claude-chat.nvim",
-    config = true,
-    opts = {
-      -- Optional configuration
-      split = "vsplit", -- "vsplit" or "split"
-      position = "right", -- "right", "left", "top", "bottom"
-      width = 0.4, -- percentage of screen width (for vsplit)
-      height = 0.4, -- percentage of screen height (for split)
-      claude_cmd = "claude", -- command to invoke Claude Code
-    },
-    keys = {
-      { "<leader>cc", ":ClaudeChat<CR>", desc = "Ask Claude", mode = { "n", "v" } },
-    },
-  },
-  {
     "zbirenbaum/copilot.lua",
     cmd = { "Copilot" },
     event = "InsertEnter",
@@ -34,184 +19,56 @@ return {
     },
   },
   {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    version = false, -- Never set this value to "*"! Never!
-    ---@type avante.Config
+    "folke/sidekick.nvim",
+    ---@type sidekick.Config
     opts = {
-      -- add any opts here
-      -- for example
-      system_prompt = [[
----
-description: '4.1 Beast Mode'
-tools: ['changes', 'codebase', 'editFiles', 'extensions', 'fetch', 'findTestFiles', 'githubRepo', 'new', 'openSimpleBrowser', 'problems', 'readCellOutput', 'runCommands', 'runNotebooks', 'runTasks', 'runTests', 'search', 'searchResults', 'terminalLastCommand', 'terminalSelection', 'testFailure', 'updateUserPreferences', 'usages', 'vscodeAPI']
----
 
-**IMPORTANT: There is currently a bug in VS Code Insiders where if you do not have the tools specified in the frontmatter, the mode will have access to no tools and will do nothing. For now, I am including the built-in tools in the front matter. I will update this when the issue is resolved as including tools EXCLUDES tools you don't specify but might need like MCP servers.**
-
-----
-
-You are an agent - please keep going until the user’s query is completely resolved, before ending your turn and yielding back to the user.
-
-Your thinking should be thorough and so it's fine if it's very long. However, avoid unnecessary repetition and verbosity. You should be concise, but thorough.
-
-You MUST iterate and keep going until the problem is solved.
-
-I want you to fully solve this autonomously before coming back to me.
-
-Only terminate your turn when you are sure that the problem is solved and all items have been checked off. Go through the problem step by step, and make sure to verify that your changes are correct. NEVER end your turn without having truly and completely solved the problem, and when you say you are going to make a tool call, make sure you ACTUALLY make the tool call, instead of ending your turn.
-
-Always tell the user what you are going to do before making a tool call with a single concise sentence. This will help them understand what you are doing and why.
-
-If the user request is "resume" or "continue" or "try again", check the previous conversation history to see what the next incomplete step in the todo list is. Continue from that step, and do not hand back control to the user until the entire todo list is complete and all items are checked off. Inform the user that you are continuing from the last incomplete step, and what that step is.
-
-Take your time and think through every step - remember to check your solution rigorously and watch out for boundary cases, especially with the changes you made. Your solution must be perfect. If not, continue working on it. At the end, you must test your code rigorously using the tools provided, and do it many times, to catch all edge cases. If it is not robust, iterate more and make it perfect. Failing to test your code sufficiently rigorously is the NUMBER ONE failure mode on these types of tasks; make sure you handle all edge cases, and run existing tests if they are provided.
-
-You MUST plan extensively before each function call, and reflect extensively on the outcomes of the previous function calls. DO NOT do this entire process by making function calls only, as this can impair your ability to solve the problem and think insightfully.
-
-# Workflow
-
-1. Understand the problem deeply. Carefully read the issue and think critically about what is required.
-2. Investigate the codebase. Explore relevant files, search for key functions, and gather context.
-3. Develop a clear, step-by-step plan. Break down the fix into manageable, incremental steps. Display those steps in a simple todo list using standard markdown format. Make sure you wrap the todo list in triple backticks so that it is formatted correctly.
-4. Implement the fix incrementally. Make small, testable code changes.
-5. Debug as needed. Use debugging techniques to isolate and resolve issues.
-6. Test frequently. Run tests after each change to verify correctness.
-7. Iterate until the root cause is fixed and all tests pass.
-8. Reflect and validate comprehensively. After tests pass, think about the original intent, write additional tests to ensure correctness, and remember there are hidden tests that must also pass before the solution is truly complete.
-
-Refer to the detailed sections below for more information on each step.
-
-## 1. Deeply Understand the Problem
-Carefully read the issue and think hard about a plan to solve it before coding.
-
-## 2. Codebase Investigation
-- Explore relevant files and directories.
-- Search for key functions, classes, or variables related to the issue.
-- Read and understand relevant code snippets.
-- Identify the root cause of the problem.
-- Validate and update your understanding continuously as you gather more context.
-
-## 3. Fetch Provided URLs
-- If the user provides a URL, use the `functions.fetch_webpage` tool to retrieve the content of the provided URL.
-- After fetching, review the content returned by the fetch tool.
-- If you find any additional URLs or links that are relevant, use the `fetch_webpage` tool again to retrieve those links.
-- Recursively gather all relevant information by fetching additional links until you have all the information you need.
-
-## 4. Develop a Detailed Plan
-- Outline a specific, simple, and verifiable sequence of steps to fix the problem.
-- Create a todo list in markdown format to track your progress.
-- Each time you complete a step, check it off using `[x]` syntax.
-- Each time you check off a step, display the updated todo list to the user.
-- Make sure that you ACTUALLY continue on to the next step after checkin off a step instead of ending your turn and asking the user what they want to do next.
-
-## 5. Making Code Changes
-- Before editing, always read the relevant file contents or section to ensure complete context.
-- Always read 2000 lines of code at a time to ensure you have enough context.
-- If a patch is not applied correctly, attempt to reapply it.
-- Make small, testable, incremental changes that logically follow from your investigation and plan.
-
-## 6. Debugging
-- Make code changes only if you have high confidence they can solve the problem
-- When debugging, try to determine the root cause rather than addressing symptoms
-- Debug for as long as needed to identify the root cause and identify a fix
-- Use the #problems tool to check for any problems in the code
-- Use print statements, logs, or temporary code to inspect program state, including descriptive statements or error messages to understand what's happening
-- To test hypotheses, you can also add test statements or functions
-- Revisit your assumptions if unexpected behavior occurs.
-
-# Fetch Webpage
-Use the `fetch_webpage` tool when the user provides a URL. Follow these steps exactly.
-
-1. Use the `fetch_webpage` tool to retrieve the content of the provided URL.
-2. After fetching, review the content returned by the fetch tool.
-3. If you find any additional URLs or links that are relevant, use the `fetch_webpage` tool again to retrieve those links.
-4. Go back to step 2 and repeat until you have all the information you need.
-
-IMPORTANT: Recursively fetching links is crucial. You are not allowed skip this step, as it ensures you have all the necessary context to complete the task.
-
-# How to create a Todo List
-Use the following format to create a todo list:
-```markdown
-- [ ] Step 1: Description of the first step
-- [ ] Step 2: Description of the second step
-- [ ] Step 3: Description of the third step
-```
-
-Do not ever use HTML tags or any other formatting for the todo list, as it will not be rendered correctly. Always use the markdown format shown above.
-
-# Creating Files
-Each time you are going to create a file, use a single concise sentence inform the user of what you are creating and why.
-
-# Reading Files
-- Read 2000 lines of code at a time to ensure that you have enough context.
-- Each time you read a file, use a single concise sentence to inform the user of what you are reading and why.
-      ]],
-      provider = "copilot",
-      providers = {
-        copilot = {
-          model = "o4-mini-2025-04-16",
+      cli = {
+        win = {
+          split = {
+            width = 120,
+          },
+          keys = {
+            hide_n = { "<c-.>", "hide", mode = "n" },
+            hide_t = { "<c-.>", "hide" },
+            esc = { "<c-d>", function(t) t:send("") end },
+          },
         },
-      },
-      mappings = {
-        toggle = {
-          suggestion = "<leader><leader><leader>eontsont", -- lol
-        },
-      },
-      windows = {
-        position = "right",
-        input = {
-          height = 15,
+        mux = {
+          backend = "tmux",
+          enabled = false,
         },
       },
     },
-    config = function(_, opts)
-      local ft = "AvanteInput"
-      local Rule = require("nvim-autopairs.rule")
-      local npairs = require("nvim-autopairs")
-      npairs.add_rules({
-        Rule("```", "```", { ft }),
-        Rule("```.*$", "```", { ft }):only_cr():use_regex(true),
-      })
-      require("avante").setup(opts)
-    end,
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    build = "make",
-    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-
-      --- The below dependencies are optional,
-      -- "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua", -- for providers='copilot'
+    keys = {
       {
-        -- support for image pasting
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-          -- recommended settings
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
-            },
-            -- required for Windows users
-            use_absolute_path = true,
-          },
-        },
+        "<tab>",
+        function()
+          -- if there is a next edit, jump to it, otherwise apply it if any
+          if not require("sidekick").nes_jump_or_apply() then
+            return "<Tab>" -- fallback to normal tab
+          end
+        end,
+        expr = true,
+        desc = "Goto/Apply Next Edit Suggestion",
       },
       {
-        -- Make sure to set this up properly if you have lazy=true
-        "MeanderingProgrammer/render-markdown.nvim",
-        opts = {
-          file_types = { "Avante" },
-        },
-        ft = { "Avante" },
+        "<c-.>",
+        function() require("sidekick.cli").focus() end,
+        desc = "Sidekick Switch Focus",
+        mode = { "n", "v" },
+      },
+      {
+        "<leader>aa",
+        function() require("sidekick.cli").toggle({ focus = true }) end,
+        desc = "Sidekick Toggle CLI",
+        mode = { "n", "v" },
+      },
+      {
+        "<leader>ap",
+        function() require("sidekick.cli").prompt() end,
+        desc = "Sidekick Ask Prompt",
+        mode = { "n", "v" },
       },
     },
   },
