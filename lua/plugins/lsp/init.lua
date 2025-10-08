@@ -24,6 +24,7 @@ local M = {
         })
 
         vim.keymap.set("n", "K", require("hover").open, { desc = "hover.nvim" })
+        vim.keymap.set("n", "gK", require("hover").enter, { desc = "hover.nvim" })
       end,
     },
     {
@@ -34,8 +35,8 @@ local M = {
           sources = {
             -- formatting
             null_ls.builtins.formatting.biome,
-            null_ls.builtins.formatting.gofmt,
-            null_ls.builtins.formatting.golines,
+            -- null_ls.builtins.formatting.gofmt,
+            -- null_ls.builtins.formatting.golines,
             null_ls.builtins.formatting.markdownlint,
             -- null_ls.builtins.formatting.sql_formatter,
             -- null_ls.builtins.formatting.sqlfluff.with({

@@ -29,8 +29,6 @@ return {
             width = 120,
           },
           keys = {
-            hide_n = { "<c-.>", "hide", mode = "n" },
-            hide_t = { "<c-.>", "hide" },
             esc = { "<c-d>", function(t) t:send("") end },
           },
         },
