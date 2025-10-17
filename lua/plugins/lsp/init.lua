@@ -214,11 +214,12 @@ local M = {
     vim.api.nvim_set_hl(lsp_ns, "LspReferenceWrite", { link = "CursorLine" })
     vim.api.nvim_set_hl(lsp_ns, "LspReferenceRead", { link = "CursorLine" })
 
+    local python_lsp = os.getenv("TY") == "1" and "ty" or "basedpyright"
     local server_list = {
       "cssls",
       -- "sqls",
       -- "pyright",
-      "basedpyright",
+      python_lsp,
       "ruff",
       -- "eslint",
       "emmet_language_server",
