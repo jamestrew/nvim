@@ -22,6 +22,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 vim.api.nvim_create_autocmd("VimResized", {
   pattern = "*",
-  command = "tabdo wincmd =",
+  command = "wincmd =",
   group = my_augroup,
 })

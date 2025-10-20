@@ -107,4 +107,4 @@ end
 
 opt.foldtext = "v:lua.custom_foldtext()"
 
-require("vim._extui").enable({})
+-- require("vim._extui").enable({})

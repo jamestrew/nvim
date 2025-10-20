@@ -1,3 +1,4 @@
+-- TODO: this seems to break with extui and gitsigns previews
 vim.api.nvim_create_user_command("PRView", function(ev)
   local text
   if #ev.fargs > 0 then
