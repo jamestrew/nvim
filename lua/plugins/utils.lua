@@ -1,25 +1,4 @@
 return {
-  {
-    "dmtrKovalenko/fff.nvim",
-    build = "nix run .#release",
-    opts = {
-      keymaps = {
-        move_up = { "<Up>", "<C-n>" },
-        move_down = { "<Down>", "<C-p>" },
-      },
-      hl = {
-        matched = "",
-      },
-      prompt = "➤ ",
-    },
-    keys = {
-      {
-        "<C-p>", -- try it if you didn't it is a banger keybinding for a picker
-        function() require("fff").find_files() end,
-        desc = "Toggle FFF",
-      },
-    },
-  },
   { "samjwill/nvim-unception" },
   {
     "codethread/qmk.nvim",

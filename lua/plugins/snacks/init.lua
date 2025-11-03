@@ -3,6 +3,36 @@ return {
   dir = require("config.utils").dev_dir("snacks.nvim"),
   priority = 1000,
   lazy = false,
+  dependencies = {
+    {
+      "madmaxieee/fff-snacks.nvim",
+      dependencies = {
+        {
+          "dmtrKovalenko/fff.nvim",
+          build = "nix run .#release",
+          opts = {
+            keymaps = {
+              move_up = { "<Up>", "<C-n>" },
+              move_down = { "<Down>", "<C-p>" },
+            },
+            hl = {
+              matched = "",
+            },
+            prompt = "➤ ",
+          },
+        },
+      },
+      cmd = "FFFSnacks",
+      keys = {
+        {
+          "<leader>ff",
+          "<cmd> FFFSnacks <cr>",
+          desc = "FFF",
+        },
+      },
+      config = true,
+    },
+  },
   ---@type snacks.Config
   opts = {
     -- your configuration comes here
@@ -27,7 +57,7 @@ return {
     local Snacks = require("snacks")
     local pickers = require("plugins.snacks.pickers")
     return {
-      -- { "<C-p>", function() Snacks.picker.files() end },
+      { "<C-p>", "<cmd>FFFSnacks<cr>", desc = "FFF", silent = true },
       { "<leader>fw", Snacks.picker.grep, silent = true },
       { "<leader>gc", Snacks.picker.git_log, silent = true },
       { "<leader>fb", pickers.buffers, silent = true },

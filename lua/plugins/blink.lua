@@ -90,7 +90,9 @@ return {
           score_offset = 100,
         },
         buffer = { min_keyword_length = 3 },
-        cmdline = { min_keyword_length = 2 },
+        cmdline = {
+          min_keyword_length = function(ctx) return ctx.mode == "cmdline" and 0 or 3 end,
+        },
         snippets = { min_keyword_length = 3 },
       },
     },
