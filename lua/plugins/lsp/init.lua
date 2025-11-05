@@ -86,6 +86,7 @@ local M = {
     {
       "mrcjkb/rustaceanvim",
       lazy = false, -- This plugin is already lazy
+      version = "^6",
       config = function()
         vim.g.rustaceanvim = function()
           local os = vim.uv.os_uname().sysname
