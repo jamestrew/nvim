@@ -3,9 +3,13 @@ return {
   {
     "andymass/vim-matchup",
     event = "BufRead",
-    config = function() vim.g.matchup_matchparen_pumvisible = 0 end,
-    -- subscribed to https://github.com/andymass/vim-matchup/issues/328
-    enabled = false,
+    opts = {
+      matchparen = {
+        offscreen = {
+          method = "popup",
+        },
+      }
+    }
   },
   { "windwp/nvim-autopairs", config = true },
   {
