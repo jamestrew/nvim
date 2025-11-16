@@ -43,8 +43,11 @@ return {
       description = { position = "right" },
       injector = {
         ["python3"] = {
-          before = "from typing import *",
-          after = '"""\n\n"""',
+          -- before = "from typing import *",
+          imports = function (_)
+            return {"from typing import *  # noqa: F403"}
+          end
+          -- after = '"""\n\n"""',
         },
         ["golang"] = {
           before = "package main",

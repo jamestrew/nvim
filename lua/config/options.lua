@@ -47,8 +47,8 @@ opt.smartindent = true
 opt.wrap = false
 opt.colorcolumn = "90"
 
-opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-opt.foldmethod = "expr"
+-- opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- opt.foldmethod = "expr"
 opt.foldenable = true
 opt.foldlevel = 100
 opt.modelines = 1
@@ -105,6 +105,6 @@ function _G.custom_foldtext()
   return result
 end
 
-opt.foldtext = "v:lua.custom_foldtext()"
+-- opt.foldtext = "v:lua.custom_foldtext()"
 
 -- require("vim._extui").enable({})

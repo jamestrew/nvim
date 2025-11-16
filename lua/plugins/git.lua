@@ -29,7 +29,6 @@ return {
     end,
   },
 
-  { "jamestrew/git-worktree.nvim", config = true },
   {
     "sindrets/diffview.nvim",
     opts = { enhanced_diff_hl = false },
