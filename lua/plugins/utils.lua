@@ -1,4 +1,5 @@
 return {
+  { "jamestrew/microscope.nvim", dir = "~/projects/microscope.nvim" },
   { "samjwill/nvim-unception" },
   {
     "codethread/qmk.nvim",
@@ -44,9 +45,7 @@ return {
       injector = {
         ["python3"] = {
           -- before = "from typing import *",
-          imports = function (_)
-            return {"from typing import *  # noqa: F403"}
-          end
+          imports = function(_) return { "from typing import *  # noqa: F403" } end,
           -- after = '"""\n\n"""',
         },
         ["golang"] = {
@@ -55,7 +54,7 @@ return {
         },
       },
       storage = { home = "~/projects/leetcode" },
-      picker = { provider = "snacks-picker"}
+      picker = { provider = "snacks-picker" },
     },
   },
   {

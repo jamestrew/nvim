@@ -45,6 +45,10 @@ return {
     keys = { { "<leader>dv", "<cmd>DiffViewToggle<CR>", desc = "diffview" } },
   },
   {
+    "esmuellert/vscode-diff.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
+  },
+  {
     "lewis6991/gitsigns.nvim",
     config = function()
       require("gitsigns").setup({
