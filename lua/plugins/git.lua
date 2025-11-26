@@ -47,6 +47,7 @@ return {
   {
     "esmuellert/vscode-diff.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
+    build = "cmake -B build && cmake --build build",
   },
   {
     "lewis6991/gitsigns.nvim",
