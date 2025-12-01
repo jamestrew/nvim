@@ -3,6 +3,7 @@ return {
     "tpope/vim-fugitive",
     -- keys = { { "<leader>gs", "<cmd>G<CR>", desc = "git" } },
     cmd = { "G" },
+    enabled = false,
   },
 
   {
@@ -27,6 +28,7 @@ return {
         end,
       })
     end,
+    enabled = false,
   },
 
   {
@@ -48,6 +50,17 @@ return {
     "esmuellert/vscode-diff.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
     build = "cmake -B build && cmake --build build",
+    opts = {
+      keymaps = {
+        view = {
+          next_file = "<tab>",
+          prev_file = "<s-tab>",
+        },
+      },
+    },
+    keys = {
+      { "<leader>vd", "<cmd>CodeDiff<CR>", desc = "vscode diff" },
+    },
   },
   {
     "lewis6991/gitsigns.nvim",
