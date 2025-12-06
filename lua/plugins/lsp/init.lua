@@ -241,6 +241,7 @@ local M = {
       -- "ts_query_ls"
       "tailwindcss",
       "copilot-language-server",
+      "zls",
     }
 
     for _, server in ipairs(server_list) do

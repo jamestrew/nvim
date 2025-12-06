@@ -38,6 +38,7 @@ local parsers = {
   "gitignore",
   "gitattributes",
   "diff",
+  "zig",
 }
 
 local patterns = vim.tbl_extend("force", parsers, {
