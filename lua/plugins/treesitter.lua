@@ -41,7 +41,7 @@ local parsers = {
   "zig",
 }
 
-local patterns = vim.tbl_extend("force", parsers, {
+local patterns = vim.list_extend(parsers, {
   "javascriptreact",
   "typescriptreact",
   "zsh",
