@@ -149,6 +149,7 @@ local M = {
       "pmizio/typescript-tools.nvim",
       dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
       opts = {},
+      enabled = false,  -- trying tsgo
     },
     {
       "hedyhli/outline.nvim",
@@ -215,12 +216,11 @@ local M = {
     vim.api.nvim_set_hl(lsp_ns, "LspReferenceWrite", { link = "CursorLine" })
     vim.api.nvim_set_hl(lsp_ns, "LspReferenceRead", { link = "CursorLine" })
 
-    local python_lsp = os.getenv("TY") == "1" and "ty" or "basedpyright"
     local server_list = {
       "cssls",
       -- "sqls",
       -- "pyright",
-      python_lsp,
+      "ty",
       "ruff",
       -- "eslint",
       "emmet_language_server",
@@ -242,6 +242,7 @@ local M = {
       "tailwindcss",
       "copilot-language-server",
       "zls",
+      "tsgo",
     }
 
     for _, server in ipairs(server_list) do
