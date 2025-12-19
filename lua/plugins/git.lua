@@ -3,9 +3,8 @@ return {
     "tpope/vim-fugitive",
     -- keys = { { "<leader>gs", "<cmd>G<CR>", desc = "git" } },
     cmd = { "G" },
-    enabled = false,
+    enabled = false, -- using jj these days
   },
-
   {
     "NeogitOrg/neogit",
     dependencies = { "sindrets/diffview.nvim" },
@@ -28,28 +27,13 @@ return {
         end,
       })
     end,
-    enabled = false,
-  },
-
-  {
-    "sindrets/diffview.nvim",
-    opts = { enhanced_diff_hl = false },
-    init = function()
-      vim.api.nvim_create_user_command("DiffViewToggle", function()
-        if require("diffview.lib").get_current_view() then
-          vim.cmd(":DiffviewClose")
-        else
-          vim.cmd(vim.fn.input({ prompt = "", default = ":DiffviewOpen " }))
-        end
-      end, {})
-    end,
-    cmd = { "DiffviewOpen", "DiffviewFileHistory" },
-    keys = { { "<leader>dv", "<cmd>DiffViewToggle<CR>", desc = "diffview" } },
+    enabled = false, -- using jj these days
   },
   {
     "esmuellert/vscode-diff.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
     build = "cmake -B build && cmake --build build",
+    branch = "next",
     opts = {
       keymaps = {
         view = {
