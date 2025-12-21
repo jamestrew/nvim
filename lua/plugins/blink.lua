@@ -34,11 +34,6 @@ return {
       ["<c-u>"] = { "scroll_documentation_up" },
       ["<c-k>"] = { "snippet_forward", "fallback" },
       ["<c-j>"] = { "snippet_backward", "fallback" },
-      ["<Tab>"] = {
-        "snippet_forward",
-        function() require("sidekick").nes_jump_or_apply() end,
-        "fallback",
-      },
     },
 
     appearance = {

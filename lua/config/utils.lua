@@ -33,4 +33,17 @@ end
 
 M.clear_prompt = function() vim.api.nvim_command("normal :esc<CR>") end
 
+M.code_block_autoppairs_rule = function(ft)
+  local ok, npairs = pcall(require, "nvim-autopairs")
+  if not ok then
+    vim.notify("nvim-autopairs not found for code_block_autoppairs_rule", vim.log.levels.WARN)
+  end
+
+  local rule = require("nvim-autopairs.rule")
+  npairs.add_rules({
+    rule("```", "```", { ft }),
+    rule("```.*$", "```", { ft }):only_cr():use_regex(true),
+  })
+end
+
 return M

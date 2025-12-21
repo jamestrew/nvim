@@ -165,7 +165,6 @@ local M = {
         },
       },
       keys = { { "<leader>so", "<cmd>Outline<CR>", desc = "symbols-outline" } },
-      enabled = false,
     },
     {
       "oskarrrrrrr/symbols.nvim",
@@ -177,6 +176,7 @@ local M = {
         })
       end,
       keys = { { "<leader>so", "<cmd>Symbols<CR>", desc = "symbols-outline" } },
+      enabled = false,
     },
     {
       "RRethy/vim-illuminate",
@@ -209,6 +209,7 @@ local M = {
         },
       },
       virtual_text = true,
+      underline = false,
     })
 
     local lsp_ns = vim.api.nvim_create_namespace("lsp_ns")

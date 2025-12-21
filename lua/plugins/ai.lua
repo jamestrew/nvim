@@ -48,5 +48,10 @@ return {
         desc = "New Agentic Session",
       },
     },
+
+    config = function(_, opts)
+      require("agentic").setup(opts)
+      require("config.utils").code_block_autoppairs_rule("AgenticInput")
+    end,
   },
 }
