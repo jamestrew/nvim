@@ -19,54 +19,33 @@ return {
     },
   },
   {
-    "folke/sidekick.nvim",
-    ---@type sidekick.Config
+    "carlos-algms/agentic.nvim",
+    event = "VeryLazy",
+
     opts = {
-      nes = { enabled = false },
-      cli = {
-        win = {
-          split = {
-            width = 120,
-          },
-          keys = {
-            esc = { "<c-d>", function(t) t:send("") end },
-          },
-        },
-        mux = {
-          backend = "tmux",
-          enabled = false,
-        },
-      },
+      -- Available by default: "claude-acp" | "gemini-acp" | "codex-acp" | "opencode-acp"
+      provider = "claude-acp", -- setting the name here is all you need to get started
     },
+
+    -- these are just suggested keymaps; customize as desired
     keys = {
       {
-        "<tab>",
-        function()
-          -- if there is a next edit, jump to it, otherwise apply it if any
-          if not require("sidekick").nes_jump_or_apply() then
-            return "<Tab>" -- fallback to normal tab
-          end
-        end,
-        expr = true,
-        desc = "Goto/Apply Next Edit Suggestion",
+        "<C-\\>",
+        function() require("agentic").toggle() end,
+        mode = { "n", "v", "i" },
+        desc = "Toggle Agentic Chat",
       },
       {
-        "<c-.>",
-        function() require("sidekick.cli").focus() end,
-        desc = "Sidekick Switch Focus",
+        "<C-'>",
+        function() require("agentic").add_selection_or_file_to_context() end,
         mode = { "n", "v" },
+        desc = "Add file or selection to Agentic to Context",
       },
       {
-        "<leader>aa",
-        function() require("sidekick.cli").toggle({ focus = true }) end,
-        desc = "Sidekick Toggle CLI",
-        mode = { "n", "v" },
-      },
-      {
-        "<leader>ap",
-        function() require("sidekick.cli").prompt() end,
-        desc = "Sidekick Ask Prompt",
-        mode = { "n", "v" },
+        "<C-,>",
+        function() require("agentic").new_session() end,
+        mode = { "n", "v", "i" },
+        desc = "New Agentic Session",
       },
     },
   },
