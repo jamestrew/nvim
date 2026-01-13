@@ -30,18 +30,24 @@ return {
     enabled = false, -- using jj these days
   },
   {
-    "esmuellert/vscode-diff.nvim",
+    "esmuellert/codediff.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
     build = "cmake -B build && cmake --build build",
     branch = "next",
     opts = {
+      explorer = {
+        view_mode = "tree",
+      },
       keymaps = {
         view = {
           next_file = "<tab>",
           prev_file = "<s-tab>",
+          next_hunk = "]g",
+          prev_hunk = "[g",
         },
       },
     },
+    cmd = { "CodeDiff" },
     keys = {
       { "<leader>vd", "<cmd>CodeDiff<CR>", desc = "vscode diff" },
     },

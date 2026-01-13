@@ -10,7 +10,6 @@ return {
         {
           "dmtrKovalenko/fff.nvim",
           build = "nix run .#release",
-          commit = "d88922e6",
           opts = {
             keymaps = {
               move_up = { "<Up>", "<C-n>" },
