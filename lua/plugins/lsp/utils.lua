@@ -36,10 +36,10 @@ local function on_attach(client, bufnr)
     require("nvim-navic").attach(client, bufnr)
   end
 
-  vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(args) vim.bo[args.buf].formatexpr = nil end,
-    group = "lsp_augroup",
-  })
+  -- vim.api.nvim_create_autocmd("LspAttach", {
+  --   callback = function(args) vim.bo[args.buf].formatexpr = nil end,
+  --   group = "lsp_augroup",
+  -- })
 
   attach_mappings(bufnr)
 end

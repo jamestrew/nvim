@@ -27,13 +27,12 @@ return {
         end,
       })
     end,
-    enabled = false, -- using jj these days
+    -- enabled = false, -- using jj these days
   },
   {
     "esmuellert/codediff.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
     build = "cmake -B build && cmake --build build",
-    branch = "next",
     opts = {
       explorer = {
         view_mode = "tree",
