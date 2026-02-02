@@ -61,6 +61,9 @@ return {
         sign_priority = 5,
         status_formatter = nil, -- Use default
         on_attach = function(bufnr)
+          local win = vim.api.nvim_get_current_win()
+          if vim.w[win].codediff_restore then return end
+
           local gs = require("gitsigns")
 
           local map = function(mode, l, r, opts)
