@@ -29,6 +29,7 @@ return {
     end,
     -- enabled = false, -- using jj these days
   },
+  { "NicolasGB/jj.nvim", cmd = { "J" }, opts = {} },
   {
     "esmuellert/codediff.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
@@ -41,8 +42,6 @@ return {
         view = {
           next_file = "<tab>",
           prev_file = "<s-tab>",
-          next_hunk = "]g",
-          prev_hunk = "[g",
         },
       },
     },
@@ -61,9 +60,6 @@ return {
         sign_priority = 5,
         status_formatter = nil, -- Use default
         on_attach = function(bufnr)
-          local win = vim.api.nvim_get_current_win()
-          if vim.w[win].codediff_restore then return end
-
           local gs = require("gitsigns")
 
           local map = function(mode, l, r, opts)
