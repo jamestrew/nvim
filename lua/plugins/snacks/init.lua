@@ -23,14 +23,6 @@ return {
         },
       },
       cmd = "FFFSnacks",
-      keys = {
-        {
-          "<leader>ff",
-          "<cmd> FFFSnacks <cr>",
-          desc = "FFF",
-        },
-      },
-      config = true,
     },
   },
   ---@type snacks.Config

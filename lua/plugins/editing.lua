@@ -8,15 +8,15 @@ return {
         offscreen = {
           method = "popup",
         },
-      }
-    }
+      },
+    },
   },
   { "windwp/nvim-autopairs", config = true },
   {
     "windwp/nvim-ts-autotag",
     ft = { "javascript", "jsx", "typescript", "tsx", "html", "markdown" },
   },
-  { "kylechui/nvim-surround", config = true },
+  { "kylechui/nvim-surround" },
   { "nvim-mini/mini.move", config = true },
   {
     "Wansmer/treesj",
