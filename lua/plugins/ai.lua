@@ -23,8 +23,8 @@ return {
     event = "VeryLazy",
 
     opts = {
-      -- Available by default: "claude-acp" | "gemini-acp" | "codex-acp" | "opencode-acp"
-      provider = "claude-acp", -- setting the name here is all you need to get started
+      -- Available by default: "claude-agent-acp" | "gemini-acp" | "codex-acp" | "opencode-acp" | "cursor-acp" | "auggie-acp" | "mistral-vibe-acp"
+      provider = "claude-agent-acp", -- setting the name here is all you need to get started
     },
 
     -- these are just suggested keymaps; customize as desired
