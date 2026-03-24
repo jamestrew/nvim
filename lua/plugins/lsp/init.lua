@@ -1,3 +1,19 @@
+local function file_exists(name)
+  return vim.uv.fs_stat(vim.fs.joinpath(vim.fn.getcwd(), name)) ~= nil
+end
+
+local function pkg_has_dep(dep)
+  local pkg_path = vim.fs.joinpath(vim.fn.getcwd(), "package.json")
+  local f = io.open(pkg_path, "r")
+  if not f then return false end
+  local content = f:read("*a")
+  f:close()
+  local ok, pkg = pcall(vim.json.decode, content)
+  if not ok or not pkg then return false end
+  return (pkg.dependencies and pkg.dependencies[dep] ~= nil)
+    or (pkg.devDependencies and pkg.devDependencies[dep] ~= nil)
+end
+
 local M = {
   "neovim/nvim-lspconfig",
   dependencies = {
@@ -31,33 +47,12 @@ local M = {
       "nvimtools/none-ls.nvim",
       config = function()
         local null_ls = require("null-ls")
+        local sources = {
+          null_ls.builtins.formatting.markdownlint,
+          null_ls.builtins.formatting.stylua,
+        }
         null_ls.setup({
-          sources = {
-            -- formatting
-            null_ls.builtins.formatting.biome,
-            -- null_ls.builtins.formatting.gofmt,
-            -- null_ls.builtins.formatting.golines,
-            null_ls.builtins.formatting.markdownlint,
-            -- null_ls.builtins.formatting.sql_formatter,
-            -- null_ls.builtins.formatting.sqlfluff.with({
-            --   extra_args = { "--dialect", "sqlite" }, -- change to your dialect
-            -- }),
-
-            -- null_ls.builtins.formatting.goimports,
-            null_ls.builtins.formatting.stylua,
-            -- null_ls.builtins.diagnostics.sqlfluff.with({
-            --   extra_args = { "--dialect", "sqlite" }, -- change to your dialect
-            -- }),
-
-            -- null_ls.builtins.formatting.sql_formatter,
-
-            -- diagnostic
-            -- null_ls.builtins.diagnostics.luacheck, too much
-            -- null_ls.builtins.diagnostics.zsh,
-
-            -- code_actions
-            -- null_ls.builtins.code_actions.gitsigns,
-          },
+          sources = sources,
           on_attach = function(_, bufnr) require("plugins.lsp.utils").attach_mappings(bufnr) end,
         })
       end,
@@ -232,7 +227,6 @@ local M = {
       "gopls",
       "bashls",
       -- "ts_ls",
-      "biome",
       "clangd",
       "taplo", -- toml
       -- "rust_analyzer",
@@ -240,11 +234,25 @@ local M = {
       "nil_ls",
 
       -- "ts_query_ls"
-      "tailwindcss",
       "copilot-language-server",
       "zls",
       "tsgo",
     }
+
+    if file_exists(".oxfmtrc.json") then
+      table.insert(server_list, "oxfmt")
+    else
+      table.insert(server_list, "biome")
+    end
+    if file_exists(".oxlintrc.json") then
+      table.insert(server_list, "oxlint")
+    else
+      table.insert(server_list, "")
+    end
+
+    if pkg_has_dep("tailwindcss") then
+      table.insert(server_list, "tailwindcss")
+    end
 
     for _, server in ipairs(server_list) do
       vim.lsp.enable(server, true)
