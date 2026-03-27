@@ -1,5 +1,4 @@
 return {
-  { "jamestrew/microscope.nvim", dir = "~/projects/microscope.nvim" },
   { "samjwill/nvim-unception" },
   {
     "codethread/qmk.nvim",
