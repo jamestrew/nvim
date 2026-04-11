@@ -35,7 +35,6 @@ opt.updatetime = 200 -- Make updates happen faster
 opt.hlsearch = false -- Get rid of highlights once done with search
 opt.scrolloff = 5
 opt.spell = false
-opt.conceallevel = 1
 opt.formatoptions:remove({ "r", "o" }) -- default "jtcroql"
 
 -- Tabs
