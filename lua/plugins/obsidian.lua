@@ -1,4 +1,4 @@
-local workspace_path = "~/obsidian/notes"
+local workspace_path = "~/obsidian/personal"
 
 return {
   "obsidian-nvim/obsidian.nvim",
