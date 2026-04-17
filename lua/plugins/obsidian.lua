@@ -17,5 +17,13 @@ return {
         path = workspace_path,
       },
     },
+    callbacks = {
+      enter_note = function()
+        vim.opt_local.conceallevel = 1
+        vim.opt_local.wrap = true
+        vim.keymap.set("n", "j", "gj", { buffer = true, silent = true })
+        vim.keymap.set("n", "k", "gk", { buffer = true, silent = true })
+      end,
+    },
   },
 }
