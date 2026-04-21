@@ -9,7 +9,5 @@ vim.api.nvim_create_user_command("GHView", function(ev)
   if not text:match("^%d+$") then error(string.format("need number, got %s", text)) end
 
   local result = vim.system({ "gh", "pr", "view", text, "--web" }):wait()
-  if result.code ~= 0 then
-    vim.system({ "gh", "issue", "view", text, "--web" })
-  end
+  if result.code ~= 0 then vim.system({ "gh", "issue", "view", text, "--web" }) end
 end, { nargs = "?" })

@@ -144,7 +144,7 @@ local M = {
       "pmizio/typescript-tools.nvim",
       dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
       opts = {},
-      enabled = false,  -- trying tsgo
+      enabled = false, -- trying tsgo
     },
     {
       "hedyhli/outline.nvim",
@@ -250,9 +250,7 @@ local M = {
       table.insert(server_list, "")
     end
 
-    if pkg_has_dep("tailwindcss") then
-      table.insert(server_list, "tailwindcss")
-    end
+    if pkg_has_dep("tailwindcss") then table.insert(server_list, "tailwindcss") end
 
     for _, server in ipairs(server_list) do
       vim.lsp.enable(server, true)

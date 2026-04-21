@@ -72,7 +72,7 @@ return {
       default = { "lsp", "path", "snippets", "buffer" },
       per_filetype = {
         sql = { "dadbod", "snippets", "buffer" },
-        lua = { inherits_defaults = true, "lazydev" }
+        lua = { inherits_defaults = true, "lazydev" },
       },
       providers = {
         lazydev = {

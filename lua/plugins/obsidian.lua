@@ -3,9 +3,7 @@ local workspace_path = "~/obsidian/personal"
 return {
   "obsidian-nvim/obsidian.nvim",
   version = "*",
-  cond = function()
-    return vim.fn.getcwd():find(vim.fn.expand(workspace_path), 1, true) == 1
-  end,
+  cond = function() return vim.fn.getcwd():find(vim.fn.expand(workspace_path), 1, true) == 1 end,
   ---@module 'obsidian'
   ---@type obsidian.config
   opts = {
@@ -24,6 +22,9 @@ return {
         vim.keymap.set("n", "j", "gj", { buffer = true, silent = true })
         vim.keymap.set("n", "k", "gk", { buffer = true, silent = true })
       end,
+    },
+    ui = {
+      ignore_conceal_warn = true,
     },
   },
 }
