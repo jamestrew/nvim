@@ -1,6 +1,31 @@
 return {
   { "samjwill/nvim-unception" },
   {
+    "stevearc/oil.nvim",
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {
+      columns = {
+        "permissions",
+        "size",
+        "mtime",
+        "icon",
+      },
+      keymaps = {
+        ["q"] = { "actions.close", mode = "n" },
+      },
+    },
+    -- Optional dependencies
+    -- dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+    dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+    keys = {
+      { "<leader>-", "<cmd>Oil<CR>", desc = "Open Oil" },
+      { "-", function() require("oil").open(vim.uv.cwd()) end, desc = "Open Oil (cwd)" },
+    },
+    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    lazy = false,
+  },
+  {
     "codethread/qmk.nvim",
     opts = {
       name = "LAYOUT_manuform_num",
