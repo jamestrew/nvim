@@ -5,6 +5,9 @@ return {
     ---@module 'oil'
     ---@type oil.SetupOpts
     opts = {
+      view_options = {
+        show_hidden = true,
+      },
       columns = {
         "permissions",
         "size",
@@ -13,6 +16,7 @@ return {
       },
       keymaps = {
         ["q"] = { "actions.close", mode = "n" },
+        ["<BS>"] = { "actions.parent", mode = "n" },
       },
     },
     -- Optional dependencies
