@@ -2,6 +2,12 @@ return {
   {
     "folke/snacks.nvim",
     dir = require("config.utils").dev_dir("snacks.nvim"),
+    dependencies = {
+      {
+        "snacks-file-browser.nvim",
+        dir = require("config.utils").dev_dir("snacks-file-browser.nvim"),
+      },
+    },
     priority = 1000,
     lazy = false,
     ---@type snacks.Config
@@ -26,6 +32,7 @@ return {
     },
     keys = function()
       local Snacks = require("snacks")
+      local sfb = require("snacks_file_browser")
       local pickers = require("plugins.snacks.pickers")
       return {
         { "<leader>gc", Snacks.picker.git_log, silent = true },
@@ -34,11 +41,11 @@ return {
         { "<leader>gw", Snacks.picker.grep_word, silent = true, mode = { "n", "v", "x" } },
         {
           "<C-e>",
-          function() Snacks.picker.explorer() end,
+          function() sfb.open() end,
         },
         {
           "<leader><C-e>",
-          function() Snacks.picker.explorer({ cwd = vim.fn.expand("%:p:h"), follow_buffer = true }) end,
+          function() sfb.open({ cwd = vim.fn.expand("%:p:h") }) end,
         },
         -- { "<leader><C-e>", function() pickers.file_browser({ follow_file = true }) end },
       }
