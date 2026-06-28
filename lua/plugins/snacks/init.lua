@@ -45,7 +45,7 @@ return {
         },
         {
           "<leader><C-e>",
-          function() sfb.open({ cwd = vim.fn.expand("%:p:h") }) end,
+          function() sfb.open({ buf_path = true }) end,
         },
         -- { "<leader><C-e>", function() pickers.file_browser({ follow_file = true }) end },
       }

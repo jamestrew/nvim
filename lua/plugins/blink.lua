@@ -3,6 +3,7 @@ return {
   -- optional: provides snippets for the snippet source
   dependencies = {
     "rafamadriz/friendly-snippets",
+    "Kaiser-Yang/blink-cmp-git",
     { "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
   },
 
@@ -69,7 +70,7 @@ return {
     },
 
     sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
+      default = { "lsp", "path", "snippets", "buffer", "git" },
       per_filetype = {
         sql = { "dadbod", "snippets", "buffer" },
       },
@@ -84,6 +85,16 @@ return {
           min_keyword_length = function(ctx) return ctx.mode == "cmdline" and 0 or 3 end,
         },
         snippets = { min_keyword_length = 3 },
+        git = {
+          module = "blink-cmp-git",
+          name = "Git",
+          enabled = function()
+            return vim.tbl_contains(
+              { "octo", "gitcommit", "jjdescription", "markdown" },
+              vim.bo.filetype
+            )
+          end,
+        },
       },
     },
     signature = { enabled = true },
