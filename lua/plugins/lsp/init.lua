@@ -121,12 +121,6 @@ local M = {
       },
     },
     {
-      "pmizio/typescript-tools.nvim",
-      dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-      opts = {},
-      enabled = false, -- trying tsgo
-    },
-    {
       "hedyhli/outline.nvim",
       opts = {
         outline_window = {
@@ -216,7 +210,7 @@ local M = {
       -- "ts_query_ls"
       "copilot-language-server",
       "zls",
-      "tsgo",
+      "tsc",
     }
 
     if file_exists(".oxfmtrc.json") then

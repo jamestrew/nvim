@@ -10,6 +10,7 @@ return {
   { "lewis6991/satellite.nvim", config = true },
   {
     "Bekaboo/dropbar.nvim",
+    dir = require("config.utils").dev_dir("dropbar.nvim"),
     opts = {},
   },
   {
