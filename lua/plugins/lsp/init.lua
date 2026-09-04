@@ -213,6 +213,10 @@ local M = {
       "tsc",
     }
 
+    vim.lsp.config("oxfmt", {
+      workspace_required = true,
+    })
+
     if file_exists(".oxfmtrc.json") then
       table.insert(server_list, "oxfmt")
     else
