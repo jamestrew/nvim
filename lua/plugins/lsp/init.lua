@@ -23,7 +23,7 @@ local M = {
       config = function()
         require("hover").config({
           providers = {
-            "hover.providers.diagnostic",
+            "plugins.lsp.hover_diagnostic",
             "hover.providers.lsp",
             "hover.providers.dap",
             "hover.providers.man",
@@ -44,6 +44,14 @@ local M = {
       end,
     },
     {
+      "enochchau/nvim-pretty-ts-errors",
+      build = "npm install",
+      init = function(plugin)
+        -- Use the bundled Node host instead of requiring a global npm install.
+        vim.g.node_host_prog = vim.fs.joinpath(plugin.dir, "node_modules", "neovim", "bin", "cli.js")
+      end,
+    },
+    {
       "nvimtools/none-ls.nvim",
       config = function()
         local null_ls = require("null-ls")
@@ -61,7 +69,7 @@ local M = {
     {
       "mrcjkb/rustaceanvim",
       lazy = false, -- This plugin is already lazy
-      version = "^6",
+      version = "^9",
       config = function()
         vim.g.rustaceanvim = function()
           local os = vim.uv.os_uname().sysname
