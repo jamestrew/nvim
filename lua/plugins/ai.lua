@@ -3,6 +3,17 @@ return {
     "zbirenbaum/copilot.lua",
     cmd = { "Copilot" },
     event = "InsertEnter",
+    init = function()
+      vim.api.nvim_create_autocmd("User", {
+        group = vim.api.nvim_create_augroup("CopilotBlinkVisibility", { clear = true }),
+        pattern = { "BlinkCmpMenuOpen", "BlinkCmpMenuClose" },
+        callback = function(event)
+          vim.b.copilot_suggestion_hidden = event.match == "BlinkCmpMenuOpen"
+          local suggestion = package.loaded["copilot.suggestion"]
+          if suggestion then suggestion.update_preview() end
+        end,
+      })
+    end,
     opts = {
       -- suggestion = { enabled = false },
       -- panel = { enabled = false },

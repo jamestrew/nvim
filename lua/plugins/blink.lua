@@ -1,3 +1,15 @@
+local function copilot_action(action)
+  return function(cmp)
+    -- Blink owns these keys whenever its menu is open, even if ghost text remains.
+    if cmp.is_menu_visible() then return end
+    local suggestion = package.loaded["copilot.suggestion"]
+    if suggestion and suggestion.is_visible() then
+      suggestion[action]()
+      return true
+    end
+  end
+end
+
 return {
   "saghen/blink.cmp",
   -- optional: provides snippets for the snippet source
@@ -31,6 +43,9 @@ return {
     -- See :h blink-cmp-config-keymap for defining your own keymap
     keymap = {
       preset = "default",
+      ["<c-y>"] = { "select_and_accept", copilot_action("accept"), "fallback" },
+      ["<c-n>"] = { "select_next", copilot_action("next"), "fallback_to_mappings" },
+      ["<c-p>"] = { "select_prev", copilot_action("prev"), "fallback_to_mappings" },
       ["<c-d>"] = { "scroll_documentation_down" },
       ["<c-u>"] = { "scroll_documentation_up" },
       ["<c-k>"] = { "snippet_forward", "fallback" },

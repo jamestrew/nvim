@@ -19,6 +19,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.opt.termguicolors = true
 
+require('vim._core.ui2').enable({})
+
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
