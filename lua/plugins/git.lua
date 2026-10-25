@@ -31,6 +31,12 @@ return {
   },
   { "NicolasGB/jj.nvim", cmd = { "J" }, opts = {} },
   {
+    "synapse.nvim",
+    dir = require("config.utils").dev_dir("synapse.nvim"),
+    lazy = false,
+    opts = {},
+  },
+  {
     "esmuellert/codediff.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
     build = "cmake -B build && cmake --build build",
